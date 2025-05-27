@@ -1,0 +1,125 @@
+function createMeditativeSound() {
+        // HOSPITALITY HARMONIC SYSTEM - Based on sacred geometry frequencies
+        // Using 432Hz tuning for deeper resonance and healing properties
+        const baseFreq = 108; // 432Hz/4 - OM frequency in Hindu/Buddhist tradition
+        
+        // Core drone using perfect fifth intervals (3:2 ratio)
+        nodes.fundamental = audioContext.createOscillator();
+        nodes.fundamental.type = 'sine';
+        nodes.fundamental.frequency.value = baseFreq;
+        
+        // Sacred interval harmonics
+        nodes.perfectFifth = audioContext.createOscillator();
+        nodes.perfectFifth.type = 'sine';
+        nodes.perfectFifth.frequency.value = baseFreq * 1.5; // 162Hz
+        
+        // Octave for grounding
+        nodes.octaveLow = audioContext.createOscillator();
+        nodes.octaveLow.type = 'sine';
+        nodes.octaveLow.frequency.value = baseFreq * 0.5; // 54Hz
+        
+        // Major third for warmth (5:4 ratio)
+        nodes.majorThird = audioContext.createOscillator();
+        nodes.majorThird.type = 'sine';
+        nodes.majorThird.frequency.value = baseFreq * 1.25; // 135Hz
+        
+        // Gain envelope for each harmonic
+        nodes.fundamentalGain = audioContext.createGain();
+        nodes.fundamentalGain.gain.value = 0.3;
+        
+        nodes.fifthGain = audioContext.createGain();
+        nodes.fifthGain.gain.value = 0.15;
+        
+        nodes.octaveGain = audioContext.createGain();
+        nodes.octaveGain.gain.value = 0.25;
+        
+        nodes.thirdGain = audioContext.createGain();
+        nodes.thirdGain.gain.value = 0.08;
+        
+        // Warm filter with resonance
+        nodes.warmthFilter = audioContext.createBiquadFilter();
+        nodes.warmthFilter.type = 'lowpass';
+        nodes.warmthFilter.frequency.value = 600;
+        nodes.warmthFilter.Q.value = 0.7;
+        
+        // Reverb convolver for spatial depth
+        nodes.reverb = audioContext.createConvolver();
+        nodes.reverbGain = audioContext.createGain();
+        nodes.reverbGain.gain.value = 0.3;
+        
+        // Create impulse response for cathedral-like reverb
+        const reverbTime = 4;
+        const sampleRate = audioContext.sampleRate;
+        const length = sampleRate * reverbTime;
+        const impulse = audioContext.createBuffer(2, length, sampleRate);
+        
+        for (let channel = 0; channel < 2; channel++) {
+            const channelData = impulse.getChannelData(channel);
+            for (let i = 0; i < length; i++) {
+                channelData[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2);
+            }
+        }
+        nodes.reverb.buffer = impulse;
+        
+        // Connect oscillators to gains
+        nodes.fundamental.connect(nodes.fundamentalGain);
+        nodes.perfectFifth.connect(nodes.fifthGain);
+        nodes.octaveLow.connect(nodes.octaveGain);
+        nodes.majorThird.connect(nodes.thirdGain);
+        
+        // Create mix bus
+        nodes.dryMix = audioContext.createGain();
+        nodes.dryMix.gain.value = 0.7;
+        
+        // Connect to filter
+        nodes.fundamentalGain.connect(nodes.warmthFilter);
+        nodes.fifthGain.connect(nodes.warmthFilter);
+        nodes.octaveGain.connect(nodes.warmthFilter);
+        nodes.thirdGain.connect(nodes.warmthFilter);
+        
+        // Split to dry and reverb
+        nodes.warmthFilter.connect(nodes.dryMix);
+        nodes.warmthFilter.connect(nodes.reverb);
+        nodes.reverb.connect(nodes.reverbGain);
+        
+        // Final mix
+        nodes.dryMix.connect(masterGain);
+        nodes.reverbGain.connect(masterGain);
+        
+        // Start oscillators
+        nodes.fundamental.start();
+        nodes.perfectFifth.start();
+        nodes.octaveLow.start();
+        nodes.majorThird.start();
+        
+        // Breathing modulation (like ocean waves)
+        nodes.breathLFO = audioContext.createOscillator();
+        nodes.breathLFO.frequency.value = 0.08; // ~5 breaths per minute
+        nodes.breathGain = audioContext.createGain();
+        nodes.breathGain.gain.value = 0.015;
+        
+        nodes.breathLFO.connect(nodes.breathGain);
+        nodes.breathGain.connect(masterGain.gain);
+        nodes.breathLFO.start();
+        
+        // Subtle pitch drift for organic feel
+        nodes.driftLFO = audioContext.createOscillator();
+        nodes.driftLFO.frequency.value = 0.03;
+        nodes.driftGain = audioContext.createGain();
+        nodes.driftGain.gain.value = 0.5;
+        
+        nodes.driftLFO.connect(nodes.driftGain);
+        nodes.driftGain.connect(nodes.fundamental.frequency);
+        nodes.driftGain.connect(nodes.perfectFifth.frequency);
+        nodes.driftLFO.start();
+        
+        // Filter sweep for movement
+        nodes.filterLFO = audioContext.createOscillator();
+        nodes.filterLFO.frequency.value = 0.05;
+        nodes.filterGain = audioContext.createGain();
+        nodes.filterGain.gain.value = 100;
+        
+        nodes.filterLFO.connect(nodes.filterGain);
+        nodes.filterGain.connect(nodes.warmthFilter.frequency);
+        nodes.filterLFO.start();
+    }

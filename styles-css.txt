@@ -1,0 +1,104 @@
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.frequency-loader {
+    width: 120px;
+    height: 120px;
+    color: var(--accent-gold);
+}
+
+/* Animated core circle */
+.loader-core {
+    animation: loader-core-animation 2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes loader-core-animation {
+    0% {
+        stroke-dashoffset: 75;
+        transform: rotate(0deg);
+    }
+    50% {
+        stroke-dashoffset: 0;
+        transform: rotate(180deg);
+    }
+    100% {
+        stroke-dashoffset: -75;
+        transform: rotate(360deg);
+    }
+}
+
+/* Frequency dots animation */
+.freq-dot {
+    opacity: 0;
+    animation: freq-dot-pulse 2s ease-in-out infinite;
+}
+
+.freq-dot-1 { animation-delay: 0s; }
+.freq-dot-2 { animation-delay: 0.2s; }
+.freq-dot-3 { animation-delay: 0.4s; }
+.freq-dot-4 { animation-delay: 0.6s; }
+.freq-dot-5 { animation-delay: 0.8s; }
+.freq-dot-6 { animation-delay: 1s; }
+
+@keyframes freq-dot-pulse {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Frequency lines animation */
+.freq-lines {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: freq-lines-draw 2s ease-in-out infinite;
+}
+
+@keyframes freq-lines-draw {
+    0%, 100% {
+        stroke-dashoffset: 400;
+        opacity: 0.1;
+    }
+    50% {
+        stroke-dashoffset: 0;
+        opacity: 0.5;
+    }
+}
+
+.loader-text {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+    opacity: 0;
+    animation: fadeIn 1s ease 0.5s forwards;
+}

@@ -1,4 +1,4 @@
-/* Narratum.io - v3 Complete Styles - Final Fixed Version */
+/* Narratum.io - v3 Complete Styles - FINAL Production Version */
 
 :root {
     /* Color System - Dark Harbor Blue Theme */
@@ -104,7 +104,7 @@ body {
     top: 0;
 }
 
-/* Loading Screen */
+/* Loading Screen with Frequency Loader */
 .loading-screen {
     position: fixed;
     top: 0;
@@ -394,15 +394,17 @@ body {
     color: var(--accent-gold);
 }
 
-/* Color Mood Switcher */
+/* Color Mood Switcher - Updated with 6 themes */
 .mood-switcher {
     position: fixed;
-    bottom: 52px;
-    right: 100px;
+    bottom: 20px;
+    left: 20px;
     display: flex;
-    gap: 12px;
+    gap: 8px;
     z-index: 100;
     align-items: center;
+    flex-wrap: wrap;
+    max-width: 120px;
 }
 
 .mood-dot {
@@ -422,7 +424,7 @@ body {
 }
 
 .mood-dot[data-mood="default"] {
-    background-color: var(--accent-gold);
+    background-color: #fbbf24;
 }
 
 .mood-dot[data-mood="teal"] {
@@ -596,10 +598,11 @@ body {
 /* Hero Section */
 .hero {
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-top: 100px;
 }
 
 /* Hero titles remain centered */
@@ -613,10 +616,10 @@ body {
 /* Constellation Background */
 .constellation-background {
     position: absolute;
-    top: 0;
+    top: -20%;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     z-index: -1;
     overflow: hidden;
 }
@@ -637,6 +640,7 @@ body {
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.02);
 }
 
 .orbital-ring.ring-1 {
@@ -663,6 +667,30 @@ body {
     }
     100% {
         transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.orbital-ring::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 50%;
+    border: 1px solid rgba(251, 191, 36, 0.05);
+    opacity: 0;
+    animation: pulseRing 4s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
     }
 }
 
@@ -787,41 +815,6 @@ body {
     75% {
         transform: translate(-50px, 40px) rotate(240deg) scale(1.1);
         opacity: 0.4;
-    }
-}
-
-/* Enhance orbital rings with subtle glow */
-.orbital-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.02);
-}
-
-.orbital-ring::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-    border-radius: 50%;
-    border: 1px solid rgba(251, 191, 36, 0.05);
-    opacity: 0;
-    animation: pulseRing 4s ease-in-out infinite;
-}
-
-@keyframes pulseRing {
-    0%, 100% {
-        opacity: 0;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.02);
     }
 }
 
@@ -1115,6 +1108,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .symbol-glyph {
@@ -2680,6 +2674,37 @@ button, a, .symbol-item, .capability-block, .partnership-category, .journey-node
     transform: translateY(0);
 }
 
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+    .symbol-item:hover .symbol-icon {
+        transform: none;
+        filter: none;
+    }
+    
+    .capability-block:hover,
+    .partnership-category:hover,
+    .journey-node:hover,
+    .build-pillar:hover {
+        transform: none;
+    }
+}
+
+/* Touch target minimum size */
+button, a, input, select, textarea, .nav-dot, .mood-dot, .audio-toggle {
+    min-width: 44px;
+    min-height: 44px;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .partnerships-grid {
@@ -2721,6 +2746,16 @@ button, a, .symbol-item, .capability-block, .partnership-category, .journey-node
 @media (max-width: 768px) {
     :root {
         --section-padding: 60px;
+    }
+
+    /* Hero mobile optimizations */
+    .hero {
+        padding-top: 100px;
+        justify-content: flex-start;
+    }
+
+    .constellation-background {
+        top: -20%;
     }
     
     /* Navigation adjustments */
@@ -2898,7 +2933,7 @@ button, a, .symbol-item, .capability-block, .partnership-category, .journey-node
         right: 16px;
     }
     
-    /* Audio and mood controls */
+    /* Audio and mood controls - mobile positioning */
     .audio-toggle {
         bottom: 20px;
         right: 20px;
@@ -2907,9 +2942,10 @@ button, a, .symbol-item, .capability-block, .partnership-category, .journey-node
     }
     
     .mood-switcher {
-        bottom: 32px;
-        right: 72px;
+        bottom: 20px;
+        left: 20px;
         gap: 8px;
+        max-width: 120px;
     }
     
     .mood-dot {
@@ -3047,3 +3083,227 @@ button, a, .symbol-item, .capability-block, .partnership-category, .journey-node
         height: 12px;
     }
 }
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .nav-dots,
+    .anchor-menu,
+    .audio-toggle,
+    .mood-switcher,
+    .sound-visualization,
+    .mouse-glow,
+    .cookie-banner,
+    .footer-links,
+    .social-links {
+        display: none !important;
+    }
+}
+
+/* Additional Premium Enhancements */
+
+/* Refined highlight word animations */
+.highlight-word {
+    position: relative;
+    display: inline-block;
+    color: var(--accent-gold);
+    transition: all 0.3s ease;
+}
+
+.highlight-word::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-gold);
+    transition: width 0.3s ease;
+}
+
+.highlight-word:hover::after {
+    width: 100%;
+}
+
+/* Enhanced form success icon */
+.form-success .success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 32px;
+    color: var(--accent-gold);
+}
+
+/* Mobile-specific touch enhancements */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .symbol-item:hover .symbol-icon,
+    .capability-block:hover,
+    .partnership-category:hover,
+    .build-pillar:hover {
+        transform: none;
+    }
+    
+    /* Increase touch targets */
+    .nav-dot,
+    .mood-dot,
+    .audio-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* Optimize for touch scrolling */
+    .section {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .orbital-ring,
+    .geo-shape,
+    .star {
+        animation: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --accent-gold: #ffdc00;
+        --text-secondary: rgba(255, 255, 255, 0.95);
+        --border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .nav-dot,
+    .form-input,
+    .submit-button {
+        border-width: 2px;
+    }
+}
+
+/* Dark mode enhancements (already dark by default, but for system preferences) */
+@media (prefers-color-scheme: light) {
+    /* Keep dark theme even if system is light */
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* Ultra-wide screen optimizations */
+@media (min-width: 1920px) {
+    :root {
+        --content-width: 1400px;
+    }
+    
+    .section-title {
+        font-size: 72px;
+    }
+    
+    .site-title {
+        font-size: 120px;
+    }
+    
+    .prose p {
+        font-size: 22px;
+    }
+}
+
+/* Sticky header for anchor menu on large screens */
+@media (min-width: 1200px) {
+    .anchor-menu.visible {
+        position: fixed;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Enhanced loading states */
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 3px solid rgba(251, 191, 36, 0.2);
+    border-top-color: var(--accent-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Ensure all interactive elements have proper focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+/* Final performance and compatibility fixes */
+.section {
+    will-change: transform;
+}
+
+.orbital-ring,
+.geo-shape {
+    transform: translateZ(0); /* Force GPU acceleration */
+    backface-visibility: hidden;
+}
+
+/* Ensure smooth scrolling on all browsers */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed elements */
+}
+
+/* Fix for iOS Safari bounce scrolling */
+body {
+    position: fixed;
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Final touch: Premium loading shimmer effect */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* End of styles.css */

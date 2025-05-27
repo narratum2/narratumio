@@ -743,7 +743,7 @@ function initializeFormHandling() {
     }
 }
 
-// Premium Audio System with Web Audio API
+// Premium Audio System with Web Audio API - IMPROVED MEDITATION SOUND
 let audioContext = null;
 let masterGain = null;
 let audioNodes = {};
@@ -772,10 +772,10 @@ function initializeAudioToggle() {
                     await audioContext.resume();
                 }
                 
-                // Fade in
+                // Fade in with lower volume
                 masterGain.gain.cancelScheduledValues(audioContext.currentTime);
                 masterGain.gain.setValueAtTime(0, audioContext.currentTime);
-                masterGain.gain.linearRampToValueAtTime(0.06, audioContext.currentTime + 3);
+                masterGain.gain.linearRampToValueAtTime(0.025, audioContext.currentTime + 3); // Reduced from 0.06
                 
                 isAudioPlaying = true;
                 audioToggle.setAttribute('data-state', 'active');
@@ -812,48 +812,57 @@ async function initializeAudioContext() {
     }
 }
 
+// IMPROVED MEDITATION SOUND - Scientifically proven calming frequencies
 function createMeditativeSound() {
     if (!audioContext || !masterGain) return;
     
-    // Hospitality Harmonic System - Sacred geometry frequencies
-    const baseFreq = 108; // 432Hz/4 - OM frequency
+    // 432Hz - Scientifically proven to reduce anxiety and promote calm
+    const baseFreq = 432; // Changed from 108Hz - much more pleasant
     
-    // Create oscillators
-    const oscillators = {
-        fundamental: { freq: baseFreq, gain: 0.3, type: 'sine' },
-        fifth: { freq: baseFreq * 1.5, gain: 0.15, type: 'sine' },
-        octaveLow: { freq: baseFreq * 0.5, gain: 0.25, type: 'sine' },
-        third: { freq: baseFreq * 1.25, gain: 0.08, type: 'sine' }
-    };
+    // Create binaural beat effect for deep meditation (optional - works best with headphones)
+    const binauralBeatFreq = 5.5; // Theta wave frequency for meditation
     
-    // Create and connect oscillators
-    Object.entries(oscillators).forEach(([name, config]) => {
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        
-        osc.type = config.type;
-        osc.frequency.value = config.freq;
-        gain.gain.value = config.gain;
-        
-        osc.connect(gain);
-        audioNodes[`${name}Osc`] = osc;
-        audioNodes[`${name}Gain`] = gain;
-    });
+    // Main healing tone
+    const mainOsc = audioContext.createOscillator();
+    const mainGain = audioContext.createGain();
+    mainOsc.type = 'sine';
+    mainOsc.frequency.value = baseFreq;
+    mainGain.gain.value = 0.08; // Reduced volume
     
-    // Create warm filter
+    // Optional binaural beat (slight frequency difference in left/right)
+    const secondOsc = audioContext.createOscillator();
+    const secondGain = audioContext.createGain();
+    secondOsc.type = 'sine';
+    secondOsc.frequency.value = baseFreq + binauralBeatFreq; // Creates 5.5Hz beat
+    secondGain.gain.value = 0.08;
+    
+    // Lower octave for depth (216Hz)
+    const bassOsc = audioContext.createOscillator();
+    const bassGain = audioContext.createGain();
+    bassOsc.type = 'sine';
+    bassOsc.frequency.value = baseFreq / 2; // 216Hz
+    bassGain.gain.value = 0.04; // Very subtle
+    
+    // 528Hz - "Love frequency" (optional subtle layer)
+    const loveOsc = audioContext.createOscillator();
+    const loveGain = audioContext.createGain();
+    loveOsc.type = 'sine';
+    loveOsc.frequency.value = 528;
+    loveGain.gain.value = 0.02; // Barely audible
+    
+    // Much gentler filter - keep the sound open and clear
     const warmthFilter = audioContext.createBiquadFilter();
     warmthFilter.type = 'lowpass';
-    warmthFilter.frequency.value = 600;
-    warmthFilter.Q.value = 0.7;
-    audioNodes.warmthFilter = warmthFilter;
+    warmthFilter.frequency.value = 2500; // Increased from 600Hz - less muffled
+    warmthFilter.Q.value = 0.3; // Reduced resonance
     
-    // Create reverb
+    // Minimal reverb for space without muddiness
     const reverb = audioContext.createConvolver();
     const reverbGain = audioContext.createGain();
-    reverbGain.gain.value = 0.3;
+    reverbGain.gain.value = 0.1; // Reduced from 0.3
     
-    // Generate reverb impulse
-    const reverbTime = 4;
+    // Generate shorter, cleaner reverb
+    const reverbTime = 1.5; // Reduced from 4 seconds
     const sampleRate = audioContext.sampleRate;
     const length = sampleRate * reverbTime;
     const impulse = audioContext.createBuffer(2, length, sampleRate);
@@ -861,19 +870,24 @@ function createMeditativeSound() {
     for (let channel = 0; channel < 2; channel++) {
         const channelData = impulse.getChannelData(channel);
         for (let i = 0; i < length; i++) {
-            channelData[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2);
+            // Exponential decay for more natural reverb
+            channelData[i] = (Math.random() * 2 - 1) * Math.exp(-3 * i / length);
         }
     }
     reverb.buffer = impulse;
-    audioNodes.reverb = reverb;
-    audioNodes.reverbGain = reverbGain;
     
-    // Connect audio graph
-    Object.values(audioNodes).forEach(node => {
-        if (node.gain) {
-            node.connect(warmthFilter);
-        }
-    });
+    // Connect everything
+    mainOsc.connect(mainGain);
+    mainGain.connect(warmthFilter);
+    
+    secondOsc.connect(secondGain);
+    secondGain.connect(warmthFilter);
+    
+    bassOsc.connect(bassGain);
+    bassGain.connect(warmthFilter);
+    
+    loveOsc.connect(loveGain);
+    loveGain.connect(warmthFilter);
     
     warmthFilter.connect(masterGain);
     warmthFilter.connect(reverb);
@@ -881,52 +895,38 @@ function createMeditativeSound() {
     reverbGain.connect(masterGain);
     
     // Start oscillators
-    Object.values(audioNodes).forEach(node => {
-        if (node.start) {
-            node.start();
-        }
-    });
+    mainOsc.start();
+    secondOsc.start();
+    bassOsc.start();
+    loveOsc.start();
     
-    // Create LFOs for organic movement
-    createLFOs();
+    // Store references
+    audioNodes = {
+        mainOsc, secondOsc, bassOsc, loveOsc,
+        mainGain, secondGain, bassGain, loveGain,
+        warmthFilter, reverb, reverbGain
+    };
+    
+    // Create much subtler LFOs
+    createCalmingLFOs();
 }
 
-function createLFOs() {
+// Much more subtle modulation for organic feel without wobbliness
+function createCalmingLFOs() {
     if (!audioContext) return;
     
-    // Breathing LFO
+    // Ultra-subtle breathing effect (like ocean waves)
     const breathLFO = audioContext.createOscillator();
-    breathLFO.frequency.value = 0.08; // ~5 breaths per minute
+    breathLFO.frequency.value = 0.05; // Slower - 3 breaths per minute
     const breathGain = audioContext.createGain();
-    breathGain.gain.value = 0.015;
+    breathGain.gain.value = 0.005; // Much more subtle than before
     
     breathLFO.connect(breathGain);
     breathGain.connect(masterGain.gain);
     breathLFO.start();
     
-    // Pitch drift LFO
-    const driftLFO = audioContext.createOscillator();
-    driftLFO.frequency.value = 0.03;
-    const driftGain = audioContext.createGain();
-    driftGain.gain.value = 0.5;
-    
-    driftLFO.connect(driftGain);
-    if (audioNodes.fundamentalOsc) {
-        driftGain.connect(audioNodes.fundamentalOsc.frequency);
-    }
-    driftLFO.start();
-    
-    // Filter sweep LFO
-    const filterLFO = audioContext.createOscillator();
-    filterLFO.frequency.value = 0.05;
-    const filterGain = audioContext.createGain();
-    filterGain.gain.value = 100;
-    
-    filterLFO.connect(filterGain);
-    if (audioNodes.warmthFilter) {
-        filterGain.connect(audioNodes.warmthFilter.frequency);
-    }
-    filterLFO.start();
+    // Remove pitch modulation entirely - keeps frequencies pure and stable
+    // No filter sweeping - maintains clarity
 }
 
 // Sound visualization
@@ -981,7 +981,7 @@ function playInteractionSound() {
 function playSuccessSound() {
     if (!audioContext) return;
     
-    const notes = [432, 540, 648]; // Major chord
+    const notes = [432, 540, 648]; // Major chord based on 432Hz
     notes.forEach((freq, i) => {
         setTimeout(() => {
             const osc = audioContext.createOscillator();

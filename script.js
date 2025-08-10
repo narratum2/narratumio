@@ -6,22 +6,27 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize loader immediately
+    initializeLoader();
+
     // Check device capabilities
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const isTouch = 'ontouchstart' in window;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    // Initialize all systems
-    initializeLoader();
-    
-    // Only initialize heavy animations on desktop and if motion is allowed
+
+    // Only initialize heavy animations on desktop
     if (!isMobile && !prefersReducedMotion) {
-        initializeStarField();
-        initializeParallax();
+        // Wait for loader to finish before starting animations
+        setTimeout(() => {
+            initializeStarField();
+            initializeParallax();
+        }, 3000);
     }
-    
-    // Core initialization
-    initializeApp();
+
+    // Delay main app initialization
+    setTimeout(() => {
+        initializeApp();
+    }, 2500);
 });
 
 function initializeApp() {
@@ -45,33 +50,100 @@ function initializeApp() {
         initializeLegalModals();
         initializeSmoothScroll();
         initializeAccessibility();
-    }, 1000);
+    }, 2500);
 }
 
-// Enhanced Loading Screen with Progress
+// FIXED LOADER FUNCTION - Replace the entire initializeLoader function with this
 function initializeLoader() {
     const loader = document.querySelector('.loading-screen');
     
-    if (loader) {
-        // Simulate loading progress
-        let progress = 0;
-        const progressInterval = setInterval(() => {
-            progress += Math.random() * 30;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(progressInterval);
-                
-                // Hide loader
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        document.body.classList.add('loaded');
-                    }, 500);
-                }, 500);
-            }
-        }, 200);
+    if (!loader) {
+        console.error('[Loader] Element .loading-screen not found');
+        return;
     }
+    
+    console.log('[Loader] Starting...');
+    
+    // Ensure loader is visible
+    loader.style.display = 'flex';
+    loader.style.opacity = '1';
+    loader.style.visibility = 'visible';
+    loader.classList.remove('hidden');
+    
+    // Configuration
+    const MINIMUM_LOAD_TIME = 2000; // Show for at least 2 seconds
+    const startTime = Date.now();
+    
+    // Check page load state
+    if (document.readyState === 'complete') {
+        // Page already loaded, use simulated loading
+        simulateLoading();
+    } else {
+        // Track actual page loading
+        trackRealLoading();
+    }
+    
+    function simulateLoading() {
+        let progress = 0;
+        const totalSteps = 10;
+        const stepDuration = MINIMUM_LOAD_TIME / totalSteps;
+        
+        const progressInterval = setInterval(() => {
+            progress += (100 / totalSteps);
+            console.log(`[Loader] Progress: ${Math.round(progress)}%`);
+            
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                hideLoaderAfterMinimumTime();
+            }
+        }, stepDuration);
+    }
+    
+    function trackRealLoading() {
+        // Wait for window load event
+        window.addEventListener('load', () => {
+            console.log('[Loader] Page fully loaded');
+            hideLoaderAfterMinimumTime();
+        });
+        
+        // Also track DOMContentLoaded as backup
+        if (document.readyState === 'interactive') {
+            setTimeout(hideLoaderAfterMinimumTime, MINIMUM_LOAD_TIME);
+        }
+    }
+    
+    function hideLoaderAfterMinimumTime() {
+        const elapsedTime = Date.now() - startTime;
+        const remainingTime = Math.max(0, MINIMUM_LOAD_TIME - elapsedTime);
+        
+        console.log(`[Loader] Will hide in ${remainingTime}ms`);
+        
+        setTimeout(() => {
+            hideLoader();
+        }, remainingTime);
+    }
+    
+    function hideLoader() {
+        console.log('[Loader] Hiding...');
+        
+        // Add hidden class for smooth transition
+        loader.classList.add('hidden');
+        
+        // After transition, completely hide and mark as loaded
+        setTimeout(() => {
+            loader.style.display = 'none';
+            document.body.classList.add('loaded');
+            console.log('[Loader] Hidden successfully');
+        }, 500);
+    }
+    
+    // Safety fallback - hide after 5 seconds no matter what
+    setTimeout(() => {
+        if (loader && !loader.classList.contains('hidden')) {
+            console.warn('[Loader] Fallback: forcing hide after 5 seconds');
+            hideLoader();
+        }
+    }, 5000);
 }
 
 // Premium Gentle Moving Star Field

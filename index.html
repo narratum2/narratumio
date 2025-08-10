@@ -164,13 +164,7 @@
     </script>
 </head>
 <body>
-    <!-- Accessibility Skip Link -->
-    <a href="#main" class="skip-link">Skip to content</a>
-    
-    <!-- Mouse Glow Effect -->
-    <div class="mouse-glow"></div>
-    
-    <!-- Loading Screen -->
+    <!-- Loading Screen MUST be first -->
     <div class="loading-screen">
         <div class="loader">
             <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="frequency-loader">
@@ -195,7 +189,13 @@
             <span class="loader-text">narratum</span>
         </div>
     </div>
-    
+
+    <!-- Accessibility Skip Link -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Mouse Glow Effect -->
+    <div class="mouse-glow"></div>
+
     <!-- Navigation Dots -->
     <nav class="nav-dots" aria-label="Section navigation">
         <button class="nav-dot active" data-section="hero" aria-label="Hero section">

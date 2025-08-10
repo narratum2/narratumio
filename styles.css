@@ -1,3 +1,52 @@
+/* CRITICAL LOADER FIX - Add at the very top of styles.css */
+
+/* Force loader to be visible on page load */
+.loading-screen {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 999999 !important;
+    background-color: #0a1520 !important;
+}
+
+/* Only hide when .hidden class is explicitly added */
+.loading-screen.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.5s ease, visibility 0.5s ease !important;
+}
+
+/* Ensure animations are running */
+.loader-core {
+    animation: loader-core-animation 2s ease-in-out infinite !important;
+}
+
+.freq-dot {
+    animation: freq-dot-pulse 2s ease-in-out infinite !important;
+}
+
+.freq-lines {
+    animation: freq-lines-draw 2s ease-in-out infinite !important;
+}
+
+/* Hide main content until loaded */
+body:not(.loaded) main,
+body:not(.loaded) .section {
+    opacity: 0 !important;
+}
+
+body.loaded main,
+body.loaded .section {
+    opacity: 1 !important;
+    transition: opacity 1s ease !important;
+}
+
 /* Narratum.io - v3 Complete Styles - FINAL Production Version */
 
 :root {

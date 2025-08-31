@@ -79,6 +79,7 @@ function initializeLoader() {
 
 // Premium Gentle Moving Star Field
 function initializeStarField() {
+    if (document.documentElement.getAttribute('data-reduced-animations') === '1') return;
     const starContainer = document.createElement('div');
     starContainer.className = 'gentle-stars';
     starContainer.style.cssText = `

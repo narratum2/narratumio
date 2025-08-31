@@ -1340,6 +1340,63 @@ body {
     background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
+/* Loyalty Programs Styling */
+.loyalty-programs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.loyalty-program {
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.loyalty-program:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(251, 191, 36, 0.2);
+    transform: translateY(-2px);
+}
+
+.loyalty-program h3 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.loyalty-program p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.loyalty-program ul {
+    list-style: none;
+}
+
+.loyalty-program li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: var(--text-tertiary);
+    font-size: 15px;
+}
+
+.loyalty-program li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    opacity: 0.6;
+}
+
 .loyalty-journey {
     max-width: 900px;
     margin: 0 auto;
@@ -1506,6 +1563,63 @@ body {
 /* Partnerships Section */
 .partnerships {
     background: var(--bg-primary);
+}
+
+/* Partnerships List Styling */
+.partnerships-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.partnership-item {
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.partnership-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(251, 191, 36, 0.2);
+    transform: translateY(-2px);
+}
+
+.partnership-item h3 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.partnership-item p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.partnership-item ul {
+    list-style: none;
+}
+
+.partnership-item li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: var(--text-tertiary);
+    font-size: 15px;
+}
+
+.partnership-item li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    opacity: 0.6;
 }
 
 .partnerships-grid {
@@ -2877,6 +2991,25 @@ button, a, input, select, textarea, .nav-dot, .mood-dot, .audio-toggle {
         gap: 24px;
     }
     
+    .partnerships-list {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .partnership-item {
+        padding: 24px;
+    }
+    
+    /* Loyalty programs mobile */
+    .loyalty-programs {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .loyalty-program {
+        padding: 24px;
+    }
+    
     .partnership-category {
         padding: 32px 24px;
         min-height: auto;
@@ -3279,9 +3412,8 @@ html {
 
 /* Fix for iOS Safari bounce scrolling */
 body {
-    position: fixed;
     width: 100%;
-    overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 }
 

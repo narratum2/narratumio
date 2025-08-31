@@ -615,5 +615,14 @@
     </div>
     <script src="script.js"></script>
     <script src="legal-content.js"></script>
+    <script>
+        window.NARRATUM_AI_CONFIG = {
+            enabled: true,
+            overlay: { enabled: true, startHidden: true },
+            scheduling: { tickMs: 15000, minIntervalMs: 30000, maxIntervalMs: 3600000, adaptiveness: 0.6 },
+            consent: { sendTelemetry: false }
+        };
+    </script>
+    <script src="developer-ai-orchestrator.js"></script>
 </body>
 </html>

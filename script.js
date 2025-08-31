@@ -11,17 +11,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const isTouch = 'ontouchstart' in window;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    // Initialize all systems
-    initializeLoader();
+    // Ensure loader always initializes first
+    try {
+        initializeLoader();
+    } catch (error) {
+        console.error('[Loader] Failed to initialize:', error);
+        // Emergency fallback
+        setTimeout(() => {
+            const loader = document.querySelector('.loading-screen');
+            if (loader) {
+                loader.style.display = 'none';
+                document.body.classList.add('loaded');
+            }
+        }, 1000);
+    }
+    
+    // Detect if CSS failed to load
+    setTimeout(() => {
+        const loader = document.querySelector('.loading-screen');
+        if (loader && getComputedStyle(loader).position !== 'fixed') {
+            console.warn('[Loader] CSS may have failed to load, using fallback');
+            loader.classList.add('css-fallback');
+        }
+    }, 100);
     
     // Only initialize heavy animations on desktop and if motion is allowed
     if (!isMobile && !prefersReducedMotion) {
-        initializeStarField();
-        initializeParallax();
+        try {
+            initializeStarField();
+            initializeParallax();
+        } catch (error) {
+            console.error('Animation initialization failed:', error);
+        }
     }
     
-    // Core initialization
-    initializeApp();
+    // Core initialization with error boundary
+    try {
+        initializeApp();
+    } catch (error) {
+        console.error('App initialization failed:', error);
+        // Ensure basic functionality still works
+        initializeBasicFunctionality();
+    }
 });
 
 function initializeApp() {
@@ -48,7 +79,7 @@ function initializeApp() {
     }, 1000);
 }
 
-// Enhanced Loading Screen with Progress
+// Enhanced Loading Screen with Progress and Error Handling
 function initializeLoader() {
     const loader = document.querySelector('.loading-screen');
     console.log('[Loader] initializeLoader called (deterministic)');
@@ -58,23 +89,68 @@ function initializeLoader() {
     }
 
     let hidden = false;
+    let loadStartTime = Date.now();
+    
     const hideLoader = (reason) => {
         if (hidden) return;
         hidden = true;
-        console.log(`[Loader] Hiding loader (${reason})`);
+        const loadTime = Date.now() - loadStartTime;
+        console.log(`[Loader] Hiding loader (${reason}) after ${loadTime}ms`);
+        
         loader.classList.add('hidden');
         setTimeout(() => {
             loader.style.display = 'none';
             document.body.classList.add('loaded');
             console.log('[Loader] Loader fully hidden, body.loaded added');
+            
+            // Track loading performance
+            if (window.intelligentAnalytics) {
+                window.intelligentAnalytics.trackEvent('page_load_complete', {
+                    loadTime: loadTime,
+                    hideReason: reason
+                });
+            }
         }, 500);
     };
 
-    // If the full window load happens, hide immediately (resources ready)
+    // Multiple fallback strategies for reliability
+    
+    // Strategy 1: Hide when all resources are loaded
     window.addEventListener('load', () => hideLoader('window.load'));
-
-    // Fallback deterministic hide after a short delay so UX isn't blocked
-    setTimeout(() => hideLoader('timeout:600ms'), 600);
+    
+    // Strategy 2: Hide when DOM is ready and fonts are loaded
+    if (document.readyState === 'complete') {
+        hideLoader('already_loaded');
+    } else {
+        // Strategy 3: Progressive loading check
+        const checkResourcesLoaded = () => {
+            const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+            const allLoaded = Array.from(stylesheets).every(sheet => {
+                try {
+                    return sheet.sheet && sheet.sheet.cssRules;
+                } catch (e) {
+                    return true; // Assume loaded if we can't check (CORS)
+                }
+            });
+            
+            if (allLoaded && document.readyState !== 'loading') {
+                hideLoader('resources_check');
+            }
+        };
+        
+        setTimeout(checkResourcesLoaded, 300);
+    }
+    
+    // Strategy 4: Guaranteed fallback for UX protection
+    setTimeout(() => hideLoader('timeout:800ms'), 800);
+    
+    // Strategy 5: Emergency fallback if something goes wrong
+    setTimeout(() => {
+        if (!hidden) {
+            console.warn('[Loader] Emergency fallback triggered');
+            hideLoader('emergency_fallback');
+        }
+    }, 2000);
 }
 
 // Premium Gentle Moving Star Field
@@ -1444,10 +1520,86 @@ if (window.location.hostname !== 'localhost') {
     initializePerformanceMonitoring();
 }
 
+// Basic functionality fallback if main initialization fails
+function initializeBasicFunctionality() {
+    console.log('[Fallback] Initializing basic functionality');
+    
+    // Basic navigation
+    document.querySelectorAll('.nav-dot').forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            const targetSection = dot.getAttribute('data-section');
+            const section = document.getElementById(targetSection);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Basic form handling
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            // Let the form submit normally to Formspree
+            console.log('[Fallback] Form submitted');
+        });
+    }
+    
+    // Basic cookie acceptance
+    window.acceptCookies = function() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        const banner = document.getElementById('cookieBanner');
+        if (banner) banner.style.display = 'none';
+    };
+}
+
+// Health check function
+function performHealthCheck() {
+    const criticalElements = [
+        { selector: '.loading-screen', name: 'Loader' },
+        { selector: '#contactForm', name: 'Contact Form' },
+        { selector: '.nav-dots', name: 'Navigation' },
+        { selector: '.hero', name: 'Hero Section' }
+    ];
+    
+    const healthStatus = {
+        timestamp: new Date().toISOString(),
+        checks: []
+    };
+    
+    criticalElements.forEach(({ selector, name }) => {
+        const element = document.querySelector(selector);
+        const status = {
+            component: name,
+            element: selector,
+            present: !!element,
+            visible: element ? getComputedStyle(element).display !== 'none' : false
+        };
+        healthStatus.checks.push(status);
+        
+        if (!status.present) {
+            console.warn(`[Health Check] Missing critical element: ${name} (${selector})`);
+        }
+    });
+    
+    console.log('[Health Check] Status:', healthStatus);
+    
+    // Track health status with analytics
+    if (window.intelligentAnalytics) {
+        window.intelligentAnalytics.trackEvent('health_check', healthStatus);
+    }
+    
+    return healthStatus;
+}
+
+// Run health check after initialization
+setTimeout(performHealthCheck, 2000);
+
 // Export functions for external use
 window.narratum = {
     playSound: playInteractionSound,
     openModal: openLegalModal,
     closeModal: closeLegalModal,
-    acceptCookies: acceptCookies
+    acceptCookies: acceptCookies,
+    healthCheck: performHealthCheck,
+    reinitialize: initializeApp
 };

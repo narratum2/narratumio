@@ -51,27 +51,30 @@ function initializeApp() {
 // Enhanced Loading Screen with Progress
 function initializeLoader() {
     const loader = document.querySelector('.loading-screen');
-    
-    if (loader) {
-        // Simulate loading progress
-        let progress = 0;
-        const progressInterval = setInterval(() => {
-            progress += Math.random() * 30;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(progressInterval);
-                
-                // Hide loader
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        document.body.classList.add('loaded');
-                    }, 500);
-                }, 500);
-            }
-        }, 200);
+    console.log('[Loader] initializeLoader called (deterministic)');
+    if (!loader) {
+        console.log('[Loader] .loading-screen not found');
+        return;
     }
+
+    let hidden = false;
+    const hideLoader = (reason) => {
+        if (hidden) return;
+        hidden = true;
+        console.log(`[Loader] Hiding loader (${reason})`);
+        loader.classList.add('hidden');
+        setTimeout(() => {
+            loader.style.display = 'none';
+            document.body.classList.add('loaded');
+            console.log('[Loader] Loader fully hidden, body.loaded added');
+        }, 500);
+    };
+
+    // If the full window load happens, hide immediately (resources ready)
+    window.addEventListener('load', () => hideLoader('window.load'));
+
+    // Fallback deterministic hide after a short delay so UX isn't blocked
+    setTimeout(() => hideLoader('timeout:600ms'), 600);
 }
 
 // Premium Gentle Moving Star Field

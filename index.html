@@ -39,9 +39,66 @@
     <meta property="twitter:creator" content="@narratum_io">
     
     <!-- Additional Meta Tags -->
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <meta name="theme-color" content="#0a1520">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="geo.region" content="US-NY">
+    <meta name="geo.placename" content="New York City">
+    <meta name="geo.position" content="40.7406;-73.9875">
+    <meta name="ICBM" content="40.7406, -73.9875">
+    <meta name="business:contact_data:locality" content="New York">
+    <meta name="business:contact_data:region" content="NY">
+    <meta name="business:contact_data:postal_code" content="10010">
+    <meta name="business:contact_data:country_name" content="United States">
+    
+    <!-- Schema.org markup for search engines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Narratum",
+        "legalName": "Narratum LLC",
+        "url": "https://narratum.io",
+        "logo": "https://narratum.io/favicon.svg",
+        "description": "Strategic infrastructure for transformative hospitality. We design experience systems, loyalty frameworks, and cultural programs that create lasting connections.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "110 East 25th Street",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "postalCode": "10010",
+            "addressCountry": "US"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-555-0199",
+            "contactType": "customer service",
+            "email": "connect@narratum.io",
+            "availableLanguage": "English"
+        },
+        "foundingDate": "2024",
+        "founder": {
+            "@type": "Person",
+            "name": "Pascal Frey"
+        },
+        "sameAs": [
+            "https://instagram.com/narratum_io",
+            "https://x.com/narratum_io"
+        ],
+        "service": {
+            "@type": "Service",
+            "name": "Strategic Hospitality Infrastructure",
+            "description": "Comprehensive hospitality consulting services including experience design, loyalty systems, and cultural programming for institutional transformation.",
+            "serviceType": "Hospitality Consulting",
+            "provider": {
+                "@type": "Organization",
+                "name": "Narratum"
+            }
+        }
+    }
+    </script>
     
     <!-- Favicon -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -56,16 +113,53 @@
     <!-- Fonts with display swap for better performance -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Critical inline styles -->
+    <!-- Critical inline styles for fastest loading -->
     <style>
         body { margin: 0; background: #0a1520; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-        .loading-screen { position: fixed; top:0; left:0; width:100%; height:100%; background:#0a1520; display:flex; justify-content:center; align-items:center; z-index:1000; }
-        .loader { text-align:center; }
-        @media (max-width: 768px) { .hero { padding-top: 100px; } }
+        .loading-screen { position: fixed; top:0; left:0; width:100%; height:100%; background:#0a1520; display:flex; justify-content:center; align-items:center; z-index:1000; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loading-screen.hidden { opacity: 0; visibility: hidden; }
+        .loader { text-align:center; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+        .frequency-loader { width: 120px; height: 120px; color: #fbbf24; }
+        .loader-core { animation: loader-core-animation 2s ease-in-out infinite; transform-origin: center; }
+        .freq-dot { opacity: 0; animation: freq-dot-pulse 2s ease-in-out infinite; }
+        .freq-dot-1 { animation-delay: 0s; } .freq-dot-2 { animation-delay: 0.2s; } .freq-dot-3 { animation-delay: 0.4s; }
+        .freq-dot-4 { animation-delay: 0.6s; } .freq-dot-5 { animation-delay: 0.8s; } .freq-dot-6 { animation-delay: 1s; }
+        .loader-text { font-family: 'Cormorant Garamond', serif; font-size: 24px; letter-spacing: 0.2em; color: rgba(255,255,255,0.8); opacity: 0; animation: fadeIn 1s ease 0.5s forwards; }
+        @keyframes loader-core-animation { 0% { stroke-dashoffset: 75; transform: rotate(0deg); } 50% { stroke-dashoffset: 0; transform: rotate(180deg); } 100% { stroke-dashoffset: -75; transform: rotate(360deg); } }
+        @keyframes freq-dot-pulse { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1.2); } }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @media (max-width: 768px) { .hero { padding-top: 100px; } .frequency-loader { width: 80px; height: 80px; } .loader-text { font-size: 18px; } }
+        /* Fallback if CSS fails to load */
+        .loading-screen.css-fallback { background: #0a1520; color: #fbbf24; font-family: Arial, sans-serif; }
+        .loading-screen.css-fallback .loader-text { animation: none; opacity: 1; }
     </style>
     
-    <!-- Main stylesheet with cache-busting query to force refresh if prior version was cached or 404 -->
-    <link rel="stylesheet" href="styles.css?v=20250831">
+    <!-- Main stylesheet with cache-busting query and error handling -->
+    <link rel="stylesheet" href="styles.css?v=20250831" onerror="this.onerror=null; document.body.classList.add('css-load-failed'); console.error('CSS failed to load');">
+    
+    <!-- Preload critical resources for faster loading -->
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="legal-content.js" as="script">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//formspree.io">
+    
+    <!-- Resource hints for better performance -->
+    <link rel="prefetch" href="thank-you.html">
+    
+    <!-- Critical resource loading with timeout fallback -->
+    <script>
+        // Ensure page doesn't stay loading forever
+        setTimeout(function() {
+            const loader = document.querySelector('.loading-screen');
+            if (loader && !loader.classList.contains('hidden')) {
+                console.log('Emergency loader hide after 3s');
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }
+        }, 3000);
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -523,7 +617,7 @@
                             <a href="mailto:connect@narratum.io">connect@narratum.io</a>
                         </div>
                     </div>
-                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mldewbpg" method="POST">
                         <input type="hidden" name="_subject" value="New Narratum Inquiry">
                         <div class="form-row">
                             <div class="form-group">
@@ -613,7 +707,79 @@
             <div id="modalContent" class="modal-body"></div>
         </div>
     </div>
+<<<<<<< Current (Your changes)
     <script src="script.js"></script>
     <script src="legal-content.js"></script>
+    
+    <!-- Background Optimization Agent -->
+    <script src="background-agent.js"></script>
+=======
+    <!-- Error boundary for script loading -->
+    <script>
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'SCRIPT') {
+                console.error('Script failed to load:', e.target.src);
+                // Continue with basic functionality even if scripts fail
+                document.dispatchEvent(new CustomEvent('scriptLoadError', { detail: e.target.src }));
+            }
+        });
+    </script>
+    
+    <script src="script.js" onerror="console.error('Main script failed to load'); window.scriptLoadFailed = true;"></script>
+    <script src="legal-content.js" onerror="console.error('Legal content failed to load'); window.legalContent = {};"></script>
+    
+    <script>
+        // Basic analytics fallback and error recovery
+        window.addEventListener('load', function() {
+            // Ensure basic analytics always works
+            if (typeof window.intelligentAnalytics === 'undefined') {
+                window.intelligentAnalytics = {
+                    trackEvent: (event, data) => {
+                        console.log('Analytics:', event, data);
+                        // Store in sessionStorage for basic tracking
+                        try {
+                            const events = JSON.parse(sessionStorage.getItem('analytics_events') || '[]');
+                            events.push({ event, data, timestamp: Date.now(), url: window.location.href });
+                            sessionStorage.setItem('analytics_events', JSON.stringify(events.slice(-50)));
+                        } catch (error) {
+                            console.warn('Analytics storage failed:', error);
+                        }
+                    }
+                };
+            }
+            
+            // Ensure loader is hidden even if script fails
+            if (window.scriptLoadFailed) {
+                console.log('Script failed, ensuring basic functionality');
+                const loader = document.querySelector('.loading-screen');
+                if (loader) {
+                    loader.style.display = 'none';
+                }
+                
+                // Basic navigation fallback
+                document.querySelectorAll('.nav-dot').forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        const section = document.getElementById(this.getAttribute('data-section'));
+                        if (section) section.scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+                
+                // Basic form functionality
+                const form = document.getElementById('contactForm');
+                if (form) {
+                    form.addEventListener('submit', function() {
+                        console.log('Form submitted via fallback');
+                    });
+                }
+            }
+            
+            // Track page load completion
+            window.intelligentAnalytics.trackEvent('page_fully_loaded', {
+                loadTime: performance.timing ? performance.timing.loadEventEnd - performance.timing.navigationStart : 'unknown',
+                scriptStatus: window.scriptLoadFailed ? 'failed' : 'success'
+            });
+        });
+    </script>
+>>>>>>> Incoming (Background Agent changes)
 </body>
 </html>

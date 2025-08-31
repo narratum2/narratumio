@@ -11,17 +11,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const isTouch = 'ontouchstart' in window;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    // Initialize all systems
-    initializeLoader();
+    // Ensure loader always initializes first
+    try {
+        initializeLoader();
+    } catch (error) {
+        console.error('[Loader] Failed to initialize:', error);
+        // Emergency fallback
+        setTimeout(() => {
+            const loader = document.querySelector('.loading-screen');
+            if (loader) {
+                loader.style.display = 'none';
+                document.body.classList.add('loaded');
+            }
+        }, 1000);
+    }
+    
+    // Detect if CSS failed to load
+    setTimeout(() => {
+        const loader = document.querySelector('.loading-screen');
+        if (loader && getComputedStyle(loader).position !== 'fixed') {
+            console.warn('[Loader] CSS may have failed to load, using fallback');
+            loader.classList.add('css-fallback');
+        }
+    }, 100);
     
     // Only initialize heavy animations on desktop and if motion is allowed
     if (!isMobile && !prefersReducedMotion) {
-        initializeStarField();
-        initializeParallax();
+        try {
+            initializeStarField();
+            initializeParallax();
+        } catch (error) {
+            console.error('Animation initialization failed:', error);
+        }
     }
     
-    // Core initialization
-    initializeApp();
+    // Core initialization with error boundary
+    try {
+        initializeApp();
+    } catch (error) {
+        console.error('App initialization failed:', error);
+        // Ensure basic functionality still works
+        initializeBasicFunctionality();
+    }
 });
 
 function initializeApp() {
@@ -48,7 +79,7 @@ function initializeApp() {
     }, 1000);
 }
 
-// Enhanced Loading Screen with Progress
+// Enhanced Loading Screen with Progress and Error Handling
 function initializeLoader() {
     const loader = document.querySelector('.loading-screen');
     console.log('[Loader] initializeLoader called (deterministic)');
@@ -58,26 +89,71 @@ function initializeLoader() {
     }
 
     let hidden = false;
+    let loadStartTime = Date.now();
+    
     const hideLoader = (reason) => {
         if (hidden) return;
         hidden = true;
-        console.log(`[Loader] Hiding loader (${reason})`);
+        const loadTime = Date.now() - loadStartTime;
+        console.log(`[Loader] Hiding loader (${reason}) after ${loadTime}ms`);
+        
         loader.classList.add('hidden');
         setTimeout(() => {
             loader.style.display = 'none';
             document.body.classList.add('loaded');
             console.log('[Loader] Loader fully hidden, body.loaded added');
+            
+            // Track loading performance
+            if (window.intelligentAnalytics) {
+                window.intelligentAnalytics.trackEvent('page_load_complete', {
+                    loadTime: loadTime,
+                    hideReason: reason
+                });
+            }
         }, 500);
     };
 
-    // If the full window load happens, hide immediately (resources ready)
+    // Multiple fallback strategies for reliability
+    
+    // Strategy 1: Hide when all resources are loaded
     window.addEventListener('load', () => hideLoader('window.load'));
-
-    // Fallback deterministic hide after a short delay so UX isn't blocked
-    setTimeout(() => hideLoader('timeout:600ms'), 600);
+    
+    // Strategy 2: Hide when DOM is ready and fonts are loaded
+    if (document.readyState === 'complete') {
+        hideLoader('already_loaded');
+    } else {
+        // Strategy 3: Progressive loading check
+        const checkResourcesLoaded = () => {
+            const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+            const allLoaded = Array.from(stylesheets).every(sheet => {
+                try {
+                    return sheet.sheet && sheet.sheet.cssRules;
+                } catch (e) {
+                    return true; // Assume loaded if we can't check (CORS)
+                }
+            });
+            
+            if (allLoaded && document.readyState !== 'loading') {
+                hideLoader('resources_check');
+            }
+        };
+        
+        setTimeout(checkResourcesLoaded, 300);
+    }
+    
+    // Strategy 4: Guaranteed fallback for UX protection
+    setTimeout(() => hideLoader('timeout:800ms'), 800);
+    
+    // Strategy 5: Emergency fallback if something goes wrong
+    setTimeout(() => {
+        if (!hidden) {
+            console.warn('[Loader] Emergency fallback triggered');
+            hideLoader('emergency_fallback');
+        }
+    }, 2000);
 }
 
-// Premium Gentle Moving Star Field
+// Enhanced Premium Gentle Moving Star Field with Advanced Physics
 function initializeStarField() {
     const starContainer = document.createElement('div');
     starContainer.className = 'gentle-stars';
@@ -90,60 +166,169 @@ function initializeStarField() {
         pointer-events: none;
         z-index: 1;
         overflow: hidden;
+        will-change: transform;
     `;
     document.body.appendChild(starContainer);
-    
-    // Star creation with performance optimization
+
+    // Enhanced star physics system
+    const starSystem = {
+        stars: new Set(),
+        maxStars: 25,
+        spawnRate: 1800, // Slightly faster spawn
+        physics: {
+            gravity: 0.02,
+            windStrength: 0.1,
+            turbulence: 0.05
+        }
+    };
+
+    // Advanced star creation with physics
     const createStar = () => {
+        if (starSystem.stars.size >= starSystem.maxStars) return;
+
         const star = document.createElement('div');
-        const size = Math.random() * 2 + 1; // 1-3px
+        const size = Math.random() * 3 + 1; // 1-4px for more variety
         const startX = Math.random() * window.innerWidth;
-        const duration = Math.random() * 20 + 30; // 30-50s
-        
+        const duration = Math.random() * 25 + 40; // 40-65s for longer journeys
+        const starType = Math.random();
+
+        // Different star types with unique properties
+        let starConfig = {
+            opacity: Math.random() * 0.4 + 0.3,
+            glow: Math.random() * 0.8 + 0.2,
+            speed: Math.random() * 0.5 + 0.3,
+            drift: (Math.random() - 0.5) * 150
+        };
+
+        if (starType > 0.8) {
+            // Bright star
+            starConfig.opacity = Math.random() * 0.3 + 0.7;
+            starConfig.glow = Math.random() * 0.5 + 0.5;
+        } else if (starType > 0.6) {
+            // Fast meteor-like star
+            starConfig.speed = Math.random() * 0.8 + 0.8;
+            starConfig.drift = (Math.random() - 0.5) * 80;
+        }
+
         star.style.cssText = `
             position: absolute;
             width: ${size}px;
             height: ${size}px;
-            background: rgba(255, 255, 255, ${Math.random() * 0.5 + 0.3});
+            background: radial-gradient(circle, rgba(255, 255, 255, ${starConfig.opacity}), transparent);
             border-radius: 50%;
             left: ${startX}px;
-            top: ${window.innerHeight + 10}px;
-            box-shadow: 0 0 ${size}px rgba(255, 255, 255, 0.5);
+            top: ${window.innerHeight + 20}px;
+            box-shadow: 0 0 ${size * 2}px rgba(255, 255, 255, ${starConfig.glow});
+            will-change: transform, opacity;
+            transform: translateZ(0);
         `;
-        
+
         starContainer.appendChild(star);
-        
-        // Smooth upward animation with horizontal drift
+        starSystem.stars.add(star);
+
+        // Advanced physics-based animation
         let progress = 0;
-        const horizontalDrift = (Math.random() - 0.5) * 100;
-        
-        const animateStar = () => {
-            progress += 1 / (duration * 60); // 60fps
-            
-            if (progress >= 1) {
-                star.remove();
+        let windOffset = 0;
+        let turbulencePhase = Math.random() * Math.PI * 2;
+
+        const animateStar = (timestamp) => {
+            if (!star.isConnected) {
+                starSystem.stars.delete(star);
                 return;
             }
-            
-            const y = window.innerHeight * (1 - progress) - 10;
-            const x = startX + Math.sin(progress * Math.PI * 2) * horizontalDrift;
-            
-            star.style.transform = `translate(${x - startX}px, ${y - window.innerHeight}px)`;
-            star.style.opacity = Math.sin(progress * Math.PI) * 0.8;
-            
+
+            progress += starConfig.speed / (duration * 60); // Adaptive speed
+
+            if (progress >= 1) {
+                star.remove();
+                starSystem.stars.delete(star);
+                return;
+            }
+
+            // Advanced movement with wind and turbulence
+            const baseY = window.innerHeight * (1 - progress) - 20;
+            const baseX = startX + Math.sin(progress * Math.PI * 2) * starConfig.drift;
+
+            // Wind effect
+            windOffset += starSystem.physics.windStrength * (Math.sin(progress * 4) + Math.sin(progress * 8) * 0.5);
+
+            // Turbulence effect
+            turbulencePhase += 0.1;
+            const turbulence = Math.sin(turbulencePhase) * starSystem.physics.turbulence * starConfig.drift;
+
+            const finalX = baseX + windOffset + turbulence;
+            const finalY = baseY + Math.sin(progress * Math.PI) * 30; // Gentle wave motion
+
+            // Enhanced opacity curve with fade-in and fade-out
+            let opacity;
+            if (progress < 0.1) {
+                opacity = Math.sin(progress * 5 * Math.PI) * starConfig.opacity; // Fade in
+            } else if (progress > 0.9) {
+                opacity = Math.sin((1 - progress) * 5 * Math.PI) * starConfig.opacity; // Fade out
+            } else {
+                opacity = starConfig.opacity;
+            }
+
+            star.style.transform = `translate(${finalX - startX}px, ${finalY - window.innerHeight}px)`;
+            star.style.opacity = opacity;
+
+            // Dynamic glow based on movement
+            const glowIntensity = starConfig.glow * (0.5 + Math.sin(progress * Math.PI * 4) * 0.5);
+            star.style.boxShadow = `0 0 ${size * 2}px rgba(255, 255, 255, ${glowIntensity})`;
+
             requestAnimationFrame(animateStar);
         };
-        
-        animateStar();
+
+        requestAnimationFrame(animateStar);
     };
-    
-    // Create initial star field
-    for (let i = 0; i < 20; i++) {
-        setTimeout(createStar, i * 200);
+
+    // Enhanced initial star field creation
+    const initialStars = Math.min(starSystem.maxStars, 25);
+    for (let i = 0; i < initialStars; i++) {
+        setTimeout(createStar, i * 150); // Staggered creation
     }
-    
-    // Continue creating stars
-    setInterval(createStar, 2000);
+
+    // Adaptive star creation based on performance
+    const adaptiveInterval = setInterval(() => {
+        if (starSystem.stars.size < starSystem.maxStars * 0.7) {
+            // Increase spawn rate if too few stars
+            createStar();
+        }
+    }, starSystem.spawnRate);
+
+    // Performance monitoring and adaptation
+    let lastPerformanceCheck = Date.now();
+    let frameCount = 0;
+
+    const monitorPerformance = () => {
+        frameCount++;
+        const now = Date.now();
+
+        if (now - lastPerformanceCheck >= 5000) { // Check every 5 seconds
+            const fps = frameCount / 5;
+
+            if (fps < 30) {
+                // Reduce star complexity on low performance
+                starSystem.maxStars = Math.max(15, starSystem.maxStars - 2);
+                starSystem.spawnRate = Math.min(3000, starSystem.spawnRate + 200);
+            } else if (fps > 55) {
+                // Increase star complexity on high performance
+                starSystem.maxStars = Math.min(35, starSystem.maxStars + 1);
+                starSystem.spawnRate = Math.max(1200, starSystem.spawnRate - 100);
+            }
+
+            frameCount = 0;
+            lastPerformanceCheck = now;
+        }
+
+        requestAnimationFrame(monitorPerformance);
+    };
+
+    requestAnimationFrame(monitorPerformance);
+
+    // Store for cleanup
+    starContainer.starSystem = starSystem;
+    starContainer.adaptiveInterval = adaptiveInterval;
 }
 
 // Gold Line Visibility Control
@@ -172,60 +357,198 @@ function initializeGoldLine() {
     });
 }
 
-// Premium Mouse Glow Effect
+// Enhanced Premium Mouse Glow Effect with Advanced Interactions
 function initializeMouseGlow() {
     const mouseGlow = document.querySelector('.mouse-glow');
     if (!mouseGlow || window.matchMedia('(hover: none)').matches) return;
-    
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let isMoving = false;
 
+    // Enhanced tracking system
+    let mouseState = {
+        x: 0,
+        y: 0,
+        currentX: 0,
+        currentY: 0,
+        velocityX: 0,
+        velocityY: 0,
+        lastX: 0,
+        lastY: 0,
+        isMoving: false,
+        interactionType: 'default',
+        intensity: 1,
+        trail: []
+    };
+
+    // Advanced mouse tracking with velocity calculation
     document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        if (!isMoving) {
-            isMoving = true;
+        const newX = e.clientX;
+        const newY = e.clientY;
+
+        // Calculate velocity for dynamic effects
+        mouseState.velocityX = newX - mouseState.lastX;
+        mouseState.velocityY = newY - mouseState.lastY;
+
+        mouseState.lastX = newX;
+        mouseState.lastY = newY;
+
+        mouseState.x = newX;
+        mouseState.y = newY;
+
+        // Add to trail for motion blur effect
+        mouseState.trail.push({ x: newX, y: newY, timestamp: Date.now() });
+        if (mouseState.trail.length > 10) {
+            mouseState.trail.shift();
+        }
+
+        if (!mouseState.isMoving) {
+            mouseState.isMoving = true;
             animateGlow();
         }
-        
-        // Show enhanced glow on interactive elements
-        const interactive = e.target.closest(
-            '.partnership-category, .capability-block, .journey-node, .symbol-item, .submit-button, .anchor-link'
+
+        // Enhanced interaction detection
+        const interactiveElement = e.target.closest(
+            '.partnership-category, .capability-block, .journey-node, .symbol-item, .submit-button, .anchor-link, .nav-dot, .mood-dot'
         );
-        
-        if (interactive) {
-            mouseGlow.classList.add('active');
-            mouseGlow.style.width = '300px';
-            mouseGlow.style.height = '300px';
+
+        if (interactiveElement) {
+            const elementType = getElementType(interactiveElement);
+            updateGlowForInteraction(elementType, mouseState);
         } else {
-            mouseGlow.classList.remove('active');
-            mouseGlow.style.width = '200px';
-            mouseGlow.style.height = '200px';
+            mouseState.interactionType = 'default';
+            resetGlowToDefault(mouseState);
         }
     });
 
-    // Smooth animation loop
+    // Determine element type for customized glow
+    function getElementType(element) {
+        if (element.classList.contains('submit-button')) return 'button';
+        if (element.classList.contains('symbol-item')) return 'symbol';
+        if (element.classList.contains('nav-dot')) return 'navigation';
+        if (element.classList.contains('mood-dot')) return 'mood';
+        if (element.classList.contains('capability-block')) return 'capability';
+        if (element.classList.contains('partnership-category')) return 'partnership';
+        if (element.classList.contains('journey-node')) return 'journey';
+        return 'interactive';
+    }
+
+    // Customize glow based on interaction type
+    function updateGlowForInteraction(type, state) {
+        if (state.interactionType === type) return; // No change needed
+
+        state.interactionType = type;
+        mouseGlow.classList.add('active');
+
+        const configurations = {
+            button: {
+                size: '350px',
+                intensity: 1.5,
+                color: 'rgba(251, 191, 36, 0.25)',
+                spread: 'rgba(251, 191, 36, 0.15)'
+            },
+            symbol: {
+                size: '280px',
+                intensity: 1.3,
+                color: 'rgba(125, 211, 252, 0.2)',
+                spread: 'rgba(125, 211, 252, 0.1)'
+            },
+            navigation: {
+                size: '220px',
+                intensity: 1.2,
+                color: 'rgba(251, 191, 36, 0.22)',
+                spread: 'rgba(251, 191, 36, 0.12)'
+            },
+            mood: {
+                size: '240px',
+                intensity: 1.1,
+                color: 'rgba(167, 139, 250, 0.2)',
+                spread: 'rgba(167, 139, 250, 0.1)'
+            },
+            capability: {
+                size: '320px',
+                intensity: 1.4,
+                color: 'rgba(251, 191, 36, 0.23)',
+                spread: 'rgba(251, 191, 36, 0.13)'
+            },
+            partnership: {
+                size: '300px',
+                intensity: 1.3,
+                color: 'rgba(125, 211, 252, 0.2)',
+                spread: 'rgba(125, 211, 252, 0.1)'
+            },
+            journey: {
+                size: '260px',
+                intensity: 1.2,
+                color: 'rgba(251, 191, 36, 0.21)',
+                spread: 'rgba(251, 191, 36, 0.11)'
+            }
+        };
+
+        const config = configurations[type] || configurations.interactive;
+
+        mouseGlow.style.width = config.size;
+        mouseGlow.style.height = config.size;
+        state.intensity = config.intensity;
+
+        // Update CSS custom properties for dynamic styling
+        mouseGlow.style.setProperty('--glow-color', config.color);
+        mouseGlow.style.setProperty('--glow-spread', config.spread);
+    }
+
+    // Reset to default state
+    function resetGlowToDefault(state) {
+        state.interactionType = 'default';
+        mouseGlow.classList.remove('active');
+        mouseGlow.style.width = '200px';
+        mouseGlow.style.height = '200px';
+        state.intensity = 1;
+        mouseGlow.style.removeProperty('--glow-color');
+        mouseGlow.style.removeProperty('--glow-spread');
+    }
+
+    // Enhanced animation loop with physics
     function animateGlow() {
-        const dx = mouseX - currentX;
-        const dy = mouseY - currentY;
-        
-        currentX += dx * 0.1;
-        currentY += dy * 0.1;
-        
-        mouseGlow.style.left = currentX + 'px';
-        mouseGlow.style.top = currentY + 'px';
-        mouseGlow.style.transform = 'translate(-50%, -50%)';
-        
+        if (!mouseState.isMoving) return;
+
+        const dx = mouseState.x - mouseState.currentX;
+        const dy = mouseState.y - mouseState.currentY;
+
+        // Adaptive easing based on velocity
+        const velocityMagnitude = Math.sqrt(mouseState.velocityX ** 2 + mouseState.velocityY ** 2);
+        const adaptiveEasing = Math.max(0.05, Math.min(0.2, velocityMagnitude / 100));
+
+        mouseState.currentX += dx * adaptiveEasing;
+        mouseState.currentY += dy * adaptiveEasing;
+
+        mouseGlow.style.left = mouseState.currentX + 'px';
+        mouseGlow.style.top = mouseState.currentY + 'px';
+
+        // Dynamic transform with subtle rotation based on movement
+        const rotation = Math.atan2(mouseState.velocityY, mouseState.velocityX) * (180 / Math.PI) * 0.1;
+        const scale = 1 + (velocityMagnitude / 200) * 0.1;
+
+        mouseGlow.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
+
+        // Dynamic opacity based on velocity
+        const dynamicOpacity = 0.1 + (velocityMagnitude / 300) * 0.3;
+        mouseGlow.style.opacity = mouseState.interactionType === 'default' ? dynamicOpacity : dynamicOpacity * 1.5;
+
         if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
             requestAnimationFrame(animateGlow);
         } else {
-            isMoving = false;
+            mouseState.isMoving = false;
+            // Gentle settle animation
+            mouseGlow.style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
         }
     }
+
+    // Add mouse leave handler for smooth transitions
+    document.addEventListener('mouseleave', () => {
+        mouseGlow.style.opacity = '0';
+        mouseState.isMoving = false;
+    });
+
+    document.addEventListener('mouseenter', () => {
+        mouseGlow.style.opacity = mouseState.interactionType === 'default' ? '0.1' : '0.3';
+    });
 }
 
 // Enhanced Navigation System
@@ -1439,15 +1762,351 @@ window.addEventListener('error', (e) => {
     // You could send this to an error tracking service
 });
 
-// Initialize performance monitoring in production
+    // Initialize performance monitoring in production
 if (window.location.hostname !== 'localhost') {
     initializePerformanceMonitoring();
 }
+
+// Advanced Magical Particle System
+function initializeMagicalParticles() {
+    const particleSystem = {
+        particles: new Set(),
+        maxParticles: 50,
+        spawnRate: 100,
+        container: null
+    };
+
+    function createParticleSystem() {
+        particleSystem.container = document.createElement('div');
+        particleSystem.container.className = 'magical-particles';
+        particleSystem.container.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        `;
+        document.body.appendChild(particleSystem.container);
+    }
+
+    function createMagicalParticle(x, y, type = 'sparkle') {
+        if (particleSystem.particles.size >= particleSystem.maxParticles) return;
+
+        const particle = document.createElement('div');
+        particle.className = 'magical-particle';
+
+        const particleTypes = {
+            sparkle: {
+                size: Math.random() * 4 + 2,
+                color: Math.random() > 0.5 ? '#fbbf24' : '#7dd3fc',
+                duration: Math.random() * 2000 + 1000,
+                trail: true
+            },
+            energy: {
+                size: Math.random() * 6 + 3,
+                color: '#a78bfa',
+                duration: Math.random() * 1500 + 800,
+                trail: false
+            },
+            pulse: {
+                size: Math.random() * 8 + 4,
+                color: '#d97757',
+                duration: Math.random() * 3000 + 2000,
+                trail: true
+            }
+        };
+
+        const config = particleTypes[type];
+
+        particle.style.cssText = `
+            position: absolute;
+            width: ${config.size}px;
+            height: ${config.size}px;
+            background: radial-gradient(circle, ${config.color}, transparent);
+            border-radius: 50%;
+            left: ${x}px;
+            top: ${y}px;
+            pointer-events: none;
+            will-change: transform, opacity;
+            transform: translateZ(0);
+            box-shadow: 0 0 ${config.size * 2}px ${config.color};
+        `;
+
+        particleSystem.container.appendChild(particle);
+        particleSystem.particles.add(particle);
+
+        animateMagicalParticle(particle, x, y, config);
+    }
+
+    function animateMagicalParticle(particle, startX, startY, config) {
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 200 + 50;
+        const endX = startX + Math.cos(angle) * distance;
+        const endY = startY + Math.sin(angle) * distance;
+
+        let progress = 0;
+
+        const animate = () => {
+            progress += 1 / (config.duration / 16);
+
+            if (progress >= 1) {
+                particle.remove();
+                particleSystem.particles.delete(particle);
+                return;
+            }
+
+            const t = progress;
+            const cx = startX + (endX - startX) * 0.5;
+            const cy = startY + (endY - startY) * 0.5 - 100;
+
+            const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * cx + t * t * endX;
+            const y = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * cy + t * t * endY;
+
+            const opacity = Math.sin(progress * Math.PI) * 0.8;
+            const scale = 0.5 + Math.sin(progress * Math.PI * 2) * 0.5;
+
+            particle.style.transform = `translate(${x - startX}px, ${y - startY}px) scale(${scale})`;
+            particle.style.opacity = opacity;
+
+            requestAnimationFrame(animate);
+        };
+
+        requestAnimationFrame(animate);
+    }
+
+    createParticleSystem();
+
+    // Auto-spawn particles occasionally
+    setInterval(() => {
+        if (Math.random() > 0.8) {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            const type = Math.random() > 0.7 ? 'energy' : Math.random() > 0.5 ? 'pulse' : 'sparkle';
+            createMagicalParticle(x, y, type);
+        }
+    }, particleSystem.spawnRate);
+
+    // Make particles spawn on interactions
+    document.addEventListener('click', (e) => {
+        if (Math.random() > 0.5) {
+            createMagicalParticle(e.clientX, e.clientY, 'sparkle');
+        }
+    });
+
+    return particleSystem;
+}
+
+// Cross-browser compatibility enhancements
+const browserSupport = {
+    webkit: 'webkitTransform' in document.documentElement.style,
+    moz: 'MozTransform' in document.documentElement.style,
+    ms: 'msTransform' in document.documentElement.style,
+    o: 'OTransform' in document.documentElement.style,
+    webgl: (() => {
+        try {
+            const canvas = document.createElement('canvas');
+            return !!(window.WebGLRenderingContext &&
+                canvas.getContext('webgl'));
+        } catch(e) {
+            return false;
+        }
+    })(),
+    touch: 'ontouchstart' in window,
+    passiveEvents: (() => {
+        let supportsPassive = false;
+        try {
+            const opts = Object.defineProperty({}, 'passive', {
+                get: () => supportsPassive = true
+            });
+            window.addEventListener('test', null, opts);
+        } catch (e) {}
+        return supportsPassive;
+    })()
+};
+
+// Device capability detection
+const deviceCapabilities = {
+    memory: navigator.deviceMemory || 4,
+    cores: navigator.hardwareConcurrency || 2,
+    connection: navigator.connection?.effectiveType || 'unknown',
+    pixelRatio: window.devicePixelRatio || 1,
+    isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+    isIOS: /iPad|iPhone|iPod/.test(navigator.userAgent),
+    isSafari: /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+};
+
+// Performance-based feature adaptation
+function adaptFeaturesForDevice() {
+    const performanceScore = deviceCapabilities.memory + deviceCapabilities.cores;
+
+    if (performanceScore < 6) {
+        // Low-end device optimizations
+        console.log('[Performance] Adapting for low-end device');
+
+        // Reduce particle counts
+        if (window.starContainer && window.starContainer.starSystem) {
+            window.starContainer.starSystem.maxStars = Math.min(15, window.starContainer.starSystem.maxStars);
+        }
+
+        // Disable complex animations
+        document.documentElement.classList.add('low-performance');
+    }
+
+    if (deviceCapabilities.isMobile) {
+        // Mobile-specific optimizations
+        console.log('[Performance] Adapting for mobile device');
+        document.documentElement.classList.add('mobile-device');
+
+        // Disable hover effects on touch devices
+        if (deviceCapabilities.touch) {
+            document.documentElement.classList.add('touch-device');
+        }
+    }
+
+    if (deviceCapabilities.isIOS) {
+        // iOS-specific optimizations
+        console.log('[Performance] Adapting for iOS device');
+        document.documentElement.classList.add('ios-device');
+    }
+
+    if (deviceCapabilities.isSafari) {
+        // Safari-specific optimizations
+        console.log('[Performance] Adapting for Safari');
+        document.documentElement.classList.add('safari-browser');
+    }
+
+    // Connection-based adaptations
+    if (deviceCapabilities.connection === 'slow-2g' || deviceCapabilities.connection === '2g') {
+        console.log('[Performance] Adapting for slow connection');
+        document.documentElement.classList.add('slow-connection');
+    }
+}
+
+// Initialize cross-browser compatibility
+function initializeCrossBrowserSupport() {
+    // Add browser-specific classes
+    if (browserSupport.webkit) document.documentElement.classList.add('webkit');
+    if (browserSupport.moz) document.documentElement.classList.add('mozilla');
+    if (browserSupport.ms) document.documentElement.classList.add('ms');
+    if (browserSupport.o) document.documentElement.classList.add('opera');
+
+    // Add capability classes
+    if (browserSupport.webgl) document.documentElement.classList.add('webgl-supported');
+    if (browserSupport.touch) document.documentElement.classList.add('touch-supported');
+    if (browserSupport.passiveEvents) document.documentElement.classList.add('passive-events-supported');
+
+    // Detect and handle WebGL context loss
+    if (browserSupport.webgl) {
+        window.addEventListener('webglcontextlost', (event) => {
+            console.warn('[WebGL] Context lost, disabling GPU-accelerated features');
+            document.documentElement.classList.remove('webgl-supported');
+            document.documentElement.classList.add('webgl-disabled');
+            event.preventDefault();
+        }, false);
+    }
+
+    console.log('[Compatibility] Browser support detected:', browserSupport);
+    console.log('[Compatibility] Device capabilities:', deviceCapabilities);
+}
+
+// Initialize advanced systems after main app initialization
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize cross-browser support first
+    initializeCrossBrowserSupport();
+    adaptFeaturesForDevice();
+
+    // Add advanced systems to the initialization
+    setTimeout(() => {
+        // Only initialize magical particles if performance allows
+        if (!document.documentElement.classList.contains('low-performance')) {
+            initializeMagicalParticles();
+        }
+    }, 2000); // Wait for main animations to load first
+});
+
+// Basic functionality fallback if main initialization fails
+function initializeBasicFunctionality() {
+    console.log('[Fallback] Initializing basic functionality');
+    
+    // Basic navigation
+    document.querySelectorAll('.nav-dot').forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            const targetSection = dot.getAttribute('data-section');
+            const section = document.getElementById(targetSection);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Basic form handling
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            // Let the form submit normally to Formspree
+            console.log('[Fallback] Form submitted');
+        });
+    }
+    
+    // Basic cookie acceptance
+    window.acceptCookies = function() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        const banner = document.getElementById('cookieBanner');
+        if (banner) banner.style.display = 'none';
+    };
+}
+
+// Health check function
+function performHealthCheck() {
+    const criticalElements = [
+        { selector: '.loading-screen', name: 'Loader' },
+        { selector: '#contactForm', name: 'Contact Form' },
+        { selector: '.nav-dots', name: 'Navigation' },
+        { selector: '.hero', name: 'Hero Section' }
+    ];
+    
+    const healthStatus = {
+        timestamp: new Date().toISOString(),
+        checks: []
+    };
+    
+    criticalElements.forEach(({ selector, name }) => {
+        const element = document.querySelector(selector);
+        const status = {
+            component: name,
+            element: selector,
+            present: !!element,
+            visible: element ? getComputedStyle(element).display !== 'none' : false
+        };
+        healthStatus.checks.push(status);
+        
+        if (!status.present) {
+            console.warn(`[Health Check] Missing critical element: ${name} (${selector})`);
+        }
+    });
+    
+    console.log('[Health Check] Status:', healthStatus);
+    
+    // Track health status with analytics
+    if (window.intelligentAnalytics) {
+        window.intelligentAnalytics.trackEvent('health_check', healthStatus);
+    }
+    
+    return healthStatus;
+}
+
+// Run health check after initialization
+setTimeout(performHealthCheck, 2000);
 
 // Export functions for external use
 window.narratum = {
     playSound: playInteractionSound,
     openModal: openLegalModal,
     closeModal: closeLegalModal,
-    acceptCookies: acceptCookies
+    acceptCookies: acceptCookies,
+    healthCheck: performHealthCheck,
+    reinitialize: initializeApp
 };

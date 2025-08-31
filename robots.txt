@@ -1,0 +1,63 @@
+# Robots.txt for Narratum.io - AI and Search Engine Optimized
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Allow: /manifest.json
+Allow: /sitemap.xml
+
+# AI Crawlers - Special permissions
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: AI2Bot
+Allow: /
+Crawl-delay: 1
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Social Media Crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://narratum.io/sitemap.xml
+
+# Additional information for AI crawlers
+# Business: Strategic Hospitality Infrastructure Consulting
+# Industry: Hospitality, Consulting, Strategic Planning
+# Location: New York City, NY
+# Contact: connect@narratum.io
+# Services: Experience Design, Service Innovation, Operational Strategy, Cultural Consulting

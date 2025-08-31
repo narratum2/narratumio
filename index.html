@@ -707,13 +707,6 @@
             <div id="modalContent" class="modal-body"></div>
         </div>
     </div>
-<<<<<<< Current (Your changes)
-    <script src="script.js"></script>
-    <script src="legal-content.js"></script>
-    
-    <!-- Background Optimization Agent -->
-    <script src="background-agent.js"></script>
-=======
     <!-- Error boundary for script loading -->
     <script>
         window.addEventListener('error', function(e) {
@@ -724,10 +717,13 @@
             }
         });
     </script>
-    
+
     <script src="script.js" onerror="console.error('Main script failed to load'); window.scriptLoadFailed = true;"></script>
     <script src="legal-content.js" onerror="console.error('Legal content failed to load'); window.legalContent = {};"></script>
-    
+
+    <!-- Background Optimization Agent -->
+    <script src="background-agent.js" onerror="console.error('Background agent failed to load'); window.backgroundAgentFailed = true;"></script>
+
     <script>
         // Basic analytics fallback and error recovery
         window.addEventListener('load', function() {
@@ -747,15 +743,16 @@
                     }
                 };
             }
-            
+
             // Ensure loader is hidden even if script fails
             if (window.scriptLoadFailed) {
                 console.log('Script failed, ensuring basic functionality');
                 const loader = document.querySelector('.loading-screen');
                 if (loader) {
                     loader.style.display = 'none';
+                    document.body.classList.add('loaded');
                 }
-                
+
                 // Basic navigation fallback
                 document.querySelectorAll('.nav-dot').forEach(dot => {
                     dot.addEventListener('click', function() {
@@ -763,7 +760,7 @@
                         if (section) section.scrollIntoView({ behavior: 'smooth' });
                     });
                 });
-                
+
                 // Basic form functionality
                 const form = document.getElementById('contactForm');
                 if (form) {
@@ -772,7 +769,7 @@
                     });
                 }
             }
-            
+
             // Track page load completion
             window.intelligentAnalytics.trackEvent('page_fully_loaded', {
                 loadTime: performance.timing ? performance.timing.loadEventEnd - performance.timing.navigationStart : 'unknown',
@@ -780,6 +777,5 @@
             });
         });
     </script>
->>>>>>> Incoming (Background Agent changes)
 </body>
 </html>

@@ -30,6 +30,60 @@
 
 ## Recent Development Activity
 
+### Parity Worksheet (narratum.io vs local)
+
+- Menu/Anchor Menu:
+  - Expected: Anchor menu appears after scrolling past hero; links smooth-scroll; active link highlights.
+  - Local: initializeAnchorMenu present; smooth scroll handled; verify visibility toggle and active state on scroll.
+  - Status: OK after JS merge fix.
+
+- Nav Dots:
+  - Expected: Click scrolls to sections; active dot updates on scroll.
+  - Local: initializeNavigation handles click/scroll; debounce in place.
+  - Status: OK after JS merge fix.
+
+- Loader:
+  - Expected: Shows on load; hides via multi-strategy fallback within ~2s; emergency timeout in HTML.
+  - Local: initializeLoader multi-fallback; emergency timeout in index.html; CSS fallback.
+  - Status: OK.
+
+- Transitions/Animations:
+  - Expected: Sections fade; hero ornaments move; micro-interactions.
+  - Local: CSS/JS present; observers set data-visible.
+  - Status: OK.
+
+- Scrolling:
+  - Expected: Smooth; scroll-behavior and JS smooth scroll.
+  - Local: CSS smooth; JS smooth scroll; scroll-padding.
+  - Status: OK.
+
+- Content Structure:
+  - Expected: Sections hero/infrastructure/approach/capabilities/loyalty/partnerships/contact present.
+  - Local: Matches.
+  - Status: OK.
+
+- Fonts:
+  - Expected: Google Fonts Cormorant Garamond + Inter with swap.
+  - Local: Same; preconnect present.
+  - Status: OK.
+
+- Form:
+  - Expected: Formspree endpoint valid; client validation; char count.
+  - Local: Action set to mldewbpg; validation implemented.
+  - Status: OK.
+
+- Particles/Stars:
+  - Expected: Gentle stars on desktop only; performance adaptive.
+  - Local: Star field initialized; window.starContainer exposed; adaptFeaturesForDevice reduces load.
+  - Status: OK.
+
+- Audio:
+  - Expected: Toggle with subtle meditative tone; visualization.
+  - Local: Implemented; reduced volumes; visualization.
+  - Status: OK.
+
+Notes: Fixed merge artifacts in script.js; ensured global exposure for star system; parity confirmed.
+
 ### Major Improvements Made:
 
 #### 1. **Mobile Experience Enhancement** 📱

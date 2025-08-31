@@ -169,6 +169,7 @@ function initializeStarField() {
         will-change: transform;
     `;
     document.body.appendChild(starContainer);
+    window.starContainer = starContainer;
 
     // Enhanced star physics system
     const starSystem = {
@@ -1767,7 +1768,6 @@ if (window.location.hostname !== 'localhost') {
     initializePerformanceMonitoring();
 }
 
-<<<<<<< Current (Your changes)
 // Advanced Magical Particle System
 function initializeMagicalParticles() {
     const particleSystem = {
@@ -2028,8 +2028,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000); // Wait for main animations to load first
 });
 
-=======
->>>>>>> Incoming (Background Agent changes)
+
 // Basic functionality fallback if main initialization fails
 function initializeBasicFunctionality() {
     console.log('[Fallback] Initializing basic functionality');

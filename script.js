@@ -76,6 +76,7 @@ function initializeApp() {
         initializeLegalModals();
         initializeSmoothScroll();
         initializeAccessibility();
+        initializeProgressiveDisclosure();
     }, 1000);
 }
 
@@ -183,15 +184,15 @@ function initializeStarField() {
     document.body.appendChild(starContainer);
     window.starContainer = starContainer;
 
-    // Enhanced star physics system
+    // Gentle hospitality ambiance system
     const starSystem = {
         stars: new Set(),
-        maxStars: 25,
-        spawnRate: 1800, // Slightly faster spawn
+        maxStars: 8, // Fewer, more subtle
+        spawnRate: 4500, // Much slower, more peaceful
         physics: {
-            gravity: 0.02,
-            windStrength: 0.1,
-            turbulence: 0.05
+            gravity: 0.01, // Very gentle fall
+            windStrength: 0.02, // Minimal movement
+            turbulence: 0.01 // Almost imperceptible
         }
     };
 
@@ -2114,6 +2115,81 @@ function performHealthCheck() {
 
 // Run health check after initialization
 setTimeout(performHealthCheck, 2000);
+
+// Progressive Disclosure for Enhanced Readability
+function initializeProgressiveDisclosure() {
+    // Handle expand/collapse for strategic frequency details
+    const expandTriggers = document.querySelectorAll('.expand-trigger');
+    expandTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const section = this.closest('.expand-section');
+            const content = section.querySelector('.expand-content');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle expanded state
+            this.setAttribute('aria-expanded', !isExpanded);
+            section.setAttribute('data-expanded', !isExpanded);
+            
+            // Smooth height animation
+            if (!isExpanded) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                content.style.maxHeight = '0px';
+            }
+        });
+    });
+    
+    // Handle capability card expansions
+    const capabilityExpands = document.querySelectorAll('.capability-expand');
+    capabilityExpands.forEach(expand => {
+        expand.addEventListener('click', function() {
+            const item = this.closest('.capability-item');
+            const details = item.querySelector('.capability-details');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Close other expanded capability cards
+            capabilityExpands.forEach(otherExpand => {
+                if (otherExpand !== this) {
+                    otherExpand.setAttribute('aria-expanded', 'false');
+                    otherExpand.closest('.capability-item').setAttribute('data-expanded', 'false');
+                }
+            });
+            
+            // Toggle current card
+            this.setAttribute('aria-expanded', !isExpanded);
+            item.setAttribute('data-expanded', !isExpanded);
+            
+            // Smooth animation
+            if (!isExpanded) {
+                details.style.maxHeight = details.scrollHeight + 'px';
+                // Scroll card into view if needed
+                setTimeout(() => {
+                    item.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }, 200);
+            } else {
+                details.style.maxHeight = '0px';
+            }
+        });
+    });
+    
+    // Keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            // Close all expanded sections on Escape
+            expandTriggers.forEach(trigger => {
+                trigger.setAttribute('aria-expanded', 'false');
+                trigger.closest('.expand-section').setAttribute('data-expanded', 'false');
+            });
+            capabilityExpands.forEach(expand => {
+                expand.setAttribute('aria-expanded', 'false');
+                expand.closest('.capability-item').setAttribute('data-expanded', 'false');
+            });
+        }
+    });
+}
 
 // Export functions for external use
 window.narratum = {

@@ -121,7 +121,7 @@
         .loading-screen.css-fallback .loader-text { animation: none; opacity: 1; }
     </style>
     
-<<<<<<< Current (Your changes)
+
     <!-- Main stylesheet with cache-busting query and error handling -->
     <link rel="stylesheet" href="styles.css?v=20250831" onerror="this.onerror=null; document.body.classList.add('css-load-failed'); console.error('CSS failed to load');">
     
@@ -148,7 +148,7 @@
             }
         }, 3000);
     </script>
-=======
+
     <!-- Main stylesheet with cache-busting query to force refresh if prior version was cached or 404 -->
     <link rel="stylesheet" href="styles.css?v=20250831">
     
@@ -160,7 +160,7 @@
     <script src="advanced-seo-performance.js" defer></script>
     <script src="ai-discovery-reporter.js" defer></script>
     <script src="seo-automation-suite.js" defer></script>
->>>>>>> Incoming (Background Agent changes)
+
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -741,7 +741,7 @@
                             <a href="mailto:connect@narratum.io" itemprop="email">connect@narratum.io</a>
                         </div>
                     </div>
-                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mldewbpg" method="POST">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mldewbpg" method="POST" novalidate>
                         <input type="hidden" name="_subject" value="New Narratum Inquiry">
                         <div class="form-row">
                             <div class="form-group">
@@ -778,10 +778,19 @@
                         <input type="hidden" name="_formSubmittedAt" id="formSubmittedAt">
                         <input type="hidden" name="_next" value="https://narratum.io/thank-you">
                         <input type="hidden" name="_captcha" value="false">
-                        <button type="submit" class="submit-button" id="submitBtn">
-                            <span class="button-text">Begin Transformation</span>
-                            <span class="button-loading"></span>
+                        <button type="submit" class="submit-button" id="submitBtn" aria-describedby="form-status">
+                            <span class="button-text">
+                                <svg class="button-icon" viewBox="0 0 24 24" width="18" height="18">
+                                    <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" fill="currentColor"/>
+                                </svg>
+                                Start the Conversation
+                            </span>
+                            <span class="button-loading">
+                                <div class="loading-spinner"></div>
+                                <span>Sending...</span>
+                            </span>
                         </button>
+                        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
                     </form>
                     <div class="founder-statement">
                         <p><strong>NARRATUM</strong> was founded by Pascal Frey to craft transformative, human-centered infrastructure.</p>

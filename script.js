@@ -2234,3 +2234,24 @@ window.narratum = {
     healthCheck: performHealthCheck,
     reinitialize: initializeApp
 };
+
+// CRITICAL UX FIX - Force proper progressive disclosure
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        console.log("[Critical Fix] Applying UX corrections...");
+        
+        // Force hide all symbol content initially  
+        const symbols = document.querySelectorAll(".symbol-item");
+        symbols.forEach(symbol => {
+            const content = symbol.querySelector(".symbol-content");
+            if (content) {
+                content.style.display = "none";
+                content.style.opacity = "0";
+                content.style.visibility = "hidden";
+            }
+            symbol.classList.remove("active");
+        });
+        
+        console.log("[Critical Fix] Progressive disclosure fixed");
+    }, 100);
+});

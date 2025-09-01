@@ -914,20 +914,41 @@ function initializeFormHandling() {
     if (messageField && charCount) {
         messageField.addEventListener('input', () => {
             const length = messageField.value.length;
-            charCount.textContent = `${length} / 1000`;
+            charCount.textContent = `${length}/500`;
             
-            // Visual feedback
-            if (length > 900) {
-                charCount.classList.add('error');
-                charCount.classList.remove('warning');
-            } else if (length > 800) {
-                charCount.classList.add('warning');
-                charCount.classList.remove('error');
+            // Visual feedback for character count
+            if (length > 450) {
+                charCount.style.color = 'var(--form-error)';
+            } else if (length > 400) {
+                charCount.style.color = 'var(--accent-gold)';
             } else {
-                charCount.classList.remove('warning', 'error');
+                charCount.style.color = 'var(--text-tertiary)';
             }
         });
     }
+    
+    // Enhanced input validation and UX
+    const formInputs = contactForm.querySelectorAll('input, textarea, select');
+    formInputs.forEach(input => {
+        // Real-time validation feedback
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => clearFieldError(input));
+        
+        // Enhance accessibility
+        input.addEventListener('focus', () => {
+            const label = contactForm.querySelector(`label[for="${input.id}"]`);
+            if (label) {
+                label.style.color = 'var(--form-focus)';
+            }
+        });
+        
+        input.addEventListener('blur', () => {
+            const label = contactForm.querySelector(`label[for="${input.id}"]`);
+            if (label) {
+                label.style.color = '';
+            }
+        });
+    });
     
     // Enhanced form validation
     contactForm.addEventListener('submit', async (e) => {
@@ -1056,21 +1077,34 @@ function initializeFormHandling() {
         playSuccessSound();
     }
     
-    function showFormError(message) {
-        const existingError = contactForm.querySelector('.form-error');
-        if (existingError) {
-            existingError.remove();
+    function showFormStatus(message, type = 'info') {
+        const statusElement = document.getElementById('form-status');
+        if (!statusElement) return;
+        
+        statusElement.textContent = message;
+        statusElement.className = `form-status ${type}`;
+        
+        // Auto-hide success/info messages after 5 seconds
+        if (type !== 'error') {
+            setTimeout(() => {
+                statusElement.style.opacity = '0';
+            }, 5000);
         }
+    }
+
+    function showFormError(message) {
+        showFormStatus(message, 'error');
+    }
+    
+    function showFormSuccess(message) {
+        showFormStatus(message, 'success');
         
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'form-error';
-        errorDiv.textContent = message;
-        contactForm.insertBefore(errorDiv, contactForm.firstChild);
-        
+        // Reset form after successful submission
         setTimeout(() => {
-            errorDiv.classList.add('fade-out');
-            setTimeout(() => errorDiv.remove(), 300);
-        }, 5000);
+            contactForm.reset();
+            const charCount = document.getElementById('charCount');
+            if (charCount) charCount.textContent = '0/500';
+        }, 2000);
     }
     
     function trackFormSubmission(sector) {

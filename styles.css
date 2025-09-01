@@ -4289,12 +4289,9 @@ html {
     scroll-padding-top: 80px; /* Account for fixed elements */
 }
 
-/* Fix for iOS Safari bounce scrolling */
+/* Fix for iOS Safari bounce scrolling - safer approach */
 @supports (-webkit-touch-callout: none) {
     body {
-        position: fixed;
-        width: 100%;
-        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
 }

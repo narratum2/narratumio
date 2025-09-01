@@ -90,27 +90,38 @@ function initializeLoader() {
 
     let hidden = false;
     let loadStartTime = Date.now();
+    const minDisplayMs = 1000;
     
     const hideLoader = (reason) => {
-        if (hidden) return;
-        hidden = true;
-        const loadTime = Date.now() - loadStartTime;
-        console.log(`[Loader] Hiding loader (${reason}) after ${loadTime}ms`);
-        
-        loader.classList.add('hidden');
-        setTimeout(() => {
-            loader.style.display = 'none';
-            document.body.classList.add('loaded');
-            console.log('[Loader] Loader fully hidden, body.loaded added');
+        const attemptHide = () => {
+            if (hidden) return;
+            hidden = true;
+            const loadTime = Date.now() - loadStartTime;
+            console.log(`[Loader] Hiding loader (${reason}) after ${loadTime}ms`);
             
-            // Track loading performance
-            if (window.intelligentAnalytics) {
-                window.intelligentAnalytics.trackEvent('page_load_complete', {
-                    loadTime: loadTime,
-                    hideReason: reason
-                });
-            }
-        }, 500);
+            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.style.display = 'none';
+                document.body.classList.add('loaded');
+                console.log('[Loader] Loader fully hidden, body.loaded added');
+                
+                // Track loading performance
+                if (window.intelligentAnalytics) {
+                    window.intelligentAnalytics.trackEvent('page_load_complete', {
+                        loadTime: loadTime,
+                        hideReason: reason
+                    });
+                }
+            }, 500);
+        };
+
+        const elapsed = Date.now() - loadStartTime;
+        const remaining = minDisplayMs - elapsed;
+        if (remaining > 0) {
+            setTimeout(attemptHide, remaining);
+        } else {
+            attemptHide();
+        }
     };
 
     // Multiple fallback strategies for reliability

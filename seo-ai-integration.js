@@ -230,8 +230,10 @@ class SEOAIIntegration {
             return;
         }
         
-        // Add GA4 if not present (you'll need to replace with your actual GA4 ID)
-        const GA4_ID = 'G-XXXXXXXXXX'; // Replace with actual GA4 tracking ID
+        // Add GA4 if not present (configured with your actual GA4 IDs)
+        const GA4_ID = 'G-PFKPP0SCT4';
+        // Optional: GA4 Stream ID (for Measurement Protocol/server-side use)
+        const GA4_STREAM_ID = '12102962304';
         
         // Create GA4 script
         const gaScript = document.createElement('script');

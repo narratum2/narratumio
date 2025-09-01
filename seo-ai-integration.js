@@ -1,758 +1,819 @@
 /**
- * SEO & AI Integration Manager
- * Central orchestration system that integrates all optimization modules
- * Provides unified dashboard and automated optimization workflows
+ * SEO AI Integration - Advanced AI-Ready SEO Integration System
+ * Integrates with multiple AI platforms and search engines for maximum discoverability
+ * Version: 1.0
  */
 
-class SEOAIIntegrationManager {
+class SEOAIIntegration {
     constructor() {
-        this.modules = {
-            seoOptimizer: null,
-            visualEnhancer: null,
-            intelligentAnalytics: null
-        };
-
-        this.dashboard = null;
-        this.optimizationQueue = [];
-        this.automationRules = new Map();
-        this.performanceBaseline = null;
-        
         this.config = {
-            autoOptimization: true,
-            realTimeMonitoring: true,
-            dashboardEnabled: true,
-            reportingInterval: 300000, // 5 minutes
-            optimizationThreshold: 0.7,
-            performanceTargets: {
-                seoScore: 95,
-                performanceScore: 90,
-                accessibilityScore: 95,
-                conversionRate: 5.0
-            }
+            aiPlatforms: {
+                openai: { enabled: true, endpoint: 'https://api.openai.com' },
+                google: { enabled: true, endpoint: 'https://www.google.com' },
+                bing: { enabled: true, endpoint: 'https://www.bing.com' },
+                anthropic: { enabled: true, endpoint: 'https://api.anthropic.com' },
+                perplexity: { enabled: true, endpoint: 'https://www.perplexity.ai' }
+            },
+            crawlerUserAgents: [
+                'Googlebot',
+                'Bingbot', 
+                'GPTBot',
+                'ChatGPT-User',
+                'Claude-Web',
+                'PerplexityBot',
+                'AI2Bot',
+                'FacebookBot',
+                'TwitterBot',
+                'LinkedInBot'
+            ]
         };
-
-        this.initialize();
-    }
-
-    /**
-     * Initialize the integration manager
-     */
-    async initialize() {
-        console.log('🚀 Initializing SEO & AI Integration Manager');
         
-        await this.waitForModules();
-        this.connectModules();
-        this.setupAutomationRules();
-        this.createUnifiedDashboard();
-        this.startRealTimeMonitoring();
-        this.initializeReporting();
+        this.aiOptimizations = new Map();
+        this.crawlerAnalytics = new Map();
+        this.init();
+    }
+    
+    init() {
+        console.log('[SEO AI Integration] Initializing AI integration systems...');
         
-        console.log('✅ SEO & AI Integration Manager fully initialized');
+        this.detectAICrawlers();
+        this.optimizeForAIPlatforms();
+        this.setupAdvancedAnalytics();
+        this.implementAIFriendlyFeatures();
+        this.setupRealTimeOptimization();
         
-        // Send welcome notification
-        this.showWelcomeNotification();
+        console.log('[SEO AI Integration] All systems initialized');
     }
-
-    /**
-     * Wait for all modules to be loaded
-     */
-    async waitForModules() {
-        const maxWaitTime = 10000; // 10 seconds
-        const checkInterval = 100; // 100ms
-        let waitTime = 0;
-
-        while (waitTime < maxWaitTime) {
-            if (window.seoAIOptimizer && window.visualAIEnhancer && window.intelligentAnalytics) {
-                this.modules.seoOptimizer = window.seoAIOptimizer;
-                this.modules.visualEnhancer = window.visualAIEnhancer;
-                this.modules.intelligentAnalytics = window.intelligentAnalytics;
-                break;
-            }
-            
-            await new Promise(resolve => setTimeout(resolve, checkInterval));
-            waitTime += checkInterval;
+    
+    // Detect and optimize for AI crawlers
+    detectAICrawlers() {
+        const userAgent = navigator.userAgent;
+        const isAICrawler = this.config.crawlerUserAgents.some(bot => 
+            userAgent.includes(bot)
+        );
+        
+        if (isAICrawler) {
+            console.log('[SEO AI Integration] AI crawler detected:', userAgent);
+            this.optimizeForAICrawler();
+            this.trackCrawlerVisit(userAgent);
         }
-
-        if (!this.modules.seoOptimizer || !this.modules.visualEnhancer || !this.modules.intelligentAnalytics) {
-            console.warn('⚠️ Some optimization modules failed to load');
-        }
+        
+        // Add crawler detection to page
+        document.documentElement.setAttribute('data-crawler-optimized', 'true');
+        document.documentElement.setAttribute('data-ai-crawler-ready', isAICrawler.toString());
     }
-
-    /**
-     * Connect modules for cross-communication
-     */
-    connectModules() {
-        // Connect SEO Optimizer with Analytics
-        if (this.modules.seoOptimizer && this.modules.intelligentAnalytics) {
-            this.modules.seoOptimizer.analytics = this.modules.intelligentAnalytics;
-            this.modules.intelligentAnalytics.seoOptimizer = this.modules.seoOptimizer;
-        }
-
-        // Connect Visual Enhancer with Analytics
-        if (this.modules.visualEnhancer && this.modules.intelligentAnalytics) {
-            this.modules.visualEnhancer.analytics = this.modules.intelligentAnalytics;
-            this.modules.intelligentAnalytics.visualEnhancer = this.modules.visualEnhancer;
-        }
-
-        // Connect SEO Optimizer with Visual Enhancer
-        if (this.modules.seoOptimizer && this.modules.visualEnhancer) {
-            this.modules.seoOptimizer.visualEnhancer = this.modules.visualEnhancer;
-            this.modules.visualEnhancer.seoOptimizer = this.modules.seoOptimizer;
-        }
-
-        console.log('🔗 Modules successfully connected');
-    }
-
-    /**
-     * Setup automated optimization rules
-     */
-    setupAutomationRules() {
-        this.automationRules.set('performance_degradation', {
-            condition: (metrics) => metrics.performanceScore < 0.7,
-            action: () => this.triggerPerformanceOptimization(),
-            priority: 'high',
-            cooldown: 60000 // 1 minute
-        });
-
-        this.automationRules.set('low_conversion_rate', {
-            condition: (metrics) => metrics.conversionRate < 2.0,
-            action: () => this.triggerConversionOptimization(),
-            priority: 'medium',
-            cooldown: 300000 // 5 minutes
-        });
-
-        this.automationRules.set('accessibility_issues', {
-            condition: (metrics) => metrics.accessibilityScore < 0.8,
-            action: () => this.triggerAccessibilityImprovements(),
-            priority: 'high',
-            cooldown: 30000 // 30 seconds
-        });
-
-        this.automationRules.set('seo_score_drop', {
-            condition: (metrics) => metrics.seoScore < 0.85,
-            action: () => this.triggerSEOOptimization(),
-            priority: 'medium',
-            cooldown: 120000 // 2 minutes
-        });
-
-        console.log('⚙️ Automation rules configured');
-    }
-
-    /**
-     * Create unified dashboard
-     */
-    createUnifiedDashboard() {
-        if (!this.config.dashboardEnabled) return;
-
-        this.dashboard = document.createElement('div');
-        this.dashboard.id = 'unified-seo-ai-dashboard';
-        this.dashboard.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 400px;
-            max-height: 80vh;
-            background: rgba(10, 21, 32, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 16px;
-            z-index: 10000;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            transform: translateX(420px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
+    
+    optimizeForAICrawler() {
+        // Enhance content visibility for AI crawlers
+        this.addAIContentMarkers();
+        this.optimizeContentStructure();
+        this.addAITrainingTags();
+        
+        // Disable heavy animations for crawlers
+        const style = document.createElement('style');
+        style.textContent = `
+            * { animation-duration: 0s !important; transition-duration: 0s !important; }
+            .loading-screen { display: none !important; }
         `;
-
-        this.dashboard.innerHTML = this.createDashboardHTML();
-        document.body.appendChild(this.dashboard);
-
-        this.setupDashboardInteractions();
-        this.startDashboardUpdates();
-
-        console.log('📊 Unified dashboard created');
+        document.head.appendChild(style);
     }
-
-    createDashboardHTML() {
-        return `
-            <div class="dashboard-header" style="
-                padding: 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            ">
-                <div>
-                    <h3 style="margin: 0; color: #fbbf24; font-size: 18px; font-weight: 500;">
-                        Narratum AI Optimizer
-                    </h3>
-                    <p style="margin: 4px 0 0 0; font-size: 12px; color: rgba(255, 255, 255, 0.6);">
-                        Real-time optimization & insights
-                    </p>
-                </div>
-                <button id="dashboard-toggle" style="
-                    background: none;
-                    border: none;
-                    color: #fbbf24;
-                    font-size: 20px;
-                    cursor: pointer;
-                    padding: 8px;
-                    border-radius: 8px;
-                    transition: all 0.3s ease;
-                ">📊</button>
-            </div>
-
-            <div id="dashboard-content" style="padding: 20px; max-height: calc(80vh - 80px); overflow-y: auto;">
-                <!-- Performance Metrics -->
-                <div class="metric-section" style="margin-bottom: 24px;">
-                    <h4 style="margin: 0 0 12px 0; color: #7dd3fc; font-size: 14px;">Performance Metrics</h4>
-                    <div class="metrics-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                        <div class="metric-card" style="
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            border-radius: 8px;
-                            padding: 12px;
-                        ">
-                            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6);">SEO Score</div>
-                            <div id="seo-score" style="font-size: 24px; font-weight: 600; color: #fbbf24;">--</div>
-                        </div>
-                        <div class="metric-card" style="
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            border-radius: 8px;
-                            padding: 12px;
-                        ">
-                            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6);">Performance</div>
-                            <div id="performance-score" style="font-size: 24px; font-weight: 600; color: #34d399;">--</div>
-                        </div>
-                        <div class="metric-card" style="
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            border-radius: 8px;
-                            padding: 12px;
-                        ">
-                            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6);">Accessibility</div>
-                            <div id="accessibility-score" style="font-size: 24px; font-weight: 600; color: #60a5fa;">--</div>
-                        </div>
-                        <div class="metric-card" style="
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            border-radius: 8px;
-                            padding: 12px;
-                        ">
-                            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6);">Conversions</div>
-                            <div id="conversion-rate" style="font-size: 24px; font-weight: 600; color: #f472b6;">--</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Core Web Vitals -->
-                <div class="metric-section" style="margin-bottom: 24px;">
-                    <h4 style="margin: 0 0 12px 0; color: #7dd3fc; font-size: 14px;">Core Web Vitals</h4>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px;">
-                        <div>LCP: <span id="lcp-value" style="color: #fbbf24;">--</span>ms</div>
-                        <div>FID: <span id="fid-value" style="color: #34d399;">--</span>ms</div>
-                        <div>CLS: <span id="cls-value" style="color: #60a5fa;">--</span></div>
-                    </div>
-                </div>
-
-                <!-- Active Optimizations -->
-                <div class="metric-section" style="margin-bottom: 24px;">
-                    <h4 style="margin: 0 0 12px 0; color: #7dd3fc; font-size: 14px;">Active Optimizations</h4>
-                    <div id="active-optimizations" style="min-height: 40px;">
-                        <div style="color: rgba(255, 255, 255, 0.6); font-size: 12px;">Monitoring for optimization opportunities...</div>
-                    </div>
-                </div>
-
-                <!-- AI Insights -->
-                <div class="metric-section" style="margin-bottom: 24px;">
-                    <h4 style="margin: 0 0 12px 0; color: #7dd3fc; font-size: 14px;">AI Insights</h4>
-                    <div id="ai-insights" style="min-height: 60px; font-size: 12px; color: rgba(255, 255, 255, 0.8);">
-                        <div>🧠 Analyzing user behavior patterns...</div>
-                        <div>📈 Optimizing conversion opportunities...</div>
-                        <div>⚡ Enhancing performance metrics...</div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="dashboard-actions" style="display: flex; gap: 8px; margin-top: 20px;">
-                    <button id="optimize-now" style="
-                        flex: 1;
-                        padding: 10px;
-                        background: linear-gradient(135deg, #fbbf24, #f59e0b);
-                        border: none;
-                        color: #0a1520;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-weight: 500;
-                        font-size: 12px;
-                        transition: all 0.3s ease;
-                    ">Optimize Now</button>
-                    <button id="generate-report" style="
-                        flex: 1;
-                        padding: 10px;
-                        background: transparent;
-                        border: 1px solid #fbbf24;
-                        color: #fbbf24;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-size: 12px;
-                        transition: all 0.3s ease;
-                    ">Full Report</button>
-                </div>
-            </div>
-        `;
-    }
-
-    setupDashboardInteractions() {
-        const toggle = this.dashboard.querySelector('#dashboard-toggle');
-        const optimizeButton = this.dashboard.querySelector('#optimize-now');
-        const reportButton = this.dashboard.querySelector('#generate-report');
+    
+    addAIContentMarkers() {
+        // Add AI-specific content markers
+        const contentSections = {
+            business_overview: document.querySelector('#hero .content-container'),
+            services: document.querySelector('#capabilities'),
+            methodology: document.querySelector('#approach'),
+            contact_info: document.querySelector('#contact'),
+            company_info: document.querySelector('#infrastructure')
+        };
         
-        let isVisible = false;
-
-        toggle.addEventListener('click', () => {
-            isVisible = !isVisible;
-            this.dashboard.style.transform = isVisible ? 'translateX(0)' : 'translateX(420px)';
-            toggle.textContent = isVisible ? '✕' : '📊';
-            toggle.style.background = isVisible ? 'rgba(251, 191, 36, 0.1)' : 'none';
-        });
-
-        optimizeButton.addEventListener('click', () => {
-            this.triggerManualOptimization();
-        });
-
-        reportButton.addEventListener('click', () => {
-            this.generateComprehensiveReport();
-        });
-
-        // Auto-show dashboard initially
-        setTimeout(() => {
-            if (!isVisible) {
-                toggle.click();
-            }
-        }, 5000);
-
-        // Auto-hide after period of inactivity
-        let inactivityTimer;
-        document.addEventListener('mousemove', () => {
-            clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(() => {
-                if (isVisible) {
-                    toggle.click();
-                }
-            }, 60000); // Hide after 1 minute of inactivity
-        });
-    }
-
-    startDashboardUpdates() {
-        setInterval(() => {
-            this.updateDashboardMetrics();
-        }, 5000); // Update every 5 seconds
-    }
-
-    updateDashboardMetrics() {
-        if (!this.dashboard) return;
-
-        // Update SEO score
-        if (this.modules.seoOptimizer) {
-            const seoScore = this.modules.seoOptimizer.calculateSEOScore?.() || 0;
-            const seoElement = this.dashboard.querySelector('#seo-score');
-            if (seoElement) {
-                seoElement.textContent = seoScore;
-                seoElement.style.color = seoScore >= 90 ? '#34d399' : seoScore >= 70 ? '#fbbf24' : '#f87171';
-            }
-        }
-
-        // Update performance score
-        if (this.modules.visualEnhancer) {
-            const perfScore = Math.round((this.modules.visualEnhancer.getPerformanceScore?.() || 0.5) * 100);
-            const perfElement = this.dashboard.querySelector('#performance-score');
-            if (perfElement) {
-                perfElement.textContent = perfScore;
-                perfElement.style.color = perfScore >= 90 ? '#34d399' : perfScore >= 70 ? '#fbbf24' : '#f87171';
-            }
-        }
-
-        // Update conversion rate
-        if (this.modules.intelligentAnalytics) {
-            const conversionRate = this.modules.intelligentAnalytics.calculateConversionRate?.() || 0;
-            const convElement = this.dashboard.querySelector('#conversion-rate');
-            if (convElement) {
-                convElement.textContent = `${conversionRate.toFixed(1)}%`;
-                convElement.style.color = conversionRate >= 5 ? '#34d399' : conversionRate >= 2 ? '#fbbf24' : '#f87171';
-            }
-        }
-
-        // Update Core Web Vitals
-        this.updateCoreWebVitals();
-        
-        // Update AI insights
-        this.updateAIInsights();
-        
-        // Update active optimizations
-        this.updateActiveOptimizations();
-    }
-
-    updateCoreWebVitals() {
-        const lcpElement = this.dashboard.querySelector('#lcp-value');
-        const fidElement = this.dashboard.querySelector('#fid-value');
-        const clsElement = this.dashboard.querySelector('#cls-value');
-
-        if (this.modules.seoOptimizer?.metrics?.performance?.coreWebVitals) {
-            const vitals = this.modules.seoOptimizer.metrics.performance.coreWebVitals;
-            
-            if (lcpElement && vitals.lcp) {
-                lcpElement.textContent = Math.round(vitals.lcp);
-                lcpElement.style.color = vitals.lcp <= 2500 ? '#34d399' : vitals.lcp <= 4000 ? '#fbbf24' : '#f87171';
-            }
-            
-            if (fidElement && vitals.fid) {
-                fidElement.textContent = Math.round(vitals.fid);
-                fidElement.style.color = vitals.fid <= 100 ? '#34d399' : vitals.fid <= 300 ? '#fbbf24' : '#f87171';
-            }
-            
-            if (clsElement && vitals.cls !== undefined) {
-                clsElement.textContent = vitals.cls.toFixed(3);
-                clsElement.style.color = vitals.cls <= 0.1 ? '#34d399' : vitals.cls <= 0.25 ? '#fbbf24' : '#f87171';
-            }
-        }
-    }
-
-    updateAIInsights() {
-        const insightsElement = this.dashboard.querySelector('#ai-insights');
-        if (!insightsElement) return;
-
-        const insights = this.generateRealTimeInsights();
-        insightsElement.innerHTML = insights.map(insight => 
-            `<div style="margin-bottom: 8px;">
-                <span style="color: ${insight.color};">${insight.icon}</span> ${insight.text}
-            </div>`
-        ).join('');
-    }
-
-    generateRealTimeInsights() {
-        const insights = [];
-        
-        // Performance insights
-        if (this.modules.visualEnhancer) {
-            const perfScore = this.modules.visualEnhancer.getPerformanceScore?.() || 0.5;
-            if (perfScore < 0.7) {
-                insights.push({
-                    icon: '⚡',
-                    color: '#f59e0b',
-                    text: 'Performance optimization opportunities detected'
-                });
-            } else {
-                insights.push({
-                    icon: '✨',
-                    color: '#34d399',
-                    text: 'Performance metrics are optimal'
-                });
-            }
-        }
-
-        // Conversion insights
-        if (this.modules.intelligentAnalytics) {
-            const sessions = this.modules.intelligentAnalytics.analytics?.sessions?.size || 0;
-            if (sessions > 0) {
-                insights.push({
-                    icon: '📊',
-                    color: '#60a5fa',
-                    text: `Analyzing ${sessions} active sessions`
-                });
-            }
-        }
-
-        // SEO insights
-        if (this.modules.seoOptimizer) {
-            const seoScore = this.modules.seoOptimizer.calculateSEOScore?.() || 0;
-            if (seoScore >= 90) {
-                insights.push({
-                    icon: '🎯',
-                    color: '#34d399',
-                    text: 'SEO optimization is excellent'
-                });
-            } else {
-                insights.push({
-                    icon: '🔍',
-                    color: '#f59e0b',
-                    text: 'SEO improvements available'
-                });
-            }
-        }
-
-        return insights.slice(0, 3); // Show top 3 insights
-    }
-
-    updateActiveOptimizations() {
-        const optimizationsElement = this.dashboard.querySelector('#active-optimizations');
-        if (!optimizationsElement) return;
-
-        if (this.optimizationQueue.length === 0) {
-            optimizationsElement.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); font-size: 12px;">No active optimizations</div>';
-        } else {
-            optimizationsElement.innerHTML = this.optimizationQueue.map(opt => 
-                `<div style="margin-bottom: 6px; font-size: 12px;">
-                    <span style="color: #fbbf24;">●</span> ${opt.description}
-                </div>`
-            ).join('');
-        }
-    }
-
-    /**
-     * Start real-time monitoring
-     */
-    startRealTimeMonitoring() {
-        if (!this.config.realTimeMonitoring) return;
-
-        setInterval(() => {
-            this.evaluateAutomationRules();
-            this.monitorPerformanceChanges();
-            this.analyzeUserBehavior();
-        }, 30000); // Every 30 seconds
-
-        console.log('🔍 Real-time monitoring started');
-    }
-
-    evaluateAutomationRules() {
-        const currentMetrics = this.getCurrentMetrics();
-        
-        this.automationRules.forEach((rule, ruleName) => {
-            if (rule.condition(currentMetrics)) {
-                this.executeAutomationRule(ruleName, rule);
+        Object.entries(contentSections).forEach(([type, element]) => {
+            if (element) {
+                element.setAttribute('data-ai-content-type', type);
+                element.setAttribute('data-ai-importance', 'high');
+                element.setAttribute('data-ai-extractable', 'true');
             }
         });
+        
+        // Add AI-friendly navigation structure
+        const nav = document.querySelector('.anchor-menu');
+        if (nav) {
+            nav.setAttribute('data-ai-navigation', 'true');
+            nav.setAttribute('data-ai-site-structure', 'primary');
+        }
     }
-
-    getCurrentMetrics() {
+    
+    optimizeContentStructure() {
+        // Create AI-friendly content outline
+        const outline = this.generateContentOutline();
+        const outlineScript = document.createElement('script');
+        outlineScript.type = 'application/ld+json';
+        outlineScript.id = 'ai-content-outline';
+        outlineScript.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Narratum - Strategic Infrastructure for Transformative Hospitality",
+            "articleSection": "Business Services",
+            "about": {
+                "@type": "Thing",
+                "name": "Strategic Hospitality Infrastructure",
+                "description": "Systematic approach to transforming organizational hospitality through strategic infrastructure development"
+            },
+            "mainEntity": {
+                "@type": "Organization",
+                "name": "Narratum",
+                "description": "Strategic consulting firm specializing in transformative hospitality infrastructure",
+                "founder": "Pascal Frey",
+                "location": "New York City",
+                "services": outline.services,
+                "methodology": outline.methodology
+            },
+            "keywords": "strategic hospitality, infrastructure consulting, experience design, service innovation, cultural transformation, organizational development",
+            "audience": {
+                "@type": "Audience",
+                "audienceType": "Business Decision Makers",
+                "geographicArea": "United States"
+            }
+        }, null, 2);
+        
+        document.head.appendChild(outlineScript);
+    }
+    
+    generateContentOutline() {
         return {
-            seoScore: this.modules.seoOptimizer?.calculateSEOScore?.() || 0,
-            performanceScore: this.modules.visualEnhancer?.getPerformanceScore?.() || 0.5,
-            accessibilityScore: (this.modules.seoOptimizer?.calculateAccessibilityScore?.() || 0.5),
-            conversionRate: this.modules.intelligentAnalytics?.calculateConversionRate?.() || 0
+            services: [
+                {
+                    name: "Experience Design",
+                    description: "Immersive and engaging experiences that resonate on a human level",
+                    category: "Design Services"
+                },
+                {
+                    name: "Service Innovation", 
+                    description: "Reimagining service delivery for efficiency and personalization",
+                    category: "Innovation Services"
+                },
+                {
+                    name: "Operational Strategy",
+                    description: "Optimizing operations for sustainable growth",
+                    category: "Strategy Services"
+                },
+                {
+                    name: "Cultural Consulting",
+                    description: "Cultivating strong, inclusive, adaptive cultures",
+                    category: "Consulting Services"
+                },
+                {
+                    name: "Innovation Labs",
+                    description: "Dedicated spaces for innovation and experimentation", 
+                    category: "Innovation Services"
+                },
+                {
+                    name: "Impact Measurement",
+                    description: "Metrics and evaluation frameworks for value demonstration",
+                    category: "Analytics Services"
+                }
+            ],
+            methodology: [
+                "Strategic Frequencies Approach",
+                "Infrastructure over Service Philosophy",
+                "Community Connection Focus",
+                "Systematic Transformation Process",
+                "Cultural Integration Methods"
+            ],
+            targetIndustries: [
+                "Education",
+                "Cultural Institutions", 
+                "Corporate Organizations",
+                "Hospitality Sector"
+            ]
         };
     }
-
-    executeAutomationRule(ruleName, rule) {
-        // Check cooldown
-        const lastExecution = rule.lastExecution || 0;
-        if (Date.now() - lastExecution < rule.cooldown) {
+    
+    addAITrainingTags() {
+        // Add tags specifically for AI training and understanding
+        const aiTags = [
+            { name: 'ai-training-data', content: 'business-consulting-hospitality' },
+            { name: 'ai-content-category', content: 'professional-services' },
+            { name: 'ai-business-model', content: 'b2b-consulting' },
+            { name: 'ai-expertise-domain', content: 'hospitality-infrastructure-strategy' },
+            { name: 'ai-target-queries', content: 'hospitality consulting, experience design, service innovation, strategic planning, cultural transformation' },
+            { name: 'ai-entity-type', content: 'consulting-firm' },
+            { name: 'ai-geographic-focus', content: 'new-york-city-united-states' },
+            { name: 'ai-service-model', content: 'strategic-consulting-infrastructure-design' }
+        ];
+        
+        aiTags.forEach(tag => {
+            const meta = document.createElement('meta');
+            meta.name = tag.name;
+            meta.content = tag.content;
+            document.head.appendChild(meta);
+        });
+    }
+    
+    // Setup advanced analytics integration
+    setupAdvancedAnalytics() {
+        // Initialize Google Analytics 4 if not already present
+        this.initializeGA4();
+        
+        // Setup custom events for AI insights
+        this.setupAIInsightEvents();
+        
+        // Track AI-specific metrics
+        this.trackAIMetrics();
+    }
+    
+    initializeGA4() {
+        // Check if GA is already loaded
+        if (typeof gtag !== 'undefined') {
+            console.log('[SEO AI Integration] Google Analytics already loaded');
             return;
         }
-
-        // Execute rule action
-        rule.action();
-        rule.lastExecution = Date.now();
-
-        // Add to optimization queue
-        this.optimizationQueue.push({
-            rule: ruleName,
-            timestamp: Date.now(),
-            description: `Auto-optimization: ${ruleName.replace(/_/g, ' ')}`
+        
+        // Add GA4 if not present (you'll need to replace with your actual GA4 ID)
+        const GA4_ID = 'G-XXXXXXXXXX'; // Replace with actual GA4 tracking ID
+        
+        // Create GA4 script
+        const gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+        document.head.appendChild(gaScript);
+        
+        // Initialize gtag
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        
+        gtag('js', new Date());
+        gtag('config', GA4_ID, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false
         });
-
-        console.log(`🤖 Executed automation rule: ${ruleName}`);
+        
+        console.log('[SEO AI Integration] GA4 initialized');
     }
-
-    /**
-     * Manual optimization trigger
-     */
-    triggerManualOptimization() {
-        console.log('🚀 Manual optimization triggered');
+    
+    setupAIInsightEvents() {
+        // Track AI-specific user behaviors
+        const aiEvents = [
+            { selector: '.symbol-item', event: 'click', name: 'strategy_symbol_interaction' },
+            { selector: '.capability-item', event: 'mouseover', name: 'service_exploration' },
+            { selector: '.contact-form', event: 'submit', name: 'business_inquiry' },
+            { selector: '.mood-dot', event: 'click', name: 'ui_customization' },
+            { selector: '.audio-toggle', event: 'click', name: 'immersive_experience' }
+        ];
         
-        // Trigger optimizations in all modules
-        if (this.modules.seoOptimizer?.implementAutomaticImprovements) {
-            this.modules.seoOptimizer.implementAutomaticImprovements();
-        }
-        
-        if (this.modules.visualEnhancer?.visualOptimizer?.adaptVisuals) {
-            this.modules.visualEnhancer.visualOptimizer.adaptVisuals();
-        }
-        
-        if (this.modules.intelligentAnalytics?.realTimeOptimizer?.optimizeBehavior) {
-            this.modules.intelligentAnalytics.realTimeOptimizer.optimizeBehavior();
-        }
-
-        // Show optimization feedback
-        this.showOptimizationNotification('Manual optimization completed successfully!');
+        aiEvents.forEach(({ selector, event, name }) => {
+            document.addEventListener(event, (e) => {
+                if (e.target.closest(selector)) {
+                    this.trackAIInsight(name, {
+                        element: selector,
+                        section: this.getCurrentSection(),
+                        timestamp: new Date().toISOString()
+                    });
+                }
+            });
+        });
     }
-
-    /**
-     * Generate comprehensive report
-     */
-    generateComprehensiveReport() {
-        const report = {
-            timestamp: new Date().toISOString(),
-            domain: 'narratum.io',
-            
-            seo: this.modules.seoOptimizer?.generateOptimizationReport?.() || {},
-            visual: this.modules.visualEnhancer?.generateVisualOptimizationReport?.() || {},
-            analytics: this.modules.intelligentAnalytics?.generateIntelligentReport?.() || {},
-            
-            integration: {
-                optimizationQueue: this.optimizationQueue,
-                automationRules: Array.from(this.automationRules.keys()),
-                performanceBaseline: this.performanceBaseline,
-                overallScore: this.calculateOverallOptimizationScore()
+    
+    trackAIMetrics() {
+        // Track metrics specifically useful for AI understanding
+        const metrics = {
+            contentReadability: this.calculateReadabilityScore(),
+            semanticStructure: this.analyzeSemanticStructure(),
+            businessInformation: this.extractBusinessInformation(),
+            userEngagement: this.calculateEngagementMetrics()
+        };
+        
+        // Store AI metrics
+        this.aiOptimizations.set('metrics', metrics);
+        
+        // Send to analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'ai_metrics_calculated', {
+                readability_score: metrics.contentReadability,
+                semantic_score: metrics.semanticStructure,
+                engagement_score: metrics.userEngagement
+            });
+        }
+        
+        console.log('[SEO AI Integration] AI metrics tracked:', metrics);
+    }
+    
+    calculateReadabilityScore() {
+        // Simple readability calculation based on sentence length and word complexity
+        const textContent = document.body.textContent;
+        const sentences = textContent.split(/[.!?]+/).filter(s => s.trim().length > 0);
+        const words = textContent.split(/\s+/).filter(w => w.length > 0);
+        
+        const avgWordsPerSentence = words.length / sentences.length;
+        const avgCharsPerWord = textContent.replace(/\s/g, '').length / words.length;
+        
+        // Flesch Reading Ease approximation
+        const score = 206.835 - (1.015 * avgWordsPerSentence) - (84.6 * (avgCharsPerWord / 4.7));
+        return Math.max(0, Math.min(100, Math.round(score)));
+    }
+    
+    analyzeSemanticStructure() {
+        const checks = {
+            headingHierarchy: this.checkHeadingHierarchy(),
+            semanticElements: document.querySelectorAll('article, section, nav, header, footer, main').length,
+            ariaLabels: document.querySelectorAll('[aria-label], [aria-labelledby]').length,
+            structuredData: document.querySelectorAll('script[type="application/ld+json"]').length,
+            microdata: document.querySelectorAll('[itemscope]').length
+        };
+        
+        const maxScore = 100;
+        const weightedScore = (
+            (checks.headingHierarchy ? 20 : 0) +
+            (Math.min(checks.semanticElements * 10, 20)) +
+            (Math.min(checks.ariaLabels * 2, 20)) +
+            (Math.min(checks.structuredData * 20, 20)) +
+            (Math.min(checks.microdata * 4, 20))
+        );
+        
+        return Math.round(weightedScore);
+    }
+    
+    checkHeadingHierarchy() {
+        const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        let previousLevel = 0;
+        let isValid = true;
+        
+        headings.forEach(heading => {
+            const level = parseInt(heading.tagName.charAt(1));
+            if (level > previousLevel + 1) {
+                isValid = false;
+            }
+            previousLevel = level;
+        });
+        
+        return isValid;
+    }
+    
+    extractBusinessInformation() {
+        // Extract key business information for AI understanding
+        const businessInfo = {
+            name: 'Narratum',
+            type: 'Strategic Hospitality Consulting',
+            founder: 'Pascal Frey',
+            location: 'New York City',
+            email: 'connect@narratum.io',
+            services: this.extractServices(),
+            expertise: this.extractExpertise(),
+            targetMarket: this.extractTargetMarket()
+        };
+        
+        // Store in meta tag for AI access
+        const meta = document.createElement('meta');
+        meta.name = 'ai-business-data';
+        meta.content = JSON.stringify(businessInfo);
+        document.head.appendChild(meta);
+        
+        return businessInfo;
+    }
+    
+    extractServices() {
+        const services = [];
+        const serviceElements = document.querySelectorAll('.capability-item h3, .build-pillar h3');
+        
+        serviceElements.forEach(el => {
+            const service = el.textContent.trim();
+            const description = el.nextElementSibling?.textContent.trim();
+            if (service) {
+                services.push({ name: service, description });
+            }
+        });
+        
+        return services;
+    }
+    
+    extractExpertise() {
+        const expertise = [];
+        const expertiseElements = document.querySelectorAll('.symbol-item .symbol-label');
+        
+        expertiseElements.forEach(el => {
+            const area = el.textContent.trim();
+            if (area) {
+                expertise.push(area);
+            }
+        });
+        
+        return expertise;
+    }
+    
+    extractTargetMarket() {
+        const sectors = [];
+        const sectorOptions = document.querySelectorAll('#sector option');
+        
+        sectorOptions.forEach(option => {
+            const value = option.value;
+            if (value && value !== '') {
+                sectors.push(option.textContent.trim());
+            }
+        });
+        
+        return sectors;
+    }
+    
+    calculateEngagementMetrics() {
+        const metrics = {
+            timeOnPage: window.seoOptimizer?.analytics?.timeOnPage || 0,
+            scrollDepth: window.seoOptimizer?.analytics?.maxScrollDepth || 0,
+            sectionViews: Object.keys(window.seoOptimizer?.analytics?.sectionViews || {}).length,
+            interactions: (window.seoOptimizer?.analytics?.events || []).length
+        };
+        
+        // Calculate engagement score (0-100)
+        const score = Math.round(
+            (Math.min(metrics.timeOnPage / 120, 1) * 25) +
+            (metrics.scrollDepth / 100 * 25) +
+            (Math.min(metrics.sectionViews / 7, 1) * 25) +
+            (Math.min(metrics.interactions / 10, 1) * 25)
+        );
+        
+        return { ...metrics, score };
+    }
+    
+    // Optimize for specific AI platforms
+    optimizeForAIPlatforms() {
+        // OpenAI/ChatGPT optimization
+        this.optimizeForOpenAI();
+        
+        // Google AI optimization  
+        this.optimizeForGoogleAI();
+        
+        // Anthropic/Claude optimization
+        this.optimizeForClaude();
+        
+        // Perplexity optimization
+        this.optimizeForPerplexity();
+        
+        console.log('[SEO AI Integration] Platform optimizations applied');
+    }
+    
+    optimizeForOpenAI() {
+        // Add OpenAI-specific structured data
+        const openAIData = {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Narratum Strategic Hospitality Infrastructure",
+            "description": "We transform institutions through strategic hospitality infrastructure, designing experience systems and cultural programs that create lasting connections.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Narratum",
+                "founder": "Pascal Frey"
+            },
+            "areaServed": "United States",
+            "serviceType": "Strategic Hospitality Consulting",
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Hospitality Infrastructure Services",
+                "itemListElement": [
+                    { "@type": "Service", "name": "Experience Design" },
+                    { "@type": "Service", "name": "Service Innovation" },
+                    { "@type": "Service", "name": "Operational Strategy" },
+                    { "@type": "Service", "name": "Cultural Consulting" },
+                    { "@type": "Service", "name": "Innovation Labs" },
+                    { "@type": "Service", "name": "Impact Measurement" }
+                ]
             }
         };
-
-        this.downloadReport(report);
-        console.log('📊 Comprehensive report generated');
-    }
-
-    calculateOverallOptimizationScore() {
-        const metrics = this.getCurrentMetrics();
-        const weights = { seo: 0.3, performance: 0.3, accessibility: 0.2, conversion: 0.2 };
         
-        return Math.round(
-            (metrics.seoScore * weights.seo) +
-            (metrics.performanceScore * 100 * weights.performance) +
-            (metrics.accessibilityScore * 100 * weights.accessibility) +
-            (Math.min(metrics.conversionRate * 20, 100) * weights.conversion)
-        );
+        this.injectPlatformData('openai', openAIData);
     }
-
-    downloadReport(report) {
-        const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `narratum-comprehensive-report-${new Date().toISOString().split('T')[0]}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
-
-    /**
-     * Optimization triggers
-     */
-    triggerPerformanceOptimization() {
-        if (this.modules.visualEnhancer) {
-            this.modules.visualEnhancer.realTimeOptimizer?.optimizePerformance();
-        }
-        this.addOptimizationToQueue('Performance optimization triggered');
-    }
-
-    triggerSEOOptimization() {
-        if (this.modules.seoOptimizer) {
-            this.modules.seoOptimizer.implementAutomaticImprovements();
-        }
-        this.addOptimizationToQueue('SEO optimization triggered');
-    }
-
-    triggerConversionOptimization() {
-        if (this.modules.intelligentAnalytics) {
-            this.modules.intelligentAnalytics.realTimeOptimizer?.optimizeBehavior();
-        }
-        this.addOptimizationToQueue('Conversion optimization triggered');
-    }
-
-    triggerAccessibilityImprovements() {
-        if (this.modules.visualEnhancer) {
-            this.modules.visualEnhancer.accessibilityOptimizer?.ensureWCAGCompliance();
-        }
-        this.addOptimizationToQueue('Accessibility improvements triggered');
-    }
-
-    addOptimizationToQueue(description) {
-        this.optimizationQueue.push({
-            timestamp: Date.now(),
-            description: description
+    
+    optimizeForGoogleAI() {
+        // Add Google AI Bard/Gemini optimization
+        const googleAITags = [
+            { name: 'google-site-verification', content: 'PLACEHOLDER_GOOGLE_VERIFICATION' },
+            { name: 'google-analytics', content: 'enhanced-measurement' },
+            { name: 'google-ai-content', content: 'business-professional-services' }
+        ];
+        
+        googleAITags.forEach(tag => {
+            if (!document.querySelector(`meta[name="${tag.name}"]`)) {
+                const meta = document.createElement('meta');
+                meta.name = tag.name;
+                meta.content = tag.content;
+                document.head.appendChild(meta);
+            }
         });
-
-        // Keep queue size manageable
-        if (this.optimizationQueue.length > 10) {
-            this.optimizationQueue.shift();
-        }
     }
-
-    /**
-     * Notification system
-     */
-    showWelcomeNotification() {
-        this.showNotification(
-            '🎯 Narratum AI Optimizer Ready',
-            'Your website is being optimized in real-time for perfect performance and visibility.',
-            'success',
-            5000
-        );
+    
+    optimizeForClaude() {
+        // Add Anthropic Claude-specific optimization
+        const claudeData = {
+            business_summary: "Narratum specializes in strategic hospitality infrastructure, transforming how organizations connect with communities through experience design and cultural programming.",
+            key_services: ["Experience Design", "Service Innovation", "Operational Strategy", "Cultural Consulting"],
+            founder: "Pascal Frey",
+            location: "New York City",
+            contact: "connect@narratum.io",
+            methodology: "Strategic Frequencies approach combining strategy with soul"
+        };
+        
+        const meta = document.createElement('meta');
+        meta.name = 'claude-ai-summary';
+        meta.content = JSON.stringify(claudeData);
+        document.head.appendChild(meta);
     }
-
-    showOptimizationNotification(message) {
-        this.showNotification(
-            '⚡ Optimization Complete',
-            message,
-            'success',
-            3000
-        );
-    }
-
-    showNotification(title, message, type = 'info', duration = 4000) {
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100px);
-            background: rgba(10, 21, 32, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(251, 191, 36, 0.4);
-            border-radius: 12px;
-            padding: 16px 24px;
-            z-index: 10001;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-        `;
-
-        notification.innerHTML = `
-            <div style="font-weight: 600; margin-bottom: 4px; color: #fbbf24;">${title}</div>
-            <div style="color: rgba(255, 255, 255, 0.8); font-size: 12px;">${message}</div>
-        `;
-
-        document.body.appendChild(notification);
-
-        // Animate in
-        requestAnimationFrame(() => {
-            notification.style.transform = 'translateX(-50%) translateY(0)';
+    
+    optimizeForPerplexity() {
+        // Add Perplexity-specific optimization
+        const perplexityMeta = [
+            { name: 'perplexity-business-type', content: 'Strategic Consulting' },
+            { name: 'perplexity-industry', content: 'Hospitality Infrastructure' },
+            { name: 'perplexity-location', content: 'New York City' },
+            { name: 'perplexity-contact', content: 'connect@narratum.io' }
+        ];
+        
+        perplexityMeta.forEach(tag => {
+            const meta = document.createElement('meta');
+            meta.name = tag.name;
+            meta.content = tag.content;
+            document.head.appendChild(meta);
         });
-
-        // Auto remove
-        setTimeout(() => {
-            notification.style.transform = 'translateX(-50%) translateY(-100px)';
-            setTimeout(() => notification.remove(), 400);
-        }, duration);
     }
-
-    /**
-     * Initialize when DOM is ready
-     */
-    static initialize() {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                window.seoAIIntegrationManager = new SEOAIIntegrationManager();
+    
+    injectPlatformData(platform, data) {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = `${platform}-structured-data`;
+        script.textContent = JSON.stringify(data, null, 2);
+        document.head.appendChild(script);
+        
+        this.aiOptimizations.set(platform, data);
+    }
+    
+    // Implement AI-friendly features
+    implementAIFriendlyFeatures() {
+        // Add content extraction helpers
+        this.addContentExtractionHelpers();
+        
+        // Add AI-friendly navigation
+        this.enhanceNavigationForAI();
+        
+        // Add content relationship mapping
+        this.addContentRelationships();
+        
+        // Setup AI search optimization
+        this.setupAISearchOptimization();
+    }
+    
+    addContentExtractionHelpers() {
+        // Create invisible AI-friendly content summaries
+        const sections = document.querySelectorAll('.section[data-section]');
+        sections.forEach(section => {
+            const sectionName = section.getAttribute('data-section');
+            const summary = this.generateSectionSummary(section);
+            
+            const aiSummary = document.createElement('div');
+            aiSummary.className = 'ai-content-summary';
+            aiSummary.style.display = 'none';
+            aiSummary.setAttribute('data-ai-section', sectionName);
+            aiSummary.setAttribute('data-ai-extract', 'true');
+            aiSummary.textContent = summary;
+            
+            section.appendChild(aiSummary);
+        });
+    }
+    
+    generateSectionSummary(section) {
+        const sectionName = section.getAttribute('data-section');
+        const headings = section.querySelectorAll('h1, h2, h3');
+        const content = section.querySelectorAll('p, li');
+        
+        let summary = '';
+        
+        headings.forEach(h => {
+            summary += h.textContent.trim() + '. ';
+        });
+        
+        content.forEach((p, i) => {
+            if (i < 3) { // Limit to first 3 paragraphs
+                summary += p.textContent.trim() + ' ';
+            }
+        });
+        
+        return summary.trim();
+    }
+    
+    enhanceNavigationForAI() {
+        // Add site structure information for AI crawlers
+        const nav = document.querySelector('.anchor-menu');
+        if (nav) {
+            const structure = [];
+            const links = nav.querySelectorAll('.anchor-link');
+            
+            links.forEach((link, index) => {
+                const section = link.getAttribute('data-section');
+                const text = link.textContent.trim();
+                structure.push({
+                    order: index + 1,
+                    section: section,
+                    title: text,
+                    url: `#${section}`
+                });
             });
-        } else {
-            window.seoAIIntegrationManager = new SEOAIIntegrationManager();
+            
+            const structureMeta = document.createElement('meta');
+            structureMeta.name = 'ai-site-structure';
+            structureMeta.content = JSON.stringify(structure);
+            document.head.appendChild(structureMeta);
         }
+    }
+    
+    addContentRelationships() {
+        // Map content relationships for AI understanding
+        const relationships = {
+            'hero': ['infrastructure', 'contact'],
+            'infrastructure': ['approach', 'capabilities'],
+            'approach': ['capabilities', 'loyalty'],
+            'capabilities': ['loyalty', 'partnerships'],
+            'loyalty': ['partnerships', 'contact'],
+            'partnerships': ['contact'],
+            'contact': ['hero']
+        };
+        
+        Object.entries(relationships).forEach(([section, related]) => {
+            const sectionEl = document.querySelector(`#${section}`);
+            if (sectionEl) {
+                sectionEl.setAttribute('data-ai-related-sections', related.join(','));
+            }
+        });
+    }
+    
+    setupAISearchOptimization() {
+        // Create search intent mapping for AI queries
+        const searchIntents = {
+            'hospitality consulting': ['hero', 'infrastructure', 'capabilities'],
+            'experience design': ['approach', 'capabilities'],
+            'service innovation': ['capabilities', 'approach'],
+            'strategic planning': ['approach', 'infrastructure'],
+            'cultural transformation': ['capabilities', 'approach'],
+            'loyalty programs': ['loyalty'],
+            'contact information': ['contact'],
+            'Pascal Frey': ['hero', 'contact'],
+            'New York consulting': ['contact', 'hero']
+        };
+        
+        const meta = document.createElement('meta');
+        meta.name = 'ai-search-intents';
+        meta.content = JSON.stringify(searchIntents);
+        document.head.appendChild(meta);
+    }
+    
+    // Real-time optimization based on user behavior
+    setupRealTimeOptimization() {
+        let optimizationInterval = setInterval(() => {
+            this.performRealTimeOptimizations();
+        }, 60000); // Every minute
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            clearInterval(optimizationInterval);
+            this.exportFinalAnalytics();
+        });
+    }
+    
+    performRealTimeOptimizations() {
+        // Update content priority based on user engagement
+        const sectionViews = window.seoOptimizer?.analytics?.sectionViews || {};
+        const sortedSections = Object.entries(sectionViews)
+            .sort(([,a], [,b]) => b - a)
+            .slice(0, 3);
+        
+        // Update meta keywords based on popular sections
+        const popularKeywords = sortedSections.map(([section]) => {
+            const keywordMap = {
+                'infrastructure': 'strategic infrastructure',
+                'approach': 'strategic frequencies',
+                'capabilities': 'hospitality consulting',
+                'loyalty': 'loyalty programs',
+                'partnerships': 'strategic partnerships',
+                'contact': 'consulting services'
+            };
+            return keywordMap[section] || section;
+        }).join(', ');
+        
+        if (popularKeywords) {
+            const keywordsMeta = document.querySelector('meta[name="keywords"]');
+            if (keywordsMeta) {
+                keywordsMeta.content = popularKeywords + ', ' + keywordsMeta.content;
+            }
+        }
+        
+        console.log('[SEO AI Integration] Real-time optimization performed');
+    }
+    
+    // Track crawler visits
+    trackCrawlerVisit(userAgent) {
+        const crawlerData = {
+            userAgent,
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            pageTitle: document.title
+        };
+        
+        if (!this.crawlerAnalytics.has(userAgent)) {
+            this.crawlerAnalytics.set(userAgent, []);
+        }
+        
+        this.crawlerAnalytics.get(userAgent).push(crawlerData);
+        
+        // Send to analytics
+        this.trackAIInsight('crawler_visit', crawlerData);
+    }
+    
+    trackAIInsight(eventName, data) {
+        console.log(`[SEO AI Integration] AI Insight: ${eventName}`, data);
+        
+        // Send to Google Analytics if available
+        if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, {
+                ...data,
+                event_category: 'AI_Optimization'
+            });
+        }
+        
+        // Store locally
+        const insights = JSON.parse(localStorage.getItem('ai_insights') || '[]');
+        insights.push({ eventName, data, timestamp: new Date().toISOString() });
+        localStorage.setItem('ai_insights', JSON.stringify(insights.slice(-100))); // Keep last 100
+    }
+    
+    getCurrentSection() {
+        const activeNav = document.querySelector('.nav-dot.active');
+        return activeNav?.getAttribute('data-section') || 'unknown';
+    }
+    
+    exportFinalAnalytics() {
+        const finalData = {
+            crawlerVisits: Object.fromEntries(this.crawlerAnalytics),
+            optimizations: Object.fromEntries(this.aiOptimizations),
+            performance: window.seoOptimizer?.exportAnalytics() || {},
+            session: {
+                duration: window.seoOptimizer?.analytics?.timeOnPage || 0,
+                sections: window.seoOptimizer?.analytics?.sectionViews || {},
+                engagement: this.calculateEngagementMetrics()
+            }
+        };
+        
+        console.log('[SEO AI Integration] Final analytics exported:', finalData);
+        return finalData;
+    }
+    
+    // Generate SEO report for debugging
+    generateSEOReport() {
+        const health = window.seoOptimizer?.calculateSEOHealth() || {};
+        const aiReadiness = window.seoOptimizer?.calculateAIReadiness() || {};
+        const engagement = this.calculateEngagementMetrics();
+        
+        return {
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            seoHealth: health,
+            aiReadiness: aiReadiness,
+            engagement: engagement,
+            structuredData: Object.keys(this.structuredData).length > 0,
+            crawlerOptimized: this.crawlerAnalytics.size > 0,
+            recommendations: this.generateOptimizationRecommendations(health, aiReadiness)
+        };
+    }
+    
+    generateOptimizationRecommendations(health, aiReadiness) {
+        const recommendations = [];
+        
+        if (health.score < 90) {
+            recommendations.push('Improve basic SEO health score');
+        }
+        
+        if (aiReadiness.score < 90) {
+            recommendations.push('Enhance AI readiness features');
+        }
+        
+        if (this.calculateEngagementMetrics().score < 70) {
+            recommendations.push('Improve user engagement metrics');
+        }
+        
+        if (this.crawlerAnalytics.size === 0) {
+            recommendations.push('No AI crawler visits detected - consider submitting to search engines');
+        }
+        
+        return recommendations;
     }
 }
 
-// Auto-initialize the integration manager
-SEOAIIntegrationManager.initialize();
+// Initialize SEO AI Integration
+const seoAIIntegration = new SEOAIIntegration();
 
-// Export for module usage
+// Global access for debugging
+window.seoAIIntegration = seoAIIntegration;
+
+// Export for modules
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = SEOAIIntegrationManager;
+    module.exports = SEOAIIntegration;
 }
 
-console.log('🎯 SEO & AI Integration Manager loaded successfully');
+console.log('[SEO AI Integration] System loaded and active');

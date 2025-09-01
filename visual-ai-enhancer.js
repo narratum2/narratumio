@@ -1,853 +1,498 @@
 /**
- * Visual AI Enhancer - Advanced Web Visualization Optimization
- * Enhances visual presentation, performance, and user experience through AI-driven optimization
- * Specifically designed for Narratum.io's premium hospitality brand experience
+ * Visual AI Enhancer - AI-Driven Visual SEO Optimization
+ * Enhances visual elements for better AI understanding and SEO performance
+ * Version: 1.0
  */
 
 class VisualAIEnhancer {
     constructor() {
         this.config = {
-            brandColors: {
-                primary: '#0a1520',
-                secondary: '#0d1825',
-                accent: '#fbbf24',
-                highlight: '#7dd3fc'
-            },
-            visualMetrics: {
-                contrast: 0,
-                hierarchy: 0,
-                whitespace: 0,
-                engagement: 0
-            },
-            optimizationRules: {
-                maxImageSize: 1920,
-                targetContrast: 4.5,
-                minTouchTarget: 44,
-                maxLoadTime: 2.5
-            },
-            aiSettings: {
-                adaptiveDesign: true,
-                smartLoading: true,
-                dynamicOptimization: true,
-                realTimeAnalysis: true
-            }
-        };
-
-        this.visualState = {
-            viewportSize: { width: 0, height: 0 },
-            devicePixelRatio: window.devicePixelRatio || 1,
-            colorScheme: 'dark',
-            motionPreference: 'full',
-            connectionSpeed: 'fast',
-            userEngagement: 0
-        };
-
-        this.optimizations = {
-            images: new Map(),
-            animations: new Set(),
-            layouts: new Map(),
-            interactions: new Set()
-        };
-
-        this.initialize();
-    }
-
-    /**
-     * Initialize the Visual AI Enhancer
-     */
-    initialize() {
-        console.log('🎨 Initializing Visual AI Enhancer for Narratum.io');
-        
-        this.detectDeviceCapabilities();
-        this.setupVisualObservers();
-        this.initializeImageOptimization();
-        this.enhanceAnimationPerformance();
-        this.optimizeLayoutHierarchy();
-        this.implementSmartLoading();
-        this.setupResponsiveEnhancements();
-        this.initializeColorOptimization();
-        this.enhanceInteractionFeedback();
-        this.setupVisualAnalytics();
-        
-        console.log('✅ Visual AI Enhancer successfully initialized');
-    }
-
-    /**
-     * DEVICE CAPABILITIES DETECTION
-     */
-    detectDeviceCapabilities() {
-        // Viewport detection
-        this.updateViewportSize();
-        window.addEventListener('resize', () => this.updateViewportSize());
-
-        // Connection speed detection
-        this.detectConnectionSpeed();
-
-        // Hardware capabilities
-        this.detectHardwareCapabilities();
-
-        // User preferences
-        this.detectUserPreferences();
-
-        console.log('📱 Device capabilities detected:', this.visualState);
-    }
-
-    updateViewportSize() {
-        this.visualState.viewportSize = {
-            width: window.innerWidth,
-            height: window.innerHeight
+            enabled: true,
+            autoOptimize: true,
+            generateAltText: true,
+            optimizeImages: true,
+            enhanceVisualHierarchy: true
         };
         
-        this.adaptLayoutForViewport();
-    }
-
-    detectConnectionSpeed() {
-        if ('connection' in navigator) {
-            const connection = navigator.connection;
-            const effectiveType = connection.effectiveType;
-            
-            this.visualState.connectionSpeed = effectiveType;
-            this.adaptForConnectionSpeed(effectiveType);
-        }
-    }
-
-    detectHardwareCapabilities() {
-        // GPU detection
-        const canvas = document.createElement('canvas');
-        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-        
-        this.visualState.hasWebGL = !!gl;
-        this.visualState.maxTextureSize = gl ? gl.getParameter(gl.MAX_TEXTURE_SIZE) : 0;
-        
-        // Memory estimation
-        this.visualState.estimatedRAM = navigator.deviceMemory || 4;
-        
-        // Processor cores
-        this.visualState.processorCores = navigator.hardwareConcurrency || 4;
-    }
-
-    detectUserPreferences() {
-        // Motion preference
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            this.visualState.motionPreference = 'reduced';
-            this.reduceAnimations();
-        }
-
-        // Color scheme preference
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            this.visualState.colorScheme = 'light';
-        }
-
-        // High contrast preference
-        if (window.matchMedia('(prefers-contrast: high)').matches) {
-            this.enhanceContrast();
-        }
-    }
-
-    /**
-     * ADVANCED IMAGE OPTIMIZATION
-     */
-    initializeImageOptimization() {
-        this.imageOptimizer = {
-            // Smart format selection
-            selectOptimalFormat: (image) => {
-                const supportsWebP = this.supportsFormat('webp');
-                const supportsAVIF = this.supportsFormat('avif');
-                
-                if (supportsAVIF) return 'avif';
-                if (supportsWebP) return 'webp';
-                return 'jpg';
-            },
-
-            // Lazy loading with intersection observer
-            setupLazyLoading: () => {
-                const imageObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            this.loadImageOptimally(entry.target);
-                            imageObserver.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    rootMargin: '50px 0px'
-                });
-
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    imageObserver.observe(img);
-                });
-            },
-
-            // Progressive image enhancement
-            enhanceImages: () => {
-                document.querySelectorAll('img').forEach(img => {
-                    this.enhanceImage(img);
-                });
-            },
-
-            // Responsive image optimization
-            createResponsiveImages: () => {
-                document.querySelectorAll('img').forEach(img => {
-                    this.makeImageResponsive(img);
-                });
-            }
-        };
-
-        this.imageOptimizer.setupLazyLoading();
-        this.imageOptimizer.enhanceImages();
-        this.imageOptimizer.createResponsiveImages();
-    }
-
-    enhanceImage(img) {
-        // Add loading placeholder
-        this.addImagePlaceholder(img);
-        
-        // Optimize loading priority
-        this.setImagePriority(img);
-        
-        // Add responsive behavior
-        this.makeImageResponsive(img);
-        
-        // Enhance accessibility
-        this.enhanceImageAccessibility(img);
-        
-        // Track in optimization map
-        this.optimizations.images.set(img, {
-            optimized: true,
-            format: this.getImageFormat(img),
-            size: this.getImageSize(img),
-            loading: img.loading || 'lazy'
-        });
-    }
-
-    addImagePlaceholder(img) {
-        const placeholder = document.createElement('div');
-        placeholder.className = 'image-placeholder';
-        placeholder.style.cssText = `
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #0d1825 25%, #1a2b3a 50%, #0d1825 75%);
-            background-size: 200% 100%;
-            animation: loading-shimmer 1.5s infinite;
-            border-radius: inherit;
-        `;
-
-        const wrapper = img.parentElement;
-        if (wrapper && !wrapper.classList.contains('image-wrapper')) {
-            const imageWrapper = document.createElement('div');
-            imageWrapper.className = 'image-wrapper';
-            imageWrapper.style.position = 'relative';
-            wrapper.insertBefore(imageWrapper, img);
-            imageWrapper.appendChild(img);
-            imageWrapper.appendChild(placeholder);
-        }
-
-        img.addEventListener('load', () => {
-            placeholder.style.opacity = '0';
-            setTimeout(() => placeholder.remove(), 300);
-        });
-    }
-
-    /**
-     * ANIMATION PERFORMANCE ENHANCEMENT
-     */
-    enhanceAnimationPerformance() {
-        this.animationEnhancer = {
-            // GPU-accelerated animations
-            enableGPUAcceleration: () => {
-                const animatedElements = document.querySelectorAll(
-                    '.orbital-ring, .geo-shape, .star, .frequency-loader, .mouse-glow'
-                );
-                
-                animatedElements.forEach(element => {
-                    element.style.transform += ' translateZ(0)';
-                    element.style.willChange = 'transform';
-                    element.style.backfaceVisibility = 'hidden';
-                });
-            },
-
-            // Adaptive animation quality
-            adaptAnimationQuality: () => {
-                const performanceScore = this.getPerformanceScore();
-                
-                if (performanceScore < 0.6) {
-                    this.reduceAnimationComplexity();
-                } else if (performanceScore > 0.8) {
-                    this.enhanceAnimationQuality();
-                }
-            },
-
-            // Smart animation pausing
-            pauseOffscreenAnimations: () => {
-                const animationObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const element = entry.target;
-                        if (entry.isIntersecting) {
-                            element.style.animationPlayState = 'running';
-                        } else {
-                            element.style.animationPlayState = 'paused';
-                        }
-                    });
-                });
-
-                document.querySelectorAll('[class*="animate"], [style*="animation"]').forEach(el => {
-                    animationObserver.observe(el);
-                });
-            },
-
-            // Frame rate optimization
-            optimizeFrameRate: () => {
-                let lastFrame = performance.now();
-                let frameCount = 0;
-                
-                const measureFPS = () => {
-                    frameCount++;
-                    const now = performance.now();
-                    
-                    if (now - lastFrame >= 1000) {
-                        const fps = Math.round((frameCount * 1000) / (now - lastFrame));
-                        
-                        if (fps < 30) {
-                            this.reduceAnimationLoad();
-                        } else if (fps > 55) {
-                            this.increaseAnimationQuality();
-                        }
-                        
-                        frameCount = 0;
-                        lastFrame = now;
-                    }
-                    
-                    requestAnimationFrame(measureFPS);
-                };
-                
-                requestAnimationFrame(measureFPS);
-            }
-        };
-
-        this.animationEnhancer.enableGPUAcceleration();
-        this.animationEnhancer.adaptAnimationQuality();
-        this.animationEnhancer.pauseOffscreenAnimations();
-        this.animationEnhancer.optimizeFrameRate();
-    }
-
-    /**
-     * LAYOUT HIERARCHY OPTIMIZATION
-     */
-    optimizeLayoutHierarchy() {
-        this.layoutOptimizer = {
-            // Visual hierarchy analysis
-            analyzeHierarchy: () => {
-                const elements = this.getVisualElements();
-                const hierarchy = this.calculateVisualHierarchy(elements);
-                this.optimizeBasedOnHierarchy(hierarchy);
-            },
-
-            // Whitespace optimization
-            optimizeWhitespace: () => {
-                const sections = document.querySelectorAll('.section');
-                sections.forEach(section => {
-                    this.optimizeSectionSpacing(section);
-                });
-            },
-
-            // Typography enhancement
-            enhanceTypography: () => {
-                this.optimizeTextReadability();
-                this.enhanceTextHierarchy();
-                this.optimizeLineHeight();
-            },
-
-            // Layout shift prevention
-            preventLayoutShift: () => {
-                this.reserveSpaceForImages();
-                this.stabilizeAsyncContent();
-                this.optimizeWebFonts();
-            }
-        };
-
-        this.layoutOptimizer.analyzeHierarchy();
-        this.layoutOptimizer.optimizeWhitespace();
-        this.layoutOptimizer.enhanceTypography();
-        this.layoutOptimizer.preventLayoutShift();
-    }
-
-    calculateVisualHierarchy(elements) {
-        return elements.map(element => {
-            const styles = getComputedStyle(element);
-            const rect = element.getBoundingClientRect();
-            
-            return {
-                element,
-                importance: this.calculateImportanceScore(element, styles, rect),
-                position: { x: rect.x, y: rect.y },
-                size: { width: rect.width, height: rect.height },
-                contrast: this.calculateContrastRatio(element),
-                visibility: this.calculateVisibility(element)
-            };
-        }).sort((a, b) => b.importance - a.importance);
-    }
-
-    calculateImportanceScore(element, styles, rect) {
-        let score = 0;
-        
-        // Size factor
-        score += (rect.width * rect.height) / (window.innerWidth * window.innerHeight) * 30;
-        
-        // Position factor (elements higher up are more important)
-        score += (1 - (rect.y / window.innerHeight)) * 20;
-        
-        // Typography factor
-        const fontSize = parseFloat(styles.fontSize);
-        score += (fontSize / 16) * 15;
-        
-        // Color factor
-        const color = styles.color;
-        const bgColor = styles.backgroundColor;
-        if (color === 'rgb(251, 191, 36)') score += 20; // Gold accent color
-        
-        // Semantic factor
-        const tagName = element.tagName.toLowerCase();
-        const semanticScores = {
-            'h1': 25, 'h2': 20, 'h3': 15, 'h4': 10,
-            'button': 15, 'a': 10, 'img': 12,
-            'main': 8, 'section': 5
-        };
-        score += semanticScores[tagName] || 0;
-        
-        return score;
-    }
-
-    /**
-     * SMART LOADING SYSTEM
-     */
-    implementSmartLoading() {
-        this.smartLoader = {
-            // Critical resource prioritization
-            prioritizeCriticalResources: () => {
-                this.preloadCriticalAssets();
-                this.deferNonCriticalAssets();
-                this.optimizeResourceHints();
-            },
-
-            // Progressive enhancement
-            implementProgressiveEnhancement: () => {
-                this.loadBasicExperience();
-                setTimeout(() => this.enhanceExperience(), 1000);
-                setTimeout(() => this.addDelightfulDetails(), 2000);
-            },
-
-            // Adaptive loading based on conditions
-            adaptiveLoading: () => {
-                const conditions = this.analyzeLoadingConditions();
-                this.adaptLoadingStrategy(conditions);
-            },
-
-            // Resource optimization
-            optimizeResources: () => {
-                this.compressAndOptimizeAssets();
-                this.implementServiceWorkerCaching();
-                this.optimizeNetworkRequests();
-            }
-        };
-
-        this.smartLoader.prioritizeCriticalResources();
-        this.smartLoader.implementProgressiveEnhancement();
-        this.smartLoader.adaptiveLoading();
-        this.smartLoader.optimizeResources();
-    }
-
-    preloadCriticalAssets() {
-        const criticalAssets = [
-            { href: 'styles.css', as: 'style' },
-            { href: 'script.js', as: 'script' },
-            { href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap', as: 'style' }
-        ];
-
-        criticalAssets.forEach(asset => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.href = asset.href;
-            link.as = asset.as;
-            if (asset.as === 'style') link.crossOrigin = 'anonymous';
-            document.head.appendChild(link);
-        });
-    }
-
-    /**
-     * RESPONSIVE ENHANCEMENTS
-     */
-    setupResponsiveEnhancements() {
-        this.responsiveEnhancer = {
-            // Breakpoint optimization
-            optimizeBreakpoints: () => {
-                this.analyzeContentBreakpoints();
-                this.implementFluidDesign();
-                this.optimizeForCommonViewports();
-            },
-
-            // Touch optimization
-            enhanceTouchInteraction: () => {
-                this.optimizeTouchTargets();
-                this.implementTouchFeedback();
-                this.enhanceMobileNavigation();
-            },
-
-            // Viewport optimization
-            optimizeViewportUsage: () => {
-                this.maximizeContentVisibility();
-                this.optimizeScrollExperience();
-                this.enhanceViewportTransitions();
-            }
-        };
-
-        this.responsiveEnhancer.optimizeBreakpoints();
-        this.responsiveEnhancer.enhanceTouchInteraction();
-        this.responsiveEnhancer.optimizeViewportUsage();
-    }
-
-    optimizeTouchTargets() {
-        const interactiveElements = document.querySelectorAll(
-            'button, a, input, select, textarea, .nav-dot, .mood-dot, .symbol-item'
-        );
-
-        interactiveElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            const minSize = this.config.optimizationRules.minTouchTarget;
-
-            if (rect.width < minSize || rect.height < minSize) {
-                element.style.minWidth = `${minSize}px`;
-                element.style.minHeight = `${minSize}px`;
-                element.style.padding = element.style.padding || '8px';
-            }
-        });
-    }
-
-    /**
-     * COLOR OPTIMIZATION
-     */
-    initializeColorOptimization() {
-        this.colorOptimizer = {
-            // Contrast analysis and enhancement
-            enhanceContrast: () => {
-                this.auditColorContrast();
-                this.improveContrastRatios();
-                this.optimizeForAccessibility();
-            },
-
-            // Brand consistency
-            ensureBrandConsistency: () => {
-                this.validateBrandColors();
-                this.optimizeColorHarmony();
-                this.enhanceColorHierarchy();
-            },
-
-            // Dynamic color adaptation
-            adaptColorsForContext: () => {
-                this.adaptForAmbientLight();
-                this.optimizeForDeviceCapabilities();
-                this.personalizeColorExperience();
-            }
-        };
-
-        this.colorOptimizer.enhanceContrast();
-        this.colorOptimizer.ensureBrandConsistency();
-        this.colorOptimizer.adaptColorsForContext();
-    }
-
-    auditColorContrast() {
-        const textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, a, button');
-        
-        textElements.forEach(element => {
-            const contrastRatio = this.calculateContrastRatio(element);
-            
-            if (contrastRatio < this.config.optimizationRules.targetContrast) {
-                this.improveElementContrast(element, contrastRatio);
-            }
-        });
-    }
-
-    calculateContrastRatio(element) {
-        const styles = getComputedStyle(element);
-        const textColor = this.parseColor(styles.color);
-        const bgColor = this.parseColor(styles.backgroundColor) || this.getBackgroundColor(element);
-        
-        return this.getContrastRatio(textColor, bgColor);
-    }
-
-    /**
-     * INTERACTION FEEDBACK ENHANCEMENT
-     */
-    enhanceInteractionFeedback() {
-        this.interactionEnhancer = {
-            // Enhanced hover effects
-            enhanceHoverFeedback: () => {
-                this.addSmartHoverEffects();
-                this.optimizeHoverPerformance();
-                this.createContextualFeedback();
-            },
-
-            // Touch feedback
-            enhanceTouchFeedback: () => {
-                this.addTouchRippleEffects();
-                this.implementHapticFeedback();
-                this.optimizeGestureResponse();
-            },
-
-            // Loading feedback
-            enhanceLoadingFeedback: () => {
-                this.createIntelligentLoaders();
-                this.implementProgressIndicators();
-                this.optimizeLoadingPerception();
-            },
-
-            // Error feedback
-            enhanceErrorFeedback: () => {
-                this.createUserFriendlyErrors();
-                this.implementRecoveryActions();
-                this.optimizeErrorVisibility();
-            }
-        };
-
-        this.interactionEnhancer.enhanceHoverFeedback();
-        this.interactionEnhancer.enhanceTouchFeedback();
-        this.interactionEnhancer.enhanceLoadingFeedback();
-        this.interactionEnhancer.enhanceErrorFeedback();
-    }
-
-    addSmartHoverEffects() {
-        const interactiveElements = document.querySelectorAll(
-            '.partnership-category, .capability-block, .build-pillar, .symbol-item, button, a'
-        );
-
-        interactiveElements.forEach(element => {
-            this.enhanceElementHover(element);
-        });
-    }
-
-    enhanceElementHover(element) {
-        let hoverTimeout;
-        
-        element.addEventListener('mouseenter', (e) => {
-            clearTimeout(hoverTimeout);
-            this.createHoverEnhancement(element, e);
-        });
-
-        element.addEventListener('mouseleave', () => {
-            hoverTimeout = setTimeout(() => {
-                this.removeHoverEnhancement(element);
-            }, 150);
-        });
-    }
-
-    createHoverEnhancement(element, event) {
-        // Add glow effect
-        const glow = document.createElement('div');
-        glow.className = 'hover-glow';
-        glow.style.cssText = `
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            background: radial-gradient(circle at ${event.offsetX}px ${event.offsetY}px, 
-                rgba(251, 191, 36, 0.1) 0%, 
-                rgba(251, 191, 36, 0.05) 40%, 
-                transparent 70%);
-            border-radius: inherit;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        `;
-
-        element.style.position = element.style.position || 'relative';
-        element.appendChild(glow);
-
-        // Animate in
-        requestAnimationFrame(() => {
-            glow.style.opacity = '1';
-        });
-    }
-
-    /**
-     * VISUAL ANALYTICS
-     */
-    setupVisualAnalytics() {
         this.visualAnalytics = {
-            // Engagement tracking
-            trackVisualEngagement: () => {
-                this.trackElementVisibility();
-                this.measureInteractionDepth();
-                this.analyzeScrollPatterns();
-            },
-
-            // Performance monitoring
-            monitorVisualPerformance: () => {
-                this.trackRenderingMetrics();
-                this.measureAnimationPerformance();
-                this.analyzeLayoutStability();
-            },
-
-            // User behavior analysis
-            analyzeUserBehavior: () => {
-                this.trackVisualPreferences();
-                this.analyzeInteractionPatterns();
-                this.measureContentEffectiveness();
+            images: [],
+            visualElements: [],
+            accessibility: {},
+            performance: {}
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        console.log('[Visual AI Enhancer] Initializing visual AI optimization...');
+        
+        this.analyzeVisualElements();
+        this.optimizeImages();
+        this.enhanceVisualHierarchy();
+        this.addVisualStructure();
+        this.setupVisualMonitoring();
+        
+        console.log('[Visual AI Enhancer] Visual AI optimization complete');
+    }
+    
+    analyzeVisualElements() {
+        // Analyze all visual elements for AI optimization
+        const images = document.querySelectorAll('img');
+        const svgs = document.querySelectorAll('svg');
+        const videos = document.querySelectorAll('video');
+        const canvases = document.querySelectorAll('canvas');
+        
+        this.visualAnalytics.images = Array.from(images).map(img => ({
+            src: img.src,
+            alt: img.alt,
+            hasAlt: !!img.alt,
+            dimensions: { width: img.naturalWidth, height: img.naturalHeight },
+            loading: img.loading,
+            optimized: this.isImageOptimized(img)
+        }));
+        
+        // Enhance SVGs for AI understanding
+        svgs.forEach((svg, index) => {
+            if (!svg.getAttribute('role')) {
+                svg.setAttribute('role', 'img');
+            }
+            if (!svg.getAttribute('aria-label')) {
+                svg.setAttribute('aria-label', `Decorative element ${index + 1}`);
+            }
+            svg.setAttribute('data-ai-visual-type', 'icon');
+        });
+        
+        console.log(`[Visual AI Enhancer] Analyzed ${images.length} images, ${svgs.length} SVGs`);
+    }
+    
+    isImageOptimized(img) {
+        const checks = {
+            hasAlt: !!img.alt,
+            hasLazyLoading: img.loading === 'lazy',
+            appropriateSize: img.naturalWidth <= 2000 && img.naturalHeight <= 2000,
+            modernFormat: /\.(webp|avif)$/i.test(img.src)
+        };
+        
+        return Object.values(checks).filter(Boolean).length >= 3;
+    }
+    
+    optimizeImages() {
+        const images = document.querySelectorAll('img');
+        
+        images.forEach((img, index) => {
+            // Add AI-friendly attributes
+            img.setAttribute('data-ai-content-type', 'image');
+            img.setAttribute('data-ai-index', index.toString());
+            
+            // Generate alt text if missing
+            if (!img.alt) {
+                img.alt = this.generateAltText(img);
+            }
+            
+            // Add loading optimization
+            if (!img.loading && index > 0) {
+                img.loading = 'lazy';
+            }
+            
+            // Add size hints for better performance
+            if (!img.getAttribute('width') && !img.getAttribute('height')) {
+                img.setAttribute('decoding', 'async');
+            }
+            
+            // Add AI metadata
+            const context = this.getImageContext(img);
+            if (context) {
+                img.setAttribute('data-ai-context', context);
+            }
+        });
+        
+        console.log(`[Visual AI Enhancer] Optimized ${images.length} images`);
+    }
+    
+    generateAltText(img) {
+        // Generate contextual alt text based on surrounding content
+        const context = this.getImageContext(img);
+        const section = img.closest('.section')?.getAttribute('data-section');
+        
+        if (context === 'icon') {
+            return `${section || 'Section'} icon`;
+        } else if (context === 'logo') {
+            return 'Narratum logo';
+        } else if (context === 'decoration') {
+            return `Decorative element for ${section || 'page'}`;
+        } else {
+            return `Image in ${section || 'page'} section`;
+        }
+    }
+    
+    getImageContext(img) {
+        const parent = img.closest('.capability-icon, .pillar-icon, .symbol-glyph, .footer, .hero');
+        
+        if (parent) {
+            if (parent.classList.contains('capability-icon') || parent.classList.contains('pillar-icon')) {
+                return 'icon';
+            } else if (parent.classList.contains('footer') || parent.classList.contains('hero')) {
+                return 'logo';
+            } else {
+                return 'decoration';
+            }
+        }
+        
+        return 'content';
+    }
+    
+    enhanceVisualHierarchy() {
+        // Add visual hierarchy markers for AI understanding
+        const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        
+        headings.forEach((heading, index) => {
+            const level = parseInt(heading.tagName.charAt(1));
+            heading.setAttribute('data-ai-heading-level', level.toString());
+            heading.setAttribute('data-ai-heading-importance', level <= 2 ? 'high' : 'medium');
+            heading.setAttribute('data-ai-content-type', 'heading');
+            
+            // Add semantic relationship to content
+            const nextElement = heading.nextElementSibling;
+            if (nextElement && (nextElement.tagName === 'P' || nextElement.tagName === 'DIV')) {
+                nextElement.setAttribute('data-ai-related-heading', heading.textContent.trim());
+            }
+        });
+        
+        // Add visual importance markers
+        const importantElements = document.querySelectorAll('.highlight-text, .lead, .intro-text');
+        importantElements.forEach(element => {
+            element.setAttribute('data-ai-importance', 'high');
+            element.setAttribute('data-ai-content-priority', 'featured');
+        });
+        
+        console.log(`[Visual AI Enhancer] Enhanced visual hierarchy for ${headings.length} headings`);
+    }
+    
+    addVisualStructure() {
+        // Add visual structure indicators for AI
+        const sections = document.querySelectorAll('.section');
+        
+        sections.forEach((section, index) => {
+            section.setAttribute('data-ai-visual-order', (index + 1).toString());
+            section.setAttribute('data-ai-section-type', this.getSectionType(section));
+            
+            // Add visual complexity score
+            const complexity = this.calculateVisualComplexity(section);
+            section.setAttribute('data-ai-visual-complexity', complexity.toString());
+            
+            // Add content density
+            const density = this.calculateContentDensity(section);
+            section.setAttribute('data-ai-content-density', density);
+        });
+        
+        // Add page-level visual information
+        document.documentElement.setAttribute('data-ai-visual-style', 'premium-modern');
+        document.documentElement.setAttribute('data-ai-color-scheme', 'dark-professional');
+        document.documentElement.setAttribute('data-ai-design-system', 'systematic-minimal');
+    }
+    
+    getSectionType(section) {
+        const sectionName = section.getAttribute('data-section');
+        const typeMap = {
+            'hero': 'landing',
+            'infrastructure': 'content',
+            'approach': 'methodology',
+            'capabilities': 'services',
+            'loyalty': 'programs',
+            'partnerships': 'relationships',
+            'contact': 'conversion'
+        };
+        
+        return typeMap[sectionName] || 'content';
+    }
+    
+    calculateVisualComplexity(section) {
+        const elements = section.querySelectorAll('*');
+        const animations = section.querySelectorAll('[class*="animate"], [class*="fade"], [class*="slide"]');
+        const interactions = section.querySelectorAll('[onclick], [data-section], button, a');
+        
+        // Simple complexity score (1-10)
+        const complexity = Math.min(10, Math.round(
+            (elements.length / 20) + 
+            (animations.length / 5) + 
+            (interactions.length / 3)
+        ));
+        
+        return complexity;
+    }
+    
+    calculateContentDensity(section) {
+        const textContent = section.textContent.trim();
+        const elements = section.querySelectorAll('*');
+        
+        if (elements.length === 0) return 'empty';
+        
+        const wordsPerElement = textContent.split(/\s+/).length / elements.length;
+        
+        if (wordsPerElement > 10) return 'dense';
+        if (wordsPerElement > 5) return 'medium';
+        return 'sparse';
+    }
+    
+    setupVisualMonitoring() {
+        // Monitor visual performance and accessibility
+        const checkVisualPerformance = () => {
+            const metrics = {
+                imageOptimization: this.assessImageOptimization(),
+                visualAccessibility: this.assessVisualAccessibility(),
+                responsiveDesign: this.assessResponsiveDesign(),
+                visualHierarchy: this.assessVisualHierarchy()
+            };
+            
+            this.visualAnalytics.performance = metrics;
+            
+            // Report issues
+            if (metrics.imageOptimization < 80) {
+                console.warn('[Visual AI Enhancer] Image optimization needs improvement');
+            }
+            
+            if (metrics.visualAccessibility < 90) {
+                console.warn('[Visual AI Enhancer] Visual accessibility needs improvement');
+            }
+            
+            return metrics;
+        };
+        
+        // Check on init and periodically
+        checkVisualPerformance();
+        setInterval(checkVisualPerformance, 60000); // Every minute
+        
+        // Monitor image loading performance
+        this.monitorImageLoading();
+    }
+    
+    assessImageOptimization() {
+        const images = this.visualAnalytics.images;
+        if (!images.length) return 100;
+        
+        const optimizedCount = images.filter(img => img.optimized).length;
+        return Math.round((optimizedCount / images.length) * 100);
+    }
+    
+    assessVisualAccessibility() {
+        const images = document.querySelectorAll('img');
+        const withAlt = document.querySelectorAll('img[alt]');
+        const withRoles = document.querySelectorAll('svg[role], img[role]');
+        const withAriaLabels = document.querySelectorAll('[aria-label], [aria-labelledby]');
+        
+        const score = (
+            (withAlt.length / Math.max(images.length, 1)) * 30 +
+            (withRoles.length / 20) * 30 +
+            (withAriaLabels.length / 10) * 40
+        );
+        
+        return Math.min(100, Math.round(score));
+    }
+    
+    assessResponsiveDesign() {
+        const viewports = [
+            { width: 320, height: 568 },  // Mobile
+            { width: 768, height: 1024 }, // Tablet
+            { width: 1920, height: 1080 } // Desktop
+        ];
+        
+        // Simple responsive check (in real implementation, would test multiple viewports)
+        const hasViewportMeta = !!document.querySelector('meta[name="viewport"]');
+        const hasMediaQueries = !!document.querySelector('style, link[rel="stylesheet"]');
+        const hasFlexibleLayout = !!document.querySelector('[class*="container"], [class*="grid"], [class*="flex"]');
+        
+        const checks = [hasViewportMeta, hasMediaQueries, hasFlexibleLayout];
+        return Math.round((checks.filter(Boolean).length / checks.length) * 100);
+    }
+    
+    assessVisualHierarchy() {
+        const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        const hierarchy = [];
+        
+        headings.forEach(h => {
+            hierarchy.push(parseInt(h.tagName.charAt(1)));
+        });
+        
+        // Check if hierarchy makes sense (no skipping levels)
+        let isValid = true;
+        for (let i = 1; i < hierarchy.length; i++) {
+            if (hierarchy[i] > hierarchy[i-1] + 1) {
+                isValid = false;
+                break;
+            }
+        }
+        
+        const hasH1 = hierarchy.includes(1);
+        const hasMultipleLevels = new Set(hierarchy).size > 1;
+        
+        const checks = [isValid, hasH1, hasMultipleLevels];
+        return Math.round((checks.filter(Boolean).length / checks.length) * 100);
+    }
+    
+    monitorImageLoading() {
+        const images = document.querySelectorAll('img');
+        
+        images.forEach(img => {
+            if (img.complete) {
+                this.trackImageLoad(img, 'cached');
+            } else {
+                img.addEventListener('load', () => this.trackImageLoad(img, 'loaded'));
+                img.addEventListener('error', () => this.trackImageLoad(img, 'error'));
+            }
+        });
+    }
+    
+    trackImageLoad(img, status) {
+        const loadData = {
+            src: img.src,
+            alt: img.alt,
+            status: status,
+            timestamp: new Date().toISOString(),
+            dimensions: {
+                natural: { width: img.naturalWidth, height: img.naturalHeight },
+                display: { width: img.offsetWidth, height: img.offsetHeight }
             }
         };
-
-        this.visualAnalytics.trackVisualEngagement();
-        this.visualAnalytics.monitorVisualPerformance();
-        this.visualAnalytics.analyzeUserBehavior();
-    }
-
-    trackElementVisibility() {
-        const visibilityObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.recordElementView(entry.target, entry.intersectionRatio);
-                }
+        
+        // Track in analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'image_load', {
+                image_status: status,
+                image_src: img.src,
+                has_alt: !!img.alt
             });
-        }, {
-            threshold: [0.1, 0.25, 0.5, 0.75, 1.0]
-        });
-
-        document.querySelectorAll('.section, .capability-block, .partnership-category').forEach(el => {
-            visibilityObserver.observe(el);
-        });
-    }
-
-    recordElementView(element, ratio) {
-        const elementId = element.id || element.className;
-        const viewData = {
-            element: elementId,
-            visibilityRatio: ratio,
-            timestamp: Date.now(),
-            viewport: this.visualState.viewportSize
-        };
-
-        // Store in analytics
-        if (!this.visualAnalytics.elementViews) {
-            this.visualAnalytics.elementViews = [];
         }
-        this.visualAnalytics.elementViews.push(viewData);
+        
+        console.log(`[Visual AI Enhancer] Image ${status}:`, loadData);
     }
-
-    /**
-     * OPTIMIZATION REPORT GENERATION
-     */
-    generateVisualOptimizationReport() {
+    
+    // Generate comprehensive visual SEO report
+    generateVisualSEOReport() {
         const report = {
             timestamp: new Date().toISOString(),
-            domain: 'narratum.io',
-            visualMetrics: this.config.visualMetrics,
-            optimizations: {
-                images: this.optimizations.images.size,
-                animations: this.optimizations.animations.size,
-                layouts: this.optimizations.layouts.size,
-                interactions: this.optimizations.interactions.size
-            },
-            performance: {
-                renderingTime: this.measureRenderingTime(),
-                animationFPS: this.measureAnimationFPS(),
-                layoutStability: this.measureLayoutStability(),
-                interactionLatency: this.measureInteractionLatency()
-            },
-            accessibility: {
-                contrastScore: this.calculateOverallContrastScore(),
-                touchTargetCompliance: this.calculateTouchTargetCompliance(),
-                motionAccessibility: this.evaluateMotionAccessibility()
-            },
-            recommendations: this.generateVisualRecommendations()
+            imageOptimization: this.assessImageOptimization(),
+            visualAccessibility: this.assessVisualAccessibility(),
+            responsiveDesign: this.assessResponsiveDesign(),
+            visualHierarchy: this.assessVisualHierarchy(),
+            recommendations: this.generateVisualRecommendations(),
+            analytics: this.visualAnalytics
         };
-
-        console.log('🎨 Visual Optimization Report:', report);
+        
+        console.log('[Visual AI Enhancer] Visual SEO Report:', report);
         return report;
     }
-
+    
     generateVisualRecommendations() {
         const recommendations = [];
-
-        // Performance recommendations
-        if (this.visualState.estimatedRAM < 4) {
-            recommendations.push({
-                category: 'Performance',
-                priority: 'high',
-                title: 'Optimize for Low-Memory Devices',
-                description: 'Reduce animation complexity and image quality for better performance',
-                actions: ['Reduce animation complexity', 'Implement image compression', 'Optimize memory usage']
-            });
+        const perf = this.visualAnalytics.performance;
+        
+        if (this.assessImageOptimization() < 90) {
+            recommendations.push('Optimize image alt text and loading attributes');
         }
-
-        // Accessibility recommendations
-        const contrastScore = this.calculateOverallContrastScore();
-        if (contrastScore < 4.5) {
-            recommendations.push({
-                category: 'Accessibility',
-                priority: 'high',
-                title: 'Improve Color Contrast',
-                description: 'Enhance color contrast ratios for better accessibility',
-                actions: ['Increase text contrast', 'Optimize color combinations', 'Add contrast enhancements']
-            });
+        
+        if (this.assessVisualAccessibility() < 90) {
+            recommendations.push('Improve visual accessibility with better ARIA labels');
         }
-
-        // Visual hierarchy recommendations
-        recommendations.push({
-            category: 'Design',
-            priority: 'medium',
-            title: 'Enhance Visual Hierarchy',
-            description: 'Improve content organization and visual flow',
-            actions: ['Optimize typography scales', 'Enhance whitespace usage', 'Improve content grouping']
-        });
-
+        
+        if (this.assessResponsiveDesign() < 90) {
+            recommendations.push('Enhance responsive design implementation');
+        }
+        
+        if (this.assessVisualHierarchy() < 90) {
+            recommendations.push('Improve heading hierarchy structure');
+        }
+        
+        const imagesWithoutAlt = document.querySelectorAll('img:not([alt])');
+        if (imagesWithoutAlt.length > 0) {
+            recommendations.push(`Add alt text to ${imagesWithoutAlt.length} images`);
+        }
+        
         return recommendations;
     }
-
-    // Utility methods
-    supportsFormat(format) {
-        const canvas = document.createElement('canvas');
-        return canvas.toDataURL(`image/${format}`).indexOf(`data:image/${format}`) === 0;
-    }
-
-    getPerformanceScore() {
-        // Simple performance scoring based on available metrics
-        const connectionSpeed = this.visualState.connectionSpeed;
-        const deviceMemory = this.visualState.estimatedRAM;
-        const cores = this.visualState.processorCores;
-
-        let score = 0.5; // Base score
-
-        if (connectionSpeed === '4g') score += 0.2;
-        if (deviceMemory >= 8) score += 0.2;
-        if (cores >= 8) score += 0.1;
-
-        return Math.min(score, 1);
-    }
-
-    // Additional utility methods would be implemented here...
-
-    /**
-     * Initialize the enhancer when DOM is ready
-     */
-    static initialize() {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                window.visualAIEnhancer = new VisualAIEnhancer();
+    
+    // Real-time visual optimization
+    optimizeInRealTime() {
+        // Monitor for dynamically added images
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) { // Element node
+                        const images = node.tagName === 'IMG' ? [node] : node.querySelectorAll('img');
+                        images.forEach(img => this.optimizeNewImage(img));
+                        
+                        const svgs = node.tagName === 'SVG' ? [node] : node.querySelectorAll('svg');
+                        svgs.forEach(svg => this.optimizeNewSVG(svg));
+                    }
+                });
             });
-        } else {
-            window.visualAIEnhancer = new VisualAIEnhancer();
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        
+        console.log('[Visual AI Enhancer] Real-time optimization active');
+    }
+    
+    optimizeNewImage(img) {
+        // Auto-optimize newly added images
+        if (!img.alt) {
+            img.alt = this.generateAltText(img);
         }
+        
+        if (!img.loading) {
+            img.loading = 'lazy';
+        }
+        
+        img.setAttribute('data-ai-content-type', 'image');
+        img.setAttribute('data-ai-optimized', 'true');
+        
+        this.trackImageLoad(img, 'dynamically-added');
+    }
+    
+    optimizeNewSVG(svg) {
+        // Auto-optimize newly added SVGs
+        if (!svg.getAttribute('role')) {
+            svg.setAttribute('role', 'img');
+        }
+        
+        if (!svg.getAttribute('aria-label')) {
+            svg.setAttribute('aria-label', 'Decorative icon');
+        }
+        
+        svg.setAttribute('data-ai-visual-type', 'icon');
+        svg.setAttribute('data-ai-optimized', 'true');
+    }
+    
+    // Export visual data for analysis
+    exportVisualData() {
+        return {
+            ...this.visualAnalytics,
+            scores: {
+                imageOptimization: this.assessImageOptimization(),
+                visualAccessibility: this.assessVisualAccessibility(),
+                responsiveDesign: this.assessResponsiveDesign(),
+                visualHierarchy: this.assessVisualHierarchy()
+            },
+            timestamp: new Date().toISOString()
+        };
     }
 }
 
-// Auto-initialize the Visual AI Enhancer
-VisualAIEnhancer.initialize();
+// Initialize Visual AI Enhancer
+const visualAIEnhancer = new VisualAIEnhancer();
 
-// Export for module usage
+// Start real-time optimization
+visualAIEnhancer.optimizeInRealTime();
+
+// Global access for debugging
+window.visualAIEnhancer = visualAIEnhancer;
+
+// Export for module systems
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = VisualAIEnhancer;
 }
 
-console.log('🎯 Visual AI Enhancer loaded successfully for Narratum.io');
+console.log('[Visual AI Enhancer] System loaded and monitoring');

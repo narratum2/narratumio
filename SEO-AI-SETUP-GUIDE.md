@@ -9,6 +9,8 @@ Your site is now equipped with advanced SEO optimization specifically designed f
 ### Core SEO Files
 - `seo-ai-optimizer.js` - Main SEO optimization engine
 - `seo-ai-integration.js` - AI platform integration system  
+  - GA4 configured: `G-PFKPP0SCT4` (Measurement ID), Stream ID `12102962304`  
+  - Server-side events: `/api/ga-collect` (Measurement Protocol)
 - `intelligent-analytics.js` - Real-time SEO health monitoring
 - `sitemap.xml` - Search engine sitemap
 - `robots.txt` - AI and crawler directives
@@ -68,7 +70,11 @@ Your site now continuously monitors:
 ## 🔧 Configuration Options
 
 ### Google Analytics Setup
-1. Replace `G-XXXXXXXXXX` in `seo-ai-integration.js` with your actual GA4 tracking ID
+1. GA4 configured in `seo-ai-integration.js` with Measurement ID `G-PFKPP0SCT4`  
+   - Optional: set env vars for server-side events:  
+     - `GA4_MEASUREMENT_ID=G-PFKPP0SCT4`  
+     - `GA4_API_SECRET=YOUR_API_SECRET` (Admin → Data Streams → Measurement Protocol API secrets)  
+     - `GA4_STREAM_ID=12102962304`
 2. Add Google Search Console verification meta tag
 3. Set up enhanced ecommerce tracking if needed
 

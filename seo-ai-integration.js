@@ -731,12 +731,33 @@ class SEOAIIntegration {
     trackAIInsight(eventName, data) {
         console.log(`[SEO AI Integration] AI Insight: ${eventName}`, data);
         
-        // Send to Google Analytics if available
+        // Send to Google Analytics if available (client-side)
         if (typeof gtag !== 'undefined') {
             gtag('event', eventName, {
                 ...data,
                 event_category: 'AI_Optimization'
             });
+        }
+        
+        // Also send server-side via Measurement Protocol (optional)
+        try {
+            fetch('/api/ga-collect', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                keepalive: true,
+                body: JSON.stringify({
+                    client_id: this.getOrCreateClientId(),
+                    events: [{
+                        name: eventName,
+                        params: {
+                            ...data,
+                            event_category: 'AI_Optimization'
+                        }
+                    }]
+                })
+            }).catch(() => {});
+        } catch (e) {
+            // no-op
         }
         
         // Store locally
@@ -748,6 +769,20 @@ class SEOAIIntegration {
     getCurrentSection() {
         const activeNav = document.querySelector('.nav-dot.active');
         return activeNav?.getAttribute('data-section') || 'unknown';
+    }
+    
+    getOrCreateClientId() {
+        try {
+            const KEY = 'ga_client_id';
+            let id = localStorage.getItem(KEY);
+            if (!id) {
+                id = `${Date.now()}.${Math.random().toString(36).slice(2)}`;
+                localStorage.setItem(KEY, id);
+            }
+            return id;
+        } catch (_) {
+            return `${Date.now()}.${Math.random().toString(36).slice(2)}`;
+        }
     }
     
     exportFinalAnalytics() {

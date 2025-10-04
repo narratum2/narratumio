@@ -1,8 +1,0 @@
-        <h3>7. Contact Information</h3>
-        <p>For any privacy-related questions or to exercise your rights, contact us at:</p>
-        <p>
-            Narratum LLC<br>
-            110 East 25th Street<br>
-            New York, NY 10010<br>
-            Email: privacy@narratum.io
-        </p>

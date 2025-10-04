@@ -1,0 +1,166 @@
+# Good Hands — Cursor AI Rules
+
+## Project Context
+AI-first beauty concierge platform for Lisbon. Next.js 14 + TypeScript + Tailwind + Framer Motion.
+
+## Design Philosophy
+- **Boutique-inspired**: Think boutique-homes.com, designhotels.com — editorial, high-end, minimal
+- **Editorial storytelling**: Full-bleed images, curated content, premium feel
+- **Performance-first**: LCP < 2.5s, optimize everything
+- **AI-discoverable**: JSON-LD, OpenAPI, semantic HTML
+
+## Code Standards
+
+### TypeScript
+- Use strict type checking
+- Prefer interfaces over types for objects
+- Use proper React.FC typing for components
+
+### Components
+- Keep components focused and single-purpose
+- Use 'use client' directive for interactive components
+- Place server components in app/ directory
+- Keep client components in components/ directory
+
+### Styling
+- Use Tailwind utility classes
+- Follow mobile-first responsive design
+- Use custom theme colors: ink, porcelain, shell, harbor, gold, sage, coral
+- Apply grain overlay for texture: `<Grain />` in layout
+- Maintain consistent spacing with section-padding class
+
+### Animations
+- Use Framer Motion for smooth transitions
+- Implement scroll-triggered animations with whileInView
+- Keep animations subtle and performant (60fps)
+- Use motion.div for fade-in, slide-up effects
+
+### Images
+- Always use Next.js Image component
+- Provide proper alt text for accessibility
+- Use priority prop for above-fold images
+- Maintain aspect ratios with Tailwind classes
+
+### Accessibility
+- Include aria-labels for interactive elements
+- Use semantic HTML (header, nav, main, section, article)
+- Ensure keyboard navigation works
+- Add focus-visible styles (focus-visible-ring class)
+- Maintain WCAG 2.1 AA color contrast
+
+## File Naming
+- Pages: kebab-case (e.g., principe-real/page.tsx)
+- Components: PascalCase (e.g., BookingForm.tsx)
+- Use .tsx for components, .ts for utilities
+
+## API Routes
+- Use Next.js 14 App Router conventions
+- Return proper HTTP status codes
+- Include error handling
+- Log important events to console
+- Capture UTM parameters in booking endpoints
+
+## SEO & Discoverability
+- Add JSON-LD schema to pages (Organization, Service, FAQPage, Article)
+- Include proper metadata exports
+- Use descriptive page titles: "Page Name — Good Hands"
+- Write compelling meta descriptions
+- Maintain semantic heading hierarchy (h1 → h2 → h3)
+
+## Performance
+- Minimize JavaScript bundle size
+- Use dynamic imports for heavy components
+- Optimize images (WebP, proper sizing)
+- Lazy load below-fold content
+- Monitor Core Web Vitals
+
+## Testing Checklist
+When adding features, verify:
+- [ ] Mobile responsiveness (320px to 1920px)
+- [ ] Keyboard navigation works
+- [ ] Focus states are visible
+- [ ] Images have alt text
+- [ ] Links have descriptive text
+- [ ] Forms have proper labels
+- [ ] Error states are handled
+- [ ] Loading states are shown
+
+## Common Patterns
+
+### New Page Template
+```tsx
+import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Page Title — Good Hands',
+  description: 'Page description for SEO',
+}
+
+export default function PageName() {
+  return (
+    <div className="pt-20">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] flex items-center justify-center">
+        {/* Content */}
+      </section>
+      
+      {/* Content Sections */}
+      <section className="section-padding bg-white">
+        {/* Your content */}
+      </section>
+    </div>
+  )
+}
+```
+
+### New Component Template
+```tsx
+'use client'
+
+import { motion } from 'framer-motion'
+
+interface ComponentProps {
+  // Define props
+}
+
+export default function ComponentName({ }: ComponentProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      {/* Component content */}
+    </motion.div>
+  )
+}
+```
+
+## Environment Variables
+- `SUPABASE_URL`: Required for production
+- `SUPABASE_SERVICE_ROLE_KEY`: Required for production
+- `NEXT_PUBLIC_INTERCOM_APP_ID`: Optional, for chat
+
+## Deployment
+- Push to main → auto-deploys to Vercel
+- Environment variables set in Vercel dashboard
+- Preview deployments for all branches
+
+## When Stuck
+1. Check Next.js 14 App Router docs
+2. Review Tailwind CSS documentation
+3. Refer to Framer Motion examples
+4. Test in multiple browsers
+5. Check Vercel deployment logs
+
+## Priority Order
+1. Performance (speed matters)
+2. Accessibility (everyone can use it)
+3. Design (looks matter)
+4. Features (only what's needed)
+
+Remember: **Minimal, elegant, fast, discoverable.**
+

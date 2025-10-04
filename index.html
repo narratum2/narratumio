@@ -123,11 +123,11 @@
     
 
     <!-- Main stylesheet with cache-busting query and error handling -->
-    <link rel="stylesheet" href="styles.css?v=20250831" onerror="this.onerror=null; document.body.classList.add('css-load-failed'); console.error('CSS failed to load');">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1759251685" onerror="this.onerror=null; document.body.classList.add('css-load-failed'); console.error('CSS failed to load');">
     
     <!-- Preload critical resources for faster loading -->
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="legal-content.js" as="script">
+    <link rel="preload" href="assets/js/script.js?v=1759251685" as="script">
+    <link rel="preload" href="assets/js/legal-content.js?v=1759251685" as="script">
     
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//formspree.io">
@@ -150,21 +150,20 @@
     </script>
 
     <!-- Main stylesheet with cache-busting query to force refresh if prior version was cached or 404 -->
-    <link rel="stylesheet" href="styles.css?v=20250831">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1759251685">
     
     <!-- SEO AI Optimization Scripts -->
-    <script src="intelligent-analytics.js" defer></script>
-    <script src="seo-ai-optimizer.js" defer></script>
-    <script src="seo-ai-integration.js" defer></script>
-    <script src="visual-ai-enhancer.js" defer></script>
-    <script src="advanced-seo-performance.js" defer></script>
-    <script src="ai-discovery-reporter.js" defer></script>
-    <script src="seo-automation-suite.js" defer></script>
+    <script src="assets/js/intelligent-analytics.js" defer></script>
+    <script src="assets/js/seo-ai-optimizer.js" defer></script>
+    <script src="assets/js/seo-ai-integration.js" defer></script>
+    <script src="assets/js/visual-ai-enhancer.js" defer></script>
+    <script src="assets/js/advanced-seo-performance.js" defer></script>
+    <script src="assets/js/ai-discovery-reporter.js" defer></script>
+    <script src="assets/js/seo-automation-suite.js" defer></script>
 
 </head>
 <body>
-    <a href="#main" class="skip-link">Skip to content</a>
-    <div class="mouse-glow"></div>
+    <a href="#main" class="skip-link">Skip to main content</a>
     <div class="loading-screen">
         <div class="loader">
             <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="frequency-loader">
@@ -849,8 +848,8 @@
             }
         });
     </script>
-    <script src="script.js" onerror="console.error('Main script failed to load'); window.scriptLoadFailed = true;"></script>
-    <script src="legal-content.js" onerror="console.error('Legal content failed to load'); window.legalContent = {};"></script>
+    <script src="assets/js/script.js?v=1759251685" onerror="console.error('Main script failed to load'); window.scriptLoadFailed = true;"></script>
+    <script src="assets/js/legal-content.js?v=1759251685" onerror="console.error('Legal content failed to load'); window.legalContent = {};"></script>
     <script>
         // Basic analytics fallback and error recovery
         window.addEventListener('load', function() {
@@ -885,14 +884,20 @@
         });
     </script>
     <script>
-        window.NARRATUM_AI_CONFIG = {
-            enabled: true,
-            overlay: { enabled: true, startHidden: true },
-            scheduling: { tickMs: 15000, minIntervalMs: 30000, maxIntervalMs: 3600000, adaptiveness: 0.6 },
-            consent: { sendTelemetry: false }
-        };
+        // Disable AI developer tools in production (only enable on localhost)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            window.NARRATUM_AI_CONFIG = {
+                enabled: true,
+                overlay: { enabled: true, startHidden: true },
+                scheduling: { tickMs: 15000, minIntervalMs: 30000, maxIntervalMs: 3600000, adaptiveness: 0.6 },
+                consent: { sendTelemetry: false }
+            };
+        } else {
+            // Production: Disable AI tools completely
+            window.NARRATUM_AI_CONFIG = { enabled: false };
+        }
     </script>
-    <script src="developer-ai-orchestrator.js"></script>
-    <script src="ai-agent-coordinator.js"></script>
+    <script src="assets/js/developer-ai-orchestrator.js"></script>
+    <script src="assets/js/ai-agent-coordinator.js"></script>
 </body>
 </html>

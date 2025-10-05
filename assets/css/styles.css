@@ -561,34 +561,49 @@ body {
 /* Color Mood Switcher - Updated with 6 themes */
 .mood-switcher {
     position: fixed !important;
-    bottom: 20px !important;
-    left: 20px !important;
+    bottom: 30px !important;
+    left: 30px !important;
     display: flex !important;
-    gap: 8px !important;
+    gap: 12px !important;
     z-index: 9999 !important;
     align-items: center !important;
     flex-wrap: wrap !important;
-    max-width: 120px !important;
+    max-width: 140px !important;
     visibility: visible !important;
     opacity: 1 !important;
+    padding: 8px 12px;
+    background: rgba(10, 21, 32, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mood-dot {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    opacity: 0.8;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    opacity: 0.7;
     display: block !important;
     visibility: visible !important;
+    position: relative;
+    overflow: hidden;
 }
 
-.mood-dot:hover, 
+.mood-dot:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
 .mood-dot.active {
-    transform: scale(1.2);
+    transform: scale(1.25);
     opacity: 1;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
 }
 
 .mood-dot[data-mood="default"] {

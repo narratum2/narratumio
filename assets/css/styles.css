@@ -4051,9 +4051,12 @@ button, a, input, select, textarea, .nav-dot, .mood-dot, .audio-toggle {
         padding: 0 16px;
     }
     
-    /* Hide anchor menu on mobile */
+    /* Keep anchor menu visible on mobile but adjust positioning */
     .anchor-menu {
-        display: none;
+        top: 20px;
+        gap: 16px;
+        padding: 8px 16px;
+        font-size: 12px;
     }
     
     /* Constellation background mobile */

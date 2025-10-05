@@ -376,8 +376,8 @@ body {
     width: 14px;
     height: 14px;
     padding: 0;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.4s var(--transition-smooth);
@@ -388,6 +388,8 @@ body {
     outline: none;
     will-change: transform, border-color;
     transform: translateZ(0);
+    display: block !important;
+    visibility: visible !important;
 }
 
 .nav-dot::before {
@@ -576,7 +578,9 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    opacity: 0.6;
+    opacity: 0.8;
+    display: block !important;
+    visibility: visible !important;
 }
 
 .mood-dot:hover, 
@@ -1415,6 +1419,8 @@ body {
     flex-direction: column;
     align-items: center;
     -webkit-tap-highlight-color: transparent;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .symbol-glyph {
@@ -1716,6 +1722,8 @@ body {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 32px !important;
     margin-top: 60px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .capability-item {
@@ -3075,6 +3083,8 @@ button, a, .symbol-item, .capability-block, .partnership-category, .journey-node
     gap: 24px;
     justify-content: flex-end;
     margin-bottom: 8px;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .footer-link {

@@ -676,7 +676,7 @@ function initializeAnchorMenu() {
                 const currentScrollY = window.scrollY;
                 
                 // Show when scrolled past hero and keep it visible
-                if (currentScrollY > window.innerHeight / 2) {
+                if (currentScrollY > 100) {
                     anchorMenu.classList.add('visible');
                     anchorMenu.style.transform = 'translateX(-50%) translateY(0)';
                     console.log('[ANCHOR] Menu shown at scroll:', currentScrollY);

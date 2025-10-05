@@ -362,34 +362,39 @@ body {
     right: 40px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    z-index: 9999 !important;
+    z-index: 99999 !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 24px !important;
-    will-change: transform;
-    contain: layout style paint; /* Performance optimization */
+    will-change: transform !important;
+    contain: layout style paint !important;
     visibility: visible !important;
     opacity: 1 !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    padding: 10px !important;
+    border-radius: 20px !important;
 }
 
 .nav-dot {
-    width: 14px;
-    height: 14px;
-    padding: 0;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.4s var(--transition-smooth);
-    position: relative;
-    overflow: hidden;
-    -webkit-appearance: none;
-    appearance: none;
-    outline: none;
-    will-change: transform, border-color;
-    transform: translateZ(0);
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0 !important;
+    background: rgba(251, 191, 36, 0.3) !important;
+    border: 2px solid rgba(251, 191, 36, 0.8) !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    transition: all 0.4s var(--transition-smooth) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    outline: none !important;
+    will-change: transform, border-color !important;
+    transform: translateZ(0) !important;
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10000 !important;
 }
 
 .nav-dot::before {

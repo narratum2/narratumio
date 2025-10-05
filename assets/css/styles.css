@@ -1,4 +1,4 @@
-/* Narratum.io - v3 Complete Styles - FINAL Production Version */
+/* Narratum.io - v3 Complete Styles - UPDATED Oct 4 2025 with Browser Test Fixes */
 
 :root {
     /* Color System - Dark Harbor Blue Theme */
@@ -358,16 +358,18 @@ body {
 
 /* Enhanced Navigation Dots with Advanced Animations */
 .nav-dots {
-    position: fixed;
-    right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    position: fixed !important;
+    right: 40px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
     will-change: transform;
     contain: layout style paint; /* Performance optimization */
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .nav-dot {
@@ -554,15 +556,17 @@ body {
 
 /* Color Mood Switcher - Updated with 6 themes */
 .mood-switcher {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    gap: 8px;
-    z-index: 100;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 120px;
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    display: flex !important;
+    gap: 8px !important;
+    z-index: 9999 !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    max-width: 120px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .mood-dot {
@@ -1394,11 +1398,12 @@ body {
 }
 
 .symbol-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 60px;
-    max-width: 1000px;
-    margin: 0 auto;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 60px !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    visibility: visible !important;
 }
 
 .symbol-item {
@@ -1707,10 +1712,10 @@ body {
 }
 
 .capability-areas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 60px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px !important;
+    margin-top: 60px !important;
 }
 
 .capability-item {

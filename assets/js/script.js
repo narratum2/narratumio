@@ -582,11 +582,17 @@ function initializeMouseGlow() {
 function initializeNavigation() {
     const sections = document.querySelectorAll('.section');
     const navDots = document.querySelectorAll('.nav-dot');
+    
+    console.log('[NAV] Sections found:', sections.length);
+    console.log('[NAV] Nav dots found:', navDots.length);
+    
     let isScrolling = false;
     
     // Smooth scroll to section
-    navDots.forEach(dot => {
+    navDots.forEach((dot, index) => {
+        console.log('[NAV] Adding listener to dot', index, dot.getAttribute('data-section'));
         dot.addEventListener('click', (e) => {
+            console.log('[NAV] Dot clicked:', index);
             e.preventDefault();
             const targetSection = dot.getAttribute('data-section');
             const section = document.getElementById(targetSection);
@@ -650,7 +656,15 @@ function initializeAnchorMenu() {
     const anchorMenu = document.querySelector('.anchor-menu');
     const sections = document.querySelectorAll('.section');
     
-    if (!anchorMenu) return;
+    console.log('[ANCHOR] Anchor menu element:', !!anchorMenu);
+    console.log('[ANCHOR] Sections:', sections.length);
+    
+    if (!anchorMenu) {
+        console.error('[ANCHOR] Anchor menu element not found!');
+        return;
+    }
+    
+    console.log('[ANCHOR] Initializing anchor menu scroll handler...');
     
     // Show/hide based on scroll
     let lastScrollY = window.scrollY;
@@ -661,18 +675,14 @@ function initializeAnchorMenu() {
             scrollTimeout = setTimeout(() => {
                 const currentScrollY = window.scrollY;
                 
-                // Show when scrolled past hero
+                // Show when scrolled past hero and keep it visible
                 if (currentScrollY > window.innerHeight / 2) {
                     anchorMenu.classList.add('visible');
-                    
-                    // Hide on scroll down, show on scroll up
-                    if (currentScrollY > lastScrollY && currentScrollY > window.innerHeight) {
-                        anchorMenu.style.transform = 'translateX(-50%) translateY(-100%)';
-                    } else {
-                        anchorMenu.style.transform = 'translateX(-50%) translateY(0)';
-                    }
+                    anchorMenu.style.transform = 'translateX(-50%) translateY(0)';
+                    console.log('[ANCHOR] Menu shown at scroll:', currentScrollY);
                 } else {
                     anchorMenu.classList.remove('visible');
+                    console.log('[ANCHOR] Menu hidden (above hero)');
                 }
                 
                 lastScrollY = currentScrollY;
@@ -814,6 +824,7 @@ function initializeParallax() {
 
 // Enhanced Symbol Interactions
 function initializeSymbolInteractions() {
+
     const symbols = document.querySelectorAll('.symbol-item');
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     
@@ -831,12 +842,23 @@ function initializeSymbolInteractions() {
             }
             
             const wasActive = this.classList.contains('active');
+            console.log('[DEBUG] Symbol was active:', wasActive);
             
             // Close all symbols
             symbols.forEach(s => s.classList.remove('active'));
+            console.log('[DEBUG] Closed all symbols');
             
             if (!wasActive) {
                 this.classList.add('active');
+                console.log('[DEBUG] Added active class to symbol', this.getAttribute('data-symbol'));
+                console.log('[DEBUG] Symbol now has active class:', this.classList.contains('active'));
+                
+                // Verify content exists
+                const content = this.querySelector('.symbol-content');
+                console.log('[DEBUG] Symbol has content element:', !!content);
+                if (content) {
+                    console.log('[DEBUG] Content display:', window.getComputedStyle(content).display);
+                }
                 
                 // Create magical particles on desktop
                 if (!isMobile) {
@@ -1684,17 +1706,31 @@ function initializeCookieBanner() {
 
 // Legal Modals
 function initializeLegalModals() {
+    console.log('[MODALS] Initializing legal modals...');
+    console.log('[MODALS] legalContent exists:', !!window.legalContent);
+    
     // Make functions global for onclick handlers
     window.openLegalModal = function(type) {
+        console.log('[MODALS] openLegalModal called with type:', type);
         const modal = document.getElementById('legalModal');
         const modalContent = document.getElementById('modalContent');
         
+        console.log('[MODALS] Modal element:', !!modal);
+        console.log('[MODALS] modalContent element:', !!modalContent);
+        console.log('[MODALS] legalContent[' + type + ']:', !!window.legalContent?.[type]);
+        
         if (modal && modalContent && window.legalContent && window.legalContent[type]) {
+            console.log('[MODALS] Opening modal...');
             modalContent.innerHTML = window.legalContent[type];
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            console.log('[MODALS] Modal opened successfully');
+        } else {
+            console.error('[MODALS] Cannot open modal - missing requirements');
         }
     };
+    
+    console.log('[MODALS] window.openLegalModal defined:', typeof window.openLegalModal);
     
     window.closeLegalModal = function() {
         const modal = document.getElementById('legalModal');
@@ -1720,8 +1756,15 @@ function initializeSmoothScroll() {
     // Add smooth scroll to all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if href is just "#" or empty
+            if (!href || href === '#' || href.length <= 1) {
+                return;
+            }
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             
             if (target) {
                 const offset = 80; // Account for fixed elements
@@ -2243,15 +2286,17 @@ function initializeProgressiveDisclosure() {
     });
 }
 
-// Export functions for external use
-window.narratum = {
-    playSound: playInteractionSound,
-    openModal: openLegalModal,
-    closeModal: closeLegalModal,
-    acceptCookies: acceptCookies,
-    healthCheck: performHealthCheck,
-    reinitialize: initializeApp
-};
+// Export functions for external use (after they're defined)
+window.addEventListener('load', function() {
+    window.narratum = {
+        playSound: playInteractionSound,
+        openModal: window.openLegalModal,
+        closeModal: window.closeLegalModal,
+        acceptCookies: window.acceptCookies,
+        healthCheck: performHealthCheck,
+        reinitialize: initializeApp
+    };
+});
 
 // CRITICAL UX FIX - Force proper progressive disclosure
 document.addEventListener("DOMContentLoaded", function() {

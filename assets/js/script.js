@@ -676,7 +676,7 @@ function initializeAnchorMenu() {
                 const currentScrollY = window.scrollY;
                 
                 // Show when scrolled past hero and keep it visible
-                if (currentScrollY > 100) {
+                if (currentScrollY > window.innerHeight / 3) { // Show earlier
                     anchorMenu.classList.add('visible');
                     console.log('[ANCHOR] Menu shown at scroll:', currentScrollY);
                 } else {
@@ -1164,10 +1164,14 @@ let isAudioInitialized = false;
 let isAudioPlaying = false;
 
 function initializeAudioToggle() {
-    const audioToggle = document.querySelector('.audio-toggle');
-    const soundVisualization = document.querySelector('.sound-visualization');
-    
-    if (!audioToggle) return;
+    try {
+        const audioToggle = document.querySelector('.audio-toggle');
+        const soundVisualization = document.querySelector('.sound-visualization');
+        
+        if (!audioToggle || !window.AudioContext) {
+            console.warn('[Audio] Audio toggle or AudioContext not available');
+            return;   // bail gracefully
+        }
     
     audioToggle.addEventListener('click', async () => {
         const currentState = audioToggle.getAttribute('data-state');
@@ -1211,6 +1215,9 @@ function initializeAudioToggle() {
             }
         }
     });
+    } catch (e) {
+        console.error('[Audio] init failed', e);
+    }
 }
 
 async function initializeAudioContext() {
@@ -1705,8 +1712,18 @@ function initializeCookieBanner() {
 
 // Legal Modals
 function initializeLegalModals() {
-    console.log('[MODALS] Initializing legal modals...');
-    console.log('[MODALS] legalContent exists:', !!window.legalContent);
+    try {
+        console.log('[MODALS] Initializing legal modals...');
+        console.log('[MODALS] legalContent exists:', !!window.legalContent);
+        
+        if (!window.legalContent) {
+            console.warn('[Legal] content not ready; deferring');
+            setTimeout(() => {
+                if (!window.legalContent) return;   // fail silently instead of throwing
+                initializeLegalModals();
+            }, 300);
+            return;
+        }
     
     // Make functions global for onclick handlers
     window.openLegalModal = function(type) {
@@ -1730,6 +1747,9 @@ function initializeLegalModals() {
     };
     
     console.log('[MODALS] window.openLegalModal defined:', typeof window.openLegalModal);
+    } catch (e) {
+        console.error('[Legal] init failed', e);
+    }
     
     window.closeLegalModal = function() {
         const modal = document.getElementById('legalModal');
@@ -2424,3 +2444,26 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("[Critical Fix] Progressive disclosure fixed");
     }, 100);
 });
+
+// Debug API for health checking and reinitialization
+(function () {
+    function has(sel) { return !!document.querySelector(sel); }
+    function sections() { return document.querySelectorAll('section.section').length; }
+    window.NARRATUM_DEBUG = {
+        health() {
+            return {
+                cssFailed: document.body.classList.contains('css-load-failed'),
+                scriptLoadFailed: !!window.scriptLoadFailed,
+                legalContentLoaded: typeof window.legalContent === 'object',
+                hasAnchorMenu: has('.anchor-menu'),
+                hasNavDots: has('.nav-dots'),
+                hasGoldLine: has('.gold-line'),
+                hasMoodSwitcher: has('.mood-switcher'),
+                sections: sections()
+            };
+        },
+        reinit() {
+            try { initializeApp(); } catch (e) { console.error('[Reinit] failed', e); }
+        }
+    };
+})();

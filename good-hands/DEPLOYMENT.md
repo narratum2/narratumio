@@ -242,3 +242,5 @@ For deployment issues:
 
 🎉 **Congratulations!** Your Good Hands platform is now live and ready to connect clients with beautiful experiences.
 
+
+

@@ -1739,12 +1739,119 @@ function initializeLegalModals() {
         }
     };
     
+    // Frequency Modal Functions
+    window.openFrequencyModal = function(symbol) {
+        console.log('[FREQUENCY] openFrequencyModal called with symbol:', symbol);
+        const modal = document.getElementById('frequencyModal');
+        const modalContent = document.getElementById('frequencyModalContent');
+        
+        if (modal && modalContent) {
+            const frequencyContent = {
+                strategy: `
+                    <h2>Strategy</h2>
+                    <p>Strategic thinking at the core of every decision. We analyze, plan, and execute with precision to deliver transformative hospitality experiences.</p>
+                    <ul>
+                        <li>Market analysis and positioning</li>
+                        <li>Strategic planning and execution</li>
+                        <li>Competitive advantage development</li>
+                        <li>Long-term vision alignment</li>
+                    </ul>
+                `,
+                systems: `
+                    <h2>Systems</h2>
+                    <p>Robust infrastructure that scales with your vision. Our systems are designed for reliability, efficiency, and seamless integration.</p>
+                    <ul>
+                        <li>Scalable technology architecture</li>
+                        <li>Automated workflow systems</li>
+                        <li>Data integration and management</li>
+                        <li>Performance monitoring and optimization</li>
+                    </ul>
+                `,
+                service: `
+                    <h2>Service</h2>
+                    <p>Exceptional service delivery that exceeds expectations. We create memorable experiences that build lasting relationships.</p>
+                    <ul>
+                        <li>Personalized guest experiences</li>
+                        <li>24/7 support and assistance</li>
+                        <li>Quality assurance protocols</li>
+                        <li>Continuous service improvement</li>
+                    </ul>
+                `,
+                culture: `
+                    <h2>Culture</h2>
+                    <p>Building strong organizational culture that drives success. We foster environments where teams thrive and excel.</p>
+                    <ul>
+                        <li>Values-driven leadership</li>
+                        <li>Team development and training</li>
+                        <li>Employee engagement programs</li>
+                        <li>Cultural transformation initiatives</li>
+                    </ul>
+                `,
+                innovation: `
+                    <h2>Innovation</h2>
+                    <p>Cutting-edge solutions that set you apart. We leverage the latest technology and methodologies to drive innovation.</p>
+                    <ul>
+                        <li>Technology integration and adoption</li>
+                        <li>Process innovation and optimization</li>
+                        <li>Digital transformation strategies</li>
+                        <li>Future-ready solutions</li>
+                    </ul>
+                `,
+                impact: `
+                    <h2>Impact</h2>
+                    <p>Measurable results that drive business growth. We focus on outcomes that matter most to your success.</p>
+                    <ul>
+                        <li>Performance metrics and KPIs</li>
+                        <li>ROI measurement and optimization</li>
+                        <li>Business growth acceleration</li>
+                        <li>Sustainable success strategies</li>
+                    </ul>
+                `
+            };
+            
+            if (frequencyContent[symbol]) {
+                modalContent.innerHTML = frequencyContent[symbol];
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    };
+    
+    window.closeFrequencyModal = function() {
+        const modal = document.getElementById('frequencyModal');
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    };
+    
     // Close modal on outside click
     const modal = document.getElementById('legalModal');
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeLegalModal();
+            }
+        });
+    }
+    
+    // Add click handlers to frequency symbols
+    const frequencySymbols = document.querySelectorAll('.symbol-item');
+    frequencySymbols.forEach(symbol => {
+        symbol.addEventListener('click', () => {
+            const symbolType = symbol.getAttribute('data-symbol');
+            if (symbolType) {
+                openFrequencyModal(symbolType);
+            }
+        });
+    });
+    
+    // Close frequency modal on outside click
+    const frequencyModal = document.getElementById('frequencyModal');
+    if (frequencyModal) {
+        frequencyModal.addEventListener('click', (e) => {
+            if (e.target === frequencyModal) {
+                closeFrequencyModal();
             }
         });
     }

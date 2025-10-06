@@ -77,8 +77,7 @@ function initializeApp() {
     // VISUAL FEATURES - Short delay for smooth loading
     setTimeout(() => {
         console.log('[APP] Initializing visual features...');
-        // Each initializer is wrapped to prevent one failure from halting others.
-        try { initializeLegalModals(); } catch (e) { console.error('[INIT] Legal Modals failed outside safeInit', e); }
+        try { initializeLegalModals(); } catch (e) { console.error('[INIT] Legal Modals failed', e); }
         try { initializeObservers(); } catch (e) { console.error('[INIT] Observers failed', e); }
         try { initializeAudioToggle(); } catch (e) { console.error('[INIT] Audio failed', e); }
         try { initializeColorMoodSwitcher(); } catch (e) { console.error('[INIT] Colors failed', e); }
@@ -1713,14 +1712,15 @@ function initializeCookieBanner() {
 // Legal Modals
 function initializeLegalModals(attempt = 0) {
     if (!window.legalContent) {
-        // Reverted to a single, simpler timeout to test safeguard-check
-        setTimeout(() => initializeLegalModals(), 300);
-        console.warn('[Legal] legal-content.js not ready. Retrying once in 300ms.');
+        if (attempt < 10) { // Poll for ~1s
+            setTimeout(() => initializeLegalModals(attempt + 1), 100);
+        } else {
+            console.warn('[Legal] legal-content.js never loaded. Modals may not function.');
+        }
         return;
     }
 
     safeInit(() => {
-        // Define global functions for HTML onclick attributes and dynamic calls
         window.openLegalModal = function(type) {
             const modal = document.getElementById('legalModal');
             const modalContent = document.getElementById('modalContent');
@@ -1757,7 +1757,6 @@ function initializeLegalModals(attempt = 0) {
             }
         };
 
-        // Attach event listeners now that functions are defined
         document.querySelectorAll('.symbol-item').forEach(symbol => {
             symbol.addEventListener('click', () => {
                 const symbolType = symbol.getAttribute('data-symbol');
@@ -1765,7 +1764,6 @@ function initializeLegalModals(attempt = 0) {
             });
         });
 
-        // Add listeners to close modals on outside click
         const legalModal = document.getElementById('legalModal');
         if (legalModal) {
             legalModal.addEventListener('click', (e) => {
@@ -2518,12 +2516,12 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 })();
 
-// Content for the frequency modals
+// Content for the frequency modals (placeholder for now)
 window.frequencyContent = {
-    strategy: `<h2>Strategy</h2><p>Strategic thinking at the core of every decision. We analyze, plan, and execute with precision...</p>`,
-    systems: `<h2>Systems</h2><p>Robust infrastructure that scales with your vision. Our systems are designed for reliability and efficiency...</p>`,
-    service: `<h2>Service</h2><p>Exceptional service delivery that exceeds expectations. We create memorable experiences that build lasting relationships...</p>`,
-    culture: `<h2>Culture</h2><p>Building strong organizational culture that drives success. We foster environments where teams thrive and excel...</p>`,
-    innovation: `<h2>Innovation</h2><p>Cutting-edge solutions that set you apart. We leverage the latest technology to drive innovation...</p>`,
-    impact: `<h2>Impact</h2><p>Measurable results that drive business growth. We focus on outcomes that matter to your success...</p>`
+    strategy: `<h2>Strategy</h2><p>Placeholder content...</p>`,
+    systems: `<h2>Systems</h2><p>Placeholder content...</p>`,
+    service: `<h2>Service</h2><p>Placeholder content...</p>`,
+    culture: `<h2>Culture</h2><p>Placeholder content...</p>`,
+    innovation: `<h2>Innovation</h2><p>Placeholder content...</p>`,
+    impact: `<h2>Impact</h2><p>Placeholder content...</p>`
 };

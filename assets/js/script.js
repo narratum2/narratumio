@@ -68,7 +68,6 @@ function safeInit(fn, name) {
 function initializeApp() {
     // CRITICAL INTERACTIVE FEATURES - NO DELAY
     console.log('[APP] Initializing critical features immediately...');
-    // safeInit(initializeSymbolInteractions, 'Symbols'); // DISABLED - replaced by frequency modal handlers
     safeInit(initializeFormHandling, 'Form');
     safeInit(initializeCookieBanner, 'Cookies');
     safeInit(initializeNavigation, 'Navigation');
@@ -78,18 +77,19 @@ function initializeApp() {
     // VISUAL FEATURES - Short delay for smooth loading
     setTimeout(() => {
         console.log('[APP] Initializing visual features...');
-        safeInit(initializeLegalModals, 'Legal Modals'); // Initialize first to ensure frequency handlers exist
-        safeInit(initializeObservers, 'Observers');
-        safeInit(initializeAudioToggle, 'Audio');
-        safeInit(initializeColorMoodSwitcher, 'Colors');
-        safeInit(initializeInteractiveBackground, 'Background');
-        safeInit(initializeLoyaltyJourney, 'Loyalty');
-        safeInit(initializeConstellationBackground, 'Constellation');
-        safeInit(initializeTextHighlighting, 'Text Highlight');
-        safeInit(initializeAnchorMenu, 'Anchor Menu');
-        safeInit(initializeSubtleHighlighting, 'Subtle Highlight');
-        safeInit(initializeGoldLine, 'Gold Line');
-        safeInit(initializeProgressiveDisclosure, 'Progressive Disclosure');
+        // Each initializer is wrapped to prevent one failure from halting others.
+        try { initializeLegalModals(); } catch (e) { console.error('[INIT] Legal Modals failed outside safeInit', e); }
+        try { initializeObservers(); } catch (e) { console.error('[INIT] Observers failed', e); }
+        try { initializeAudioToggle(); } catch (e) { console.error('[INIT] Audio failed', e); }
+        try { initializeColorMoodSwitcher(); } catch (e) { console.error('[INIT] Colors failed', e); }
+        try { initializeInteractiveBackground(); } catch (e) { console.error('[INIT] Background failed', e); }
+        try { initializeLoyaltyJourney(); } catch (e) { console.error('[INIT] Loyalty failed', e); }
+        try { initializeConstellationBackground(); } catch (e) { console.error('[INIT] Constellation failed', e); }
+        try { initializeTextHighlighting(); } catch (e) { console.error('[INIT] Text Highlight failed', e); }
+        try { initializeAnchorMenu(); } catch (e) { console.error('[INIT] Anchor Menu failed', e); }
+        try { initializeSubtleHighlighting(); } catch (e) { console.error('[INIT] Subtle Highlight failed',e); }
+        try { initializeGoldLine(); } catch (e) { console.error('[INIT] Gold Line failed', e); }
+        try { initializeProgressiveDisclosure(); } catch (e) { console.error('[INIT] Progressive Disclosure failed', e); }
     }, 300);
 }
 
@@ -1712,51 +1712,76 @@ function initializeCookieBanner() {
 
 // Legal Modals
 function initializeLegalModals(attempt = 0) {
-    try {
-        console.log('[MODALS] Initializing legal modals... attempt', attempt);
-        console.log('[MODALS] legalContent exists:', !!window.legalContent);
-        
-        if (!window.legalContent) {
-            if (attempt < 10) { // try for ~1s total
-                console.warn('[Legal] content not ready; retrying in 100ms (attempt ' + (attempt + 1) + '/10)');
-                setTimeout(() => initializeLegalModals(attempt + 1), 100);
-            } else {
-                console.warn('[Legal] legal-content.js never loaded after 10 attempts');
-                // Create fallback empty content to prevent errors
-                window.legalContent = {};
-            }
-            return;
-        }
-    
-    // Make functions global for onclick handlers
-    window.openLegalModal = function(type) {
-        console.log('[MODALS] openLegalModal called with type:', type);
-        const modal = document.getElementById('legalModal');
-        const modalContent = document.getElementById('modalContent');
-        
-        console.log('[MODALS] Modal element:', !!modal);
-        console.log('[MODALS] modalContent element:', !!modalContent);
-        console.log('[MODALS] legalContent[' + type + ']:', !!window.legalContent?.[type]);
-        
-        if (modal && modalContent && window.legalContent && window.legalContent[type]) {
-            console.log('[MODALS] Opening modal...');
-            modalContent.innerHTML = window.legalContent[type];
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            console.log('[MODALS] Modal opened successfully');
+    if (!window.legalContent) {
+        if (attempt < 10) { // Poll for ~1s
+            setTimeout(() => initializeLegalModals(attempt + 1), 100);
         } else {
-            console.error('[MODALS] Cannot open modal - missing requirements');
+            console.warn('[Legal] legal-content.js never loaded. Modals may not function.');
         }
-    };
-    
-    console.log('[MODALS] window.openLegalModal defined:', typeof window.openLegalModal);
-    
-    // Initialize frequency symbol click handlers
-    initializeFrequencyHandlers();
-    
-    } catch (e) {
-        console.error('[Legal] init failed', e);
+        return;
     }
+
+    safeInit(() => {
+        // Define global functions for HTML onclick attributes and dynamic calls
+        window.openLegalModal = function(type) {
+            const modal = document.getElementById('legalModal');
+            const modalContent = document.getElementById('modalContent');
+            if (modal && modalContent && window.legalContent[type]) {
+                modalContent.innerHTML = window.legalContent[type];
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeLegalModal = function() {
+            const modal = document.getElementById('legalModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        };
+
+        window.openFrequencyModal = function(symbol) {
+            const modal = document.getElementById('frequencyModal');
+            const modalContent = document.getElementById('frequencyModalContent');
+            if (modal && modalContent && window.frequencyContent[symbol]) {
+                modalContent.innerHTML = window.frequencyContent[symbol];
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeFrequencyModal = function() {
+            const modal = document.getElementById('frequencyModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        };
+
+        // Attach event listeners now that functions are defined
+        document.querySelectorAll('.symbol-item').forEach(symbol => {
+            symbol.addEventListener('click', () => {
+                const symbolType = symbol.getAttribute('data-symbol');
+                if (symbolType) window.openFrequencyModal(symbolType);
+            });
+        });
+
+        // Add listeners to close modals on outside click
+        const legalModal = document.getElementById('legalModal');
+        if (legalModal) {
+            legalModal.addEventListener('click', (e) => {
+                if (e.target === legalModal) window.closeLegalModal();
+            });
+        }
+        
+        const frequencyModal = document.getElementById('frequencyModal');
+        if (frequencyModal) {
+            frequencyModal.addEventListener('click', (e) => {
+                if (e.target === frequencyModal) window.closeFrequencyModal();
+            });
+        }
+    }, 'Legal & Frequency Modals');
 }
 
 // Separate function for frequency symbol interactions
@@ -2494,3 +2519,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 })();
+
+// Content for the frequency modals
+window.frequencyContent = {
+    strategy: `<h2>Strategy</h2><p>Strategic thinking at the core of every decision. We analyze, plan, and execute with precision...</p>`,
+    systems: `<h2>Systems</h2><p>Robust infrastructure that scales with your vision. Our systems are designed for reliability and efficiency...</p>`,
+    service: `<h2>Service</h2><p>Exceptional service delivery that exceeds expectations. We create memorable experiences that build lasting relationships...</p>`,
+    culture: `<h2>Culture</h2><p>Building strong organizational culture that drives success. We foster environments where teams thrive and excel...</p>`,
+    innovation: `<h2>Innovation</h2><p>Cutting-edge solutions that set you apart. We leverage the latest technology to drive innovation...</p>`,
+    impact: `<h2>Impact</h2><p>Measurable results that drive business growth. We focus on outcomes that matter to your success...</p>`
+};

@@ -1713,11 +1713,9 @@ function initializeCookieBanner() {
 // Legal Modals
 function initializeLegalModals(attempt = 0) {
     if (!window.legalContent) {
-        if (attempt < 10) { // Poll for ~1s
-            setTimeout(() => initializeLegalModals(attempt + 1), 100);
-        } else {
-            console.warn('[Legal] legal-content.js never loaded. Modals may not function.');
-        }
+        // Reverted to a single, simpler timeout to test safeguard-check
+        setTimeout(() => initializeLegalModals(), 300);
+        console.warn('[Legal] legal-content.js not ready. Retrying once in 300ms.');
         return;
     }
 

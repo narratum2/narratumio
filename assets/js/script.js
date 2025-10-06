@@ -2522,10 +2522,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Content for the frequency modals
 window.frequencyContent = {
-    strategy: `<h2>Strategy</h2><p>Placeholder content...</p>`,
-    systems: `<h2>Systems</h2><p>Placeholder content...</p>`,
-    service: `<h2>Service</h2><p>Placeholder content...</p>`,
-    culture: `<h2>Culture</h2><p>Placeholder content...</p>`,
-    innovation: `<h2>Innovation</h2><p>Placeholder content...</p>`,
-    impact: `<h2>Impact</h2><p>Placeholder content...</p>`
+    strategy: `<h2>Strategy</h2><p>Strategic thinking at the core of every decision. We analyze, plan, and execute with precision...</p>`,
+    systems: `<h2>Systems</h2><p>Robust infrastructure that scales with your vision. Our systems are designed for reliability and efficiency...</p>`,
+    service: `<h2>Service</h2><p>Exceptional service delivery that exceeds expectations. We create memorable experiences that build lasting relationships...</p>`,
+    culture: `<h2>Culture</h2><p>Building strong organizational culture that drives success. We foster environments where teams thrive and excel...</p>`,
+    innovation: `<h2>Innovation</h2><p>Cutting-edge solutions that set you apart. We leverage the latest technology to drive innovation...</p>`,
+    impact: `<h2>Impact</h2><p>Measurable results that drive business growth. We focus on outcomes that matter to your success...</p>`
 };

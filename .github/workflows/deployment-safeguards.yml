@@ -92,7 +92,7 @@ jobs:
         fi
         
         # Check coordinator file exists
-        if [ ! -f "ai-agent-coordinator.js" ]; then
+        if [ ! -f "assets/js/ai-agent-coordinator.js" ]; then
           echo "❌ AI Agent Coordinator file missing"
           exit 1
         fi

@@ -68,8 +68,7 @@ function safeInit(fn, name) {
 function initializeApp() {
     // CRITICAL INTERACTIVE FEATURES - NO DELAY
     console.log('[APP] Initializing critical features immediately...');
-    safeInit(initializeSymbolInteractions, 'Symbols');
-    safeInit(initializeLegalModals, 'Legal Modals');
+    // safeInit(initializeSymbolInteractions, 'Symbols'); // DISABLED - replaced by frequency modal handlers
     safeInit(initializeFormHandling, 'Form');
     safeInit(initializeCookieBanner, 'Cookies');
     safeInit(initializeNavigation, 'Navigation');
@@ -79,6 +78,7 @@ function initializeApp() {
     // VISUAL FEATURES - Short delay for smooth loading
     setTimeout(() => {
         console.log('[APP] Initializing visual features...');
+        safeInit(initializeLegalModals, 'Legal Modals'); // Initialize first to ensure frequency handlers exist
         safeInit(initializeObservers, 'Observers');
         safeInit(initializeAudioToggle, 'Audio');
         safeInit(initializeColorMoodSwitcher, 'Colors');
@@ -1711,17 +1711,20 @@ function initializeCookieBanner() {
 }
 
 // Legal Modals
-function initializeLegalModals() {
+function initializeLegalModals(attempt = 0) {
     try {
-        console.log('[MODALS] Initializing legal modals...');
+        console.log('[MODALS] Initializing legal modals... attempt', attempt);
         console.log('[MODALS] legalContent exists:', !!window.legalContent);
         
         if (!window.legalContent) {
-            console.warn('[Legal] content not ready; deferring');
-            setTimeout(() => {
-                if (!window.legalContent) return;   // fail silently instead of throwing
-                initializeLegalModals();
-            }, 300);
+            if (attempt < 10) { // try for ~1s total
+                console.warn('[Legal] content not ready; retrying in 100ms (attempt ' + (attempt + 1) + '/10)');
+                setTimeout(() => initializeLegalModals(attempt + 1), 100);
+            } else {
+                console.warn('[Legal] legal-content.js never loaded after 10 attempts');
+                // Create fallback empty content to prevent errors
+                window.legalContent = {};
+            }
             return;
         }
     
@@ -1747,11 +1750,46 @@ function initializeLegalModals() {
     };
     
     console.log('[MODALS] window.openLegalModal defined:', typeof window.openLegalModal);
+    
+    // Initialize frequency symbol click handlers
+    initializeFrequencyHandlers();
+    
     } catch (e) {
         console.error('[Legal] init failed', e);
     }
+}
+
+// Separate function for frequency symbol interactions
+function initializeFrequencyHandlers() {
+    try {
+        console.log('[FREQUENCY] Initializing frequency symbol handlers...');
+        
+        // Add click handlers to frequency symbols
+        const frequencySymbols = document.querySelectorAll('.symbol-item');
+        console.log('[FREQUENCY] Found', frequencySymbols.length, 'frequency symbols');
+        
+        frequencySymbols.forEach((symbol, index) => {
+            symbol.addEventListener('click', () => {
+                const symbolType = symbol.getAttribute('data-symbol');
+                console.log('[FREQUENCY] Symbol clicked:', symbolType, 'index:', index);
+                if (symbolType && window.openFrequencyModal) {
+                    window.openFrequencyModal(symbolType);
+                } else {
+                    console.warn('[FREQUENCY] Missing symbolType or openFrequencyModal function');
+                }
+            });
+            
+            // Add cursor pointer style
+            symbol.style.cursor = 'pointer';
+        });
+        
+        console.log('[FREQUENCY] Frequency handlers initialized successfully');
+    } catch (e) {
+        console.error('[FREQUENCY] Failed to initialize frequency handlers:', e);
+    }
+}
     
-    window.closeLegalModal = function() {
+window.closeLegalModal = function() {
         const modal = document.getElementById('legalModal');
         if (modal) {
             modal.style.display = 'none';
@@ -1854,17 +1892,6 @@ function initializeLegalModals() {
             }
         });
     }
-    
-    // Add click handlers to frequency symbols
-    const frequencySymbols = document.querySelectorAll('.symbol-item');
-    frequencySymbols.forEach(symbol => {
-        symbol.addEventListener('click', () => {
-            const symbolType = symbol.getAttribute('data-symbol');
-            if (symbolType) {
-                openFrequencyModal(symbolType);
-            }
-        });
-    });
     
     // Close frequency modal on outside click
     const frequencyModal = document.getElementById('frequencyModal');

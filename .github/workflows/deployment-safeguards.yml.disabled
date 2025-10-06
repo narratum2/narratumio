@@ -1,0 +1,165 @@
+name: Deployment Safeguards
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  safeguard-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
+    
+    - name: Check for critical file changes
+      run: |
+        echo "🔍 Checking for critical changes..."
+        
+        # Check if core files were modified
+        CRITICAL_FILES=(
+          "index.html"
+          "styles.css" 
+          "script.js"
+          "ai-agent-coordinator.js"
+        )
+        
+        CHANGED_FILES=$(git diff --name-only HEAD~1)
+        CRITICAL_CHANGED=""
+        
+        for file in "${CRITICAL_FILES[@]}"; do
+          if echo "$CHANGED_FILES" | grep -q "^$file$"; then
+            CRITICAL_CHANGED="$CRITICAL_CHANGED $file"
+          fi
+        done
+        
+        if [ -n "$CRITICAL_CHANGED" ]; then
+          echo "⚠️ Critical files changed:$CRITICAL_CHANGED"
+          echo "CRITICAL_CHANGES=true" >> $GITHUB_ENV
+        else
+          echo "✅ No critical files changed"
+          echo "CRITICAL_CHANGES=false" >> $GITHUB_ENV
+        fi
+    
+    - name: Validate HTML structure
+      if: contains(github.event.head_commit.modified, 'index.html')
+      run: |
+        echo "🔍 Validating HTML structure..."
+        
+        # Check for required elements
+        REQUIRED_ELEMENTS=(
+          ".nav-dot"
+          ".symbol-item"
+          ".symbol-content"
+          "#contactForm"
+          ".loading-screen"
+        )
+        
+        for element in "${REQUIRED_ELEMENTS[@]}"; do
+          if ! grep -q "$element" index.html; then
+            echo "❌ Missing required element: $element"
+            exit 1
+          else
+            echo "✅ Found: $element"
+          fi
+        done
+    
+    - name: Check for merge conflicts
+      run: |
+        echo "🔍 Checking for merge conflict markers..."
+        
+        CONFLICT_MARKERS=$(grep -r "<<<<<<\|======\|>>>>>>" . --exclude-dir=.git --exclude-dir=node_modules || true)
+        
+        if [ -n "$CONFLICT_MARKERS" ]; then
+          echo "❌ Merge conflict markers found:"
+          echo "$CONFLICT_MARKERS"
+          exit 1
+        else
+          echo "✅ No merge conflicts detected"
+        fi
+    
+    - name: Validate AI Agent Coordination
+      run: |
+        echo "🔍 Validating AI agent system..."
+        
+        # Check coordinator is properly loaded
+        if ! grep -q "ai-agent-coordinator.js" index.html; then
+          echo "❌ AI Agent Coordinator not loaded in HTML"
+          exit 1
+        fi
+        
+        # Check coordinator file exists
+        if [ ! -f "assets/js/ai-agent-coordinator.js" ]; then
+          echo "❌ AI Agent Coordinator file missing"
+          exit 1
+        fi
+        
+        echo "✅ AI coordination system validated"
+    
+    - name: Security check
+      run: |
+        echo "🔍 Running security checks..."
+        
+        # Check for suspicious patterns
+        SUSPICIOUS_PATTERNS=(
+          "eval("
+          "innerHTML.*<script"
+          "document.write.*<script"
+          "setTimeout.*eval"
+        )
+        
+        for pattern in "${SUSPICIOUS_PATTERNS[@]}"; do
+          MATCHES=$(grep -r "$pattern" . --exclude-dir=.git --exclude-dir=node_modules || true)
+          if [ -n "$MATCHES" ]; then
+            echo "⚠️ Suspicious pattern found: $pattern"
+            echo "$MATCHES"
+          fi
+        done
+        
+        echo "✅ Security check completed"
+    
+    - name: Performance validation
+      run: |
+        echo "🔍 Checking performance considerations..."
+        
+        # Check file sizes
+        HTML_SIZE=$(wc -c < index.html)
+        CSS_SIZE=$(wc -c < styles.css)
+        JS_SIZE=$(wc -c < script.js)
+        
+        echo "File sizes:"
+        echo "  HTML: $HTML_SIZE bytes"
+        echo "  CSS: $CSS_SIZE bytes" 
+        echo "  JS: $JS_SIZE bytes"
+        
+        # Warn if files are getting too large
+        if [ $HTML_SIZE -gt 100000 ]; then
+          echo "⚠️ HTML file is quite large ($HTML_SIZE bytes)"
+        fi
+        
+        if [ $CSS_SIZE -gt 500000 ]; then
+          echo "⚠️ CSS file is quite large ($CSS_SIZE bytes)"
+        fi
+        
+        if [ $JS_SIZE -gt 300000 ]; then
+          echo "⚠️ JavaScript file is quite large ($JS_SIZE bytes)"
+        fi
+        
+        echo "✅ Performance check completed"
+        
+    - name: Final deployment readiness
+      run: |
+        echo "🚀 Deployment readiness summary:"
+        echo "Critical changes: $CRITICAL_CHANGES"
+        
+        if [ "$CRITICAL_CHANGES" = "true" ]; then
+          echo "⚠️  This deployment includes critical changes"
+          echo "🔍 Extra attention required for monitoring post-deployment"
+        else
+          echo "✅ Safe deployment - no critical changes detected"
+        fi
+        
+        echo "✅ All safeguard checks passed - deployment approved"

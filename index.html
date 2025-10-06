@@ -123,11 +123,11 @@
     
 
     <!-- Main stylesheet with cache-busting query and error handling -->
-    <link rel="stylesheet" href="/assets/css/styles.css?v=1759586117" onerror="this.onerror=null; document.body.classList.add('css-load-failed'); console.error('CSS failed to load');">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1759709872" onerror="this.onerror=null; document.body.classList.add('css-load-failed'); console.error('CSS failed to load');">
     
     <!-- Preload critical resources for faster loading -->
-    <link rel="preload" href="/assets/js/script.js?v=1759586117" as="script">
-    <link rel="preload" href="/assets/js/legal-content.js?v=1759586117" as="script">
+    <link rel="preload" href="/assets/js/script.js?v=1759709872" as="script">
+    <link rel="preload" href="/assets/js/legal-content.js?v=1759709872" as="script">
     
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//formspree.io">
@@ -864,8 +864,8 @@
         });
     </script>
     <!-- Load legal content first, then main app; both deferred to preserve order without blocking -->
-    <script src="/assets/js/legal-content.js?v=1759586117" defer onerror="console.error('Legal content failed to load'); window.legalContent = {};"></script>
-    <script src="/assets/js/script.js?v=1759586117" defer onerror="console.error('Main script failed to load'); window.scriptLoadFailed = true;"></script>
+    <script src="/assets/js/legal-content.js?v=1759709872" defer onerror="console.error('Legal content failed to load'); window.legalContent = {};"></script>
+    <script src="/assets/js/script.js?v=1759709872" defer onerror="console.error('Main script failed to load'); window.scriptLoadFailed = true;"></script>
     <script>
         // Basic analytics fallback and error recovery
         window.addEventListener('load', function() {

@@ -62,9 +62,9 @@ export async function updatePassword(newPassword: string) {
   return { data, error }
 }
 
-export async function resetPasswordEmail(email: string) {
+export async function resetPasswordEmail(email: string, redirectUrl?: string) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${window.location.origin}/reset-password`,
+    redirectTo: redirectUrl || '/reset-password',
   })
   return { data, error }
 }

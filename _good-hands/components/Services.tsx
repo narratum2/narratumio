@@ -47,13 +47,15 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.25 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif mb-4">
+          {/* H2: 40px per design guidelines */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold mb-4">
             Signature Services
           </h2>
-          <p className="text-harbor text-lg max-w-2xl mx-auto">
+          {/* Body text with proper line height */}
+          <p className="text-harbor text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             Carefully curated experiences delivered by Lisbon\'s most talented professionals
           </p>
         </motion.div>
@@ -65,32 +67,33 @@ export default function Services() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.25, delay: index * 0.1 }}
             >
               <Link
                 href={service.href}
-                className="group block bg-shell rounded-lg overflow-hidden hover:shadow-xl transition-shadow focus-visible-ring"
+                className="group block bg-porcelain rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-250 focus-visible-ring"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover card-image"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-serif mb-2 group-hover:text-gold transition-colors">
+                  {/* H3: 28px per design guidelines */}
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-medium mb-2 group-hover:text-gold transition-colors duration-150">
                     {service.title}
                   </h3>
-                  <p className="text-harbor mb-4">{service.description}</p>
+                  <p className="text-harbor text-base leading-relaxed mb-4">{service.description}</p>
                   <div className="flex justify-between items-center">
                     <div className="flex gap-4 text-sm text-harbor">
                       <span className="font-medium">{service.price}</span>
                       <span>•</span>
                       <span>{service.duration}</span>
                     </div>
-                    <span className="text-gold group-hover:translate-x-1 transition-transform inline-block">
+                    <span className="text-gold group-hover:translate-x-1 transition-transform duration-150 inline-block">
                       →
                     </span>
                   </div>
@@ -104,7 +107,7 @@ export default function Services() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.25, delay: 0.4 }}
           className="text-center mt-12"
         >
           <Link href="/services" className="btn-primary">

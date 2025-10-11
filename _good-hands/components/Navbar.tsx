@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo - using serif font per design guidelines */}
           <Link href="/" className="text-2xl font-serif font-semibold text-ink focus-visible-ring">
             Good Hands
           </Link>
@@ -43,11 +43,12 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-ink hover:text-gold transition-colors focus-visible-ring"
+                className="text-sm font-medium text-ink hover:text-gold transition-colors duration-150 focus-visible-ring"
               >
                 {link.label}
               </Link>
             ))}
+            {/* Primary CTA button using gold accent */}
             <Link href="#booking" className="btn-primary">
               Book Now
             </Link>
@@ -86,7 +87,8 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-porcelain border-t border-harbor/10"
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-porcelain border-t border-stone/20"
           >
             <div className="container-custom py-4 space-y-4">
               {navLinks.map((link) => (

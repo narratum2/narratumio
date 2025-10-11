@@ -1,15 +1,15 @@
-import { Metadata } from 'next'
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-
-export const metadata: Metadata = {
-  title: 'Services — Good Hands',
-  description: 'Explore our curated beauty services across Lisbon. Hair styling, nail care, skincare, makeup, and wellness treatments.',
-}
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+import { categories, getCategoryDisplayName } from '@/lib/categories'
 
 const services = [
   {
     category: 'Hair Styling',
+    slug: 'hair',
     services: [
       { name: 'Precision Cut', price: 'From €80', duration: '60 min' },
       { name: 'Color & Highlights', price: 'From €120', duration: '120 min' },
@@ -21,6 +21,7 @@ const services = [
   },
   {
     category: 'Nail Care',
+    slug: 'nails',
     services: [
       { name: 'Classic Manicure', price: 'From €35', duration: '45 min' },
       { name: 'Gel Manicure', price: 'From €45', duration: '60 min' },
@@ -32,6 +33,7 @@ const services = [
   },
   {
     category: 'Skincare',
+    slug: 'skincare',
     services: [
       { name: 'Signature Facial', price: 'From €95', duration: '75 min' },
       { name: 'Anti-Aging Treatment', price: 'From €140', duration: '90 min' },
@@ -43,6 +45,7 @@ const services = [
   },
   {
     category: 'Makeup',
+    slug: 'makeup',
     services: [
       { name: 'Event Makeup', price: 'From €70', duration: '45 min' },
       { name: 'Bridal Makeup', price: 'From €150', duration: '90 min' },
@@ -53,6 +56,7 @@ const services = [
   },
   {
     category: 'Wellness',
+    slug: 'wellness',
     services: [
       { name: 'Swedish Massage', price: 'From €90', duration: '60 min' },
       { name: 'Deep Tissue', price: 'From €100', duration: '75 min' },
@@ -63,7 +67,23 @@ const services = [
   },
 ]
 
-export default function ServicesPage() {
+function ServicesContent() {
+  const searchParams = useSearchParams()
+  const categoryFilter = searchParams.get('category')
+
+  // Filter services based on category query parameter
+  const filteredServices = categoryFilter
+    ? services.filter((service) => service.slug === categoryFilter)
+    : services
+
+  const pageTitle = categoryFilter
+    ? `${getCategoryDisplayName(categoryFilter)} Services`
+    : 'Our Services'
+
+  const pageDescription = categoryFilter
+    ? `Explore our premium ${getCategoryDisplayName(categoryFilter).toLowerCase()} services in Lisbon`
+    : 'Premium beauty experiences curated for discerning clients'
+
   return (
     <div className="pt-20">
       {/* Hero */}
@@ -74,21 +94,72 @@ export default function ServicesPage() {
             alt="Beauty services"
             fill
             className="object-cover"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-ink/50" />
         </div>
         <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-6xl font-serif mb-4">Our Services</h1>
+          <h1 className="text-5xl md:text-6xl font-serif mb-4">{pageTitle}</h1>
           <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
-            Premium beauty experiences curated for discerning clients
+            {pageDescription}
           </p>
         </div>
       </section>
 
+      {/* Category Filter Pills */}
+      <section className="bg-white border-b border-harbor/10 sticky top-20 z-40">
+        <div className="container-custom py-6">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link
+              href="/services"
+              className={`px-6 py-2 rounded-full font-medium transition-all focus-visible-ring ${
+                !categoryFilter
+                  ? 'bg-ink text-white'
+                  : 'bg-porcelain text-harbor hover:bg-shell'
+              }`}
+            >
+              All Services
+            </Link>
+            {categories
+              .filter((cat) => cat.slug !== 'weddings') // Weddings is premium, separate page
+              .map((category) => (
+                <Link
+                  key={category.slug}
+                  href={`/services?category=${category.slug}`}
+                  className={`px-6 py-2 rounded-full font-medium transition-all focus-visible-ring ${
+                    categoryFilter === category.slug
+                      ? 'bg-ink text-white'
+                      : 'bg-porcelain text-harbor hover:bg-shell'
+                  }`}
+                >
+                  {category.name}
+                </Link>
+              ))}
+          </div>
+        </div>
+      </section>
+
+      {/* No results message */}
+      {filteredServices.length === 0 && (
+        <section className="section-padding bg-white text-center">
+          <div className="container-custom">
+            <h2 className="text-3xl font-serif mb-4">No services found</h2>
+            <p className="text-harbor mb-6">
+              We couldn't find any services in this category.
+            </p>
+            <Link href="/services" className="btn-primary">
+              View All Services
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* Services Grid */}
-      {services.map((category, idx) => (
+      {filteredServices.map((category, idx) => (
         <section
           key={category.category}
+          id={category.slug}
           className={`section-padding ${idx % 2 === 0 ? 'bg-white' : 'bg-shell'}`}
         >
           <div className="container-custom">
@@ -97,9 +168,10 @@ export default function ServicesPage() {
                 <div className="relative h-96 rounded-lg overflow-hidden">
                   <Image
                     src={category.image}
-                    alt={category.category}
+                    alt={`${category.category} services`}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
               </div>
@@ -115,7 +187,9 @@ export default function ServicesPage() {
                         <h3 className="font-medium text-lg">{service.name}</h3>
                         <p className="text-sm text-harbor">{service.duration}</p>
                       </div>
-                      <span className="text-gold font-medium">{service.price}</span>
+                      <span className="text-gold font-medium whitespace-nowrap ml-4">
+                        {service.price}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -140,6 +214,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -151,17 +226,29 @@ export default function ServicesPage() {
               '@type': 'Organization',
               name: 'Good Hands',
             },
-            areaServed: 'Lisbon, Portugal',
+            areaServed: {
+              '@type': 'City',
+              name: 'Lisbon',
+              '@id': 'https://www.wikidata.org/wiki/Q597',
+            },
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
               name: 'Beauty Services',
-              itemListElement: services.flatMap((cat) =>
+              itemListElement: filteredServices.flatMap((cat) =>
                 cat.services.map((service) => ({
                   '@type': 'Offer',
                   itemOffered: {
                     '@type': 'Service',
                     name: service.name,
                     category: cat.category,
+                    provider: {
+                      '@type': 'Organization',
+                      name: 'Good Hands',
+                    },
+                  },
+                  priceSpecification: {
+                    '@type': 'PriceSpecification',
+                    priceCurrency: 'EUR',
                   },
                 }))
               ),
@@ -173,3 +260,19 @@ export default function ServicesPage() {
   )
 }
 
+export default function ServicesPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="pt-20 min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-gold border-r-transparent"></div>
+            <p className="mt-4 text-harbor">Loading services...</p>
+          </div>
+        </div>
+      }
+    >
+      <ServicesContent />
+    </Suspense>
+  )
+}

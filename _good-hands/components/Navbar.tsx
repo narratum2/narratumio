@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useAuth } from '@/contexts/AuthContext'
 
 const navLinks = [
   { href: '/services', label: 'Services' },
@@ -13,8 +14,10 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const { user, loading } = useAuth()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [showUserMenu, setShowUserMenu] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +54,61 @@ export default function Navbar() {
             <Link href="#booking" className="btn-primary">
               Book Now
             </Link>
+            {!loading && (
+              user ? (
+                <div className="relative">
+                  <button
+                    onClick={() => setShowUserMenu(!showUserMenu)}
+                    className="flex items-center gap-2 text-sm font-medium text-ink hover:text-gold transition-colors focus-visible-ring"
+                    aria-label="User menu"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {showUserMenu && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute right-0 mt-2 w-48 bg-porcelain rounded-md shadow-lg py-2 z-50"
+                      >
+                        <Link
+                          href="/settings"
+                          onClick={() => setShowUserMenu(false)}
+                          className="block px-4 py-2 text-sm text-ink hover:bg-shell transition-colors"
+                        >
+                          Settings
+                        </Link>
+                        <Link
+                          href="/login"
+                          onClick={() => setShowUserMenu(false)}
+                          className="block px-4 py-2 text-sm text-ink hover:bg-shell transition-colors"
+                        >
+                          Sign Out
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className="text-sm font-medium text-ink hover:text-gold transition-colors focus-visible-ring"
+                >
+                  Sign In
+                </Link>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -106,6 +164,34 @@ export default function Navbar() {
               >
                 Book Now
               </Link>
+              {!loading && (
+                user ? (
+                  <>
+                    <Link
+                      href="/settings"
+                      onClick={() => setIsOpen(false)}
+                      className="block py-2 text-ink hover:text-gold transition-colors focus-visible-ring"
+                    >
+                      Settings
+                    </Link>
+                    <Link
+                      href="/login"
+                      onClick={() => setIsOpen(false)}
+                      className="block py-2 text-ink hover:text-gold transition-colors focus-visible-ring"
+                    >
+                      Sign Out
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    href="/login"
+                    onClick={() => setIsOpen(false)}
+                    className="block py-2 text-ink hover:text-gold transition-colors focus-visible-ring"
+                  >
+                    Sign In
+                  </Link>
+                )
+              )}
             </div>
           </motion.div>
         )}

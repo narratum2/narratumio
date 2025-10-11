@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Grain from '@/components/Grain'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 export const metadata: Metadata = {
   title: 'Good Hands — Beauty Concierge for Lisbon & Beyond',
@@ -86,10 +87,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Grain />
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Grain />
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </AuthProvider>
         {process.env.NEXT_PUBLIC_INTERCOM_APP_ID && (
           <script
             dangerouslySetInnerHTML={{

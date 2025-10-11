@@ -1,19 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "buildCommand": "cd _good-hands && npm run build",
+  "outputDirectory": "_good-hands/.next",
+  "devCommand": "cd _good-hands && npm run dev",
+  "installCommand": "cd _good-hands && npm install",
+  "framework": "nextjs"
 }

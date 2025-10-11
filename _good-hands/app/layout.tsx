@@ -3,8 +3,10 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Grain from '@/components/Grain'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://goodhands.com'),
   title: 'Good Hands — Beauty Concierge for Lisbon & Beyond',
   description: 'Curated beauty experiences in Lisbon\'s most elegant neighborhoods. Premium services, expert guidance, and boutique-level care.',
   keywords: 'beauty concierge, Lisbon beauty, premium beauty services, beauty experiences, wedding beauty, corporate beauty',
@@ -86,10 +88,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Grain />
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Grain />
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </AuthProvider>
         {process.env.NEXT_PUBLIC_INTERCOM_APP_ID && (
           <script
             dangerouslySetInnerHTML={{

@@ -96,18 +96,20 @@ export default function BookingForm() {
           className="max-w-3xl mx-auto"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">
+            {/* H2: 40px (2.5rem) per design guidelines */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold mb-4">
               Book Your Experience
             </h2>
-            <p className="text-harbor text-lg">
+            {/* Body text with proper line height */}
+            <p className="text-harbor text-base md:text-lg leading-relaxed">
               Tell us what you need, and we\'ll take care of the rest
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-shell rounded-lg p-8 md:p-12">
+          <form onSubmit={handleSubmit} className="bg-porcelain rounded-lg p-8 md:p-12 shadow-md">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                <label htmlFor="name" className="form-label">
                   Full Name *
                 </label>
                 <input
@@ -122,7 +124,7 @@ export default function BookingForm() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                <label htmlFor="email" className="form-label">
                   Email Address *
                 </label>
                 <input
@@ -137,7 +139,7 @@ export default function BookingForm() {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                <label htmlFor="phone" className="form-label">
                   Phone Number *
                 </label>
                 <input
@@ -152,7 +154,7 @@ export default function BookingForm() {
               </div>
 
               <div>
-                <label htmlFor="service" className="block text-sm font-medium mb-2">
+                <label htmlFor="service" className="form-label">
                   Service Type *
                 </label>
                 <select
@@ -176,7 +178,7 @@ export default function BookingForm() {
               </div>
 
               <div>
-                <label htmlFor="neighborhood" className="block text-sm font-medium mb-2">
+                <label htmlFor="neighborhood" className="form-label">
                   Preferred Neighborhood
                 </label>
                 <select
@@ -199,7 +201,7 @@ export default function BookingForm() {
               </div>
 
               <div>
-                <label htmlFor="date" className="block text-sm font-medium mb-2">
+                <label htmlFor="date" className="form-label">
                   Preferred Date *
                 </label>
                 <input
@@ -215,7 +217,7 @@ export default function BookingForm() {
               </div>
 
               <div>
-                <label htmlFor="time" className="block text-sm font-medium mb-2">
+                <label htmlFor="time" className="form-label">
                   Preferred Time *
                 </label>
                 <select
@@ -242,7 +244,7 @@ export default function BookingForm() {
             </div>
 
             <div className="mb-6">
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
+              <label htmlFor="message" className="form-label">
                 Additional Details
               </label>
               <textarea
@@ -278,7 +280,7 @@ export default function BookingForm() {
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 text-center text-coral font-medium"
+                className="mt-4 text-center text-rose font-medium"
               >
                 Something went wrong. Please try again or contact us directly.
               </motion.p>

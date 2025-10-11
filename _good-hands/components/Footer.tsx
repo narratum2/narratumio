@@ -33,7 +33,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-serif mb-4">Good Hands</h3>
+            {/* H3: 28px per design guidelines */}
+            <h3 className="text-xl md:text-2xl font-serif font-medium mb-4">Good Hands</h3>
             <p className="text-porcelain/70 text-sm leading-relaxed">
               AI-first beauty concierge for Lisbon and beyond. Curated experiences in the city\'s most elegant neighborhoods.
             </p>
@@ -41,13 +42,14 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            {/* H4: 20px per design guidelines */}
+            <h4 className="text-lg md:text-xl font-sans font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="text-sm text-porcelain/70 hover:text-gold transition-colors duration-150 focus-visible-ring"
                   >
                     {link.label}
                   </Link>
@@ -58,13 +60,13 @@ export default function Footer() {
 
           {/* Neighborhoods */}
           <div>
-            <h4 className="font-semibold mb-4">Neighborhoods</h4>
+            <h4 className="text-lg md:text-xl font-sans font-semibold mb-4">Neighborhoods</h4>
             <ul className="space-y-2">
               {footerLinks.neighborhoods.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="text-sm text-porcelain/70 hover:text-gold transition-colors duration-150 focus-visible-ring"
                   >
                     {link.label}
                   </Link>
@@ -75,13 +77,13 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="text-lg md:text-xl font-sans font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="text-sm text-porcelain/70 hover:text-gold transition-colors duration-150 focus-visible-ring"
                   >
                     {link.label}
                   </Link>
@@ -91,8 +93,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-porcelain/10">
+        {/* Bottom Bar - using stone color for divider */}
+        <div className="pt-8 border-t border-stone/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-porcelain/60">
               © {new Date().getFullYear()} Good Hands. All rights reserved.

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { logger } from '@/lib/logger'
 
 const supabaseUrl = process.env.SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -7,6 +8,7 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 export async function POST(request: Request) {
   try {
     const data = await request.json()
+    logger.apiRequest('POST', '/api/bookings', data)
 
     // Validate required fields
     const { name, email, phone, service, date, time } = data
@@ -44,20 +46,21 @@ export async function POST(request: Request) {
         .select()
 
       if (error) {
-        console.error('Supabase error:', error)
+        logger.error('Supabase error creating booking', error)
         return NextResponse.json(
           { error: 'Failed to create booking' },
           { status: 500 }
         )
       }
 
+      logger.apiResponse('POST', '/api/bookings', 201, { id: booking?.[0]?.id })
       return NextResponse.json(
         { success: true, booking },
         { status: 201 }
       )
     } else {
       // Mock response when Supabase is not configured
-      console.log('📅 Booking request received (mock mode):', data)
+      logger.info('Booking request received (mock mode)', data)
       
       return NextResponse.json(
         {
@@ -73,7 +76,7 @@ export async function POST(request: Request) {
       )
     }
   } catch (error) {
-    console.error('Booking API error:', error)
+    logger.error('Booking API error', error)
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

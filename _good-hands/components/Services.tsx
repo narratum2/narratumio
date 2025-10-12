@@ -7,33 +7,37 @@ import Link from 'next/link'
 const services = [
   {
     title: 'Premium Hair Styling',
-    description: 'Expert cuts, coloring, and treatments in Lisbon\'s finest salons',
-    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80',
-    price: 'From €80',
+    description: 'We match you with Lisbon\'s best hair colorists and stylists—no more trial and error',
+    image: '/brand-images/category-hair-styling.png',
+    price: 'From €105',
+    priceNote: 'Includes concierge service',
     duration: '90 min',
     href: '/services?category=hair',
   },
   {
     title: 'Luxury Nail Care',
-    description: 'Manicures, pedicures, and nail art by skilled technicians',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80',
-    price: 'From €45',
+    description: 'Perfectly curated nail technicians who understand exactly what you want',
+    image: '/brand-images/category-makeup.png',
+    price: 'From €60',
+    priceNote: 'Includes concierge service',
     duration: '60 min',
     href: '/services?category=nails',
   },
   {
     title: 'Advanced Skincare',
-    description: 'Custom facials and treatments for radiant, healthy skin',
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80',
-    price: 'From €95',
+    description: 'We connect you with skincare experts who truly understand your skin',
+    image: '/brand-images/service-facial-treatment.png',
+    price: 'From €125',
+    priceNote: 'Includes concierge service',
     duration: '75 min',
     href: '/services?category=skincare',
   },
   {
     title: 'Professional Makeup',
-    description: 'Event makeup, lessons, and beauty consultations',
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80',
-    price: 'From €70',
+    description: 'Your personal beauty concierge finds the perfect makeup artist for your event',
+    image: '/brand-images/service-makeup-application.png',
+    price: 'From €92',
+    priceNote: 'Includes concierge service',
     duration: '45 min',
     href: '/services?category=makeup',
   },
@@ -51,10 +55,10 @@ export default function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif mb-4">
-            Signature Services
+            Stop Wasting Time on the Wrong Professionals
           </h2>
           <p className="text-harbor text-lg max-w-2xl mx-auto">
-            Carefully curated experiences delivered by Lisbon\'s most talented professionals
+            We've vetted hundreds of beauty professionals so you don't have to. Our concierge service ensures perfect matches—every single time.
           </p>
         </motion.div>
 
@@ -85,12 +89,15 @@ export default function Services() {
                   </h3>
                   <p className="text-harbor mb-4">{service.description}</p>
                   <div className="flex justify-between items-center">
-                    <div className="flex gap-4 text-sm text-harbor">
-                      <span className="font-medium">{service.price}</span>
-                      <span>•</span>
-                      <span>{service.duration}</span>
+                    <div className="flex flex-col gap-1">
+                      <div className="flex gap-3 text-sm text-harbor">
+                        <span className="font-semibold text-ink text-lg">{service.price}</span>
+                        <span>•</span>
+                        <span>{service.duration}</span>
+                      </div>
+                      <span className="text-xs text-gold">{service.priceNote}</span>
                     </div>
-                    <span className="text-gold group-hover:translate-x-1 transition-transform inline-block">
+                    <span className="text-gold group-hover:translate-x-1 transition-transform inline-block text-2xl">
                       →
                     </span>
                   </div>
@@ -107,8 +114,8 @@ export default function Services() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-12"
         >
-          <Link href="/services" className="btn-primary">
-            View All Services
+          <Link href="/services" className="btn-gold">
+            Discover All Services
           </Link>
         </motion.div>
       </div>

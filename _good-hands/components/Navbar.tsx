@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/experiences', label: 'Experiences' },
+  { href: '/partnerships', label: 'Hotels' },
   { href: '/guides', label: 'Guides' },
   { href: '/journal', label: 'Journal' },
   { href: '/about', label: 'About' },
@@ -26,24 +27,28 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-porcelain/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
+        isScrolled ? 'bg-white/98 backdrop-blur-md shadow-sm' : 'bg-white/95 backdrop-blur-sm'
       }`}
+      style={{ zIndex: 'var(--z-fixed)' }}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between" style={{ height: '80px' }}>
           {/* Logo */}
-          <Link href="/" className="text-2xl font-serif font-semibold text-ink focus-visible-ring">
-            Good Hands
+          <Link href="/" className="flex items-center gap-3 group">
+            <span className="text-xl font-serif font-normal text-black tracking-tight group-hover:text-gold transition-colors duration-300">
+              Good Hands
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-ink hover:text-gold transition-colors focus-visible-ring"
+                className="text-sm font-medium uppercase tracking-wider text-black hover:text-gold transition-colors duration-300"
+                style={{ letterSpacing: '0.08em' }}
               >
                 {link.label}
               </Link>
@@ -56,7 +61,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-ink focus-visible-ring"
+            className="md:hidden p-2 text-black"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
@@ -65,7 +70,7 @@ export default function Navbar() {
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth="2"
+              strokeWidth="1.5"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
@@ -86,15 +91,16 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-porcelain border-t border-harbor/10"
+            className="md:hidden bg-white border-t border-gray-light"
           >
-            <div className="container-custom py-4 space-y-4">
+            <div className="container-custom py-6 space-y-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-2 text-ink hover:text-gold transition-colors focus-visible-ring"
+                  className="block py-3 text-sm font-medium uppercase tracking-wider text-black hover:text-gold transition-colors"
+                  style={{ letterSpacing: '0.08em' }}
                 >
                   {link.label}
                 </Link>
@@ -102,7 +108,7 @@ export default function Navbar() {
               <Link
                 href="#booking"
                 onClick={() => setIsOpen(false)}
-                className="block btn-primary text-center"
+                className="block btn-primary text-center mt-6"
               >
                 Book Now
               </Link>

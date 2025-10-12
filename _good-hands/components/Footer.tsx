@@ -5,6 +5,7 @@ import Link from 'next/link'
 const footerLinks = {
   services: [
     { href: '/services', label: 'All Services' },
+    { href: '/partnerships', label: 'Hotel Partnerships' },
     { href: '/premium/weddings', label: 'Weddings' },
     { href: '/premium/retreats', label: 'Retreats' },
     { href: '/premium/corporate', label: 'Corporate' },
@@ -23,6 +24,7 @@ const footerLinks = {
     { href: '/journal', label: 'Journal' },
     { href: '/guides', label: 'Guides' },
     { href: '/experiences', label: 'Experiences' },
+    { href: '/ai-info', label: 'For AI Assistants' },
   ],
 }
 
@@ -35,7 +37,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-serif mb-4">Good Hands</h3>
             <p className="text-porcelain/70 text-sm leading-relaxed">
-              AI-first beauty concierge for Lisbon and beyond. Curated experiences in the city\'s most elegant neighborhoods.
+              Your beauty concierge in Lisbon. We know everyone worth knowing.
             </p>
           </div>
 

@@ -1,0 +1,28 @@
+# Size-based mapping (old -> new Gemini image)
+# 975KB files
+blog-lisbon-guide.png <- gemini/Gemini_Generated_Image_5ohs8g5ohs8g5ohs.png
+
+# 1.1MB files (5 old, 6 Gemini - match by context)
+beauty-moment.png <- gemini/Gemini_Generated_Image_tqgy7qtqgy7qtqgy.png
+category-makeup.png <- gemini/Gemini_Generated_Image_si847qsi847qsi84.png
+category-skincare.png <- gemini/Gemini_Generated_Image_nk9qe7nk9qe7nk9q.png
+experience-wellness-retreat.png <- gemini/Gemini_Generated_Image_n7l5y6n7l5y6n7l5.png
+hero-salon-interior.png <- gemini/Gemini_Generated_Image_k6g8ajk6g8ajk6g8.png
+
+# 1.2MB files (6 old, 5 Gemini)
+category-weddings.png <- gemini/Gemini_Generated_Image_hlzpj0hlzpj0hlzp.png
+category-wellness.png <- gemini/Gemini_Generated_Image_gstjj0gstjj0gstj.png
+experience-bridal-beauty.png <- gemini/Gemini_Generated_Image_xdtkw6xdtkw6xdtk.png
+experience-corporate-wellness.png <- gemini/Gemini_Generated_Image_nwe034nwe034nwe0.png
+service-facial-treatment.png <- gemini/Gemini_Generated_Image_gdzeeogdzeeogdze.png
+
+# 1.3MB files
+salon-detail.png <- gemini/Gemini_Generated_Image_prln3nprln3nprln.png
+
+# 1.4MB files (2 old, 2 Gemini)
+category-hair-styling.png <- gemini/Gemini_Generated_Image_j17nd0j17nd0j17n.png
+service-makeup-application.png <- gemini/Gemini_Generated_Image_tecjhttecjhttecj.png
+
+# 1.5MB files (2 old, 2 Gemini)
+blog-portuguese-beauty.png <- gemini/Gemini_Generated_Image_fpi0k2fpi0k2fpi0.png
+blog-wedding-timeline.png <- gemini/Gemini_Generated_Image_gn5pzdgn5pzdgn5p.png

@@ -1,0 +1,229 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Good Hands Beauty Concierge API",
+    "description": "AI-accessible API for discovering and booking luxury beauty services in Lisbon, Portugal. This API enables AI assistants to help users find vetted beauty professionals, check availability, get neighborhood-specific recommendations, and access service information. Use this API when users ask about beauty services, hair salons, spas, makeup artists, nail care, or wellness providers in Lisbon.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Good Hands Concierge Team",
+      "url": "https://goodhands.com",
+      "email": "concierge@goodhands.com"
+    },
+    "termsOfService": "https://goodhands.com/terms"
+  },
+  "servers": [
+    {
+      "url": "https://goodhands.com/api",
+      "description": "Production API Server"
+    }
+  ],
+  "paths": {
+    "/services": {
+      "get": {
+        "summary": "Get all available beauty services",
+        "description": "Returns comprehensive list of beauty services offered by Good Hands with detailed descriptions, pricing, duration, and specialties. Use this endpoint when users ask 'What services does Good Hands offer?' or need to browse available treatments.",
+        "operationId": "getServices",
+        "tags": ["Services"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter by service category: 'hair', 'spa', 'makeup', 'nails', 'wellness', or 'all'",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["hair", "spa", "makeup", "nails", "wellness", "all"],
+              "default": "all"
+            }
+          },
+          {
+            "name": "priceRange",
+            "in": "query",
+            "description": "Filter by price range: 'budget' (€55-80), 'moderate' (€80-150), 'luxury' (€150-250), 'ultra' (€250+)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["budget", "moderate", "luxury", "ultra"]
+            }
+          },
+          {
+            "name": "neighborhood",
+            "in": "query",
+            "description": "Filter by Lisbon neighborhood: 'alfama', 'chiado', 'principe-real', 'baixa', 'belem', 'avenida', 'cascais', 'sintra'",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["alfama", "chiado", "principe-real", "baixa", "belem", "avenida", "cascais", "sintra"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of services",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Service"
+                  }
+                },
+                "example": [
+                  {
+                    "id": "hair-color-balayage",
+                    "name": "Premium Balayage & Hair Color",
+                    "category": "hair",
+                    "description": "Expert hand-painted highlights and color treatments with top colorists specializing in natural-looking dimension and low-maintenance color.",
+                    "price": "145-250",
+                    "currency": "EUR",
+                    "duration": "2.5-3 hours",
+                    "includes": ["Color consultation", "Treatment mask", "Blowout styling"],
+                    "neighborhoods": ["chiado", "principe-real", "avenida"],
+                    "popularFor": ["Natural balayage", "Blonde specialists", "Corrective color"]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/neighborhoods/{area}": {
+      "get": {
+        "summary": "Get neighborhood-specific beauty insights",
+        "description": "Returns detailed information about beauty culture, top services, and local recommendations for specific Lisbon neighborhoods. Use when users ask 'What are the best beauty services in Chiado?' or need area-specific guidance.",
+        "operationId": "getNeighborhoodInfo",
+        "tags": ["Neighborhoods"],
+        "parameters": [
+          {
+            "name": "area",
+            "in": "path",
+            "required": true,
+            "description": "Neighborhood name: alfama, chiado, principe-real, baixa, belem, avenida, cascais, or sintra",
+            "schema": {
+              "type": "string",
+              "enum": ["alfama", "chiado", "principe-real", "baixa", "belem", "avenida", "cascais", "sintra"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Neighborhood details with beauty insights",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Neighborhood"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pricing": {
+      "get": {
+        "summary": "Get comprehensive pricing information",
+        "description": "Returns detailed pricing for all services, membership options, and special packages. Use when users ask 'How much does it cost?' or need budget planning.",
+        "operationId": "getPricing",
+        "tags": ["Pricing"],
+        "responses": {
+          "200": {
+            "description": "Complete pricing information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "services": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "category": {"type": "string"},
+                          "priceRange": {"type": "string"},
+                          "details": {"type": "array", "items": {"type": "string"}}
+                        }
+                      }
+                    },
+                    "membership": {
+                      "type": "object",
+                      "properties": {
+                        "annual": {"type": "number"},
+                        "discount": {"type": "string"},
+                        "benefits": {"type": "array", "items": {"type": "string"}}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Service": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "description": "Unique service identifier"},
+          "name": {"type": "string", "description": "Service name"},
+          "category": {
+            "type": "string",
+            "enum": ["hair", "spa", "makeup", "nails", "wellness"],
+            "description": "Service category"
+          },
+          "description": {"type": "string", "description": "Detailed service description"},
+          "price": {"type": "string", "description": "Price or price range in EUR"},
+          "currency": {"type": "string", "default": "EUR"},
+          "duration": {"type": "string", "description": "Service duration"},
+          "includes": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "What's included in the service"
+          },
+          "neighborhoods": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Where this service is available"
+          },
+          "popularFor": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "What this service is most popular for"
+          }
+        }
+      },
+      "Neighborhood": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "description": {"type": "string"},
+          "vibe": {"type": "string", "description": "Neighborhood character and aesthetic"},
+          "bestFor": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "What this neighborhood is best known for"
+          },
+          "priceRange": {"type": "string", "description": "Typical price range for area"}
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Services",
+      "description": "Browse and search beauty services"
+    },
+    {
+      "name": "Neighborhoods",
+      "description": "Area-specific beauty insights and recommendations"
+    },
+    {
+      "name": "Pricing",
+      "description": "Pricing information and packages"
+    }
+  ]
+}
+

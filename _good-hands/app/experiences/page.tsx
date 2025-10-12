@@ -20,7 +20,7 @@ const experiences = [
       'Touch-up kit included',
       'On-location service available',
     ],
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80',
+    image: '/brand-images/experience-bridal-beauty.png',
     priceFrom: '€800',
   },
   {
@@ -35,7 +35,7 @@ const experiences = [
       'Curated accommodations',
       'Nutrition guidance',
     ],
-    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=80',
+    image: '/brand-images/experience-wellness-retreat.png',
     priceFrom: '€1,200',
   },
   {
@@ -50,7 +50,7 @@ const experiences = [
       'Stress relief treatments',
       'Corporate gifting options',
     ],
-    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80',
+    image: '/brand-images/experience-corporate-wellness.png',
     priceFrom: '€500',
   },
   {
@@ -65,7 +65,7 @@ const experiences = [
       'Personal beauty concierge',
       'Birthday gift package',
     ],
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=80',
+    image: '/brand-images/service-makeup-application.png',
     priceFrom: '€200/month',
   },
 ]
@@ -77,8 +77,8 @@ export default function ExperiencesPage() {
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=2000&q=80"
-            alt="Premium experiences"
+            src="/brand-images/category-weddings.png"
+            alt="Premium beauty experiences - weddings, retreats, corporate wellness - Good Hands Lisbon"
             fill
             className="object-cover"
           />

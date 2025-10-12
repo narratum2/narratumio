@@ -1,0 +1,49 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Before/After Split Template -->
+  
+  <!-- Border frame -->
+  <rect width="1080" height="1080" fill="#f8f4f0"/>
+  <rect x="30" y="30" width="1020" height="1020" fill="white" rx="8"/>
+  
+  <!-- Split line -->
+  <line x1="540" y1="50" x2="540" y2="850" stroke="#e8e0d8" stroke-width="2"/>
+  
+  <!-- Before section -->
+  <rect x="50" y="50" width="470" height="780" fill="#e8e0d8" rx="4"/>
+  <text x="285" y="440" font-family="Inter" font-size="14" fill="#4a5568" text-anchor="middle">
+    [BEFORE IMAGE]
+  </text>
+  
+  <!-- After section -->
+  <rect x="560" y="50" width="470" height="780" fill="#e8e0d8" rx="4"/>
+  <text x="795" y="440" font-family="Inter" font-size="14" fill="#4a5568" text-anchor="middle">
+    [AFTER IMAGE]
+  </text>
+  
+  <!-- Labels -->
+  <text x="285" y="100" font-family="Inter" font-weight="600" font-size="16" fill="#1a1a1a" text-anchor="middle">
+    BEFORE
+  </text>
+  <text x="795" y="100" font-family="Inter" font-weight="600" font-size="16" fill="#1a1a1a" text-anchor="middle">
+    AFTER
+  </text>
+  
+  <!-- Bottom info section -->
+  <rect x="50" y="870" width="980" height="130" fill="#f8f4f0" rx="4"/>
+  
+  <!-- Transformation title -->
+  <text x="540" y="920" font-family="Playfair Display" font-weight="600" font-size="28" fill="#1a1a1a" text-anchor="middle">
+    Hair Color Transformation
+  </text>
+  
+  <!-- Professional credit -->
+  <text x="540" y="960" font-family="Inter" font-size="16" fill="#4a5568" text-anchor="middle">
+    By Professional Name · Chiado, Lisbon
+  </text>
+  
+  <!-- Brand tag -->
+  <text x="540" y="990" font-family="Inter" font-weight="500" font-size="14" fill="#d4af37" text-anchor="middle">
+    Good Hands ─────
+  </text>
+</svg>
+

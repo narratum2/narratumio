@@ -9,8 +9,16 @@ const faqs = [
     answer: 'Good Hands is your personal beauty concierge. Simply tell us what you need, and we\'ll match you with the perfect professionals in Lisbon\'s best neighborhoods. We handle bookings, recommendations, and ensure you get white-glove service.',
   },
   {
+    question: 'What does the concierge service include?',
+    answer: 'Every booking includes expert matching with vetted professionals, appointment coordination, preference management, follow-up support, and quality assurance. We handle all the details so you just show up and enjoy your experience.',
+  },
+  {
     question: 'What areas do you serve?',
     answer: 'We serve all major Lisbon neighborhoods including Chiado, Príncipe Real, Baixa, Avenida da Liberdade, Alfama, and Belém. We also offer services in Sintra and Cascais for destination experiences.',
+  },
+  {
+    question: 'How much does the concierge service cost?',
+    answer: 'Our concierge fee is already included in all displayed prices—there are no hidden fees. You see one price, which covers both the service and our expert matching and coordination. Members save 15-25% on every booking.',
   },
   {
     question: 'How far in advance should I book?',
@@ -18,15 +26,47 @@ const faqs = [
   },
   {
     question: 'Do you offer home services?',
-    answer: 'Yes! Many of our professionals offer in-home services for an additional fee. This is particularly popular for bridal parties, corporate events, and special occasions.',
+    answer: 'Yes! Many of our professionals offer in-home services for an additional fee. This is particularly popular for bridal parties, corporate events, and special occasions. Just mention your preference when booking.',
   },
   {
     question: 'What is your cancellation policy?',
-    answer: 'Cancellations made 48+ hours in advance receive a full refund. Cancellations within 48 hours are subject to a 50% fee. Same-day cancellations are non-refundable.',
+    answer: 'Cancellations made 48+ hours in advance receive a full refund. Cancellations within 48 hours are subject to a 50% fee. Same-day cancellations are non-refundable. Membership holders get more flexible cancellation terms.',
   },
   {
     question: 'Are consultations available?',
     answer: 'Absolutely! We offer complimentary 15-minute consultations via video call or in person. For premium packages, we include comprehensive consultations as part of the experience.',
+  },
+  {
+    question: 'How do you vet your professionals?',
+    answer: 'Every professional undergoes a rigorous vetting process including portfolio review, client reference checks, in-person interviews, and trial services. We only work with licensed professionals who meet our high standards for skill, hygiene, and customer service.',
+  },
+  {
+    question: 'Can I request a specific professional?',
+    answer: 'Yes! If you\'ve worked with one of our professionals before and loved them, just let us know and we\'ll do our best to book them for you. Members get priority access to their favorite professionals.',
+  },
+  {
+    question: 'What languages do your professionals speak?',
+    answer: 'Most of our professionals speak English and Portuguese fluently. Many also speak Spanish, French, or Italian. We\'ll match you with someone who speaks your preferred language.',
+  },
+  {
+    question: 'Do you offer group bookings?',
+    answer: 'Absolutely! We specialize in group experiences for bridal parties, birthdays, corporate events, and retreats. Contact us for custom packages with special group rates.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'We accept all major credit cards (Visa, Mastercard, Amex), debit cards, Apple Pay, and Google Pay through our secure Stripe checkout. Payment is processed when you book.',
+  },
+  {
+    question: 'Is gratuity included in the price?',
+    answer: 'Gratuity is not included in our prices. Tips are appreciated but never required. If you\'re delighted with your service, a 10-15% tip is customary in Lisbon.',
+  },
+  {
+    question: 'What if I\'m not satisfied with my service?',
+    answer: 'Your satisfaction is guaranteed. If you\'re not completely happy with your service, contact us within 24 hours and we\'ll make it right—either by rebooking you with a different professional or issuing a refund.',
+  },
+  {
+    question: 'Do you work with hotels?',
+    answer: 'Yes! We partner with luxury hotels throughout Lisbon to offer in-room and in-hotel beauty services. Hotel concierges can book directly through our partnership program with special rates for guests.',
   },
 ]
 

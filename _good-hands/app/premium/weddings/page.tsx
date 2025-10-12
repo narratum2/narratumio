@@ -1,190 +1,406 @@
-import { Metadata } from 'next'
-import Image from 'next/image'
+import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Wedding Beauty Packages — Good Hands',
-  description: 'Complete bridal beauty journey from consultation to wedding day. Expert coordination for you and your bridal party.',
+  title: 'Wedding Beauty Services | Good Hands Lisbon',
+  description: 'Comprehensive wedding beauty services in Lisbon. From bridal makeup and hair to full bridal party coordination. Make your special day perfect with our curated beauty professionals.',
+  keywords: 'wedding beauty Lisbon, bridal makeup, bridal hair, wedding beauty services, Lisbon weddings',
 }
 
 export default function WeddingsPage() {
   return (
-    <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[70vh] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?w=2000&q=80"
-            alt="Wedding beauty"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-ink/40" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4">Wedding Beauty</h1>
-          <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
-            Look and feel your absolute best on the most important day of your life
-          </p>
+    <div className="bg-porcelain">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-gold via-sand to-porcelain py-32">
+        <div className="container-custom relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white">
+              Your Perfect Wedding Day Beauty
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+              From intimate ceremonies to grand celebrations, we coordinate every beauty detail for you and your entire bridal party
+            </p>
+            <Link href="/#booking" className="btn-primary bg-white text-sand hover:bg-porcelain">
+              Plan Your Wedding Beauty
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Overview */}
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-4xl">
-          <h2 className="text-4xl font-serif mb-6 text-center">Your Complete Bridal Experience</h2>
-          <p className="text-xl text-harbor text-center leading-relaxed mb-12">
-            From the moment you say yes to the moment you say "I do," Good Hands coordinates
-            every detail of your bridal beauty journey. We partner with Lisbon\'s finest hair
-            stylists, makeup artists, and skincare experts to ensure you\'re radiant and
-            relaxed on your wedding day.
-          </p>
-        </div>
-      </section>
-
-      {/* Packages */}
-      <section className="section-padding bg-shell">
+      {/* The Challenge Section */}
+      <section className="py-20 bg-white">
         <div className="container-custom">
-          <h2 className="text-4xl font-serif mb-12 text-center">Wedding Packages</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Essential */}
-            <div className="bg-white rounded-lg p-8 hover:shadow-xl transition-shadow">
-              <h3 className="text-2xl font-serif mb-2">Essential</h3>
-              <p className="text-3xl font-serif text-gold mb-6">€800</p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Hair & makeup trial</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Wedding day services</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Touch-up kit</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Timeline coordination</span>
-                </li>
-              </ul>
-              <Link href="/#booking" className="btn-secondary w-full text-center">
-                Book Essential
-              </Link>
-            </div>
-
-            {/* Premium */}
-            <div className="bg-ink text-white rounded-lg p-8 transform scale-105 shadow-xl">
-              <div className="text-xs uppercase tracking-wider text-gold mb-2">Most Popular</div>
-              <h3 className="text-2xl font-serif mb-2">Premium</h3>
-              <p className="text-3xl font-serif text-gold mb-6">€1,500</p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Everything in Essential</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Multiple trial sessions</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Pre-wedding facials (3)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Bridal party (4 people)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>On-location service</span>
-                </li>
-              </ul>
-              <Link href="/#booking" className="btn-primary w-full text-center">
-                Book Premium
-              </Link>
-            </div>
-
-            {/* Luxury */}
-            <div className="bg-white rounded-lg p-8 hover:shadow-xl transition-shadow">
-              <h3 className="text-2xl font-serif mb-2">Luxury</h3>
-              <p className="text-3xl font-serif text-gold mb-6">€3,000+</p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Everything in Premium</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>6-month beauty program</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Unlimited bridal party</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Weekend services</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-gold">✓</span>
-                  <span>Personal concierge</span>
-                </li>
-              </ul>
-              <Link href="/#booking" className="btn-secondary w-full text-center">
-                Book Luxury
-              </Link>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-serif text-ink mb-8 text-center">
+              Wedding Beauty, Stress-Free
+            </h2>
+            <p className="text-xl text-harbor text-center mb-12 max-w-2xl mx-auto">
+              Planning a wedding in Lisbon? We handle all beauty coordination so you can focus on your special day.
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="p-6 bg-porcelain rounded-lg">
+                <h3 className="text-xl font-semibold text-ink mb-3">🎨 Complete Coordination</h3>
+                <p className="text-harbor">
+                  One point of contact for bride, bridesmaids, mothers, and flower girls. We manage everything.
+                </p>
+              </div>
+              <div className="p-6 bg-porcelain rounded-lg">
+                <h3 className="text-xl font-semibold text-ink mb-3">✨ Trial Sessions</h3>
+                <p className="text-harbor">
+                  Complete hair and makeup trials so you're confident and beautiful on your wedding day.
+                </p>
+              </div>
+              <div className="p-6 bg-porcelain rounded-lg">
+                <h3 className="text-xl font-semibold text-ink mb-3">📅 Timeline Management</h3>
+                <p className="text-harbor">
+                  We create a detailed timeline ensuring everyone is ready on schedule—no stress, no delays.
+                </p>
+              </div>
+              <div className="p-6 bg-porcelain rounded-lg">
+                <h3 className="text-xl font-semibold text-ink mb-3">🏨 On-Location Services</h3>
+                <p className="text-harbor">
+                  Our professionals come to your hotel, villa, or venue. Getting ready happens where you want.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-4xl">
-          <h2 className="text-4xl font-serif mb-12 text-center">Your Beauty Timeline</h2>
-          <div className="space-y-8">
-            {[
-              { time: '6 Months Before', task: 'Initial consultation and beauty assessment' },
-              { time: '4-5 Months Before', task: 'First hair and makeup trials' },
-              { time: '3 Months Before', task: 'Begin skincare program and treatments' },
-              { time: '2 Months Before', task: 'Final trial and adjustments' },
-              { time: '1 Month Before', task: 'Last treatments and final touches' },
-              { time: 'Wedding Week', task: 'Pre-wedding pampering and relaxation' },
-              { time: 'Wedding Day', task: 'Professional styling and on-site support' },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6">
-                <div className="flex-shrink-0 w-32 text-right">
-                  <span className="text-gold font-medium">{item.time}</span>
+      {/* Services Included */}
+      <section className="py-20 bg-porcelain">
+        <div className="container-custom">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">
+              Wedding Beauty Services
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-8 rounded-lg">
+                <h3 className="text-2xl font-serif text-ink mb-4">Bridal Services</h3>
+                <ul className="space-y-3 text-harbor">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Bridal makeup (trial + day-of)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Bridal hair styling (trial + day-of)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Pre-wedding skincare consultation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Manicure & pedicure</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Facial treatment (pre-wedding)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Touch-up kit provision</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg">
+                <h3 className="text-2xl font-serif text-ink mb-4">Bridal Party</h3>
+                <ul className="space-y-3 text-harbor">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Bridesmaids makeup & hair</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Mother of bride/groom services</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Flower girls hair & makeup</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Group manicures & pedicures</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Matching style coordination</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Group spa experiences</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg">
+                <h3 className="text-2xl font-serif text-ink mb-4">Additional Services</h3>
+                <ul className="space-y-3 text-harbor">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Pre-wedding spa day</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Groom grooming services</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Next-day beauty recovery</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Multi-day event coordination</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Engagement party services</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Rehearsal dinner beauty</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-serif text-ink mb-12 text-center">
+              Wedding Packages
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="border-2 border-harbor/20 rounded-lg p-8 hover:border-gold transition-colors">
+                <h3 className="text-2xl font-serif text-ink mb-2">Intimate</h3>
+                <p className="text-harbor mb-4">Perfect for small ceremonies</p>
+                <p className="text-4xl font-bold text-ink mb-6">€850</p>
+                <ul className="space-y-2 text-harbor mb-8">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Bride: Hair + Makeup (trial + day-of)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Up to 2 additional people</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>On-location service</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                  <span>Touch-up kit</span>
+                </li>
+              </ul>
+              <Link href="/#booking" className="btn-secondary w-full text-center">
+                  Book Intimate Package
+              </Link>
+            </div>
+
+              <div className="border-2 border-gold rounded-lg p-8 relative">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-gold text-white px-4 py-1 rounded-full text-sm font-semibold">
+                    Most Popular
+                  </span>
                 </div>
-                <div className="flex-shrink-0 w-3 h-3 bg-gold rounded-full mt-1"></div>
+                <h3 className="text-2xl font-serif text-ink mb-2">Classic</h3>
+                <p className="text-harbor mb-4">Full bridal party beauty</p>
+                <p className="text-4xl font-bold text-ink mb-6">€1,850</p>
+                <ul className="space-y-2 text-harbor mb-8">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Bride: Premium package</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Up to 5 bridesmaids</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Mother of bride & groom</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Timeline coordination</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Pre-wedding spa day option</span>
+                </li>
+              </ul>
+              <Link href="/#booking" className="btn-primary w-full text-center">
+                  Book Classic Package
+              </Link>
+            </div>
+
+              <div className="border-2 border-harbor/20 rounded-lg p-8 hover:border-gold transition-colors">
+                <h3 className="text-2xl font-serif text-ink mb-2">Luxury</h3>
+                <p className="text-harbor mb-4">Complete multi-day coverage</p>
+                <p className="text-4xl font-bold text-ink mb-6">€3,500</p>
+                <ul className="space-y-2 text-harbor mb-8">
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Everything in Classic</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Unlimited bridal party size</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Multi-day event coverage</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Dedicated coordinator</span>
+                </li>
+                  <li className="flex items-start">
+                    <span className="text-gold mr-2">✓</span>
+                    <span>Rehearsal dinner + next-day services</span>
+                </li>
+              </ul>
+              <Link href="/#booking" className="btn-secondary w-full text-center">
+                  Book Luxury Package
+              </Link>
+              </div>
+            </div>
+            <p className="text-center text-harbor mt-8">
+              All packages include our concierge coordination service. Custom packages available.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Example */}
+      <section className="py-20 bg-porcelain">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl font-serif text-ink mb-12 text-center">
+              Your Wedding Day Timeline
+            </h2>
+            <div className="space-y-6">
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-24 text-right">
+                  <span className="text-xl font-bold text-gold">8:00 AM</span>
+                </div>
                 <div className="flex-1">
-                  <p className="text-lg">{item.task}</p>
+                  <h3 className="text-lg font-semibold text-ink mb-1">Team Arrival & Setup</h3>
+                  <p className="text-harbor">Our professionals arrive at your location with all equipment</p>
                 </div>
               </div>
-            ))}
+
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-24 text-right">
+                  <span className="text-xl font-bold text-gold">8:30 AM</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-ink mb-1">Bridal Party Begins</h3>
+                  <p className="text-harbor">Bridesmaids, mothers, and flower girls start getting ready</p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-24 text-right">
+                  <span className="text-xl font-bold text-gold">10:30 AM</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-ink mb-1">Bride Hair Styling</h3>
+                  <p className="text-harbor">Your hair artist creates your perfect bridal hairstyle</p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-24 text-right">
+                  <span className="text-xl font-bold text-gold">11:30 AM</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-ink mb-1">Bride Makeup</h3>
+                  <p className="text-harbor">Flawless makeup application for your special moment</p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-24 text-right">
+                  <span className="text-xl font-bold text-gold">12:30 PM</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-ink mb-1">Final Touches & Photos</h3>
+                  <p className="text-harbor">Touch-ups complete, you're ready for getting-ready photos</p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-24 text-right">
+                  <span className="text-xl font-bold text-gold">1:00 PM</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-ink mb-1">Team Departs</h3>
+                  <p className="text-harbor">We leave you with touch-up kits and emergency contact</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-center text-harbor mt-8 italic">
+              *Timeline customized to your wedding schedule
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-serif text-ink mb-12 text-center">
+              What Brides Say
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-porcelain p-8 rounded-lg">
+                <div className="flex gap-1 text-gold mb-4">
+                  <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                </div>
+                <p className="text-harbor text-lg mb-4 italic">
+                  "Good Hands made my wedding day stress-free. The team was punctual, professional, and my makeup lasted through tears, dancing, and everything in between. I felt like the most beautiful version of myself."
+                </p>
+                <p className="text-ink font-semibold">— Sarah M., Bride</p>
+                <p className="text-harbor text-sm">Cascais Wedding, June 2024</p>
+              </div>
+              <div className="bg-porcelain p-8 rounded-lg">
+                <div className="flex gap-1 text-gold mb-4">
+                  <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                </div>
+                <p className="text-harbor text-lg mb-4 italic">
+                  "Having one coordinator for all 8 bridesmaids was a lifesaver. Everyone looked stunning and we finished on schedule. The trial sessions gave me complete confidence."
+                </p>
+                <p className="text-ink font-semibold">— Maria L., Bride</p>
+                <p className="text-harbor text-sm">Belém Wedding, September 2024</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-ink text-white text-center">
+      <section className="py-20 bg-ink text-white text-center">
         <div className="container-custom">
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
-            Ready to Begin Your Bridal Journey?
+            Ready to Plan Your Wedding Beauty?
           </h2>
-          <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
-            Schedule a complimentary consultation to discuss your vision and customize your
-            perfect wedding beauty package.
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Let's create a custom package perfect for your special day
           </p>
-          <Link href="/#booking" className="btn-primary">
-            Schedule Consultation
+          <Link href="/#booking" className="btn-primary bg-gold hover:bg-gold/90">
+            Schedule Your Consultation
           </Link>
         </div>
       </section>
     </div>
   )
 }
-

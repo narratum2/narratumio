@@ -1,0 +1,80 @@
+# ============================================
+# GOOD HANDS - ENVIRONMENT VARIABLES
+# Copy these to Vercel Environment Variables
+# ============================================
+
+# Instructions:
+# 1. Go to vercel.com/dashboard
+# 2. Select your project
+# 3. Settings → Environment Variables
+# 4. Copy each line below
+# 5. Select: Production, Preview, Development
+# 6. Click Save after each one
+
+# ============================================
+# CRITICAL - Required for Core Functionality
+# ============================================
+
+STRIPE_SECRET_KEY=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_WEBHOOK_SECRET=
+STRIPE_GOLD_PRICE_ID=
+STRIPE_PLATINUM_PRICE_ID=
+
+NOTION_API_KEY=
+NOTION_BOOKINGS_DB_ID=
+NOTION_CUSTOMERS_DB_ID=
+NOTION_MEMBERSHIPS_DB_ID=
+
+# ============================================
+# RECOMMENDED - Enhanced Features
+# ============================================
+
+MAKE_WEBHOOK_URL=
+CUSTOMERIO_SITE_ID=
+CUSTOMERIO_API_KEY=
+NEXT_PUBLIC_INTERCOM_APP_ID=
+
+# ============================================
+# OPTIONAL - Additional Features
+# ============================================
+
+INTERCOM_API_KEY=
+ADMIN_API_KEY=
+NEXT_PUBLIC_BASE_URL=
+
+# ============================================
+# CHECKLIST - Mark as you add each one
+# ============================================
+
+# Stripe
+[ ] STRIPE_SECRET_KEY
+[ ] NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+[ ] STRIPE_WEBHOOK_SECRET
+[ ] STRIPE_GOLD_PRICE_ID
+[ ] STRIPE_PLATINUM_PRICE_ID
+
+# Notion
+[ ] NOTION_API_KEY
+[ ] NOTION_BOOKINGS_DB_ID
+[ ] NOTION_CUSTOMERS_DB_ID
+[ ] NOTION_MEMBERSHIPS_DB_ID
+
+# Make.com
+[ ] MAKE_WEBHOOK_URL
+
+# Customer.io
+[ ] CUSTOMERIO_SITE_ID
+[ ] CUSTOMERIO_API_KEY
+
+# Intercom
+[ ] NEXT_PUBLIC_INTERCOM_APP_ID
+[ ] INTERCOM_API_KEY (optional)
+
+# Admin
+[ ] ADMIN_API_KEY
+
+# ============================================
+# REMEMBER: Select Production, Preview, AND Development for each variable!
+# ============================================
+

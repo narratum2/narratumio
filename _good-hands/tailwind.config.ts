@@ -9,40 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        black: '#1a1a1a',
+        white: '#ffffff',
+        'off-white': '#f5f5f5',
+        gold: {
+          DEFAULT: '#c9a961',
+          dark: '#b89748',
+        },
+        'gray-light': '#e5e5e5',
+        'gray-medium': '#999999',
+        'gray-dark': '#4a4a4a',
+        // Keep legacy colors for backward compatibility
         ink: {
           DEFAULT: '#1a1a1a',
           light: '#2d2d2d',
           lighter: '#404040',
         },
         porcelain: {
-          DEFAULT: '#fafaf9',
+          DEFAULT: '#f8f6f3',
           dark: '#f5f5f4',
           darker: '#e7e5e4',
         },
-        shell: {
-          DEFAULT: '#f8f4f0',
-          dark: '#f0ebe5',
-          darker: '#e8e0d8',
-        },
-        harbor: {
-          DEFAULT: '#4a5568',
-          light: '#718096',
-          dark: '#2d3748',
-        },
-        gold: {
-          DEFAULT: '#d4af37',
-          light: '#e6c862',
-          dark: '#b8941f',
-        },
         sage: {
-          DEFAULT: '#9caf88',
+          DEFAULT: '#a8b5a5',
           light: '#b8c9a8',
           dark: '#7d9268',
-        },
-        coral: {
-          DEFAULT: '#f4a582',
-          light: '#f8c0a6',
-          dark: '#e88760',
         },
       },
       fontFamily: {

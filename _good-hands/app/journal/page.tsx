@@ -9,9 +9,54 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    title: 'Global Beauty Exploration: Why Local Matters',
+    excerpt: 'The case for seeking authentic beauty experiences while traveling and how Good Hands is expanding worldwide.',
+    image: '/brand-images/blog-global-beauty.png',
+    date: 'October 12, 2025',
+    category: 'Global Exploration',
+    author: 'Good Hands Editorial Team',
+    slug: 'global-beauty-exploration',
+  },
+  {
+    title: 'Yucatan Wellness: Ancient Mayan Beauty Secrets',
+    excerpt: 'Discovering holistic beauty practices in the Yucatan Peninsula, from cenote rituals to Mayan herbal medicine.',
+    image: '/brand-images/blog-yucatan-wellness.png',
+    date: 'October 11, 2025',
+    category: 'Global Exploration',
+    author: 'Isabella Torres',
+    slug: 'yucatan-wellness-beauty',
+  },
+  {
+    title: 'Mexico City Beauty Scene: Where Tradition Meets Innovation',
+    excerpt: 'Exploring the vibrant beauty culture of CDMX, from pre-Hispanic rituals to cutting-edge aesthetics.',
+    image: '/brand-images/blog-mexico-city.png',
+    date: 'October 10, 2025',
+    category: 'Global Exploration',
+    author: 'Isabella Torres',
+    slug: 'mexico-city-beauty-scene',
+  },
+  {
+    title: 'Bridal Hair Trends 2026: What Lisbon Brides Are Choosing',
+    excerpt: 'From modern updos to romantic waves, the hairstyles dominating Portuguese weddings.',
+    image: '/brand-images/blog-bridal-hair.png',
+    date: 'October 8, 2025',
+    category: 'Weddings',
+    author: 'Sofia Martins',
+    slug: 'bridal-hair-trends-2026',
+  },
+  {
+    title: 'Wellness Rituals: How Lisbon Lives Well',
+    excerpt: 'The daily practices that keep Lisboetas balanced, beautiful, and centered.',
+    image: '/brand-images/hero-wellness-scene.png',
+    date: 'October 5, 2025',
+    category: 'Wellness',
+    author: 'Teresa Alves',
+    slug: 'wellness-rituals-lisbon',
+  },
+  {
     title: 'The Art of Portuguese Beauty Rituals',
-    excerpt: 'Discover centuries-old beauty traditions from Portugal that modern experts still swear by. From olive oil treatments to rose water tonics.',
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80',
+    excerpt: 'Discover centuries-old beauty traditions from Portugal that modern experts still swear by.',
+    image: '/brand-images/service-makeup-application.png',
     date: 'October 1, 2025',
     category: 'Traditions',
     author: 'Maria Silva',
@@ -19,8 +64,8 @@ const articles = [
   },
   {
     title: 'Wedding Beauty Timeline: 6 Months to I Do',
-    excerpt: 'A comprehensive guide to preparing your beauty routine for the big day, from skin prep to finding the perfect hairstyle.',
-    image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80',
+    excerpt: 'A comprehensive guide to preparing your beauty routine for the big day.',
+    image: '/brand-images/blog-wedding-timeline.png',
     date: 'September 28, 2025',
     category: 'Weddings',
     author: 'Sofia Martins',
@@ -28,8 +73,8 @@ const articles = [
   },
   {
     title: "Lisbon\'s Hidden Beauty Gems",
-    excerpt: "Our editors share their favorite under-the-radar salons and spas across the city that locals don\'t want you to know about.",
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80',
+    excerpt: "Under-the-radar salons and spas that locals treasure.",
+    image: '/brand-images/hero-salon-interior.png',
     date: 'September 25, 2025',
     category: 'City Guide',
     author: 'Good Hands Team',
@@ -37,8 +82,8 @@ const articles = [
   },
   {
     title: 'Summer Skincare in Mediterranean Climate',
-    excerpt: 'How to adjust your skincare routine for Lisbon summers. Expert tips from our favorite dermatologists and estheticians.',
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80',
+    excerpt: 'How to adjust your skincare routine for Lisbon summers with expert tips from dermatologists.',
+    image: '/brand-images/service-facial-treatment.png',
     date: 'September 20, 2025',
     category: 'Skincare',
     author: 'Dr. Ana Costa',
@@ -46,21 +91,12 @@ const articles = [
   },
   {
     title: 'The New Wave of Portuguese Nail Art',
-    excerpt: 'Meet the artists bringing Portuguese azulejo tiles and traditional motifs to modern nail design.',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80',
+    excerpt: 'Meet the artists bringing contemporary Portuguese design to nails.',
+    image: '/brand-images/service-nail-art.png',
     date: 'September 15, 2025',
-    category: 'Nails',
-    author: 'Beatriz Santos',
+    category: 'Nail Art',
+    author: 'Catarina Silva',
     slug: 'portuguese-nail-art',
-  },
-  {
-    title: 'Finding Your Signature Scent in Lisbon',
-    excerpt: 'A guide to the city\'s best perfumeries and fragrance consultants for creating a custom scent.',
-    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80',
-    date: 'September 10, 2025',
-    category: 'Fragrance',
-    author: 'Maria Silva',
-    slug: 'signature-scent-lisbon',
   },
 ]
 
@@ -71,8 +107,8 @@ export default function JournalPage() {
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=2000&q=80"
-            alt="Journal"
+            src="/brand-images/blog-portuguese-beauty.png"
+            alt="Good Hands Journal - beauty insights, Lisbon guides, and expert tips"
             fill
             className="object-cover"
           />
@@ -81,7 +117,7 @@ export default function JournalPage() {
         <div className="relative z-10 text-center text-white container-custom">
           <h1 className="text-5xl md:text-6xl font-serif mb-4">The Journal</h1>
           <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
-            Beauty insights, city guides, and stories from Lisbon
+            Beauty insights, city guides, and stories from around the world
           </p>
         </div>
       </section>

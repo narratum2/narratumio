@@ -7,32 +7,32 @@ import Image from 'next/image'
 const categories = [
   {
     name: 'Hair',
-    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=80',
+    image: '/brand-images/category-hair-styling.png',
     href: '/services?category=hair',
   },
   {
     name: 'Nails',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80',
+    image: '/brand-images/category-makeup.png',
     href: '/services?category=nails',
   },
   {
     name: 'Skincare',
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80',
+    image: '/brand-images/category-skincare.png',
     href: '/services?category=skincare',
   },
   {
     name: 'Makeup',
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80',
+    image: '/brand-images/service-makeup-application.png',
     href: '/services?category=makeup',
   },
   {
     name: 'Wellness',
-    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80',
+    image: '/brand-images/category-wellness.png',
     href: '/services?category=wellness',
   },
   {
     name: 'Weddings',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80',
+    image: '/brand-images/category-weddings.png',
     href: '/premium/weddings',
   },
 ]

@@ -1,15 +1,16 @@
-import { Metadata } from 'next'
+'use client'
+
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-
-export const metadata: Metadata = {
-  title: 'Services — Good Hands',
-  description: 'Explore our curated beauty services across Lisbon. Hair styling, nail care, skincare, makeup, and wellness treatments.',
-}
+import { useSearchParams } from 'next/navigation'
+import { Search, X } from 'lucide-react'
+import CuratedProducts from '@/components/CuratedProducts'
 
 const services = [
   {
     category: 'Hair Styling',
+    slug: 'hair',
     services: [
       { name: 'Precision Cut', price: 'From €80', duration: '60 min' },
       { name: 'Color & Highlights', price: 'From €120', duration: '120 min' },
@@ -17,10 +18,11 @@ const services = [
       { name: 'Blowout & Styling', price: 'From €45', duration: '45 min' },
       { name: 'Treatment & Repair', price: 'From €60', duration: '60 min' },
     ],
-    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80',
+    image: '/brand-images/category-hair-styling.png',
   },
   {
     category: 'Nail Care',
+    slug: 'nails',
     services: [
       { name: 'Classic Manicure', price: 'From €35', duration: '45 min' },
       { name: 'Gel Manicure', price: 'From €45', duration: '60 min' },
@@ -28,10 +30,11 @@ const services = [
       { name: 'Nail Art', price: 'From €20', duration: '30 min' },
       { name: 'Extensions', price: 'From €70', duration: '90 min' },
     ],
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80',
+    image: '/brand-images/salon-detail.png',
   },
   {
     category: 'Skincare',
+    slug: 'skincare',
     services: [
       { name: 'Signature Facial', price: 'From €95', duration: '75 min' },
       { name: 'Anti-Aging Treatment', price: 'From €140', duration: '90 min' },
@@ -39,38 +42,88 @@ const services = [
       { name: 'Microdermabrasion', price: 'From €120', duration: '60 min' },
       { name: 'LED Light Therapy', price: 'From €100', duration: '45 min' },
     ],
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80',
+    image: '/brand-images/service-facial-treatment.png',
   },
   {
     category: 'Makeup',
+    slug: 'makeup',
     services: [
       { name: 'Event Makeup', price: 'From €70', duration: '45 min' },
       { name: 'Bridal Makeup', price: 'From €150', duration: '90 min' },
       { name: 'Makeup Lesson', price: 'From €120', duration: '90 min' },
       { name: 'Beauty Consultation', price: 'From €80', duration: '60 min' },
     ],
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80',
+    image: '/brand-images/service-makeup-application.png',
   },
   {
     category: 'Wellness',
+    slug: 'wellness',
     services: [
       { name: 'Swedish Massage', price: 'From €90', duration: '60 min' },
       { name: 'Deep Tissue', price: 'From €100', duration: '75 min' },
       { name: 'Aromatherapy', price: 'From €95', duration: '60 min' },
       { name: 'Hot Stone', price: 'From €110', duration: '90 min' },
     ],
-    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
+    image: '/brand-images/category-wellness.png',
   },
 ]
 
 export default function ServicesPage() {
+  const searchParams = useSearchParams()
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [filteredServices, setFilteredServices] = useState(services)
+
+  // Initialize from URL parameters
+  useEffect(() => {
+    const q = searchParams.get('q') || ''
+    const category = searchParams.get('category') || 'all'
+    setSearchTerm(q)
+    setSelectedCategory(category)
+  }, [searchParams])
+
+  // Filter services based on search and category
+  useEffect(() => {
+    let filtered = services
+
+    // Filter by category
+    if (selectedCategory && selectedCategory !== 'all') {
+      filtered = filtered.filter(cat => cat.slug === selectedCategory)
+    }
+
+    // Filter by search term
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase()
+      
+      // List of location terms to ignore (since all services are in Lisbon)
+      const locationTerms = ['lisbon', 'lisboa', 'portugal', 'porto', 'cascais', 'sintra']
+      const isLocationSearch = locationTerms.some(loc => term.includes(loc))
+      
+      // If searching for location only, show all results
+      // Otherwise filter by category or service name
+      if (!isLocationSearch) {
+        filtered = filtered.filter(cat => 
+          cat.category.toLowerCase().includes(term) ||
+          cat.services.some(service => service.name.toLowerCase().includes(term))
+        )
+      }
+    }
+
+    setFilteredServices(filtered)
+  }, [searchTerm, selectedCategory])
+
+  const clearFilters = () => {
+    setSearchTerm('')
+    setSelectedCategory('all')
+    window.history.pushState({}, '', '/services')
+  }
   return (
     <div className="pt-20">
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=2000&q=80"
+            src="/brand-images/salon-detail.png"
             alt="Beauty services"
             fill
             className="object-cover"
@@ -80,13 +133,92 @@ export default function ServicesPage() {
         <div className="relative z-10 text-center text-white container-custom">
           <h1 className="text-5xl md:text-6xl font-serif mb-4">Our Services</h1>
           <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
-            Premium beauty experiences curated for discerning clients
+            Premium beauty experiences with expert concierge matching
+          </p>
+          <p className="text-lg text-gold mt-2">
+            All prices include concierge service & coordination
           </p>
         </div>
       </section>
 
+      {/* Search & Filter Bar */}
+      <section className="section-padding bg-shell">
+        <div className="container-custom max-w-4xl">
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Search Input */}
+              <div className="flex-1 relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-harbor" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search services..."
+                  className="w-full pl-10 pr-4 py-3 border border-harbor/20 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                />
+              </div>
+
+              {/* Category Filter */}
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="px-4 py-3 border border-harbor/20 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white md:w-48"
+              >
+                <option value="all">All Categories</option>
+                <option value="hair">Hair Styling</option>
+                <option value="nails">Nail Care</option>
+                <option value="skincare">Skincare</option>
+                <option value="makeup">Makeup</option>
+                <option value="wellness">Wellness</option>
+              </select>
+
+              {/* Clear Filters */}
+              {(searchTerm || selectedCategory !== 'all') && (
+                <button
+                  onClick={clearFilters}
+                  className="px-4 py-3 text-harbor hover:text-ink transition-colors flex items-center gap-2"
+                >
+                  <X className="w-4 h-4" />
+                  Clear
+                </button>
+              )}
+            </div>
+
+            {/* Active Filters Display */}
+            {(searchTerm || selectedCategory !== 'all') && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {searchTerm && (
+                  <span className="bg-gold/10 text-gold px-3 py-1 rounded-full text-sm">
+                    Search: "{searchTerm}"
+                  </span>
+                )}
+                {selectedCategory !== 'all' && (
+                  <span className="bg-gold/10 text-gold px-3 py-1 rounded-full text-sm">
+                    Category: {services.find(s => s.slug === selectedCategory)?.category}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Services Grid */}
-      {services.map((category, idx) => (
+      {filteredServices.length === 0 ? (
+        <section className="section-padding bg-white">
+          <div className="container-custom text-center py-16">
+            <div className="text-6xl mb-4">🔍</div>
+            <h2 className="text-3xl font-serif mb-4">No Services Found</h2>
+            <p className="text-harbor mb-6">
+              We couldn't find any services matching your search. Try different keywords or browse all services.
+            </p>
+            <button onClick={clearFilters} className="btn-gold">
+              Discover All Services
+            </button>
+          </div>
+        </section>
+      ) : (
+        filteredServices.map((category, idx) => (
         <section
           key={category.category}
           className={`section-padding ${idx % 2 === 0 ? 'bg-white' : 'bg-shell'}`}
@@ -114,8 +246,9 @@ export default function ServicesPage() {
                       <div>
                         <h3 className="font-medium text-lg">{service.name}</h3>
                         <p className="text-sm text-harbor">{service.duration}</p>
+                        <p className="text-xs text-gold mt-1">Includes concierge service</p>
                       </div>
-                      <span className="text-gold font-medium">{service.price}</span>
+                      <span className="text-gold font-medium whitespace-nowrap ml-4">{service.price}</span>
                     </div>
                   ))}
                 </div>
@@ -123,19 +256,22 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
-      ))}
+      )))}
+
+      {/* Curated Products */}
+      <CuratedProducts />
 
       {/* CTA */}
       <section className="section-padding bg-ink text-white text-center">
         <div className="container-custom">
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
-            Ready to Book Your Experience?
+            Ready to Reserve Your Session?
           </h2>
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
-            Let us help you find the perfect service and professional for your needs
+            We'll match you with the perfect professional for your needs
           </p>
-          <Link href="/#booking" className="btn-primary">
-            Book Now
+          <Link href="/#booking" className="btn-gold">
+            Reserve Your Experience
           </Link>
         </div>
       </section>

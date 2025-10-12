@@ -1,0 +1,25 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Instagram Highlight Cover: Locations -->
+  
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="#f8f4f0"/>
+  
+  <!-- Safe zone -->
+  <circle cx="540" cy="960" r="210" fill="white"/>
+  
+  <!-- Map pin icon -->
+  <g transform="translate(540, 960)">
+    <!-- Pin shape -->
+    <path d="M 0 -50 C -25 -50, -40 -35, -40 -10 C -40 10, -20 30, 0 50 C 20 30, 40 10, 40 -10 C 40 -35, 25 -50, 0 -50 Z" 
+          fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Inner circle -->
+    <circle cx="0" cy="-10" r="15" fill="#d4af37"/>
+    
+    <!-- Small accent dots (other locations) -->
+    <circle cx="-60" cy="10" r="4" fill="#d4af37" opacity="0.4"/>
+    <circle cx="55" cy="-5" r="4" fill="#d4af37" opacity="0.4"/>
+    <circle cx="-45" cy="-35" r="4" fill="#d4af37" opacity="0.4"/>
+  </g>
+</svg>
+

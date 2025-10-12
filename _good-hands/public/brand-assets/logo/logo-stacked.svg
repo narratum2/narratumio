@@ -1,0 +1,9 @@
+<svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Good Hands Stacked Wordmark -->
+  <text x="60" y="28" font-family="Playfair Display, serif" font-weight="600" font-size="26" text-anchor="middle" fill="#1a1a1a">Good</text>
+  <text x="60" y="56" font-family="Playfair Display, serif" font-weight="600" font-size="26" text-anchor="middle" fill="#1a1a1a">Hands</text>
+  
+  <!-- Accent line underneath -->
+  <path d="M 35 66 Q 60 70, 85 66" stroke="#d4af37" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>
+

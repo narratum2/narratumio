@@ -2,56 +2,56 @@
   "images": [
     {
       "id": "1",
-      "src": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80",
+      "src": "/brand-images/hero-salon-interior.png",
       "alt": "Luxury beauty salon interior in Chiado",
       "caption": "Luxe styling in Chiado"
     },
     {
       "id": "2",
-      "src": "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80",
+      "src": "/brand-images/service-makeup-application.png",
       "alt": "Professional makeup application",
       "caption": "Professional makeup artistry"
     },
     {
       "id": "3",
-      "src": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80",
+      "src": "/brand-images/category-hair-styling.png",
       "alt": "Hair color treatment process",
       "caption": "Expert color treatment"
     },
     {
       "id": "4",
-      "src": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
+      "src": "/brand-images/experience-bridal-beauty.png",
       "alt": "Bridal beauty preparation",
       "caption": "Bridal beauty preparation"
     },
     {
       "id": "5",
-      "src": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80",
-      "alt": "Luxury manicure service",
-      "caption": "Luxury nail care"
+      "src": "/brand-images/salon-detail.png",
+      "alt": "Luxury beauty services",
+      "caption": "Luxury beauty care"
     },
     {
       "id": "6",
-      "src": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80",
+      "src": "/brand-images/service-facial-treatment.png",
       "alt": "Advanced facial treatment",
       "caption": "Advanced skincare treatments"
     },
     {
       "id": "7",
-      "src": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
+      "src": "/brand-images/category-wellness.png",
       "alt": "Wellness spa environment",
       "caption": "Wellness and relaxation"
     },
     {
       "id": "8",
-      "src": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80",
+      "src": "/brand-images/category-weddings.png",
       "alt": "Bridal makeup details",
       "caption": "Wedding day perfection"
     },
     {
       "id": "9",
-      "src": "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=800&q=80",
-      "alt": "Lisbon cityscape",
+      "src": "/brand-images/beauty-moment.png",
+      "alt": "Beauty moments in Lisbon",
       "caption": "Beauty in Lisbon"
     }
   ]

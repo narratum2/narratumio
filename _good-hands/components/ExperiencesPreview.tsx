@@ -8,21 +8,21 @@ const experiences = [
   {
     title: 'Bridal Beauty Journey',
     description: 'Complete wedding day preparation with trials, treatments, and day-of styling',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',
+    image: '/brand-images/experience-bridal-beauty.png',
     tag: 'Wedding',
     href: '/premium/weddings',
   },
   {
     title: 'Wellness Retreat',
     description: 'Multi-day rejuvenation package in Sintra or Cascais',
-    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80',
+    image: '/brand-images/experience-wellness-retreat.png',
     tag: 'Retreat',
     href: '/premium/retreats',
   },
   {
     title: 'Corporate Wellness',
     description: 'Team building through beauty and wellness experiences',
-    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80',
+    image: '/brand-images/experience-corporate-wellness.png',
     tag: 'Corporate',
     href: '/premium/corporate',
   },
@@ -91,8 +91,8 @@ export default function ExperiencesPreview() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <Link href="/experiences" className="btn-secondary">
-            Explore All Experiences
+          <Link href="/experiences" className="btn-gold">
+            Explore Premium Experiences
           </Link>
         </motion.div>
       </div>

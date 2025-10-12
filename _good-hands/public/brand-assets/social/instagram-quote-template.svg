@@ -1,0 +1,53 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Testimonial Quote Template -->
+  
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#fafaf9"/>
+  
+  <!-- Subtle texture overlay suggestion -->
+  <rect width="1080" height="1080" fill="#f8f4f0" opacity="0.5"/>
+  
+  <!-- Quote marks (decorative) -->
+  <text x="120" y="280" font-family="Playfair Display" font-weight="600" font-size="120" fill="#d4af37" opacity="0.3">
+    "
+  </text>
+  
+  <!-- Quote text -->
+  <text x="540" y="420" font-family="Playfair Display" font-style="italic" font-size="42" fill="#1a1a1a" text-anchor="middle">
+    Amazing experience,
+  </text>
+  <text x="540" y="480" font-family="Playfair Display" font-style="italic" font-size="42" fill="#1a1a1a" text-anchor="middle">
+    absolutely perfect
+  </text>
+  <text x="540" y="540" font-family="Playfair Display" font-style="italic" font-size="42" fill="#1a1a1a" text-anchor="middle">
+    results. So grateful!
+  </text>
+  
+  <!-- Closing quote mark -->
+  <text x="780" y="600" font-family="Playfair Display" font-weight="600" font-size="120" fill="#d4af37" opacity="0.3">
+    "
+  </text>
+  
+  <!-- Client name -->
+  <text x="540" y="680" font-family="Inter" font-size="20" fill="#4a5568" text-anchor="middle">
+    — Maria S., Hotel Guest
+  </text>
+  
+  <!-- Service -->
+  <text x="540" y="720" font-family="Inter" font-size="16" fill="#718096" text-anchor="middle">
+    Hair Styling · Chiado
+  </text>
+  
+  <!-- Brand section -->
+  <rect x="340" y="820" width="400" height="120" fill="white" rx="12"/>
+  
+  <text x="540" y="870" font-family="Playfair Display" font-weight="600" font-size="32" fill="#1a1a1a" text-anchor="middle">
+    Good Hands
+  </text>
+  <path d="M 460 880 Q 540 885, 620 880" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  
+  <text x="540" y="910" font-family="Inter" font-size="14" fill="#4a5568" text-anchor="middle">
+    Your Beauty Concierge in Lisbon
+  </text>
+</svg>
+

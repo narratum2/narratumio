@@ -247,6 +247,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 **Severity: MEDIUM**
 
 Add JSON-LD for better SEO:
+{% raw %}
 ```tsx
 <script
   type="application/ld+json"
@@ -274,6 +275,7 @@ Add JSON-LD for better SEO:
   }}
 />
 ```
+{% endraw %}
 
 ---
 

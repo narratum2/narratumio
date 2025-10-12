@@ -135,12 +135,14 @@ Today's Portuguese beauty professionals...
 ## 3. Rendering Content
 
 ### ❌ BEFORE (Bad)
+{% raw %}
 ```tsx
 <div 
   className="editorial-content prose prose-lg max-w-none"
   dangerouslySetInnerHTML={{ __html: article.content }}
 />
 ```
+{% endraw %}
 
 **Issues:**
 - ❌ XSS vulnerability

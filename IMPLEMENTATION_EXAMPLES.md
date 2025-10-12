@@ -263,7 +263,7 @@ export default function ArticlePage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={% raw %}{{ __html: JSON.stringify(jsonLd) }}{% endraw %}
       />
       
       <article className="pt-20">

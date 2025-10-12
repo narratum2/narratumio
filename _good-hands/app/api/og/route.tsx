@@ -111,7 +111,10 @@ export async function GET(request: Request) {
       }
     )
   } catch (e) {
-    console.error('OG image error:', e)
+    // In edge runtime, only log in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('OG image generation error:', e)
+    }
     return new Response('Failed to generate image', { status: 500 })
   }
 }

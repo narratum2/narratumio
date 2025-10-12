@@ -1,0 +1,17 @@
+{
+  "name": "Good Hands - Beauty Concierge",
+  "short_name": "Good Hands",
+  "description": "AI-first beauty concierge for Lisbon and beyond. Curated beauty experiences in Lisbon's most elegant neighborhoods.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#d4af37",
+  "background_color": "#fafaf9",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

@@ -1,16 +1,18 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 
 export default function SearchBar() {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
 
   const categories = [
     { value: 'all', label: 'All Services' },
-    { value: 'hair', label: 'Hair' },
-    { value: 'nails', label: 'Nails' },
+    { value: 'hair', label: 'Hair Styling' },
+    { value: 'nails', label: 'Nail Care' },
     { value: 'skincare', label: 'Skincare' },
     { value: 'makeup', label: 'Makeup' },
     { value: 'wellness', label: 'Wellness' },
@@ -18,8 +20,19 @@ export default function SearchBar() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Search:', { searchTerm, selectedCategory })
-    // Implement search logic or navigation
+    
+    // Navigate based on category selection
+    if (selectedCategory === 'all') {
+      // If there's a search term, navigate with query param for future search implementation
+      if (searchTerm.trim()) {
+        router.push(`/services?q=${encodeURIComponent(searchTerm.trim())}`)
+      } else {
+        router.push('/services')
+      }
+    } else {
+      // Navigate to specific category
+      router.push(`/services?category=${selectedCategory}`)
+    }
   }
 
   return (

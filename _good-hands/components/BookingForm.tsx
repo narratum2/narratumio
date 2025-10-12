@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { logger } from '@/lib/logger'
 
 interface BookingFormData {
   name: string
@@ -76,9 +77,10 @@ export default function BookingForm() {
         })
       } else {
         setSubmitStatus('error')
+        logger.error('Booking submission failed', await response.text())
       }
     } catch (error) {
-      console.error('Booking error:', error)
+      logger.error('Booking form submission error', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)

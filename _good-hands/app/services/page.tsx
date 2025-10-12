@@ -86,6 +86,33 @@ function ServicesContent() {
 
   return (
     <div className="pt-20">
+      {/* Breadcrumbs */}
+      <nav className="bg-white border-b border-harbor/10 py-3">
+        <div className="container-custom">
+          <ol className="flex items-center gap-2 text-sm">
+            <li>
+              <Link href="/" className="text-harbor hover:text-gold transition-colors focus-visible-ring">
+                Home
+              </Link>
+            </li>
+            <li className="text-harbor/50">→</li>
+            <li>
+              <Link href="/services" className="text-harbor hover:text-gold transition-colors focus-visible-ring">
+                Services
+              </Link>
+            </li>
+            {categoryFilter && (
+              <>
+                <li className="text-harbor/50">→</li>
+                <li className="text-ink font-medium">
+                  {getCategoryDisplayName(categoryFilter)}
+                </li>
+              </>
+            )}
+          </ol>
+        </div>
+      </nav>
+
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
@@ -108,8 +135,11 @@ function ServicesContent() {
       </section>
 
       {/* Category Filter Pills */}
-      <section className="bg-white border-b border-harbor/10 sticky top-20 z-40">
+      <section className="bg-white border-b border-harbor/10 sticky top-20 z-40 shadow-sm">
         <div className="container-custom py-6">
+          <h3 className="text-sm uppercase tracking-wider text-harbor font-medium mb-4 text-center">
+            Browse by Category
+          </h3>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/services"
@@ -143,14 +173,49 @@ function ServicesContent() {
       {/* No results message */}
       {filteredServices.length === 0 && (
         <section className="section-padding bg-white text-center">
-          <div className="container-custom">
-            <h2 className="text-3xl font-serif mb-4">No services found</h2>
-            <p className="text-harbor mb-6">
-              We couldn't find any services in this category.
-            </p>
-            <Link href="/services" className="btn-primary">
-              View All Services
-            </Link>
+          <div className="container-custom max-w-3xl">
+            <div className="mb-8">
+              <svg
+                className="w-24 h-24 mx-auto text-harbor/30 mb-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <h2 className="text-3xl md:text-4xl font-serif mb-4">No services found</h2>
+              <p className="text-harbor text-lg mb-8">
+                We couldn't find any services matching your criteria.
+              </p>
+            </div>
+            
+            <div className="bg-shell rounded-lg p-8">
+              <h3 className="text-xl font-serif mb-4">Try browsing our popular categories:</h3>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {categories
+                  .filter((cat) => cat.slug !== 'weddings')
+                  .map((category) => (
+                    <Link
+                      key={category.slug}
+                      href={`/services?category=${category.slug}`}
+                      className="px-6 py-3 bg-white text-ink rounded-full font-medium hover:bg-ink hover:text-white transition-all focus-visible-ring shadow-sm"
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+              </div>
+              <div className="mt-6">
+                <Link
+                  href="/#booking"
+                  className="inline-block text-gold hover:text-gold-dark font-medium transition-colors"
+                >
+                  Or tell us what you're looking for →
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       )}

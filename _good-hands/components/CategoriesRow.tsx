@@ -39,7 +39,9 @@ export default function CategoriesRow() {
             >
               <Link
                 href={category.href}
-                className="group block relative aspect-square rounded-lg overflow-hidden focus-visible-ring"
+                className={`group block relative aspect-square rounded-lg overflow-hidden focus-visible-ring ${
+                  category.slug === 'weddings' ? 'ring-2 ring-gold' : ''
+                }`}
                 aria-label={`Browse ${category.name} - ${category.description}`}
               >
                 <Image
@@ -51,6 +53,12 @@ export default function CategoriesRow() {
                   priority={index < 3} // Prioritize first 3 images
                   quality={85}
                 />
+                {/* Premium badge for weddings */}
+                {category.slug === 'weddings' && (
+                  <div className="absolute top-4 left-4 bg-gold text-ink px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg z-10">
+                    Premium
+                  </div>
+                )}
                 {/* Enhanced gradient overlay for better contrast */}
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/50 to-ink/20" />
                 

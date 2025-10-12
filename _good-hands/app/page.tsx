@@ -1,7 +1,6 @@
 import Hero from '@/components/Hero'
 import SearchBar from '@/components/SearchBar'
 import CategoriesRow from '@/components/CategoriesRow'
-import Services from '@/components/Services'
 import ExperiencesPreview from '@/components/ExperiencesPreview'
 import JournalPreview from '@/components/JournalPreview'
 import GuidesPreview from '@/components/GuidesPreview'
@@ -16,7 +15,7 @@ export default function Home() {
       <Hero />
       <SearchBar />
       <CategoriesRow />
-      <Services />
+      {/* Services component removed - redundant with CategoriesRow */}
       <ExperiencesPreview />
       <JournalPreview />
       <GuidesPreview />

@@ -86,7 +86,7 @@ export default function CuratedProducts() {
           <div className="bg-white p-8 border-l-4 border-gold">
             <p className="text-sm uppercase tracking-wide text-gold mb-2">Our Philosophy</p>
             <p className="text-harbor leading-relaxed">
-              Like Blackstones Collective in New York, we believe in curated recommendations over endless catalogs. 
+              We believe in curated recommendations over endless catalogs. 
               Every product here has been tested, loved, and personally vouched for by our stylists. 
               <span className="block mt-3 italic">
                 "We stock what we actually use—not what we're paid to promote."

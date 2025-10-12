@@ -16,13 +16,13 @@ export default function PartnershipsPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/brand-images/hero-salon-interior.png"
-            alt="Luxury hotel beauty concierge services - Good Hands partnerships in Lisbon"
+            src="/brand-images/service-makeup-application.png"
+            alt="Luxury hotel beauty concierge services - Professional makeup in design hotel room - Good Hands partnerships in Lisbon"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-sand/90 via-gold/80 to-sand/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ink/70 via-harbor/60 to-ink/70" />
         </div>
 
         {/* Content */}
@@ -73,31 +73,39 @@ export default function PartnershipsPage() {
               The Challenge Your Guests Face
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-6 bg-white rounded-lg">
-                <span className="text-4xl mb-4 block">😰</span>
+              <div className="p-6 bg-white rounded-lg text-center">
+                <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-5xl">😰</span>
+                </div>
                 <h3 className="text-xl font-semibold text-ink mb-3">Language Barriers</h3>
-                <p className="text-harbor">
+                <p className="text-harbor text-left">
                   International guests struggle to communicate their beauty needs with local professionals.
                 </p>
               </div>
-              <div className="p-6 bg-white rounded-lg">
-                <span className="text-4xl mb-4 block">🎲</span>
+              <div className="p-6 bg-white rounded-lg text-center">
+                <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-5xl">🎲</span>
+                </div>
                 <h3 className="text-xl font-semibold text-ink mb-3">Trial & Error</h3>
-                <p className="text-harbor">
+                <p className="text-harbor text-left">
                   Finding quality beauty services in an unfamiliar city is risky and time-consuming.
                 </p>
               </div>
-              <div className="p-6 bg-white rounded-lg">
-                <span className="text-4xl mb-4 block">⏰</span>
+              <div className="p-6 bg-white rounded-lg text-center">
+                <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-5xl">⏰</span>
+                </div>
                 <h3 className="text-xl font-semibold text-ink mb-3">Valuable Time Wasted</h3>
-                <p className="text-harbor">
+                <p className="text-harbor text-left">
                   Research and coordination takes away from their vacation or business trip.
                 </p>
               </div>
-              <div className="p-6 bg-white rounded-lg">
-                <span className="text-4xl mb-4 block">💼</span>
+              <div className="p-6 bg-white rounded-lg text-center">
+                <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-5xl">💼</span>
+                </div>
                 <h3 className="text-xl font-semibold text-ink mb-3">Your Team's Burden</h3>
-                <p className="text-harbor">
+                <p className="text-harbor text-left">
                   Concierge teams spend hours vetting and coordinating beauty appointments.
                 </p>
               </div>

@@ -17,6 +17,7 @@ const services = [
       { name: 'Balayage', price: 'From €180', duration: '180 min' },
       { name: 'Blowout & Styling', price: 'From €45', duration: '45 min' },
       { name: 'Treatment & Repair', price: 'From €60', duration: '60 min' },
+      { name: 'Photoshoot Hair Styling', price: 'From €100', duration: '75 min' },
     ],
     image: '/brand-images/category-hair-styling.png',
   },
@@ -52,6 +53,7 @@ const services = [
       { name: 'Bridal Makeup', price: 'From €150', duration: '90 min' },
       { name: 'Makeup Lesson', price: 'From €120', duration: '90 min' },
       { name: 'Beauty Consultation', price: 'From €80', duration: '60 min' },
+      { name: 'Photoshoot & Editorial Makeup', price: 'From €150', duration: '60 min' },
     ],
     image: '/brand-images/service-makeup-application.png',
   },
@@ -257,6 +259,89 @@ export default function ServicesPage() {
           </div>
         </section>
       )))}
+
+      {/* Photoshoot Services Highlight */}
+      <section className="section-padding bg-gradient-to-br from-gold/5 via-shell to-porcelain">
+        <div className="container-custom max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 text-gold mb-4">
+              <span className="text-2xl">📸</span>
+              <span className="text-sm uppercase tracking-wider font-medium">Special Services</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif mb-6">
+              Professional Photoshoot Beauty Services
+            </h2>
+            <p className="text-xl text-harbor max-w-2xl mx-auto">
+              Organized beauty sessions for brand campaigns, editorial content, influencer shoots, and personal branding
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h3 className="text-2xl font-serif mb-4">For Content Creators & Influencers</h3>
+              <p className="text-harbor mb-4">
+                Our vetted makeup artists and hairstylists specialize in photo-ready looks that translate beautifully on camera.
+                Perfect for Instagram, TikTok, YouTube, and editorial shoots in Lisbon's stunning design hotels and iconic locations.
+              </p>
+              <ul className="space-y-2 text-sm text-harbor">
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>Camera-ready hair and makeup</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>On-location services at design hotels</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>Touch-ups throughout your shoot</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>Coordination with photographers</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h3 className="text-2xl font-serif mb-4">For Brands & Editorial</h3>
+              <p className="text-harbor mb-4">
+                Professional beauty services for brand campaigns, marketing materials, e-commerce product photography with models,
+                and hotel/hospitality brand imagery.
+              </p>
+              <ul className="space-y-2 text-sm text-harbor">
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>Editorial fashion & beauty content</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>Brand campaigns & marketing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>Professional headshots & personal branding</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold mt-1">✓</span>
+                  <span>Full logistics and coordination</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="text-center bg-white p-8 rounded-lg shadow-sm">
+            <h3 className="text-2xl font-serif mb-4">How It Works</h3>
+            <p className="text-harbor mb-6">
+              Contact our concierge team to coordinate hair, makeup, styling, and photography services for your shoot.
+              We handle all logistics and professional coordination so you can focus on creating amazing content.
+            </p>
+            <Link href="/#booking" className="btn-gold inline-block">
+              Book Your Photoshoot Session
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Curated Products */}
       <CuratedProducts />

@@ -104,19 +104,20 @@ export default function JournalPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center">
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/brand-images/blog-portuguese-beauty.png"
             alt="Good Hands Journal - beauty insights, Lisbon guides, and expert tips"
             fill
-            className="object-cover"
+            className="object-cover object-center"
+            priority
           />
-          <div className="absolute inset-0 bg-ink/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/50 to-ink/60" />
         </div>
-        <div className="relative z-10 text-center text-white container-custom">
+        <div className="relative z-10 text-center text-white container-custom px-4">
           <h1 className="text-5xl md:text-6xl font-serif mb-4">The Journal</h1>
-          <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto leading-relaxed">
             Beauty insights, city guides, and stories from around the world
           </p>
         </div>

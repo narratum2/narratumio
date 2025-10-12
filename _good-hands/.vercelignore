@@ -1,0 +1,6 @@
+# Ignore everything in parent directory
+../*
+# But include this directory
+!../package.json
+!../package-lock.json
+

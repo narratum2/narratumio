@@ -54,7 +54,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -88,7 +88,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -126,7 +126,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-porcelain/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-porcelain/60">
               © {new Date().getFullYear()} Good Hands. All rights reserved.
             </p>

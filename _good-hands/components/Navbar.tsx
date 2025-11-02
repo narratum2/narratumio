@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -16,6 +16,8 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const firstMenuItemRef = useRef<HTMLAnchorElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,27 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Focus management for mobile menu
+  useEffect(() => {
+    if (isOpen && firstMenuItemRef.current) {
+      firstMenuItemRef.current.focus()
+    } else if (!isOpen && menuButtonRef.current && document.activeElement?.tagName === 'A') {
+      menuButtonRef.current.focus()
+    }
+  }, [isOpen])
+
+  // Handle Escape key to close menu
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [isOpen])
 
   return (
     <nav
@@ -60,6 +83,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuButtonRef}
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-3 text-black min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle menu"
@@ -96,12 +120,13 @@ export default function Navbar() {
             className="md:hidden bg-white border-t border-gray-light"
           >
             <div className="container-custom py-6 space-y-4">
-              {navLinks.map((link) => (
+              {navLinks.map((link, index) => (
                 <Link
                   key={link.href}
+                  ref={index === 0 ? firstMenuItemRef : undefined}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-3 text-sm font-medium uppercase tracking-wider text-black hover:text-gold transition-colors"
+                  className="block py-3 text-sm font-medium uppercase tracking-wider text-black hover:text-gold transition-colors focus-visible-ring"
                   style={{ letterSpacing: '0.08em' }}
                 >
                   {link.label}

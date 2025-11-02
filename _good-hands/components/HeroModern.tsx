@@ -34,11 +34,11 @@ export default function HeroModern() {
             We navigate Lisbon's beauty scene for you.<br className="hidden sm:inline" />
             <span className="inline sm:hidden"> </span>Expert matching. Perfect results. Every time.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 max-w-md sm:max-w-none mx-auto">
-            <a href="#booking" className="btn-gold w-full sm:w-auto">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-center px-4 max-w-md md:max-w-none mx-auto">
+            <a href="#booking" className="btn-gold btn-primary-full-mobile md:w-auto">
               Book Your Experience
             </a>
-            <a href="/services" className="btn-secondary w-full sm:w-auto" style={{ borderColor: 'white', color: 'white' }}>
+            <a href="/services" className="btn-secondary btn-primary-full-mobile md:w-auto" style={{ borderColor: 'white', color: 'white' }}>
               Explore Services
             </a>
           </div>

@@ -183,7 +183,12 @@
     .btn-primary {
       padding: 16px 24px;
       font-size: 12px;
-      width: 100%; /* Full width on mobile */
+      /* Removed forced width: 100% - use btn-primary-full-mobile variant when needed */
+    }
+    
+    /* Add variant class for buttons that should be full-width on mobile */
+    .btn-primary-full-mobile {
+      width: 100%;
       max-width: 100%;
     }
   }

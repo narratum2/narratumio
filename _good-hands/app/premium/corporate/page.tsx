@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Corporate Beauty Services | Good Hands Lisbon',
@@ -11,13 +12,26 @@ export default function CorporatePage() {
   return (
     <div className="bg-porcelain">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-ink via-harbor to-ink py-32">
+      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/brand-images/service-makeup-application.png"
+            alt="Professional corporate beauty services - Executive grooming and team wellness in office setting - Good Hands corporate services in Lisbon"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-ink/70 via-harbor/60 to-ink/70" />
+        </div>
+
+        {/* Content */}
         <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6">
               Corporate Beauty & Wellness Services
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-2xl mx-auto">
               Elevate your corporate culture with professional beauty services for team events, employee wellness programs, and executive grooming
             </p>
             <Link href="/#booking" className="btn-primary bg-gold hover:bg-gold/90">

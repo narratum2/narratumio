@@ -8,6 +8,7 @@ category: "Beauty Guides"
 tags: ["skincare", "facials", "lisbon", "beauty treatments", "estheticians"]
 featuredImage: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Discover the best professional skincare treatments in Lisbon. Expert guide to facials, anti-aging treatments, and vetted estheticians for glowing skin in Portugal's sunny capital."
 ---
 
 # Professional Skincare Treatments in Lisbon: A Complete Guide

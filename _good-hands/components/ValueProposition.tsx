@@ -55,10 +55,10 @@ export default function ValueProposition() {
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
             You Know the Feeling
           </h2>
-          <p className="text-xl text-harbor max-w-3xl mx-auto mb-4">
+          <p className="text-xl text-harbor max-w-3xl mx-auto mb-4 text-center">
             Three hours scrolling through Instagram. Fifteen reviews that contradict each other. A growing sense that you are about to make an expensive mistake. Again.
           </p>
-          <p className="text-2xl font-serif text-gold max-w-2xl mx-auto">
+          <p className="text-2xl font-serif text-gold max-w-2xl mx-auto text-center">
             There is a better way. We are that friend who knows everyone.
           </p>
         </motion.div>

@@ -51,7 +51,7 @@ export default function CategoriesRow() {
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
             Browse by Category
           </h2>
-          <p className="text-harbor text-lg max-w-2xl mx-auto">
+          <p className="text-harbor text-lg max-w-2xl mx-auto text-center">
             Discover curated beauty experiences tailored to your needs
           </p>
         </motion.div>

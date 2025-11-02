@@ -30,7 +30,7 @@ export default function HeroModern() {
           <h1 className="font-serif font-normal mb-6 md:mb-8 text-balance px-2 text-[clamp(2rem,8vw,4.5rem)] leading-[1.15] tracking-[-0.02em]">
             Lisbon's Premier Beauty Concierge
           </h1>
-          <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-10 text-white/90 max-w-2xl mx-auto font-light px-4 leading-[1.7]">
+          <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-10 text-white/90 max-w-2xl mx-auto font-light px-4 leading-[1.7] text-center">
             We navigate Lisbon's beauty scene for you.<br className="hidden sm:inline" />
             <span className="inline sm:hidden"> </span>Expert matching. Perfect results. Every time.
           </p>

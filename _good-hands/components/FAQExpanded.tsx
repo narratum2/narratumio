@@ -173,7 +173,7 @@ export default function FAQExpanded() {
           <h2 className="text-4xl md:text-5xl font-serif mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-harbor text-lg">
+          <p className="text-harbor text-lg text-center">
             Everything you need to know about Good Hands
           </p>
         </div>

@@ -42,7 +42,7 @@ export default function ExperiencesPreview() {
           <h2 className="text-4xl md:text-5xl font-serif mb-4">
             Premium Experiences
           </h2>
-          <p className="text-harbor text-lg max-w-2xl mx-auto">
+          <p className="text-harbor text-lg max-w-2xl mx-auto text-center">
             Elevated multi-service packages for life\'s special moments
           </p>
         </motion.div>

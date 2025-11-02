@@ -72,11 +72,11 @@ export default function ProfessionalSignupForm() {
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
             Are You a Beauty Professional?
           </h2>
-          <p className="text-xl text-harbor max-w-2xl mx-auto mb-4">
+          <p className="text-xl text-harbor max-w-2xl mx-auto mb-4 text-center">
             Join Lisbon's most exclusive network of vetted beauty professionals. 
             We connect you with discerning clients and luxury hotel guests.
           </p>
-          <p className="text-harbor max-w-2xl mx-auto">
+          <p className="text-harbor max-w-2xl mx-auto text-center">
             Good Hands personally vets every professional in our network. If you're exceptional at what you do, 
             we'd love to meet you.
           </p>

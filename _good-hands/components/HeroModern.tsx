@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function HeroModern() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden" style={{ height: 'calc(100vh - 80px)', marginTop: '80px', minHeight: '500px' }}>
+    <section className="relative flex items-center justify-center overflow-hidden h-[calc(100vh-80px)] mt-20 min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -27,10 +27,10 @@ export default function HeroModern() {
           transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="font-serif font-normal mb-6 md:mb-8 text-balance px-2" style={{ fontSize: 'clamp(2rem, 8vw, 4.5rem)', lineHeight: '1.15', letterSpacing: '-0.02em' }}>
+          <h1 className="font-serif font-normal mb-6 md:mb-8 text-balance px-2 text-[clamp(2rem,8vw,4.5rem)] leading-[1.15] tracking-[-0.02em]">
             Lisbon's Premier Beauty Concierge
           </h1>
-          <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-10 text-white/90 max-w-2xl mx-auto font-light px-4" style={{ lineHeight: '1.7' }}>
+          <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-10 text-white/90 max-w-2xl mx-auto font-light px-4 leading-[1.7]">
             We navigate Lisbon's beauty scene for you.<br className="hidden sm:inline" />
             <span className="inline sm:hidden"> </span>Expert matching. Perfect results. Every time.
           </p>
@@ -38,7 +38,7 @@ export default function HeroModern() {
             <a href="#booking" className="btn-gold w-full sm:w-auto">
               Book Your Experience
             </a>
-            <a href="/services" className="btn-secondary w-full sm:w-auto" style={{ borderColor: 'white', color: 'white' }}>
+            <a href="/services" className="btn-secondary w-full sm:w-auto border-white text-white hover:text-white">
               Explore Services
             </a>
           </div>
@@ -53,7 +53,7 @@ export default function HeroModern() {
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 hidden md:flex"
       >
         <div className="flex flex-col items-center gap-2 text-white/80">
-          <span className="text-xs uppercase tracking-widest font-medium" style={{ letterSpacing: '0.15em' }}>Scroll</span>
+          <span className="text-xs uppercase tracking-widest font-medium tracking-[0.15em]">Scroll</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}

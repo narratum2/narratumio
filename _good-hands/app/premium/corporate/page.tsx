@@ -16,7 +16,7 @@ export default function CorporatePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/brand-images/service-makeup-application.png"
+            src="/brand-images/experience-corporate-wellness.png"
             alt="Professional corporate beauty services - Executive grooming and team wellness in office setting - Good Hands corporate services in Lisbon"
             fill
             className="object-cover object-center"

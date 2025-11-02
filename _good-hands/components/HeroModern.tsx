@@ -27,7 +27,7 @@ export default function HeroModern() {
           transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="font-serif font-normal mb-6 md:mb-8 text-balance px-2" style={{ fontSize: 'clamp(2rem, 8vw, 4.5rem)', lineHeight: '1.15', letterSpacing: '-0.02em' }}>
+          <h1 className="font-serif font-normal mb-6 md:mb-8 text-balance text-center w-full" style={{ fontSize: 'clamp(2rem, 8vw, 4.5rem)', lineHeight: '1.15', letterSpacing: '-0.02em' }}>
             Lisbon's Premier Beauty Concierge
           </h1>
           <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-10 text-white/90 max-w-2xl mx-auto font-light px-4" style={{ lineHeight: '1.7' }}>

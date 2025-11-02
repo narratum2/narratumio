@@ -64,6 +64,7 @@
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-bottom: var(--spacing-xl);
+    text-align: center; /* Ensure all h1 titles are centered */
   }
 
   @media (max-width: 768px) {

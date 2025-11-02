@@ -24,7 +24,7 @@ export default function SintraPage() {
           <div className="absolute inset-0 bg-ink/60" />
         </div>
         <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4">Sintra</h1>
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full">Sintra</h1>
           <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
             Fairy-tale beauty in Portugal&apos;s enchanted mountains
           </p>

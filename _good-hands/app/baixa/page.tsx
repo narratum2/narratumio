@@ -24,7 +24,7 @@ export default function BaixaPage() {
           <div className="absolute inset-0 bg-ink/50" />
         </div>
         <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4">Baixa</h1>
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full">Baixa</h1>
           <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
             Downtown convenience meets quality beauty services
           </p>

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { Search, X } from 'lucide-react'
-import CuratedProducts from '@/components/CuratedProducts'
+// import CuratedProducts from '@/components/CuratedProducts' // Temporarily disabled
 
 const services = [
   {
@@ -122,7 +122,7 @@ export default function ServicesPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
             src="/brand-images/salon-detail.png"
@@ -343,8 +343,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Curated Products */}
-      <CuratedProducts />
+      {/* CuratedProducts temporarily disabled - awaiting brand images */}
+      {/* <CuratedProducts /> */}
 
       {/* CTA */}
       <section className="section-padding bg-ink text-white text-center">

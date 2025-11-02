@@ -110,7 +110,7 @@ export default function BookingForm() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-shell rounded-lg p-8 md:p-12">
+          <form onSubmit={handleSubmit} className="bg-shell rounded-lg p-6 md:p-8 lg:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">

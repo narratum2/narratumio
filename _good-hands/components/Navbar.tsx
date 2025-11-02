@@ -61,9 +61,10 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-black"
+            className="md:hidden p-3 text-black min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             <svg
               className="w-6 h-6"
@@ -88,6 +89,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

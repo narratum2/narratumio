@@ -8,6 +8,7 @@ category: "Digital Nomad Life"
 tags: ["digital nomad", "remote work", "lisbon", "self-care", "wellness", "expat life"]
 featuredImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Complete beauty and wellness guide for digital nomads in Lisbon. Flexible booking options, remote-work-friendly services, and self-care essentials for expat life in Portugal."
 ---
 
 # Beauty & Wellness for Digital Nomads in Lisbon

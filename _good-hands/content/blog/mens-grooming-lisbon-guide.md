@@ -6,6 +6,7 @@ author: "Good Hands Team"
 category: "Men's Grooming"
 image: "/images/blog/mens-grooming-lisbon.jpg"
 tags: ["mens grooming", "barbershop lisbon", "mens spa", "hot towel shave", "mens haircut lisbon", "executive grooming"]
+metaDescription: "Complete guide to men's grooming services in Lisbon. Expert recommendations for barbershops, hot towel shaves, executive spas, and modern styling in Portugal's capital."
 ---
 
 # Men's Grooming in Lisbon: Complete Guide to Barbershops, Spas & Services

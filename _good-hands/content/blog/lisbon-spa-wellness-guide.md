@@ -7,6 +7,7 @@ category: "wellness"
 author: "Good Hands Editorial"
 image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=80"
 keywords: ["spa lisbon", "massage lisbon", "wellness lisbon", "aromatherapy lisbon", "deep tissue massage lisbon"]
+metaDescription: "Complete guide to Lisbon's best spa and wellness services. Expert recommendations for luxury spas, therapeutic massages, and holistic treatments in Portugal's capital."
 ---
 
 # Complete Guide to Spa & Wellness Services in Lisbon

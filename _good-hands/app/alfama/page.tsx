@@ -11,7 +11,7 @@ export default function AlfamaPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="relative h-[70vh] flex items-center justify-center">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image src="/brand-images/beauty-moment.png" alt="Historic Alfama neighborhood Lisbon - authentic beauty experiences in traditional setting" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-ink/50" />

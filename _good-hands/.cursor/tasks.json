@@ -1,0 +1,177 @@
+{
+  "version": "2.0",
+  "task_queue": {
+    "high_priority": [
+      {
+        "id": "bug-001",
+        "title": "Fix Mobile Menu Button Touch Target",
+        "description": "Mobile menu button is 22px × 22px, needs to be 44px × 44px for WCAG 2.1 AA compliance",
+        "priority": "P0",
+        "assigned_to": "joao-qa",
+        "status": "pending",
+        "estimated_time": "30m",
+        "files": ["components/Navbar.tsx"],
+        "requirements": [
+          "Change padding from p-2 to p-3",
+          "Add min-w-[44px] min-h-[44px]",
+          "Add ARIA attributes",
+          "Test on iPhone SE"
+        ]
+      },
+      {
+        "id": "bug-002",
+        "title": "Fix Hero Section Height on Small Phones",
+        "description": "Hero takes 88% of screen on iPhone SE, users must scroll to see content",
+        "priority": "P1",
+        "assigned_to": "ana-ux",
+        "status": "pending",
+        "estimated_time": "30m",
+        "files": [
+          "components/HeroModern.tsx",
+          "app/chiado/page.tsx",
+          "app/alfama/page.tsx",
+          "app/avenida/page.tsx",
+          "app/baixa/page.tsx",
+          "app/belem/page.tsx",
+          "app/cascais/page.tsx",
+          "app/principe-real/page.tsx",
+          "app/sintra/page.tsx"
+        ]
+      },
+      {
+        "id": "bug-003",
+        "title": "Comment Out CuratedProducts Component",
+        "description": "Component has 4 Unsplash URLs, user requested to handle later",
+        "priority": "P0",
+        "assigned_to": "isabella-documentation",
+        "status": "pending",
+        "estimated_time": "5m",
+        "files": ["app/page.tsx"]
+      },
+      {
+        "id": "seo-001",
+        "title": "Optimize Blog Post Meta Descriptions",
+        "description": "Add/optimize meta descriptions for all 15 blog posts",
+        "priority": "P1",
+        "assigned_to": "ricardo-seo",
+        "status": "pending",
+        "estimated_time": "2h",
+        "files": ["content/blog/**/*.md"]
+      },
+      {
+        "id": "doc-001",
+        "title": "Fix Broken Internal Links",
+        "description": "Fix 3-5 broken internal links identified in documentation",
+        "priority": "P1",
+        "assigned_to": "isabella-documentation",
+        "status": "pending",
+        "estimated_time": "1h",
+        "files": ["_good-hands/**/*.md"]
+      }
+    ],
+    "medium_priority": [
+      {
+        "id": "archive-001",
+        "title": "Archive Completed Status Reports",
+        "description": "Move 12-14 completed status reports to archive",
+        "priority": "P2",
+        "assigned_to": "catarina-archive",
+        "status": "pending",
+        "estimated_time": "30m",
+        "files": ["_good-hands/**/*COMPLETE*.md", "_good-hands/**/*FINAL*.md"]
+      },
+      {
+        "id": "seo-002",
+        "title": "Add Internal Links to Blog Posts",
+        "description": "Add 3-5 internal links to each of the 15 blog posts",
+        "priority": "P2",
+        "assigned_to": "ricardo-seo",
+        "status": "pending",
+        "estimated_time": "3h",
+        "files": ["content/blog/**/*.md"]
+      },
+      {
+        "id": "tech-001",
+        "title": "Validate API Documentation",
+        "description": "Review and update outdated API references in documentation",
+        "priority": "P2",
+        "assigned_to": "marco-technical",
+        "status": "pending",
+        "estimated_time": "2h",
+        "files": [
+          "_good-hands/API_INTEGRATION_GUIDE.md",
+          "_good-hands/ENVIRONMENT_VARIABLES_SETUP.md"
+        ]
+      },
+      {
+        "id": "brand-001",
+        "title": "Brand Consistency Audit",
+        "description": "Review all pages for brand consistency",
+        "priority": "P2",
+        "assigned_to": "sofia-brand",
+        "status": "pending",
+        "estimated_time": "2h",
+        "files": ["app/**/*.tsx", "components/**/*.tsx"]
+      }
+    ],
+    "low_priority": [
+      {
+        "id": "enhancement-001",
+        "title": "Add Scroll Progress Indicator",
+        "description": "Add scroll progress indicator to long journal articles",
+        "priority": "P3",
+        "assigned_to": "ana-ux",
+        "status": "pending",
+        "estimated_time": "1h",
+        "files": ["app/journal/[slug]/page.tsx"]
+      },
+      {
+        "id": "enhancement-002",
+        "title": "Add Image Loading States",
+        "description": "Add blur-up placeholder effect for images",
+        "priority": "P3",
+        "assigned_to": "ana-ux",
+        "status": "pending",
+        "estimated_time": "2h",
+        "files": ["components/**/*.tsx"]
+      }
+    ]
+  },
+  "quick_wins": [
+    {
+      "id": "qw-001",
+      "title": "Fix Search Button Width",
+      "estimated_time": "2m",
+      "file": "components/SearchBar.tsx",
+      "change": "Add w-full md:w-auto to button className"
+    },
+    {
+      "id": "qw-002",
+      "title": "Fix Form Container Padding",
+      "estimated_time": "2m",
+      "file": "components/BookingForm.tsx",
+      "change": "Change p-8 to p-6 md:p-8 lg:p-12"
+    },
+    {
+      "id": "qw-003",
+      "title": "Fix Footer Link Touch Targets",
+      "estimated_time": "5m",
+      "file": "components/Footer.tsx",
+      "change": "Add py-2 to all footer links"
+    },
+    {
+      "id": "qw-004",
+      "title": "Fix Footer Stacking Order",
+      "estimated_time": "5m",
+      "file": "components/Footer.tsx",
+      "change": "Change flex-col to flex-col-reverse on mobile"
+    },
+    {
+      "id": "qw-005",
+      "title": "Fix Date/Time Fields Layout",
+      "estimated_time": "5m",
+      "file": "components/BookingForm.tsx",
+      "change": "Keep date/time side-by-side on mobile"
+    }
+  ]
+}

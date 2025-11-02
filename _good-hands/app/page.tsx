@@ -11,7 +11,7 @@ import FAQExpanded from '@/components/FAQExpanded'
 import ReviewsSnippet from '@/components/ReviewsSnippet'
 import BookingForm from '@/components/BookingForm'
 import ParallaxSection from '@/components/ParallaxSection'
-import CuratedProducts from '@/components/CuratedProducts'
+// import CuratedProducts from '@/components/CuratedProducts' // Temporarily disabled
 
 export default function Home() {
   return (
@@ -40,7 +40,8 @@ export default function Home() {
         <JournalPreview />
       </ParallaxSection>
       
-      <CuratedProducts />
+      {/* CuratedProducts temporarily disabled - awaiting brand images */}
+      {/* <CuratedProducts /> */}
       
       <Lookbook />
       <ReviewsSnippet />

@@ -12,7 +12,7 @@ export default function PartnershipsPage() {
   return (
     <div className="bg-porcelain pt-20">
       {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image

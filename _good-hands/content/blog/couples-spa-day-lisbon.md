@@ -8,6 +8,7 @@ category: "Wellness Guides"
 tags: ["couples", "spa", "wellness", "lisbon", "romantic", "massages"]
 featuredImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Complete guide to planning the perfect couples' spa day in Lisbon. Romantic wellness experiences, couples' massages, and curated itineraries for an unforgettable day together."
 ---
 
 # The Perfect Couples' Spa Day in Lisbon: Complete Itinerary

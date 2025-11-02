@@ -6,6 +6,7 @@ author: "Good Hands Team"
 category: "Bridal Beauty"
 image: "/images/blog/bridal-beauty-lisbon.jpg"
 tags: ["bridal beauty", "wedding lisbon", "bridal makeup", "wedding hair", "portugal wedding", "destination wedding"]
+metaDescription: "Complete bridal beauty guide for weddings in Lisbon and Portugal. Expert timelines, trial coordination, and wedding day beauty services for destination brides."
 ---
 
 # Complete Bridal Beauty Guide for Weddings in Lisbon & Portugal

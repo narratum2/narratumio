@@ -8,6 +8,7 @@ category: "Beauty Guides"
 tags: ["makeup", "lisbon", "weddings", "events", "makeup artists"]
 featuredImage: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Expert guide to finding professional makeup artists in Lisbon for weddings, events, and special occasions. Vetted recommendations for flawless looks in Portugal's capital."
 ---
 
 # Finding the Perfect Makeup Artist in Lisbon for Your Event

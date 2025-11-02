@@ -8,6 +8,7 @@ category: "Wedding Beauty"
 tags: ["bridal", "wedding", "makeup", "hair", "lisbon weddings", "bridal beauty"]
 featuredImage: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Complete timeline guide for bridal beauty planning in Lisbon. Wedding day coordination, trial scheduling, and expert recommendations for your perfect look."
 ---
 
 # Bridal Beauty in Lisbon: Complete Timeline

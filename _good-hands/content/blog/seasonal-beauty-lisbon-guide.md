@@ -7,6 +7,7 @@ category: "skincare"
 author: "Good Hands Editorial"
 image: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=1200&q=80"
 keywords: ["lisbon beauty seasonal", "lisbon climate skincare", "beauty tips portugal", "summer skincare lisbon", "winter beauty lisbon"]
+metaDescription: "Seasonal beauty guide for Lisbon's Mediterranean climate. Expert skincare, hair, and makeup tips adapted for Portugal's weather patterns throughout the year."
 ---
 
 # Seasonal Beauty Guide: Lisbon's Climate & Your Skincare Routine

@@ -8,6 +8,7 @@ category: "Beauty Guides"
 tags: ["nails", "lisbon", "luxury beauty", "manicure", "pedicure"]
 featuredImage: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Discover Lisbon's most luxurious nail salons offering premium manicures, pedicures, and nail art. Expert-curated recommendations for the best nail services in Portugal's capital."
 ---
 
 # The Ultimate Guide to Luxury Nail Salons in Lisbon

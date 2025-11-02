@@ -54,7 +54,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
                   >
                     {link.label}
                   </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
                   >
                     {link.label}
                   </Link>
@@ -88,7 +88,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
                   >
                     {link.label}
                   </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
+                    className="block py-2 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring"
                   >
                     {link.label}
                   </Link>

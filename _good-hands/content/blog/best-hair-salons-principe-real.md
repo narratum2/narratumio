@@ -8,6 +8,7 @@ category: "Beauty Guides"
 tags: ["hair", "principe real", "lisbon", "hair salons", "balayage", "hair color"]
 featuredImage: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Find the best hair salons in Príncipe Real, Lisbon. Luxury styling, color experts, and top-rated hairdressers in one of the city's most fashionable districts."
 ---
 
 # Best Hair Salons in Príncipe Real: Your Complete Guide

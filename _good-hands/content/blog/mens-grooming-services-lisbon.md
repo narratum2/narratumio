@@ -8,6 +8,7 @@ category: "Men's Grooming"
 tags: ["mens grooming", "barbershop", "lisbon", "mens skincare", "beard grooming"]
 featuredImage: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80"
 lastUpdated: "2025-10-11"
+metaDescription: "Discover Lisbon's best men's grooming services: luxury barbershops, precision cuts, hot-towel shaves, and expert skincare. Curated recommendations for the modern gentleman in Portugal."
 ---
 
 # Men's Grooming in Lisbon

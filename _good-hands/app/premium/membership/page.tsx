@@ -48,7 +48,7 @@ export default function MembershipPage() {
             <span className="text-sm text-gold font-medium">Exclusive Membership Access</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-serif mb-6">
+          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-center w-full">
             Your VIP Beauty Passport
           </h1>
           <p className="text-xl md:text-2xl text-porcelain/90 max-w-3xl mx-auto mb-8">

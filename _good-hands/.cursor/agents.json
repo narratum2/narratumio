@@ -1,0 +1,388 @@
+{
+  "version": "2.0",
+  "agents": [
+    {
+      "id": "isabella-documentation",
+      "name": "Isabella - Documentation Curator",
+      "description": "Maintains and organizes all markdown documentation, monitors file changes, fixes broken links",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "monitoring": "continuous",
+        "tasks": [
+          {
+            "name": "File Change Monitoring",
+            "frequency": "real-time",
+            "triggers": ["file.created", "file.modified", "file.deleted"]
+          },
+          {
+            "name": "Link Integrity Patrol",
+            "frequency": "4h",
+            "time": "00:00, 04:00, 08:00, 12:00, 16:00, 20:00"
+          },
+          {
+            "name": "Morning Documentation Sweep",
+            "frequency": "daily",
+            "time": "09:00"
+          }
+        ]
+      },
+      "capabilities": [
+        "read_files",
+        "analyze_content",
+        "suggest_fixes",
+        "auto_format",
+        "fix_broken_links"
+      ],
+      "permissions": {
+        "auto_fix": ["formatting", "broken_links_if_target_exists"],
+        "suggest_only": ["content_improvements", "structural_changes"],
+        "requires_approval": ["major_rewrites", "deletions"]
+      },
+      "focus_areas": [
+        "_good-hands/**/*.md",
+        "documentation/**/*.md"
+      ],
+      "output_files": [
+        "_good-hands/TEAM_STATUS_DASHBOARD.md",
+        "_good-hands/AI_BACKGROUND_AGENTS_CONTROLLER.md"
+      ]
+    },
+    {
+      "id": "catarina-archive",
+      "name": "Catarina - Archive Manager",
+      "description": "Organizes and archives completed/redundant files",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "tasks": [
+          {
+            "name": "Weekly Archive Cleanup",
+            "frequency": "weekly",
+            "day": "friday",
+            "time": "17:00"
+          }
+        ]
+      },
+      "capabilities": [
+        "identify_archive_candidates",
+        "validate_references",
+        "move_to_archive",
+        "update_index"
+      ],
+      "permissions": {
+        "auto_move": ["to_archive_only"],
+        "requires_approval": ["deletions"]
+      },
+      "focus_areas": [
+        "_good-hands/_archived/",
+        "_good-hands/**/*_COMPLETE*.md",
+        "_good-hands/**/*_FINAL*.md"
+      ]
+    },
+    {
+      "id": "ricardo-seo",
+      "name": "Ricardo - Content & SEO Optimizer",
+      "description": "Optimizes all content for SEO and AI discoverability",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "monitoring": "continuous",
+        "tasks": [
+          {
+            "name": "Blog Post Optimization",
+            "frequency": "event-driven",
+            "triggers": ["file.modified:content/blog/**/*.md"]
+          },
+          {
+            "name": "SEO Weekly Review",
+            "frequency": "weekly",
+            "day": "monday",
+            "time": "10:00"
+          }
+        ]
+      },
+      "capabilities": [
+        "seo_analysis",
+        "meta_optimization",
+        "internal_linking",
+        "keyword_optimization",
+        "content_gap_analysis"
+      ],
+      "permissions": {
+        "auto_add": ["meta_descriptions", "internal_links_high_confidence"],
+        "suggest_only": ["keyword_optimization", "content_expansion"]
+      },
+      "focus_areas": [
+        "content/blog/**/*.md",
+        "app/**/page.tsx"
+      ],
+      "output_files": [
+        "_good-hands/AI_SEO_DOMINANCE.md",
+        "_good-hands/BLOG_ARTICLES_QUALITY_REVIEW.md"
+      ]
+    },
+    {
+      "id": "marco-technical",
+      "name": "Marco - Technical Architect",
+      "description": "Maintains technical documentation and validates code quality",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "tasks": [
+          {
+            "name": "Daily Technical Review",
+            "frequency": "daily",
+            "time": "09:30"
+          },
+          {
+            "name": "API Documentation Validation",
+            "frequency": "weekly",
+            "day": "tuesday",
+            "time": "10:00"
+          }
+        ]
+      },
+      "capabilities": [
+        "validate_api_docs",
+        "check_environment_vars",
+        "test_integration_guides",
+        "security_reviews",
+        "performance_analysis"
+      ],
+      "focus_areas": [
+        "app/api/**/*.ts",
+        "_good-hands/**/*INTEGRATION*.md",
+        "_good-hands/**/*SETUP*.md",
+        "_good-hands/**/*API*.md"
+      ],
+      "output_files": [
+        "_good-hands/API_INTEGRATION_GUIDE.md",
+        "_good-hands/ENVIRONMENT_VARIABLES_SETUP.md"
+      ]
+    },
+    {
+      "id": "joao-status",
+      "name": "João - Status Coordinator",
+      "description": "Tracks progress, generates reports, updates dashboards",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "tasks": [
+          {
+            "name": "Status Dashboard Update",
+            "frequency": "6h",
+            "time": "00:00, 06:00, 12:00, 18:00"
+          },
+          {
+            "name": "Daily Summary",
+            "frequency": "daily",
+            "time": "18:00"
+          },
+          {
+            "name": "Weekly Report",
+            "frequency": "weekly",
+            "day": "monday",
+            "time": "09:00"
+          }
+        ]
+      },
+      "capabilities": [
+        "track_progress",
+        "calculate_metrics",
+        "generate_reports",
+        "update_dashboards",
+        "analyze_trends"
+      ],
+      "focus_areas": [
+        "_good-hands/MASTER_TODO_LIST.md",
+        "_good-hands/TEAM_STATUS_DASHBOARD.md",
+        "_good-hands/AI_AGENTS_MASTER_CONTROL.md"
+      ],
+      "output_files": [
+        "_good-hands/TEAM_STATUS_DASHBOARD.md",
+        "_good-hands/AI_AGENTS_MASTER_CONTROL.md"
+      ]
+    },
+    {
+      "id": "sofia-brand",
+      "name": "Sofia - Brand Guardian",
+      "description": "Ensures brand consistency across all touchpoints",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "tasks": [
+          {
+            "name": "Weekly Brand Audit",
+            "frequency": "weekly",
+            "day": "monday",
+            "time": "11:00"
+          }
+        ]
+      },
+      "capabilities": [
+        "brand_consistency_checks",
+        "design_system_validation",
+        "visual_asset_inventory",
+        "color_palette_validation",
+        "typography_checks"
+      ],
+      "focus_areas": [
+        "_good-hands/**/*BRAND*.md",
+        "_good-hands/**/*DESIGN*.md",
+        "app/**/*.tsx",
+        "components/**/*.tsx"
+      ],
+      "output_files": [
+        "_good-hands/BRAND_DESIGN_SYSTEM.md",
+        "_good-hands/DESIGN_REVIEW_SUMMARY.md"
+      ]
+    },
+    {
+      "id": "ana-ux",
+      "name": "Ana - UX Researcher",
+      "description": "Optimizes user experience and conversion",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "tasks": [
+          {
+            "name": "Bi-Weekly UX Review",
+            "frequency": "bi-weekly",
+            "day": "wednesday",
+            "time": "14:00"
+          }
+        ]
+      },
+      "capabilities": [
+        "ux_analysis",
+        "conversion_optimization",
+        "accessibility_checks",
+        "mobile_ux_review",
+        "user_journey_mapping"
+      ],
+      "focus_areas": [
+        "components/**/*.tsx",
+        "app/**/*.tsx",
+        "_good-hands/**/*UX*.md",
+        "_good-hands/**/*MOBILE*.md"
+      ],
+      "output_files": [
+        "_good-hands/COMPREHENSIVE_UX_UI_AUDIT_REPORT.md",
+        "_good-hands/MOBILE_ISSUES_TRACKER.md"
+      ]
+    },
+    {
+      "id": "joao-qa",
+      "name": "João - QA Engineer",
+      "description": "Tests and validates website functionality",
+      "type": "background",
+      "enabled": true,
+      "schedule": {
+        "tasks": [
+          {
+            "name": "Weekly Testing Cycle",
+            "frequency": "weekly",
+            "day": "thursday",
+            "time": "10:00"
+          },
+          {
+            "name": "Pre-Release Testing",
+            "frequency": "event-driven",
+            "triggers": ["branch.merged:main"]
+          }
+        ]
+      },
+      "capabilities": [
+        "automated_testing",
+        "bug_reproduction",
+        "test_case_execution",
+        "regression_testing",
+        "accessibility_validation"
+      ],
+      "focus_areas": [
+        "app/**/*.tsx",
+        "components/**/*.tsx",
+        "_good-hands/BUG_TRACKER_AND_PRIORITIES_OCT_12.md"
+      ],
+      "output_files": [
+        "_good-hands/BUG_TRACKER_AND_PRIORITIES_OCT_12.md",
+        "_good-hands/LIVE_SITE_TESTING_CHECKLIST.md"
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "id": "morning-standup",
+      "name": "Morning Stand-Up",
+      "schedule": {
+        "frequency": "daily",
+        "time": "09:00"
+      },
+      "agents": ["all"],
+      "tasks": [
+        "report_yesterday_achievements",
+        "set_today_priorities",
+        "identify_blockers",
+        "update_status_dashboard"
+      ]
+    },
+    {
+      "id": "link-integrity-patrol",
+      "name": "Link Integrity Patrol",
+      "schedule": {
+        "frequency": "4h"
+      },
+      "agents": ["isabella-documentation", "marco-technical"],
+      "tasks": [
+        "extract_all_links",
+        "validate_internal_links",
+        "check_external_urls",
+        "auto_fix_movable_links",
+        "flag_broken_links",
+        "generate_report"
+      ]
+    },
+    {
+      "id": "blog-optimization",
+      "name": "Blog Post Optimization Pipeline",
+      "schedule": {
+        "frequency": "event-driven",
+        "triggers": ["file.modified:content/blog/**/*.md"]
+      },
+      "agents": ["ricardo-seo", "isabella-documentation"],
+      "tasks": [
+        "analyze_seo",
+        "generate_meta_description",
+        "find_internal_link_opportunities",
+        "add_high_confidence_links",
+        "calculate_readability",
+        "generate_improvement_suggestions",
+        "update_seo_tracker"
+      ]
+    },
+    {
+      "id": "weekly-archive",
+      "name": "Weekly Archive Cleanup",
+      "schedule": {
+        "frequency": "weekly",
+        "day": "friday",
+        "time": "17:00"
+      },
+      "agents": ["catarina-archive", "joao-status"],
+      "tasks": [
+        "identify_archive_candidates",
+        "validate_no_active_references",
+        "move_to_archive",
+        "update_archive_index",
+        "generate_report"
+      ]
+    }
+  ],
+  "coordination": {
+    "dashboard_file": "_good-hands/TEAM_STATUS_DASHBOARD.md",
+    "master_control": "_good-hands/AI_AGENTS_MASTER_CONTROL.md",
+    "todo_list": "_good-hands/MASTER_TODO_LIST.md",
+    "update_frequency": "6h"
+  }
+}

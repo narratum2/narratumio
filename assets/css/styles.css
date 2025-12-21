@@ -5,8 +5,8 @@
     --bg-primary: #0a1520;
     --bg-secondary: #0d1825;
     --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.85); /* Improved from 0.8 for better readability */
-    --text-tertiary: rgba(255, 255, 255, 0.7); /* Improved from 0.6 for better readability */
+    --text-secondary: rgba(255, 255, 255, 0.92); /* High contrast for readability */
+    --text-tertiary: rgba(255, 255, 255, 0.78); /* Improved tertiary contrast */
     --accent-gold: #fbbf24;
     --accent-gold-subtle: rgba(251, 191, 36, 0.1);
     --accent-cyan: #7dd3fc;
@@ -59,38 +59,25 @@ html {
     font-size: 16px;
 }
 
-/* Enhanced Page load animation with GPU acceleration */
+/* Clean page styles - simplified for reliability */
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-sans);
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    animation: pageReveal 2s var(--transition-smooth) forwards;
-    will-change: opacity, filter;
-    transform: translateZ(0); /* Force GPU acceleration */
-    contain: layout style paint; /* Performance optimization */
-    content-visibility: auto;
+    animation: pageReveal 0.8s ease-out forwards;
 }
 
 @keyframes pageReveal {
     0% {
         opacity: 0;
-        filter: blur(15px) brightness(0.8);
-        transform: translateY(20px) scale(0.98);
-    }
-    50% {
-        opacity: 0.7;
-        filter: blur(8px) brightness(0.9);
-        transform: translateY(10px) scale(0.99);
     }
     100% {
         opacity: 1;
-        filter: blur(0) brightness(1);
-        transform: translateY(0) scale(1);
     }
 }
 
@@ -286,84 +273,9 @@ body {
     animation: fadeIn 1s ease 0.5s forwards;
 }
 
-/* Enhanced Mouse Glow Effect with Advanced Animation */
+/* Mouse glow effect - simplified */
 .mouse-glow {
-    position: fixed;
-    width: 200px;
-    height: 200px;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0;
-    transition: all 0.4s var(--transition-smooth);
-    mix-blend-mode: screen;
-    will-change: transform, opacity;
-    transform: translateZ(0);
-    contain: layout style paint; /* Performance optimization */
-    isolation: isolate; /* Prevent repaints */
-}
-
-.mouse-glow::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle,
-        rgba(251, 191, 36, 0.2) 0%,
-        rgba(251, 191, 36, 0.1) 25%,
-        rgba(125, 211, 252, 0.05) 50%,
-        transparent 70%
-    );
-    filter: blur(25px);
-    border-radius: 50%;
-    animation: glowPulse 2s ease-in-out infinite;
-}
-
-.mouse-glow::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: 50%;
-    background: radial-gradient(circle,
-        rgba(251, 191, 36, 0.3) 0%,
-        rgba(251, 191, 36, 0.1) 40%,
-        transparent 100%
-    );
-    filter: blur(15px);
-    border-radius: 50%;
-    animation: glowPulse 1.5s ease-in-out infinite reverse;
-}
-
-.mouse-glow.active {
-    opacity: 1;
-    animation: mouseGlowActivate 0.3s var(--transition-snap) forwards;
-}
-
-@keyframes glowPulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(0.8);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 1;
-    }
-}
-
-@keyframes mouseGlowActivate {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+    display: none; /* Disabled - causes strange visual effects */
 }
 
 /* Enhanced Navigation Dots with Advanced Animations */
@@ -735,19 +647,7 @@ body {
 }
 
 .cursor-follower {
-    width: 12px;
-    height: 12px;
-    background: radial-gradient(circle, 
-        rgba(251, 191, 36, 0.08) 0%, 
-        rgba(251, 191, 36, 0.04) 40%, 
-        transparent 70%);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 999;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    filter: blur(0.5px);
+    display: none; /* Disabled for cleaner UX */
 }
 
 /* Section entrance animations */
@@ -794,30 +694,38 @@ body {
     z-index: 2;
 }
 
-/* Section Titles - All centered */
+/* Section Titles - All centered and readable */
 .section-title {
     font-family: var(--font-serif);
-    font-size: clamp(40px, 6vw, 64px);
+    font-size: clamp(38px, 6vw, 60px);
     font-weight: 300;
-    margin-bottom: var(--space-lg);
+    margin-bottom: 32px;
     text-align: center;
-    letter-spacing: var(--letter-spacing-heading);
-    line-height: var(--line-height-heading);
-    color: var(--text-primary);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    color: #ffffff;
+    width: 100%;
 }
 
 .section-subtitle {
     font-family: var(--font-sans);
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(16px, 2vw, 19px);
     font-weight: 400;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-2xl);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 56px;
     text-align: center;
     letter-spacing: 0.01em;
-    line-height: var(--line-height-body);
-    max-width: 640px;
+    line-height: 1.7;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Ensure all section titles and subtitles center properly */
+.section .section-title,
+.section .section-subtitle,
+.section .intro-text {
+    text-align: center;
 }
 
 /* Hero Section */
@@ -1351,15 +1259,16 @@ body {
 
 .prose {
     max-width: 720px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
 }
 
 .prose p {
     font-size: clamp(17px, 1.5vw, 19px);
-    line-height: 1.8;
+    line-height: 1.85;
     margin-bottom: var(--space-lg);
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.9);  /* Improved readability */
     font-weight: 300;
 }
 
@@ -1370,6 +1279,14 @@ body {
     margin-bottom: var(--space-xl);
     font-weight: 400;
     line-height: 1.5;
+}
+
+/* Ensure prose is always centered */
+.infrastructure .prose,
+.approach .prose {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* What We Build Section - Integrated with Infrastructure */
@@ -1457,12 +1374,27 @@ body {
 }
 
 .intro-text {
-    font-size: 24px;
+    font-size: clamp(20px, 2.5vw, 26px);
     font-family: var(--font-serif);
     color: var(--text-secondary);
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px auto;
+    max-width: 700px;
+    line-height: 1.6;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+}
+
+/* Ensure all intro text variants are centered */
+.section .intro-text,
+.approach .intro-text,
+.capabilities .intro-text,
+.loyalty .intro-text,
+.partnerships .intro-text {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
 }
 
 .symbol-grid {
@@ -3575,15 +3507,9 @@ button, a, .symbol-item, .capability-block, .partnership-category, .journey-node
     color: var(--accent-gold);
 }
 
-/* Magical Particles */
+/* Magical Particles - Disabled for cleaner UX */
 .magical-particle {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 90;
-    transition: transform 1s ease, opacity 1s ease;
+    display: none;
 }
 
 /* Lazy Loading */

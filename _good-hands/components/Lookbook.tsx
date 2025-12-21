@@ -75,7 +75,7 @@ export default function Lookbook() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-serif mb-4">Lookbook</h2>
-            <p className="text-harbor text-lg max-w-2xl mx-auto">
+            <p className="text-harbor text-lg max-w-2xl mx-auto text-center">
               A glimpse into the Good Hands experience
             </p>
           </motion.div>

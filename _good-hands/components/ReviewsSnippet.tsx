@@ -37,7 +37,7 @@ export default function ReviewsSnippet() {
           <h2 className="text-4xl md:text-5xl font-serif mb-4">
             Loved by Our Clients
           </h2>
-          <p className="text-porcelain/70 text-lg">
+          <p className="text-porcelain/70 text-lg text-center">
             See what people are saying about their Good Hands experience
           </p>
         </motion.div>

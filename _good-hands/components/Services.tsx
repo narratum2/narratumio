@@ -57,7 +57,7 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-serif mb-4">
             Stop Wasting Time on the Wrong Professionals
           </h2>
-          <p className="text-harbor text-lg max-w-2xl mx-auto">
+          <p className="text-harbor text-lg max-w-2xl mx-auto text-center">
             We've vetted hundreds of beauty professionals so you don't have to. Our concierge service ensures perfect matches—every single time.
           </p>
         </motion.div>

@@ -86,7 +86,7 @@ export default function FAQ() {
           <h2 className="text-4xl md:text-5xl font-serif mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-harbor text-lg max-w-2xl mx-auto">
+          <p className="text-harbor text-lg max-w-2xl mx-auto text-center">
             Everything you need to know about Good Hands
           </p>
         </motion.div>

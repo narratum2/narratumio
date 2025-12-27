@@ -211,11 +211,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AIDiscoveryTracker />
-        <Grain />
-        <Navbar />
+          <AIDiscoveryTracker />
+          <Grain />
+          <Navbar />
         <main className="min-h-screen">{children}</main>
-        <Footer />
+          <Footer />
         {process.env.NEXT_PUBLIC_INTERCOM_APP_ID && (
           <script
             dangerouslySetInnerHTML={{

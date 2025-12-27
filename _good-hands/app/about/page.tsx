@@ -36,7 +36,7 @@ export default function AboutPage() {
             <div className="w-12 h-px bg-gold"></div>
           </div>
         </div>
-
+        
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-harbor/30 rounded-full flex justify-center pt-2">
@@ -50,10 +50,10 @@ export default function AboutPage() {
         <div className="container-custom max-w-4xl">
           <div className="text-center mb-16">
             <span className="text-sm uppercase tracking-wider text-gold font-medium mb-4 block">The Challenge</span>
-            <h2 className="text-4xl md:text-5xl font-serif mb-6">
+              <h2 className="text-4xl md:text-5xl font-serif mb-6">
               Finding Beauty Services<br />Shouldn't Feel Like This
-            </h2>
-          </div>
+              </h2>
+              </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="text-center">
@@ -69,7 +69,7 @@ export default function AboutPage() {
               <p className="text-harbor text-sm">
                 Scrolling, comparing, reading reviews, still uncertain if it's the right choice
               </p>
-            </div>
+              </div>
             <div className="text-center">
               <div className="text-6xl mb-4 opacity-40">💸</div>
               <h3 className="text-xl font-serif mb-2">Expensive Mistakes</h3>
@@ -97,7 +97,7 @@ export default function AboutPage() {
             <span className="text-sm uppercase tracking-wider text-gold font-medium mb-4 block">Our Solution</span>
             <h2 className="text-4xl md:text-5xl font-serif mb-6">
               We're Your Trusted Insider
-            </h2>
+          </h2>
             <p className="text-xl text-harbor max-w-2xl mx-auto">
               Think of us as that friend who knows everyone, has tried everything, 
               and only recommends places they genuinely love
@@ -130,7 +130,7 @@ export default function AboutPage() {
                   <span>Ongoing quality monitoring</span>
                 </li>
               </ul>
-            </div>
+              </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm">
               <Heart className="w-10 h-10 text-gold mb-4" />
@@ -158,7 +158,7 @@ export default function AboutPage() {
                 </li>
               </ul>
             </div>
-
+            
             <div className="bg-white p-8 rounded-lg shadow-sm">
               <Shield className="w-10 h-10 text-gold mb-4" />
               <h3 className="text-2xl font-serif mb-3">Quality Guarantee</h3>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                 </li>
               </ul>
             </div>
-
+            
             <div className="bg-white p-8 rounded-lg shadow-sm">
               <Users className="w-10 h-10 text-gold mb-4" />
               <h3 className="text-2xl font-serif mb-3">End-to-End Care</h3>
@@ -221,8 +221,8 @@ export default function AboutPage() {
         <div className="container-custom max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-serif mb-6">What We Believe</h2>
-          </div>
-
+        </div>
+        
           <div className="space-y-8">
             <div className="border-l-4 border-gold pl-6 py-2">
               <p className="text-xl md:text-2xl leading-relaxed">
@@ -230,7 +230,7 @@ export default function AboutPage() {
                 not hidden behind insider networks
               </p>
             </div>
-
+            
             <div className="border-l-4 border-gold pl-6 py-2">
               <p className="text-xl md:text-2xl leading-relaxed">
                 We believe <strong className="text-gold">trust is earned</strong> through 
@@ -270,22 +270,22 @@ export default function AboutPage() {
               <span className="text-sm uppercase tracking-wider text-gold font-medium mb-4 block">Why Lisbon</span>
               <h2 className="text-4xl md:text-5xl font-serif mb-6">
                 A City That Deserves This Service
-              </h2>
+          </h2>
               <div className="space-y-4 text-lg text-harbor leading-relaxed">
-                <p>
-                  Lisbon is experiencing a renaissance. World-class talent is pouring into the city—hair stylists 
-                  from Paris, estheticians from Milan, makeup artists from London. The quality is here.
-                </p>
-                <p>
+            <p>
+              Lisbon is experiencing a renaissance. World-class talent is pouring into the city—hair stylists 
+              from Paris, estheticians from Milan, makeup artists from London. The quality is here.
+            </p>
+            <p>
                   But if you don't speak Portuguese, don't have local connections, or just moved here? 
                   You'd never know where to find them. That's the problem we solve.
-                </p>
-                <p>
+            </p>
+            <p>
                   We're locals who love this city and want everyone—residents, expats, visitors—to experience 
                   the best of Lisbon's beauty scene without the frustration of figuring it out alone.
-                </p>
-              </div>
-            </div>
+            </p>
+          </div>
+        </div>
             <div className="relative">
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl">
                 <Image
@@ -294,16 +294,16 @@ export default function AboutPage() {
                   fill
                   className="object-cover"
                 />
-              </div>
+            </div>
               {/* Floating stats */}
               <div className="absolute -bottom-6 -left-6 bg-gold text-ink p-6 rounded-lg shadow-xl">
                 <div className="text-4xl font-serif font-bold">500+</div>
                 <div className="text-sm">Vetted Professionals</div>
-              </div>
+            </div>
               <div className="absolute -top-6 -right-6 bg-white p-6 rounded-lg shadow-xl">
                 <div className="text-4xl font-serif font-bold text-gold">8</div>
                 <div className="text-sm text-ink">Neighborhoods</div>
-              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -315,7 +315,7 @@ export default function AboutPage() {
           <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">
             How We're Different
           </h2>
-
+          
           <div className="space-y-8">
             <div className="bg-white p-8 rounded-lg">
               <h3 className="text-2xl font-serif mb-3">We're Not a Marketplace</h3>
@@ -324,7 +324,7 @@ export default function AboutPage() {
                 Every professional earns their place through quality, not a subscription fee.
               </p>
             </div>
-
+            
             <div className="bg-white p-8 rounded-lg">
               <h3 className="text-2xl font-serif mb-3">We're Not Passive Tech</h3>
               <p className="text-harbor">
@@ -340,7 +340,7 @@ export default function AboutPage() {
                 quality dilution isn't. We only expand when we can maintain our standards.
               </p>
             </div>
-
+            
             <div className="bg-white p-8 rounded-lg">
               <h3 className="text-2xl font-serif mb-3">We Put Clients First, Not Commissions</h3>
               <p className="text-harbor">
@@ -356,8 +356,8 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <div className="container-custom max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">
-            Who Good Hands Is For
-          </h2>
+              Who Good Hands Is For
+            </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
@@ -426,8 +426,8 @@ export default function AboutPage() {
           <div className="flex justify-center items-center gap-6">
             <a
               href="https://instagram.com/goodhands"
-              target="_blank"
-              rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 hover:transform hover:scale-110 transition-all"
               aria-label="Follow us on Instagram"
             >
@@ -439,11 +439,11 @@ export default function AboutPage() {
 
             <a
               href="https://x.com/goodhands"
-              target="_blank"
-              rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 hover:transform hover:scale-110 transition-all"
               aria-label="Follow us on X (Twitter)"
-            >
+              >
               <div className="w-16 h-16 rounded-full bg-ink flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-shadow">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -454,14 +454,14 @@ export default function AboutPage() {
 
             <a
               href="https://t.me/goodhands"
-              target="_blank"
-              rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 hover:transform hover:scale-110 transition-all"
               aria-label="Join us on Telegram"
             >
               <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-shadow">
                 <Send className="w-7 h-7" />
-              </div>
+            </div>
               <span className="text-sm text-harbor group-hover:text-gold transition-colors">Telegram</span>
             </a>
           </div>

@@ -43,4 +43,3 @@ Allow: /
 # Sitemaps
 Sitemap: https://goodhands.com/sitemap.xml
 Sitemap: https://goodhands.com/api/openapi.json
-

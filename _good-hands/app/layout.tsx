@@ -59,6 +59,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'rCvVCsMICCmRuLw8uI0ecVtYWK89UVv-xTviw1ELgHc',
+  },
   other: {
     'ai-content-declaration': 'Human-curated service information with AI-enhanced descriptions',
   },

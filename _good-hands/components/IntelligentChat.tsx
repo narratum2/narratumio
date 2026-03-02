@@ -130,8 +130,8 @@ export default function IntelligentChat({
   }
 
   const positionClasses = position === 'bottom-right' 
-    ? 'right-6 bottom-6' 
-    : 'left-6 bottom-6'
+    ? 'right-4 bottom-20 md:right-6 md:bottom-6' 
+    : 'left-4 bottom-20 md:left-6 md:bottom-6'
 
   return (
     <div className={`fixed ${positionClasses} z-50`}>
@@ -266,18 +266,18 @@ export default function IntelligentChat({
       {/* Chat Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gradient-to-r from-sand to-gold text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl hover:shadow-2xl transition-shadow relative"
+        className="bg-gradient-to-r from-sand to-gold text-white rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-xl hover:shadow-2xl transition-shadow relative"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         {!isOpen ? (
           <>
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
           </>
         ) : (
-          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         )}

@@ -67,17 +67,17 @@ export default function WellnessServicesPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-ink/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
         </div>
         <div className="relative z-10 text-center text-white container-custom">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Heart className="w-12 h-12 text-gold" />
+            <Heart className="w-12 h-12 text-gold drop-shadow-lg" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-serif mb-4">Wellness & Massage</h1>
-          <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-serif mb-4 hero-text">Wellness & Massage</h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
             Professional massage therapy matched to your needs
           </p>
-          <p className="text-lg text-gold mt-3">
+          <p className="text-lg text-gold mt-3 hero-text">
             All prices include expert concierge matching & coordination
           </p>
         </div>

@@ -29,10 +29,10 @@ export default function PartnershipsPage() {
         {/* Content */}
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-center w-full">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-center w-full hero-text">
               Elevate Your Guest Experience
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto hero-text">
               Partner with Good Hands to offer your guests exclusive access to Lisbon's finest beauty professionals—without hiring additional staff.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

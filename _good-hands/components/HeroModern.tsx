@@ -16,7 +16,7 @@ export default function HeroModern() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/55" />
       </div>
 
       {/* Content */}
@@ -27,10 +27,10 @@ export default function HeroModern() {
           transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="font-serif font-normal mb-6 md:mb-8 text-balance px-2 text-[clamp(2rem,8vw,4.5rem)] leading-[1.15] tracking-[-0.02em]">
+          <h1 className="font-serif font-normal mb-6 md:mb-8 text-balance px-2 text-[clamp(2rem,8vw,4.5rem)] leading-[1.15] tracking-[-0.02em] hero-text">
             Lisbon's Premier Beauty Concierge
           </h1>
-          <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-10 text-white/90 max-w-2xl mx-auto font-light px-4 leading-[1.7] text-center">
+          <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-10 text-white/90 max-w-2xl mx-auto font-light px-4 leading-[1.7] text-center hero-text">
             We navigate Lisbon's beauty scene for you.<br className="hidden sm:inline" />
             <span className="inline sm:hidden"> </span>Expert matching. Perfect results. Every time.
           </p>

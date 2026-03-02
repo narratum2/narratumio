@@ -23,11 +23,11 @@ export default function AvenidaPage() {
             className="object-cover" 
             priority 
           />
-          <div className="absolute inset-0 bg-ink/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
         </div>
         <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full">Avenida da Liberdade</h1>
-          <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full hero-text">Avenida da Liberdade</h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
             Lisbon&apos;s grand boulevard of luxury beauty
           </p>
         </div>

@@ -25,8 +25,8 @@
       "yearsOfExperience": "1+"
     },
     "contact": {
-      "email": "concierge@goodhands.com",
-      "website": "https://goodhands.com",
+      "email": "concierge@goodhandsstudio.com",
+      "website": "https://goodhandsstudio.com",
       "socialMedia": {
         "instagram": "https://instagram.com/goodhands",
         "x": "https://x.com/goodhands",
@@ -219,7 +219,7 @@
     "journalArticles": [
       {
         "title": "Global Beauty Exploration: Why Local Matters",
-        "url": "https://goodhands.com/journal/global-beauty-exploration",
+        "url": "https://goodhandsstudio.com/journal/global-beauty-exploration",
         "category": "Global Exploration",
         "summary": "The case for seeking authentic beauty experiences while traveling and how Good Hands is expanding worldwide.",
         "publishDate": "2025-10-12",
@@ -227,28 +227,28 @@
       },
       {
         "title": "Yucatan Wellness: Ancient Mayan Beauty Secrets",
-        "url": "https://goodhands.com/journal/yucatan-wellness-beauty",
+        "url": "https://goodhandsstudio.com/journal/yucatan-wellness-beauty",
         "category": "Global Exploration",
         "summary": "Discovering holistic beauty practices in the Yucatan Peninsula, from cenote rituals to Mayan herbal medicine.",
         "publishDate": "2025-10-11"
       },
       {
         "title": "Mexico City Beauty Scene: Where Tradition Meets Innovation",
-        "url": "https://goodhands.com/journal/mexico-city-beauty-scene",
+        "url": "https://goodhandsstudio.com/journal/mexico-city-beauty-scene",
         "category": "Global Exploration",
         "summary": "Exploring the vibrant beauty culture of CDMX, from pre-Hispanic rituals to cutting-edge aesthetics.",
         "publishDate": "2025-10-10"
       },
       {
         "title": "Bridal Hair Trends 2026: What Lisbon Brides Are Choosing",
-        "url": "https://goodhands.com/journal/bridal-hair-trends-2026",
+        "url": "https://goodhandsstudio.com/journal/bridal-hair-trends-2026",
         "category": "Weddings",
         "summary": "From modern updos to romantic waves, the hairstyles dominating Portuguese weddings.",
         "publishDate": "2025-10-08"
       },
       {
         "title": "The Art of Portuguese Beauty Rituals",
-        "url": "https://goodhands.com/journal/portuguese-beauty-rituals",
+        "url": "https://goodhandsstudio.com/journal/portuguese-beauty-rituals",
         "category": "Traditions",
         "summary": "Discover centuries-old beauty traditions from Portugal that modern experts still swear by.",
         "publishDate": "2025-10-01"
@@ -257,17 +257,17 @@
     "neighborhoodGuides": [
       {
         "neighborhood": "Chiado",
-        "url": "https://goodhands.com/neighborhoods/chiado",
+        "url": "https://goodhandsstudio.com/neighborhoods/chiado",
         "description": "Chiado's elegant beauty scene blends historic charm with modern luxury. Home to premium salons, boutique spas, and our most requested beauty professionals."
       },
       {
         "neighborhood": "Príncipe Real",
-        "url": "https://goodhands.com/neighborhoods/principe-real",
+        "url": "https://goodhandsstudio.com/neighborhoods/principe-real",
         "description": "Príncipe Real offers a bohemian-chic beauty experience with cutting-edge treatments and a laid-back luxury vibe."
       },
       {
         "neighborhood": "Alfama",
-        "url": "https://goodhands.com/neighborhoods/alfama",
+        "url": "https://goodhandsstudio.com/neighborhoods/alfama",
         "description": "Alfama's beauty scene honors Portuguese traditions while embracing contemporary wellness practices."
       }
     ]
@@ -349,11 +349,11 @@
     }
   },
   "verificationMethods": {
-    "website": "https://goodhands.com",
-    "openapi": "https://goodhands.com/api/openapi.json",
-    "sitemap": "https://goodhands.com/sitemap.xml",
-    "robotsTxt": "https://goodhands.com/robots.txt",
-    "contact": "concierge@goodhands.com"
+    "website": "https://goodhandsstudio.com",
+    "openapi": "https://goodhandsstudio.com/api/openapi.json",
+    "sitemap": "https://goodhandsstudio.com/sitemap.xml",
+    "robotsTxt": "https://goodhandsstudio.com/robots.txt",
+    "contact": "concierge@goodhandsstudio.com"
   }
 }
 

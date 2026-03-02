@@ -26,6 +26,7 @@
     --white: #ffffff;      /* Primary background */
     --off-white: #f5f5f5;  /* Subtle backgrounds */
     --gold: #c9a961;       /* Accents - USE VERY SPARINGLY */
+    --gold-dark: #b89748;  /* Gold hover/dark variant */
     --gray-light: #e5e5e5; /* Borders */
     --gray-medium: #999999;/* Secondary text */
     --gray-dark: #4a4a4a;  /* Tertiary text */
@@ -41,6 +42,11 @@
 
   * {
     @apply border-gray-light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Offset for fixed navbar when scrolling to #booking */
   }
 
   body {
@@ -237,8 +243,6 @@
     .btn-secondary {
       padding: 16px 24px;
       font-size: 12px;
-      width: 100%;
-      max-width: 100%;
     }
   }
 
@@ -278,8 +282,6 @@
     .btn-gold {
       padding: 16px 24px;
       font-size: 12px;
-      width: 100%;
-      max-width: 100%;
     }
   }
 

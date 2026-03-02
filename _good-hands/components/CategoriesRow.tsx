@@ -12,7 +12,7 @@ const categories = [
   },
   {
     name: 'Nails',
-    image: '/brand-images/category-makeup.png',
+    image: '/brand-images/service-nail-art.png',
     href: '/services?category=nails',
   },
   {

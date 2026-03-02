@@ -21,14 +21,14 @@ export default function CompleteBeautyGuideLisbon() {
             author: {
               '@type': 'Organization',
               name: 'Good Hands',
-              url: 'https://goodhands.com'
+              url: 'https://goodhandsstudio.com'
             },
             publisher: {
               '@type': 'Organization',
               name: 'Good Hands',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://goodhands.com/logo.png'
+                url: 'https://goodhandsstudio.com/logo.png'
               }
             },
             datePublished: '2025-01-11',

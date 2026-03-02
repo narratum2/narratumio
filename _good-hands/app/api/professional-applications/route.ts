@@ -27,7 +27,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Log the application (in production, this would go to Notion)
     console.log('Professional Application Received:', {
       name: body.fullName,
       email: body.email,
@@ -35,17 +34,17 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     })
 
-    // Option 1: Send to Make.com webhook (which forwards to Notion)
-    // This is the recommended approach as Make.com is already set up
+    const backends: string[] = []
+    let delivered = false
+
     if (process.env.MAKE_PROFESSIONAL_APPLICATIONS_WEBHOOK_URL) {
+      backends.push('make')
       try {
         const makeResponse = await fetch(
           process.env.MAKE_PROFESSIONAL_APPLICATIONS_WEBHOOK_URL,
           {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               ...body,
               type: 'professional_application',
@@ -54,20 +53,18 @@ export async function POST(request: NextRequest) {
             }),
           }
         )
-
-        if (!makeResponse.ok) {
-          console.error('Make.com webhook failed:', await makeResponse.text())
+        if (makeResponse.ok) {
+          delivered = true
         } else {
-          console.log('Application forwarded to Make.com successfully')
+          console.error('Make.com webhook failed:', await makeResponse.text())
         }
       } catch (makeError) {
         console.error('Error sending to Make.com:', makeError)
-        // Continue anyway - we'll fall back to Notion direct or Fillout
       }
     }
 
-    // Option 2: Send directly to Notion (if NOTION_API_KEY is set)
     if (process.env.NOTION_API_KEY && process.env.NOTION_PROFESSIONALS_DATABASE_ID) {
+      backends.push('notion')
       try {
         const notionResponse = await fetch('https://api.notion.com/v1/pages', {
           method: 'POST',
@@ -77,135 +74,74 @@ export async function POST(request: NextRequest) {
             'Notion-Version': '2022-06-28',
           },
           body: JSON.stringify({
-            parent: {
-              database_id: process.env.NOTION_PROFESSIONALS_DATABASE_ID,
-            },
+            parent: { database_id: process.env.NOTION_PROFESSIONALS_DATABASE_ID },
             properties: {
-              'Name': {
-                title: [
-                  {
-                    text: {
-                      content: body.fullName,
-                    },
-                  },
-                ],
-              },
-              'Email': {
-                email: body.email,
-              },
-              'Phone': {
-                phone_number: body.phone,
-              },
-              'Specialty': {
-                select: {
-                  name: body.specialty,
-                },
-              },
-              'Experience': {
-                select: {
-                  name: body.experience,
-                },
-              },
-              'Location': {
-                select: {
-                  name: body.location,
-                },
-              },
+              'Name': { title: [{ text: { content: body.fullName } }] },
+              'Email': { email: body.email },
+              'Phone': { phone_number: body.phone },
+              'Specialty': { select: { name: body.specialty } },
+              'Experience': { select: { name: body.experience } },
+              'Location': { select: { name: body.location } },
               'Instagram': {
-                url: body.instagram.startsWith('@') 
-                  ? `https://instagram.com/${body.instagram.slice(1)}` 
+                url: body.instagram.startsWith('@')
+                  ? `https://instagram.com/${body.instagram.slice(1)}`
                   : body.instagram,
               },
-              'Portfolio': {
-                url: body.portfolio || '',
-              },
-              'Availability': {
-                select: {
-                  name: body.availability,
-                },
-              },
-              'Certifications': {
-                rich_text: [
-                  {
-                    text: {
-                      content: body.certifications,
-                    },
-                  },
-                ],
-              },
-              'Why Join': {
-                rich_text: [
-                  {
-                    text: {
-                      content: body.whyJoin,
-                    },
-                  },
-                ],
-              },
-              'Status': {
-                select: {
-                  name: 'New Application',
-                },
-              },
-              'Submitted': {
-                date: {
-                  start: new Date().toISOString(),
-                },
-              },
+              'Portfolio': { url: body.portfolio || '' },
+              'Availability': { select: { name: body.availability } },
+              'Certifications': { rich_text: [{ text: { content: body.certifications } }] },
+              'Why Join': { rich_text: [{ text: { content: body.whyJoin } }] },
+              'Status': { select: { name: 'New Application' } },
+              'Submitted': { date: { start: new Date().toISOString() } },
             },
           }),
         })
-
-        if (!notionResponse.ok) {
-          console.error('Notion API failed:', await notionResponse.text())
+        if (notionResponse.ok) {
+          delivered = true
         } else {
-          console.log('Application added to Notion successfully')
+          console.error('Notion API failed:', await notionResponse.text())
         }
       } catch (notionError) {
         console.error('Error sending to Notion:', notionError)
       }
     }
 
-    // Option 3: Send to Fillout webhook (if configured)
     if (process.env.FILLOUT_WEBHOOK_URL) {
+      backends.push('fillout')
       try {
         const filloutResponse = await fetch(process.env.FILLOUT_WEBHOOK_URL, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
         })
-
-        if (!filloutResponse.ok) {
-          console.error('Fillout webhook failed:', await filloutResponse.text())
+        if (filloutResponse.ok) {
+          delivered = true
         } else {
-          console.log('Application forwarded to Fillout successfully')
+          console.error('Fillout webhook failed:', await filloutResponse.text())
         }
       } catch (filloutError) {
         console.error('Error sending to Fillout:', filloutError)
       }
     }
 
-    // Send email notification to Good Hands team
-    if (process.env.RESEND_API_KEY) {
-      try {
-        // You can add Resend email integration here
-        // For now, we'll just log it
-        console.log('Email notification would be sent to team about new application')
-      } catch (emailError) {
-        console.error('Error sending email notification:', emailError)
-      }
+    if (backends.length === 0) {
+      console.error('No application backends configured')
+      return NextResponse.json(
+        { error: 'Application system is temporarily unavailable. Please email us directly.' },
+        { status: 503 }
+      )
     }
 
-    // Return success regardless of webhook status
-    // The application was received even if integrations failed
+    if (!delivered) {
+      console.error('All application backends failed:', backends.join(', '))
+      return NextResponse.json(
+        { error: 'We could not process your application right now. Please try again later or email us directly.' },
+        { status: 502 }
+      )
+    }
+
     return NextResponse.json(
-      {
-        success: true,
-        message: 'Application received successfully',
-        applicantName: body.fullName,
-      },
+      { success: true, message: 'Application received successfully', applicantName: body.fullName },
       { status: 201 }
     )
   } catch (error) {

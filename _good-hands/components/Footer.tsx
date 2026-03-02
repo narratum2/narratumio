@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { siteConfig } from '@/lib/site-config'
 
 const footerLinks = {
   services: [
@@ -18,6 +19,8 @@ const footerLinks = {
     { href: '/avenida', label: 'Avenida' },
     { href: '/alfama', label: 'Alfama' },
     { href: '/belem', label: 'Belém' },
+    { href: '/sintra', label: 'Sintra' },
+    { href: '/cascais', label: 'Cascais' },
   ],
   company: [
     { href: '/about', label: 'About' },
@@ -38,12 +41,41 @@ export default function Footer() {
     <footer className="bg-ink text-porcelain">
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          {/* Brand */}
+          {/* Brand + NAP */}
           <div>
             <h3 className="text-2xl font-serif mb-4">Good Hands</h3>
-            <p className="text-porcelain/70 text-sm leading-relaxed">
+            <p className="text-porcelain/70 text-sm leading-relaxed mb-4">
               Your beauty concierge in Lisbon. We know everyone worth knowing.
             </p>
+            <div className="space-y-2 text-sm text-porcelain/70">
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="block hover:text-gold transition-colors focus-visible-ring"
+              >
+                {siteConfig.contact.email}
+              </a>
+              {siteConfig.contact.hasPhone && (
+                <a
+                  href={`tel:${siteConfig.contact.phone}`}
+                  className="block hover:text-gold transition-colors focus-visible-ring"
+                >
+                  {siteConfig.contact.phone}
+                </a>
+              )}
+              {(siteConfig.address.street || siteConfig.address.locality) && (
+                <address className="not-italic">
+                  {siteConfig.address.street && (
+                    <span className="block">{siteConfig.address.street}</span>
+                  )}
+                  <span>
+                    {siteConfig.address.locality === siteConfig.address.region
+                      ? siteConfig.address.locality
+                      : [siteConfig.address.locality, siteConfig.address.region].filter(Boolean).join(', ')}
+                    {siteConfig.address.postalCode && ` ${siteConfig.address.postalCode}`}
+                  </span>
+                </address>
+              )}
+            </div>
           </div>
 
           {/* Services */}

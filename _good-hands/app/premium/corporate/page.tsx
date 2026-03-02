@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { BarChart3, Briefcase, Target, Trophy, Camera, Gift, Building2, Handshake, PartyPopper, MapPin, Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Corporate Beauty Services | Good Hands Lisbon',
@@ -12,7 +13,7 @@ export default function CorporatePage() {
   return (
     <div className="bg-porcelain">
       {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -34,7 +35,7 @@ export default function CorporatePage() {
             <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-2xl mx-auto">
               Elevate your corporate culture with professional beauty services for team events, employee wellness programs, and executive grooming
             </p>
-            <Link href="/#booking" className="btn-primary bg-gold hover:bg-gold/90">
+            <Link href="/?service=corporate#booking" className="btn-gold">
               Request Corporate Quote
             </Link>
           </div>
@@ -42,7 +43,7 @@ export default function CorporatePage() {
       </section>
 
       {/* Why Companies Choose Us */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-8 text-center">
@@ -53,25 +54,25 @@ export default function CorporatePage() {
             </p>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">💼 Professional On-Site Service</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><MapPin className="w-5 h-5 text-gold shrink-0" /> Professional On-Site Service</h3>
                 <p className="text-harbor">
                   Our professionals come to your office, co-working space, or event venue. No time wasted traveling—your team stays productive.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">🎯 Boosts Employee Morale</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Heart className="w-5 h-5 text-gold shrink-0" /> Boosts Employee Morale</h3>
                 <p className="text-harbor">
                   Beauty services as employee perks show you care about well-being. Happier teams are more engaged and productive.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">⚡ Quick & Convenient</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Briefcase className="w-5 h-5 text-gold shrink-0" /> Quick & Convenient</h3>
                 <p className="text-harbor">
                   Express services during lunch breaks, or full pampering for special events. Flexible scheduling fits your company's needs.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">📊 Easy Administration</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><BarChart3 className="w-5 h-5 text-gold shrink-0" /> Easy Administration</h3>
                 <p className="text-harbor">
                   One invoice, one coordinator. We handle scheduling, logistics, and payment processing. You just approve and enjoy.
                 </p>
@@ -82,7 +83,7 @@ export default function CorporatePage() {
       </section>
 
       {/* Service Categories */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">
@@ -197,7 +198,7 @@ export default function CorporatePage() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -205,56 +206,56 @@ export default function CorporatePage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex gap-4">
-                <span className="text-3xl">🎉</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><PartyPopper className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Company Anniversaries</h3>
                   <p className="text-harbor">Celebrate milestones with a beauty bar for the whole team</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="text-3xl">🎯</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Target className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Product Launches</h3>
                   <p className="text-harbor">Executive grooming before major announcements and press events</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="text-3xl">🏆</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Trophy className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Team Building Events</h3>
                   <p className="text-harbor">Interactive beauty workshops as unique team activities</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="text-3xl">📸</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Camera className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Corporate Photoshoots</h3>
                   <p className="text-harbor">Professional styling for company headshots and website photography</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="text-3xl">🎁</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Gift className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Employee Appreciation</h3>
                   <p className="text-harbor">Show gratitude with quarterly wellness days</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="text-3xl">🏢</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Building2 className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Conference Support</h3>
                   <p className="text-harbor">On-site grooming for multi-day corporate events</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="text-3xl">💼</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Handshake className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Recruitment Events</h3>
                   <p className="text-harbor">Stand out at job fairs with a unique candidate experience</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="text-3xl">🎄</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Briefcase className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Holiday Parties</h3>
                   <p className="text-harbor">Pre-party styling and touch-ups for your team celebration</p>
@@ -266,7 +267,7 @@ export default function CorporatePage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -328,7 +329,7 @@ export default function CorporatePage() {
       </section>
 
       {/* Case Study */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -371,7 +372,7 @@ export default function CorporatePage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -433,7 +434,7 @@ export default function CorporatePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-ink text-white text-center">
+      <section className="section-padding bg-ink text-white text-center">
         <div className="container-custom">
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
             Ready to Elevate Your Corporate Culture?
@@ -442,11 +443,11 @@ export default function CorporatePage() {
             Let's create a custom corporate beauty program for your team
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/#booking" className="btn-primary bg-gold hover:bg-gold/90">
+            <Link href="/?service=corporate#booking" className="btn-gold">
             Request Proposal
           </Link>
-            <a href="mailto:corporate@goodhands.com" className="btn-secondary border-white text-white hover:bg-white/10">
-              Email: corporate@goodhands.com
+            <a href="mailto:corporate@goodhandsstudio.com" className="btn-secondary border-white text-white hover:bg-white/10">
+              Email: corporate@goodhandsstudio.com
             </a>
           </div>
         </div>

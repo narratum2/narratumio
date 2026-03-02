@@ -104,7 +104,7 @@ export default function PrivacyPage() {
               <li><strong>Withdraw consent:</strong> At any time, for consent-based processing</li>
             </ul>
             <p className="text-harbor leading-relaxed mt-3">
-              To exercise these rights, contact us at privacy@goodhands.com
+              To exercise these rights, contact us at privacy@goodhandsstudio.com
             </p>
           </section>
 
@@ -149,8 +149,8 @@ export default function PrivacyPage() {
               For privacy-related questions or to exercise your rights:
             </p>
             <div className="bg-shell p-6 rounded-lg">
-              <p className="text-harbor"><strong>Email:</strong> privacy@goodhands.com</p>
-              <p className="text-harbor"><strong>Data Protection Officer:</strong> dpo@goodhands.com</p>
+              <p className="text-harbor"><strong>Email:</strong> privacy@goodhandsstudio.com</p>
+              <p className="text-harbor"><strong>Data Protection Officer:</strong> dpo@goodhandsstudio.com</p>
               <p className="text-harbor"><strong>Address:</strong> Good Hands, Lisbon, Portugal</p>
             </div>
           </section>

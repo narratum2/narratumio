@@ -3,35 +3,17 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getAllArticles } from '@/lib/articles'
 
-const articles = [
-  {
-    title: 'The Art of Portuguese Beauty Rituals',
-    excerpt: 'Discover centuries-old beauty traditions from Portugal that modern experts still swear by...',
-    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80',
-    date: 'October 1, 2025',
-    category: 'Traditions',
-    href: '/journal/portuguese-beauty-rituals',
-  },
-  {
-    title: 'Wedding Beauty Timeline: 6 Months to I Do',
-    excerpt: 'A comprehensive guide to preparing your beauty routine for the big day...',
-    image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80',
-    date: 'September 28, 2025',
-    category: 'Weddings',
-    href: '/journal/wedding-beauty-timeline',
-  },
-  {
-    title: 'Lisbon\'s Hidden Beauty Gems',
-    excerpt: 'Our editors share their favorite under-the-radar salons and spas across the city...',
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80',
-    date: 'September 25, 2025',
-    category: 'City Guide',
-    href: '/journal/lisbon-hidden-gems',
-  },
-]
+function parseDate(dateStr: string): number {
+  const d = new Date(dateStr)
+  return isNaN(d.getTime()) ? 0 : d.getTime()
+}
 
 export default function JournalPreview() {
+  const articles = getAllArticles()
+    .sort((a, b) => parseDate(b.date) - parseDate(a.date))
+    .slice(0, 3)
   return (
     <section className="section-padding bg-white">
       <div className="container-custom">
@@ -59,16 +41,16 @@ export default function JournalPreview() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
+            {articles.map((article, index) => (
             <motion.article
-              key={article.title}
+              key={article.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Link
-                href={article.href}
+                href={`/journal/${article.slug}`}
                 className="group block focus-visible-ring"
               >
                 <div className="relative h-64 rounded-lg overflow-hidden mb-4">

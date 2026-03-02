@@ -91,7 +91,7 @@ const faqs = [
     questions: [
       {
         q: 'Do you offer wedding beauty services?',
-        a: 'Yes! We specialize in wedding beauty. Our premium wedding packages include: Trial sessions 2-3 months before, day-of coordination for entire bridal party, timeline management, dedicated beauty teams, and touch-up services. Packages start at €500 depending on party size and services needed.'
+        a: 'Yes! We specialize in wedding beauty. Our premium wedding packages include: Trial sessions 2-3 months before, day-of coordination for entire bridal party, timeline management, dedicated beauty teams, and touch-up services. Our Intimate package starts at €850 for the bride plus up to two additional people, with Classic and Luxury tiers available for larger parties.'
       },
       {
         q: 'Can you handle group bookings?',
@@ -103,7 +103,7 @@ const faqs = [
       },
       {
         q: 'Do you offer beauty retreats?',
-        a: 'Yes! Our multi-day beauty and wellness retreats in Sintra and Cascais include curated treatments, consultations, product packages, and wellness activities. Retreats range from 2-5 days and are fully customizable. Prices start at €800 per person.'
+        a: 'Yes! Our multi-day beauty and wellness retreats in Sintra and Cascais include curated treatments, consultations, product packages, and wellness activities. Our 3-Day Intensive starts at €1,850 per person, with a fully immersive 5-Day programme available at €3,500 including accommodation.'
       },
       {
         q: 'Can you coordinate corporate wellness events?',
@@ -116,7 +116,7 @@ const faqs = [
     questions: [
       {
         q: 'Do you offer a membership program?',
-        a: 'Yes! Our VIP Membership costs €299/year and includes: 15% off all services, priority booking with your favorite professionals, flexible cancellation policy, exclusive access to new professionals and special events, and a dedicated concierge contact. Membership pays for itself after 3-4 bookings.'
+        a: 'Yes! We offer two membership tiers: Gold (€49/month) with 15% off all services, priority booking, and quarterly exclusive experiences; and Platinum (€99/month) with 25% off, VIP priority, monthly experiences, a dedicated concierge line, and partner hotel benefits. Both can be cancelled anytime with no commitment.'
       },
       {
         q: 'Is membership worth it for locals?',
@@ -195,7 +195,7 @@ export default function FAQPage() {
               Everything you need to know about Good Hands luxury beauty concierge service in Lisbon
             </p>
             <p className="text-sm text-harbor/60 mt-4">
-              <strong>Last Updated:</strong> January 11, 2025
+              <strong>Last Updated:</strong> February 2026
             </p>
           </div>
 
@@ -224,7 +224,7 @@ export default function FAQPage() {
               <a href="/#booking" className="btn-primary">
                 Chat With Us
               </a>
-              <a href="mailto:concierge@goodhands.com" className="btn-secondary">
+              <a href="mailto:concierge@goodhandsstudio.com" className="btn-secondary">
                 Email Us
               </a>
             </div>

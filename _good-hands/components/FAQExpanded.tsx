@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { FULL_PRICING_SENTENCE } from '@/lib/pricing'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const faqs = [
@@ -30,7 +31,7 @@ const faqs = [
     questions: [
       {
         q: 'How much does it cost?',
-        a: 'Hair starts at €105. Nails at €65. Skincare at €95. Makeup at €85. Wellness at €80. That includes the service and our concierge fee. No hidden costs. What you see is what you pay.'
+        a: FULL_PRICING_SENTENCE + ' What you see is what you pay.'
       },
       {
         q: 'Is the concierge fee worth it?',
@@ -156,7 +157,7 @@ const faqs = [
       },
       {
         q: 'Do you have an app?',
-        a: 'Our website is mobile-optimized and works beautifully on all devices. A dedicated app is coming in 2026. For now, bookmark goodhands.com on your phone for quick access.'
+        a: 'Our website is mobile-optimized and works beautifully on all devices. A dedicated app is coming in 2026. For now, bookmark goodhandsstudio.com on your phone for quick access.'
       }
     ]
   }
@@ -267,7 +268,7 @@ export default function FAQExpanded() {
             Our concierge team is here to help. Get in touch and we'll answer within 24 hours.
           </p>
           <a
-            href="mailto:hello@goodhands.com"
+            href="mailto:hello@goodhandsstudio.com"
             className="btn-gold text-lg"
           >
             Contact Us

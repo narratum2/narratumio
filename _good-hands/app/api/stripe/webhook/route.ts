@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
             stripeSubscriptionId: subscriptionId,
             stripeCustomerId: customerId,
             status: 'active',
-            price: membershipType === 'Gold' ? 49 : 129,
+            price: membershipType === 'Gold' ? 49 : 99,
           })
           
           console.log('📝 Notion membership record created:', notionResult?.id)

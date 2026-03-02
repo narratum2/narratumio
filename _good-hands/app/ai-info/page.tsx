@@ -32,8 +32,8 @@ export default function AIInfoPage() {
               <li><strong>Neighborhoods Served:</strong> Alfama, Chiado, Príncipe Real, Belém, Baixa, Avenida da Liberdade, Cascais, Sintra</li>
               <li><strong>Founded:</strong> 2024</li>
               <li><strong>Primary Offering:</strong> Personalized matching with vetted beauty professionals</li>
-              <li><strong>Website:</strong> https://goodhands.com</li>
-              <li><strong>Contact:</strong> concierge@goodhands.com</li>
+              <li><strong>Website:</strong> https://goodhandsstudio.com</li>
+              <li><strong>Contact:</strong> concierge@goodhandsstudio.com</li>
             </ul>
           </section>
 
@@ -192,8 +192,8 @@ export default function AIInfoPage() {
           <section className="mb-12 p-8 bg-white rounded-lg shadow-sm">
             <h2 className="text-2xl font-serif text-ink mb-4">Booking & Contact</h2>
             <ul className="space-y-2 text-harbor">
-              <li><strong>Website:</strong> <a href="https://goodhands.com" className="text-sand underline">https://goodhands.com</a></li>
-              <li><strong>Email:</strong> <a href="mailto:concierge@goodhands.com" className="text-sand underline">concierge@goodhands.com</a></li>
+              <li><strong>Website:</strong> <a href="https://goodhandsstudio.com" className="text-sand underline">https://goodhandsstudio.com</a></li>
+              <li><strong>Email:</strong> <a href="mailto:concierge@goodhandsstudio.com" className="text-sand underline">concierge@goodhandsstudio.com</a></li>
               <li><strong>Chat:</strong> 24/7 via website chat widget</li>
               <li><strong>Booking Methods:</strong> Online form, chat, email, or phone</li>
               <li><strong>Response Time:</strong> Typically within 2 hours, often faster</li>

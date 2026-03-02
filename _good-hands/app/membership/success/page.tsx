@@ -1,13 +1,32 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { CheckCircle, Sparkles } from 'lucide-react'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Welcome to Good Hands Membership!',
-  description: 'Your membership is now active. Start enjoying VIP benefits and exclusive discounts.',
-}
+import { useEffect, useState } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { CheckCircle, Sparkles, Loader2 } from 'lucide-react'
 
 export default function MembershipSuccessPage() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const sessionId = searchParams.get('session_id')
+  const [valid, setValid] = useState(false)
+
+  useEffect(() => {
+    if (!sessionId) {
+      router.replace('/premium/membership')
+      return
+    }
+    setValid(true)
+  }, [sessionId, router])
+
+  if (!valid) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-gold" />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen pt-20 bg-gradient-to-br from-shell via-white to-shell flex items-center">
       <div className="container-custom py-16">
@@ -17,7 +36,7 @@ export default function MembershipSuccessPage() {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-serif mb-4">
-            Welcome to Good Hands! 🎉
+            Welcome to Good Hands
           </h1>
 
           <p className="text-xl text-harbor mb-8">

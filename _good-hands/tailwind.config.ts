@@ -35,6 +35,9 @@ const config: Config = {
           light: '#b8c9a8',
           dark: '#7d9268',
         },
+        harbor: '#4a5568', /* Body text, secondary */
+        shell: '#f8f4f0', /* Warm section backgrounds */
+        sand: '#e8e4e0', /* Subtle backgrounds, avatars */
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],

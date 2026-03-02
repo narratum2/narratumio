@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Heart, Sparkles, Clock, MapPin } from 'lucide-react'
+import { Heart, Sparkles, Clock, MapPin, Waves, Shield, Droplets, MessageCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Nail Care Services in Lisbon — Good Hands',
@@ -179,7 +179,7 @@ export default function NailServicesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold mb-3">🌊 Humidity Challenges</h3>
+                <h3 className="font-semibold mb-3 flex items-center gap-2"><Waves className="w-5 h-5 text-gold shrink-0" /> Humidity Challenges</h3>
                 <ul className="space-y-2 text-sm text-harbor">
                   <li>• Gel polish lasts longer than traditional polish</li>
                   <li>• Base coats are essential for chip prevention</li>
@@ -209,7 +209,7 @@ export default function NailServicesPage() {
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">🧼 Hygiene Guarantee</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Shield className="w-5 h-5 text-gold shrink-0" /> Hygiene Guarantee</h3>
               <p className="text-harbor">
                 Every salon we partner with follows strict sanitation protocols. We personally inspect facilities and verify autoclave sterilization of metal tools. Your health and safety are non-negotiable.
               </p>
@@ -223,14 +223,14 @@ export default function NailServicesPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">💅 Quality Products</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Droplets className="w-5 h-5 text-gold shrink-0" /> Quality Products</h3>
               <p className="text-harbor">
                 Our salons use premium brands (OPI, CND, Essie) and never water down products. You get professional-grade quality, not bargain supplies.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">🗣️ Clear Communication</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><MessageCircle className="w-5 h-5 text-gold shrink-0" /> Clear Communication</h3>
               <p className="text-harbor">
                 All technicians speak English fluently. Show reference photos, explain your preferences, and get exactly what you want—no miscommunication.
               </p>

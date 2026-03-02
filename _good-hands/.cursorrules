@@ -149,6 +149,19 @@ export default function ComponentName({ }: ComponentProps) {
 - Environment variables set in Vercel dashboard
 - Preview deployments for all branches
 
+## Reiteration & Self-Check (Required)
+
+After every batch of edits:
+
+1. Run `npm run check` (lint + typecheck)
+2. Run ReadLints on modified files
+3. Fix any failures before moving on
+4. Re-verify until all pass
+
+See `DEVELOPMENT_WORKFLOW.md` and `.cursor/rules/reiteration-self-check.mdc`.
+
+---
+
 ## When Stuck
 1. Check Next.js 14 App Router docs
 2. Review Tailwind CSS documentation

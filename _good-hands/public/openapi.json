@@ -6,14 +6,14 @@
     "version": "1.0.0",
     "contact": {
       "name": "Good Hands Concierge Team",
-      "url": "https://goodhands.com",
-      "email": "concierge@goodhands.com"
+      "url": "https://goodhandsstudio.com",
+      "email": "concierge@goodhandsstudio.com"
     },
-    "termsOfService": "https://goodhands.com/terms"
+    "termsOfService": "https://goodhandsstudio.com/terms"
   },
   "servers": [
     {
-      "url": "https://goodhands.com/api",
+      "url": "https://goodhandsstudio.com/api",
       "description": "Production API Server"
     }
   ],

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { MessageCircle as ChatIcon } from 'lucide-react'
 
 interface Message {
   id: string
@@ -94,7 +95,7 @@ export default function IntelligentChat({
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to email us at concierge@goodhands.com.",
+        content: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to email us at concierge@goodhandsstudio.com.",
         timestamp: new Date(),
         expert: currentExpert
       }
@@ -112,10 +113,10 @@ export default function IntelligentChat({
   }
 
   const quickActions = [
-    { label: '📅 Book a Service', action: 'book' },
-    { label: '🏨 Hotel Partnerships', action: 'hotels' },
-    { label: '🗺️ Neighborhood Guides', action: 'neighborhoods' },
-    { label: '💎 Premium Services', action: 'premium' },
+    { label: 'Book a Service', action: 'book' },
+    { label: 'Hotel Partnerships', action: 'hotels' },
+    { label: 'Neighborhood Guides', action: 'neighborhoods' },
+    { label: 'Premium Services', action: 'premium' },
   ]
 
   const handleQuickAction = (action: string) => {
@@ -146,8 +147,8 @@ export default function IntelligentChat({
             {/* Header */}
             <div className="bg-gradient-to-r from-sand to-gold p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-xl">
-                  👋
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                  <ChatIcon className="w-5 h-5 text-gold" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">Good Hands Concierge</h3>
@@ -274,10 +275,6 @@ export default function IntelligentChat({
             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
-            {/* Notification badge */}
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center font-bold">
-              !
-            </span>
           </>
         ) : (
           <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

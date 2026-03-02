@@ -5,6 +5,24 @@
 
 ---
 
+## 🔄 REITERATION & SELF-CHECK LOOP (Every Edit Batch)
+
+**Trigger:** After any code edit  
+**Duration:** ~1-2 minutes  
+**Applies to:** All agents making code changes
+
+**Steps:**
+1. Run `npm run check` (lint + typecheck)
+2. Run ReadLints on all modified files
+3. If any step fails → fix → re-run from step 1
+4. Repeat until all pass before moving to next task
+5. Do not report task complete until loop passes
+
+**Rule:** `.cursor/rules/reiteration-self-check.mdc`  
+**Doc:** `DEVELOPMENT_WORKFLOW.md`
+
+---
+
 ## 📋 WORKFLOW DEFINITIONS
 
 ### **Workflow 1: Morning Documentation Sweep**

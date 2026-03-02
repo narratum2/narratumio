@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Sparkles } from 'lucide-react'
 
 interface BookingFormData {
   name: string
@@ -12,6 +13,7 @@ interface BookingFormData {
   date: string
   time: string
   message: string
+  website: string
 }
 
 export default function BookingForm() {
@@ -24,9 +26,19 @@ export default function BookingForm() {
     date: '',
     time: '',
     message: '',
+    website: '',
   })
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const service = params.get('service')
+    if (service) {
+      setFormData((prev) => ({ ...prev, service }))
+    }
+  }, [])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -39,6 +51,7 @@ export default function BookingForm() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setErrorMessage('')
 
     try {
       // Capture UTM parameters
@@ -73,12 +86,16 @@ export default function BookingForm() {
           date: '',
           time: '',
           message: '',
+          website: '',
         })
       } else {
+        const errData = await response.json().catch(() => ({}))
+        setErrorMessage(errData.error || 'Something went wrong. Please try again.')
         setSubmitStatus('error')
       }
     } catch (error) {
       console.error('Booking error:', error)
+      setErrorMessage('Unable to submit. Please check your connection and try again.')
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -103,7 +120,7 @@ export default function BookingForm() {
               Tell us what you need. We'll handle the rest.
             </p>
             <div className="inline-flex items-center gap-2 bg-gold/10 px-6 py-3 rounded-lg">
-              <span className="text-2xl">✨</span>
+              <Sparkles className="w-5 h-5 text-gold" />
               <p className="text-sm font-medium text-gold">
                 Concierge service included
               </p>
@@ -265,6 +282,19 @@ export default function BookingForm() {
               />
             </div>
 
+            <div aria-hidden="true" className="absolute -left-[9999px]">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <button
               type="submit"
               disabled={isSubmitting}
@@ -287,9 +317,9 @@ export default function BookingForm() {
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 text-center text-coral font-medium"
+                className="mt-4 text-center text-red-600 font-medium"
               >
-                Something went wrong. Please try again or contact us directly.
+                {errorMessage}
               </motion.p>
             )}
           </form>

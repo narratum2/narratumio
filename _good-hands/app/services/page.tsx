@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { Search, X } from 'lucide-react'
+import { Search, X, Camera } from 'lucide-react'
 // import CuratedProducts from '@/components/CuratedProducts' // Temporarily disabled
 
 const services = [
@@ -122,7 +122,7 @@ export default function ServicesPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/brand-images/salon-detail.png"
@@ -209,7 +209,7 @@ export default function ServicesPage() {
       {filteredServices.length === 0 ? (
         <section className="section-padding bg-white">
           <div className="container-custom text-center py-16">
-            <div className="text-6xl mb-4">🔍</div>
+            <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><Search className="w-8 h-8 text-gold" /></div>
             <h2 className="text-3xl font-serif mb-4">No Services Found</h2>
             <p className="text-harbor mb-6">
               We couldn't find any services matching your search. Try different keywords or browse all services.
@@ -265,7 +265,7 @@ export default function ServicesPage() {
         <div className="container-custom max-w-5xl">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 text-gold mb-4">
-              <span className="text-2xl">📸</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Camera className="w-5 h-5 text-gold" /></div>
               <span className="text-sm uppercase tracking-wider font-medium">Special Services</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-serif mb-6">

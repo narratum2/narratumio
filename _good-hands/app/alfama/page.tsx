@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import LocationMapSection from '@/components/LocationMapSection'
+import { Building2, Heart, Drama, Lightbulb, Castle, Church, Music, Sun, UtensilsCrossed, MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Alfama Beauty Guide — Good Hands',
@@ -11,7 +13,7 @@ export default function AlfamaPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/brand-images/beauty-moment.png" alt="Historic Alfama neighborhood Lisbon - authentic beauty experiences in traditional setting" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-ink/50" />
@@ -52,7 +54,7 @@ export default function AlfamaPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6">
-              <div className="text-4xl mb-4">🏛️</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Building2 className="w-5 h-5 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Authentic Atmosphere</h3>
               <p className="text-harbor">
                 Experience beauty services in historic buildings with original architecture, offering a unique and memorable setting.
@@ -60,7 +62,7 @@ export default function AlfamaPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <div className="text-4xl mb-4">🤲</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Heart className="w-5 h-5 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Personal Touch</h3>
               <p className="text-harbor">
                 Smaller, family-run establishments provide exceptional personal attention and traditional Portuguese hospitality.
@@ -68,7 +70,7 @@ export default function AlfamaPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <div className="text-4xl mb-4">🎭</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Drama className="w-5 h-5 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Cultural Experience</h3>
               <p className="text-harbor">
                 Combine your beauty appointment with fado music, traditional restaurants, and stunning viewpoints throughout the neighborhood.
@@ -148,7 +150,7 @@ export default function AlfamaPage() {
 
           <div className="mt-8 bg-gold/10 rounded-lg p-6">
             <p className="text-harbor">
-              <strong>💡 Pro Tip:</strong> Schedule your beauty appointment for late morning or early afternoon, then spend the evening exploring Alfama&apos;s fado houses and miradouros (viewpoints). The neighborhood is magical at sunset.
+              <strong>Pro Tip:</strong> Schedule your beauty appointment for late morning or early afternoon, then spend the evening exploring Alfama&apos;s fado houses and miradouros (viewpoints). The neighborhood is magical at sunset.
             </p>
           </div>
         </div>
@@ -161,41 +163,41 @@ export default function AlfamaPage() {
           
           <div className="space-y-4">
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🏰</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Castle className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">São Jorge Castle</h4>
+                <h3 className="font-semibold mb-1">São Jorge Castle</h3>
                 <p className="text-harbor text-sm">Medieval fortress with panoramic city views, 10-minute walk uphill</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">⛪</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Church className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Lisbon Cathedral (Sé)</h4>
+                <h3 className="font-semibold mb-1">Lisbon Cathedral (Sé)</h3>
                 <p className="text-harbor text-sm">12th-century Romanesque cathedral, architectural marvel</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🎵</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Music className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Fado Museum</h4>
+                <h3 className="font-semibold mb-1">Fado Museum</h3>
                 <p className="text-harbor text-sm">Learn about Portugal&apos;s soulful music tradition</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🌅</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Sun className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Miradouro de Santa Luzia</h4>
+                <h3 className="font-semibold mb-1">Miradouro de Santa Luzia</h3>
                 <p className="text-harbor text-sm">Stunning terrace overlooking the Tagus, perfect photo spot</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🍽️</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><UtensilsCrossed className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Traditional Tascas</h4>
+                <h3 className="font-semibold mb-1">Traditional Tascas</h3>
                 <p className="text-harbor text-sm">Authentic Portuguese restaurants serving grilled sardines and bacalhau</p>
               </div>
             </div>
@@ -211,7 +213,7 @@ export default function AlfamaPage() {
           <div className="bg-white rounded-lg p-4 shadow-md">
             <div className="aspect-video w-full bg-harbor/10 rounded flex items-center justify-center">
               <div className="text-center text-harbor">
-                <p className="text-lg mb-2">📍 Interactive Map</p>
+                <p className="text-lg mb-2 flex items-center justify-center gap-2"><MapPin className="w-5 h-5 text-gold" /> Interactive Map</p>
                 <p className="text-sm">Google Maps integration will show Good Hands partner locations in Alfama</p>
                 <p className="text-xs mt-2 text-harbor/60">(Map embed coming in production)</p>
               </div>
@@ -249,6 +251,11 @@ export default function AlfamaPage() {
           </div>
         </div>
       </section>
+
+      <LocationMapSection
+        neighborhoodName="Alfama"
+        mapsQuery="beauty+salons+alfama+lisbon"
+      />
 
       {/* CTA */}
       <section className="section-padding bg-ink text-white text-center">

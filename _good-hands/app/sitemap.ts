@@ -1,8 +1,16 @@
 import { MetadataRoute } from 'next'
+import { getAllArticles } from '@/lib/articles'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://goodhands.com'
+  const baseUrl = 'https://goodhandsstudio.com'
   const currentDate = new Date()
+
+  const journalArticles = getAllArticles().map((article) => ({
+    url: `${baseUrl}/journal/${article.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
 
   return [
     {
@@ -29,6 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.8,
     },
+    ...journalArticles,
+    {
+      url: `${baseUrl}/journal/finding-calm-in-chiado`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
     {
       url: `${baseUrl}/guides`,
       lastModified: currentDate,
@@ -40,6 +55,67 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/partnerships`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/ai-info`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/guides/lisbon-beauty-complete-guide-2025`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/join-our-team`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    // Service subpages
+    {
+      url: `${baseUrl}/services/hair`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/nails`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/skincare`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/makeup`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/wellness`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
     // Premium pages
     {

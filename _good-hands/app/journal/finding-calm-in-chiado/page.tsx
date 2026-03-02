@@ -6,15 +6,38 @@ export const metadata = {
   description: 'Discover Lisbon\'s hidden wellness sanctuaries in Chiado—where locals go for authentic, unhurried beauty experiences.',
 }
 
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Finding Calm in Chiado',
+  description: 'Discover Lisbon\'s hidden wellness sanctuaries in Chiado—where locals go for authentic, unhurried beauty experiences.',
+  author: { '@type': 'Organization', name: 'Good Hands', url: 'https://goodhandsstudio.com' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Good Hands',
+    url: 'https://goodhandsstudio.com',
+    logo: { '@type': 'ImageObject', url: 'https://goodhandsstudio.com/logo.svg' },
+  },
+  datePublished: '2024-10-11',
+  dateModified: '2024-10-11',
+  mainEntityOfPage: 'https://goodhandsstudio.com/journal/finding-calm-in-chiado',
+  image: '/brand-images/blog-finding-calm-chiado.png',
+}
+
 export default function FindingCalmInChiado() {
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+    />
     <EditorialPost
       title="Finding Calm in Chiado"
       eyebrow="WELLNESS GUIDE"
-      author="Maria Santos"
+      author="Good Hands Team"
       date="2024-10-11"
       readTime="8 min read"
-      heroImage="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=2000&q=80"
+      heroImage="/brand-images/blog-finding-calm-chiado.png"
     >
       {/* Drop Cap First Paragraph */}
       <p className="drop-cap">
@@ -158,12 +181,12 @@ export default function FindingCalmInChiado() {
       </p>
 
       <p className="text-sm text-harbor italic mt-12 pt-8 border-t border-harbor/10">
-        <strong>About the Author:</strong> Maria Santos has been curating Lisbon's beauty experiences 
-        for Good Hands since 2020. She lives in Príncipe Real with two rescue cats and an ever-growing 
-        collection of Portuguese ceramics. When she's not exploring new wellness spaces, she teaches 
-        yoga overlooking the Tagus.
+        <strong>About the Author:</strong> Our editorial team knows Lisbon&apos;s beauty scene inside 
+        and out. We live and work across Chiado, Príncipe Real, and beyond—constantly discovering 
+        the hidden gems that make Lisbon&apos;s wellness culture so special.
       </p>
     </EditorialPost>
+    </>
   )
 }
 

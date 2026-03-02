@@ -42,7 +42,7 @@ export default function EditorialPost({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="content-narrow section-padding"
+        className="max-w-3xl mx-auto section-padding px-6 md:px-8 lg:px-12"
       >
         {/* Eyebrow */}
         <p className="text-sm uppercase tracking-wide text-gold mb-4 font-medium">
@@ -50,7 +50,7 @@ export default function EditorialPost({
         </p>
 
         {/* Headline - Large Serif */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-8 leading-tight">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-8 leading-tight text-left">
           {title}
         </h1>
 
@@ -69,7 +69,7 @@ export default function EditorialPost({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="content-narrow editorial-content pb-24"
+        className="max-w-3xl mx-auto editorial-content pb-24 px-6 md:px-8 lg:px-12"
       >
         {children}
       </motion.div>
@@ -93,10 +93,10 @@ export function EditorialPostExample() {
     <EditorialPost
       title="Finding Calm in Chiado"
       eyebrow="WELLNESS GUIDE"
-      author="Maria Santos"
+      author="Good Hands Team"
       date="2024-10-11"
       readTime="8 min read"
-      heroImage="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=2000&q=80"
+      heroImage="/brand-images/blog-finding-calm-chiado.png"
     >
       {/* Drop Cap First Paragraph */}
       <p className="drop-cap">
@@ -168,9 +168,8 @@ export function EditorialPostExample() {
       </div>
 
       <p className="text-sm text-harbor italic mt-12">
-        <strong>About the Author:</strong> Maria Santos has been curating Lisbon's beauty experiences 
-        for Good Hands since 2020. She lives in Príncipe Real with two rescue cats and an ever-growing 
-        collection of Portuguese ceramics.
+        <strong>About the Author:</strong> Our editorial team knows Lisbon&apos;s beauty scene inside 
+        and out. We live and work across Chiado, Príncipe Real, and beyond.
       </p>
     </EditorialPost>
   )

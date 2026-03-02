@@ -434,7 +434,7 @@ export async function testCustomerIOConnection(): Promise<boolean> {
     // Try to identify a test customer
     const client = createCustomerIOClient()
     await client.identify('test-connection', {
-      email: 'test@goodhands.com',
+      email: 'test@goodhandsstudio.com',
       name: 'Test Connection',
       test: true,
     })

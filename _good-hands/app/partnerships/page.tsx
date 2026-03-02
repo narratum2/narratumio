@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Palette, Briefcase, Handshake, Gem, CircleDollarSign, AlertCircle, HelpCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Hotel Partnerships | Good Hands Beauty Concierge',
@@ -12,7 +13,7 @@ export default function PartnershipsPage() {
   return (
     <div className="bg-porcelain pt-20">
       {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -53,7 +54,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Trusted By Section */}
-      <section className="py-16 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom text-center">
           <p className="text-harbor text-sm uppercase tracking-wider mb-8">Trusted By</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
@@ -66,7 +67,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* The Challenge Section */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-8 text-center">
@@ -75,7 +76,7 @@ export default function PartnershipsPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="p-6 bg-white rounded-lg text-center">
                 <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-5xl">😰</span>
+                  <AlertCircle className="w-8 h-8 text-harbor" />
                 </div>
                 <h3 className="text-xl font-semibold text-ink mb-3">Language Barriers</h3>
                 <p className="text-harbor text-left">
@@ -84,7 +85,7 @@ export default function PartnershipsPage() {
               </div>
               <div className="p-6 bg-white rounded-lg text-center">
                 <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-5xl">🎲</span>
+                  <HelpCircle className="w-8 h-8 text-harbor" />
                 </div>
                 <h3 className="text-xl font-semibold text-ink mb-3">Trial & Error</h3>
                 <p className="text-harbor text-left">
@@ -102,7 +103,7 @@ export default function PartnershipsPage() {
               </div>
               <div className="p-6 bg-white rounded-lg text-center">
                 <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-5xl">💼</span>
+                  <Briefcase className="w-8 h-8 text-gold" />
                 </div>
                 <h3 className="text-xl font-semibold text-ink mb-3">Your Team's Burden</h3>
                 <p className="text-harbor text-left">
@@ -115,7 +116,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* The Solution Section */}
-      <section id="benefits" className="py-20 bg-white">
+      <section id="benefits" className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-4 text-center">
@@ -130,7 +131,7 @@ export default function PartnershipsPage() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="md:w-1/3">
                   <div className="w-16 h-16 bg-sand/20 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-3xl">🤝</span>
+                    <Handshake className="w-7 h-7 text-gold" />
                   </div>
                   <h3 className="text-2xl font-serif text-ink mb-3">Seamless Integration</h3>
                 </div>
@@ -159,7 +160,7 @@ export default function PartnershipsPage() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="md:w-1/3">
                   <div className="w-16 h-16 bg-sand/20 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-3xl">💎</span>
+                    <Gem className="w-7 h-7 text-gold" />
                   </div>
                   <h3 className="text-2xl font-serif text-ink mb-3">Curated Excellence</h3>
                 </div>
@@ -188,7 +189,7 @@ export default function PartnershipsPage() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="md:w-1/3">
                   <div className="w-16 h-16 bg-sand/20 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-3xl">💰</span>
+                    <CircleDollarSign className="w-7 h-7 text-gold" />
                   </div>
                   <h3 className="text-2xl font-serif text-ink mb-3">Zero Upfront Investment</h3>
                 </div>
@@ -217,7 +218,7 @@ export default function PartnershipsPage() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="md:w-1/3">
                   <div className="w-16 h-16 bg-sand/20 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-3xl">🎨</span>
+                    <Palette className="w-8 h-8 text-gold" />
                   </div>
                   <h3 className="text-2xl font-serif text-ink mb-3">White-Label Options</h3>
                 </div>
@@ -247,7 +248,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">
@@ -319,7 +320,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Service Categories */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">
@@ -359,7 +360,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-20 bg-sand/10">
+      <section className="section-padding bg-shell">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">
@@ -390,7 +391,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-20 bg-ink text-white">
+      <section id="contact" className="section-padding bg-ink text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-serif mb-6">
@@ -401,10 +402,10 @@ export default function PartnershipsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
-                href="mailto:partnerships@goodhands.com"
-                className="btn-primary bg-gold hover:bg-gold/90"
+                href="mailto:partnerships@goodhandsstudio.com"
+                className="btn-gold"
               >
-                Email: partnerships@goodhands.com
+                Email: partnerships@goodhandsstudio.com
               </a>
               <a
                 href="tel:+351XXXXXXXXX"
@@ -421,7 +422,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-shell">
+      <section className="section-padding bg-shell">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">

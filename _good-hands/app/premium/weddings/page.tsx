@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Sparkles, Palette, CalendarDays, MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Wedding Beauty Services | Good Hands Lisbon',
@@ -21,7 +22,7 @@ export default function WeddingsPage() {
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
               From intimate ceremonies to grand celebrations, we coordinate every beauty detail for you and your entire bridal party
             </p>
-            <Link href="/#booking" className="btn-primary bg-white text-sand hover:bg-porcelain">
+            <Link href="/?service=wedding#booking" className="btn-primary bg-white text-sand hover:bg-porcelain">
               Plan Your Wedding Beauty
             </Link>
           </div>
@@ -29,7 +30,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* The Challenge Section */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-8 text-center">
@@ -40,25 +41,25 @@ export default function WeddingsPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">🎨 Complete Coordination</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Palette className="w-5 h-5 text-gold shrink-0" /> Complete Coordination</h3>
                 <p className="text-harbor">
                   One point of contact for bride, bridesmaids, mothers, and flower girls. We manage everything.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">✨ Trial Sessions</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Sparkles className="w-5 h-5 text-gold shrink-0" /> Trial Sessions</h3>
                 <p className="text-harbor">
                   Complete hair and makeup trials so you're confident and beautiful on your wedding day.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">📅 Timeline Management</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><CalendarDays className="w-5 h-5 text-gold shrink-0" /> Timeline Management</h3>
                 <p className="text-harbor">
                   We create a detailed timeline ensuring everyone is ready on schedule—no stress, no delays.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">🏨 On-Location Services</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><MapPin className="w-5 h-5 text-gold shrink-0" /> On-Location Services</h3>
                 <p className="text-harbor">
                   Our professionals come to your hotel, villa, or venue. Getting ready happens where you want.
                 </p>
@@ -69,7 +70,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* Services Included */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">
@@ -171,7 +172,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -200,7 +201,7 @@ export default function WeddingsPage() {
                   <span>Touch-up kit</span>
                 </li>
               </ul>
-              <Link href="/#booking" className="btn-secondary w-full text-center">
+              <Link href="/?service=wedding#booking" className="btn-secondary w-full text-center">
                   Book Intimate Package
               </Link>
             </div>
@@ -236,7 +237,7 @@ export default function WeddingsPage() {
                     <span>Pre-wedding spa day option</span>
                 </li>
               </ul>
-              <Link href="/#booking" className="btn-primary w-full text-center">
+              <Link href="/?service=wedding#booking" className="btn-primary w-full text-center">
                   Book Classic Package
               </Link>
             </div>
@@ -267,7 +268,7 @@ export default function WeddingsPage() {
                     <span>Rehearsal dinner + next-day services</span>
                 </li>
               </ul>
-              <Link href="/#booking" className="btn-secondary w-full text-center">
+              <Link href="/?service=wedding#booking" className="btn-secondary w-full text-center">
                   Book Luxury Package
               </Link>
               </div>
@@ -280,7 +281,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* Timeline Example */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -355,7 +356,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -388,7 +389,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-ink text-white text-center">
+      <section className="section-padding bg-ink text-white text-center">
         <div className="container-custom">
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
             Ready to Plan Your Wedding Beauty?
@@ -396,7 +397,7 @@ export default function WeddingsPage() {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Let's create a custom package perfect for your special day
           </p>
-          <Link href="/#booking" className="btn-primary bg-gold hover:bg-gold/90">
+          <Link href="/?service=wedding#booking" className="btn-gold">
             Schedule Your Consultation
           </Link>
         </div>

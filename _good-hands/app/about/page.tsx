@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Sparkles, Heart, Shield, Users, Instagram, Send } from 'lucide-react'
+import { AlertCircle, CircleDollarSign, Globe, Home, Sparkles, Heart, Shield, Users, Instagram, Send } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About — Good Hands',
@@ -57,7 +57,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-6xl mb-4 opacity-40">😰</div>
+              <div className="w-16 h-16 bg-harbor/10 rounded-full flex items-center justify-center mx-auto mb-4 opacity-40"><AlertCircle className="w-8 h-8 text-harbor" /></div>
               <h3 className="text-xl font-serif mb-2">Overwhelming Choice</h3>
               <p className="text-harbor text-sm">
                 Hundreds of salons, countless reviews, no way to know who's actually good
@@ -71,7 +71,7 @@ export default function AboutPage() {
               </p>
               </div>
             <div className="text-center">
-              <div className="text-6xl mb-4 opacity-40">💸</div>
+              <div className="w-16 h-16 bg-harbor/10 rounded-full flex items-center justify-center mx-auto mb-4 opacity-40"><CircleDollarSign className="w-8 h-8 text-harbor" /></div>
               <h3 className="text-xl font-serif mb-2">Expensive Mistakes</h3>
               <p className="text-harbor text-sm">
                 Bad haircuts. Poor service. Wasted money. The cost of trial and error adds up
@@ -289,7 +289,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1585208798174-6cedd86e1b5a?w=800&q=80"
+                  src="/brand-images/about-team.png"
                   alt="Lisbon cityscape"
                   fill
                   className="object-cover"
@@ -361,7 +361,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-5xl mb-4">🌍</div>
+              <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><Globe className="w-7 h-7 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Travelers & Visitors</h3>
               <p className="text-harbor">
                 You're in Lisbon for a week or a month. You want a great haircut, 
@@ -370,7 +370,7 @@ export default function AboutPage() {
             </div>
 
             <div className="text-center">
-              <div className="text-5xl mb-4">🏠</div>
+              <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><Home className="w-7 h-7 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Expats & New Residents</h3>
               <p className="text-harbor">
                 You just moved here. Finding a trusted hairstylist shouldn't take six months 
@@ -426,8 +426,8 @@ export default function AboutPage() {
           <div className="flex justify-center items-center gap-6">
             <a
               href="https://instagram.com/goodhands"
-                target="_blank"
-                rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 hover:transform hover:scale-110 transition-all"
               aria-label="Follow us on Instagram"
             >
@@ -439,11 +439,11 @@ export default function AboutPage() {
 
             <a
               href="https://x.com/goodhands"
-                target="_blank"
-                rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 hover:transform hover:scale-110 transition-all"
               aria-label="Follow us on X (Twitter)"
-              >
+            >
               <div className="w-16 h-16 rounded-full bg-ink flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-shadow">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -454,22 +454,22 @@ export default function AboutPage() {
 
             <a
               href="https://t.me/goodhands"
-                target="_blank"
-                rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 hover:transform hover:scale-110 transition-all"
               aria-label="Join us on Telegram"
             >
               <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-shadow">
                 <Send className="w-7 h-7" />
-            </div>
+              </div>
               <span className="text-sm text-harbor group-hover:text-gold transition-colors">Telegram</span>
             </a>
           </div>
 
           <p className="text-xs text-harbor/60 mt-8">
             Have questions? Reach out anytime at{' '}
-            <a href="mailto:hello@goodhands.com" className="text-gold hover:underline">
-              hello@goodhands.com
+            <a href="mailto:concierge@goodhandsstudio.com" className="text-gold hover:underline">
+              concierge@goodhandsstudio.com
             </a>
           </p>
         </div>

@@ -76,7 +76,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="#booking" className="btn-primary">
+            <Link href="/#booking" className="btn-primary">
               Book Now
             </Link>
           </div>
@@ -133,7 +133,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                href="#booking"
+                href="/#booking"
                 onClick={() => setIsOpen(false)}
                 className="block btn-primary text-center mt-6"
               >

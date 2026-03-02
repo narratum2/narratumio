@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Sparkles, Heart, Clock, MapPin } from 'lucide-react'
+import { Sparkles, Heart, Clock, MapPin, MessageCircle, Target, Wind, Shield, Droplets } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Skincare & Facial Services in Lisbon — Good Hands',
@@ -189,7 +189,7 @@ export default function SkincareServicesPage() {
               </div>
 
               <div>
-                <h3 className="font-semibold mb-3">💨 Wind & Humidity Effects</h3>
+                <h3 className="font-semibold mb-3 flex items-center gap-2"><Wind className="w-5 h-5 text-gold shrink-0" /> Wind & Humidity Effects</h3>
                 <ul className="space-y-2 text-sm text-harbor">
                   <li>• Dehydration despite humid air</li>
                   <li>• Compromised skin barrier from wind</li>
@@ -209,28 +209,28 @@ export default function SkincareServicesPage() {
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">🔬 Licensed & Certified</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Shield className="w-5 h-5 text-gold shrink-0" /> Licensed & Certified</h3>
               <p className="text-harbor">
                 All estheticians hold professional licenses and certification from recognized institutions. We verify credentials, not just portfolios.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">🧴 Premium Products</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Droplets className="w-5 h-5 text-gold shrink-0" /> Premium Products</h3>
               <p className="text-harbor">
                 Our partners use professional-grade product lines (Biologique Recherche, Dermalogica, SkinCeuticals) unavailable in retail. You get treatment-strength formulations.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">🎯 Matched to Your Needs</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Target className="w-5 h-5 text-gold shrink-0" /> Matched to Your Needs</h3>
               <p className="text-harbor">
                 Acne-prone skin? We match you with estheticians specializing in acne. Anti-aging focus? We connect you with professionals trained in advanced technologies. No guesswork.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">💬 Clear Communication</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><MessageCircle className="w-5 h-5 text-gold shrink-0" /> Clear Communication</h3>
               <p className="text-harbor">
                 All our estheticians speak English fluently. Describe your concerns clearly, understand treatment plans, and get product recommendations you can actually follow.
               </p>

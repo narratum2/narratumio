@@ -184,7 +184,7 @@ export default function CookiesPage() {
               If you have questions about our use of cookies, please contact us:
             </p>
             <div className="bg-shell p-6 rounded-lg">
-              <p className="text-harbor"><strong>Email:</strong> privacy@goodhands.com</p>
+              <p className="text-harbor"><strong>Email:</strong> privacy@goodhandsstudio.com</p>
               <p className="text-harbor"><strong>Subject:</strong> Cookie Policy Inquiry</p>
             </div>
           </section>

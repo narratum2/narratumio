@@ -88,7 +88,7 @@ export default function ArticlePage({ params }: PageProps) {
             )}
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-ink mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-ink mb-6 leading-tight text-left">
             {article.title}
           </h1>
           
@@ -196,7 +196,7 @@ export default function ArticlePage({ params }: PageProps) {
           </p>
           <Link 
             href="/#booking" 
-            className="btn-primary bg-gold hover:bg-gold/90 text-ink font-semibold"
+            className="btn-gold font-semibold"
           >
             Book Your Experience
           </Link>
@@ -214,17 +214,20 @@ export default function ArticlePage({ params }: PageProps) {
             description: article.excerpt,
             image: article.image,
             datePublished: article.date,
+            dateModified: article.date,
+            mainEntityOfPage: `https://goodhandsstudio.com/journal/${article.slug}`,
             author: {
-              '@type': 'Person',
-              name: article.author,
-              description: article.authorBio,
+              '@type': 'Organization',
+              name: 'Good Hands',
+              url: 'https://goodhandsstudio.com',
             },
             publisher: {
               '@type': 'Organization',
               name: 'Good Hands',
+              url: 'https://goodhandsstudio.com',
               logo: {
                 '@type': 'ImageObject',
-                url: '/brand-assets/logo/logo-primary.svg',
+                url: 'https://goodhandsstudio.com/logo.svg',
               },
             },
           }),

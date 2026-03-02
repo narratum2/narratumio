@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Heart, Sparkles, Clock, MapPin } from 'lucide-react'
+import { Heart, Sparkles, Clock, MapPin, MessageCircle, ShieldCheck, Shield } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Wellness & Massage Services in Lisbon — Good Hands',
@@ -223,21 +223,21 @@ export default function WellnessServicesPage() {
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">🏥 Verified Credentials</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-gold shrink-0" /> Verified Credentials</h3>
               <p className="text-harbor">
                 We verify every therapist&apos;s license, certification, and training. You&apos;re getting legitimate massage therapy from qualified professionals, not untrained practitioners.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">💬 Clear Communication</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><MessageCircle className="w-5 h-5 text-gold shrink-0" /> Clear Communication</h3>
               <p className="text-harbor">
                 All therapists speak English fluently. Communicate your pain points, pressure preferences, and any injuries clearly—no language barriers to proper treatment.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3">🧼 Hygiene Standards</h3>
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2"><Shield className="w-5 h-5 text-gold shrink-0" /> Hygiene Standards</h3>
               <p className="text-harbor">
                 Fresh linens every session, clean treatment rooms, sanitized equipment. We inspect facilities personally—you&apos;re getting professional spa standards, not sketchy "massage" parlors.
               </p>
@@ -293,7 +293,7 @@ export default function WellnessServicesPage() {
 
             <div className="bg-gold/10 rounded-lg p-6">
               <p className="text-harbor">
-                <strong>💡 Pro Tip:</strong> Schedule massage for late afternoon or evening, not morning. This way you can go home, rest, and let the relaxation continue rather than rushing back to work or activities. Your body needs time to integrate the benefits.
+                <strong>Pro Tip:</strong> Schedule massage for late afternoon or evening, not morning. This way you can go home, rest, and let the relaxation continue rather than rushing back to work or activities. Your body needs time to integrate the benefits.
               </p>
             </div>
           </div>

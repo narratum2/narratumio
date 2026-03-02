@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Send, CheckCircle, Sparkles } from 'lucide-react'
+import { Send, CheckCircle, Sparkles, CalendarDays, Award, ClipboardList, Handshake } from 'lucide-react'
 
 export default function ProfessionalSignupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -50,11 +50,11 @@ export default function ProfessionalSignupForm() {
           })
         }, 100)
       } else {
-        alert('There was an error submitting your application. Please try again or email us directly at professionals@goodhands.com')
+        alert('There was an error submitting your application. Please try again or email us directly at professionals@goodhandsstudio.com')
       }
     } catch (error) {
       console.error('Application submission error:', error)
-      alert('There was an error submitting your application. Please try again or email us directly at professionals@goodhands.com')
+      alert('There was an error submitting your application. Please try again or email us directly at professionals@goodhandsstudio.com')
     } finally {
       setIsSubmitting(false)
     }
@@ -85,17 +85,17 @@ export default function ProfessionalSignupForm() {
         {/* Benefits */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white p-6 rounded-lg text-center">
-            <div className="text-3xl mb-3">✨</div>
+            <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-3"><Sparkles className="w-6 h-6 text-gold" /></div>
             <h3 className="font-medium mb-2">Premium Clientele</h3>
             <p className="text-sm text-harbor">Access to luxury hotel guests and high-end clients</p>
           </div>
           <div className="bg-white p-6 rounded-lg text-center">
-            <div className="text-3xl mb-3">📅</div>
+            <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-3"><CalendarDays className="w-6 h-6 text-gold" /></div>
             <h3 className="font-medium mb-2">Flexible Scheduling</h3>
             <p className="text-sm text-harbor">Work on your terms with our concierge coordination</p>
           </div>
           <div className="bg-white p-6 rounded-lg text-center">
-            <div className="text-3xl mb-3">🌟</div>
+            <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-3"><Award className="w-6 h-6 text-gold" /></div>
             <h3 className="font-medium mb-2">Brand Prestige</h3>
             <p className="text-sm text-harbor">Join a trusted network recognized by Four Seasons & Tivoli</p>
           </div>
@@ -374,17 +374,17 @@ export default function ProfessionalSignupForm() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-harbor">
             <div>
-              <div className="text-2xl mb-2">📋</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2"><ClipboardList className="w-5 h-5 text-gold" /></div>
               <p className="font-medium mb-1">1. Application Review</p>
               <p>We review your experience, portfolio, and social presence</p>
             </div>
             <div>
-              <div className="text-2xl mb-2">🤝</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2"><Handshake className="w-5 h-5 text-gold" /></div>
               <p className="font-medium mb-1">2. Interview</p>
               <p>Selected candidates meet with our team for an in-depth interview</p>
             </div>
             <div>
-              <div className="text-2xl mb-2">✨</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2"><Sparkles className="w-5 h-5 text-gold" /></div>
               <p className="font-medium mb-1">3. Trial Service</p>
               <p>We experience your services firsthand to ensure quality standards</p>
             </div>

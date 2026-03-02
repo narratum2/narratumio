@@ -12,41 +12,43 @@ interface SubscribeButtonProps {
 export default function SubscribeButton({ priceId, tier, price }: SubscribeButtonProps) {
   const [loading, setLoading] = useState(false)
 
+  const [error, setError] = useState('')
+
   const handleSubscribe = async () => {
     setLoading(true)
+    setError('')
 
     try {
-      const response = await fetch('/api/stripe/create-checkout', {
+      const response = await fetch('/api/stripe/create-checkout-session', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           priceId,
-          tier,
+          membershipType: tier === 'gold' ? 'Gold' : 'Platinum',
         }),
       })
 
       const data = await response.json()
 
-      if (data.url) {
-        // Redirect to Stripe Checkout
-        window.location.href = data.url
-      } else if (data.setup_required) {
-        alert('Stripe is not configured yet. Please set up your Stripe account.')
-        setLoading(false)
-      } else {
-        alert('Failed to create checkout session. Please try again.')
-        setLoading(false)
+      if (data.setup_required) {
+        window.location.href = '/#booking'
+        return
       }
-    } catch (error) {
-      console.error('Subscribe error:', error)
-      alert('Something went wrong. Please try again.')
+
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setError('Unable to start checkout. Please try again.')
+      }
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
       setLoading(false)
     }
   }
 
   return (
+    <>
     <button
       onClick={handleSubscribe}
       disabled={loading}
@@ -61,6 +63,8 @@ export default function SubscribeButton({ priceId, tier, price }: SubscribeButto
         <>Choose {tier === 'gold' ? 'Gold' : 'Platinum'} - {price}/month</>
       )}
     </button>
+    {error && <p className="text-red-600 text-sm mt-2 text-center">{error}</p>}
+    </>
   )
 }
 

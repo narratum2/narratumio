@@ -1,0 +1,51 @@
+---
+description: Enforce reiteration and self-checking loops for all code changes
+alwaysApply: true
+---
+
+# Reiteration & Self-Checking Loops
+
+Apply this workflow for every batch of edits.
+
+## 1. Self-Check After Edits
+
+After making changes, always run this loop before marking a task complete:
+
+1. **Lint** – Run `npm run lint` on edited files
+2. **Types** – Run `npm run typecheck` (or `tsc --noEmit`) on edited areas
+3. **Read lints** – Use ReadLints tool on all modified files
+4. **Cross-file impact** – Grep for imports/usages of changed symbols
+5. **Consistency** – Verify naming, patterns, and config match project conventions
+
+## 2. Reiteration Loop
+
+If any check fails:
+
+1. Fix the issue
+2. Re-run the failed check
+3. Re-check dependent files
+4. Stop only when all checks pass
+
+Do not move to the next task or report completion until the loop passes.
+
+## 3. Before Every Batch Completion
+
+Before finishing a multi-step task:
+
+- Re-read the main files you changed
+- Verify no unintended side effects (e.g. broken imports, wrong paths)
+- Ensure env vars and config are consistent
+- Update todos to reflect actual state
+
+## 4. Verification Commands
+
+```bash
+npm run check   # Lint + typecheck
+npm run verify  # Full verification (see package.json)
+```
+
+## 5. When to Skip
+
+- Read-only answers (no edits)
+- User explicitly says "skip verification"
+- Build/tooling not available (document instead)

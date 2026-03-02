@@ -8,6 +8,7 @@ export default function SearchBar() {
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedNeighborhood, setSelectedNeighborhood] = useState('all')
 
   const categories = [
     { value: 'all', label: 'All Services' },
@@ -18,15 +19,26 @@ export default function SearchBar() {
     { value: 'wellness', label: 'Wellness' },
   ]
 
+  const neighborhoods = [
+    { value: 'all', label: 'All Areas' },
+    { value: 'chiado', label: 'Chiado' },
+    { value: 'principe-real', label: 'Príncipe Real' },
+    { value: 'baixa', label: 'Baixa' },
+    { value: 'alfama', label: 'Alfama' },
+    { value: 'avenida', label: 'Avenida' },
+    { value: 'belem', label: 'Belém' },
+    { value: 'sintra', label: 'Sintra' },
+    { value: 'cascais', label: 'Cascais' },
+  ]
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    
-    // Build query parameters
+
     const params = new URLSearchParams()
     if (searchTerm) params.set('q', searchTerm)
-    if (selectedCategory && selectedCategory !== 'all') params.set('category', selectedCategory)
-    
-    // Navigate to services page with search parameters
+    if (selectedCategory !== 'all') params.set('category', selectedCategory)
+    if (selectedNeighborhood !== 'all') params.set('neighborhood', selectedNeighborhood)
+
     const queryString = params.toString()
     router.push(`/services${queryString ? `?${queryString}` : ''}`)
   }
@@ -63,7 +75,7 @@ export default function SearchBar() {
               </div>
 
               {/* Category Select */}
-              <div className="md:w-48">
+              <div className="md:w-44">
                 <label htmlFor="category" className="sr-only">
                   Select category
                 </label>
@@ -76,6 +88,25 @@ export default function SearchBar() {
                   {categories.map((cat) => (
                     <option key={cat.value} value={cat.value}>
                       {cat.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Neighborhood Select */}
+              <div className="md:w-44">
+                <label htmlFor="neighborhood" className="sr-only">
+                  Select neighborhood
+                </label>
+                <select
+                  id="neighborhood"
+                  value={selectedNeighborhood}
+                  onChange={(e) => setSelectedNeighborhood(e.target.value)}
+                  className="w-full px-4 py-3 border border-harbor/20 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white"
+                >
+                  {neighborhoods.map((n) => (
+                    <option key={n.value} value={n.value}>
+                      {n.label}
                     </option>
                   ))}
                 </select>

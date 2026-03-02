@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Check, Star, Crown, Sparkles } from 'lucide-react'
+import { Check, Star, Crown, Sparkles, Percent, CalendarClock, Gift } from 'lucide-react'
 import MembershipButton from '@/components/MembershipButton'
 
 export const metadata: Metadata = {
@@ -81,31 +81,31 @@ export default function MembershipPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">💰</span>
+                <Percent className="w-7 h-7 text-gold" />
               </div>
-              <h3 className="text-xl font-serif mb-2">Save Significantly</h3>
+              <h3 className="text-xl font-serif mb-2">Meaningful Savings</h3>
               <p className="text-harbor">
-                Members save 15-25% on every service. Break even after just 2-3 bookings per month.
+                Members enjoy 15-25% off every service, every time — savings that add up with each visit.
               </p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">⚡</span>
+                <CalendarClock className="w-7 h-7 text-gold" />
               </div>
               <h3 className="text-xl font-serif mb-2">Priority Access</h3>
               <p className="text-harbor">
-                Get first access to booking slots with Lisbon's most sought-after professionals.
+                Book first with Lisbon's most sought-after professionals before anyone else.
               </p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">✨</span>
+                <Gift className="w-7 h-7 text-gold" />
               </div>
-              <h3 className="text-xl font-serif mb-2">Exclusive Perks</h3>
+              <h3 className="text-xl font-serif mb-2">Curated Experiences</h3>
               <p className="text-harbor">
-                Access members-only experiences, events, and partnerships you won't find anywhere else.
+                Invitations to members-only events, masterclasses, and experiences you won't find anywhere else.
               </p>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function MembershipPage() {
               
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold">€129</span>
+                  <span className="text-5xl font-bold">€99</span>
                   <span className="text-porcelain/80">/month</span>
                 </div>
                 <p className="text-sm text-porcelain/70 mt-2">Cancel anytime • No commitment</p>
@@ -272,7 +272,7 @@ export default function MembershipPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-porcelain/80">Membership cost:</span>
-                    <span>€129</span>
+                    <span>€99</span>
                   </div>
                   <div className="flex justify-between border-t border-white/20 pt-2">
                     <span className="font-bold">Annual savings:</span>
@@ -414,7 +414,7 @@ export default function MembershipPage() {
             '@type': 'MemberProgram',
             name: 'Good Hands Membership',
             description: 'VIP beauty concierge membership with exclusive discounts and priority access',
-            url: 'https://goodhands.com/premium/membership',
+            url: 'https://goodhandsstudio.com/premium/membership',
             provider: {
               '@type': 'Organization',
               name: 'Good Hands',
@@ -435,11 +435,11 @@ export default function MembershipPage() {
               {
                 '@type': 'Offer',
                 name: 'Platinum Membership',
-                price: '129',
+                price: '99',
                 priceCurrency: 'EUR',
                 priceSpecification: {
                   '@type': 'UnitPriceSpecification',
-                  price: '129',
+                  price: '99',
                   priceCurrency: 'EUR',
                   unitText: 'MONTH',
                 },

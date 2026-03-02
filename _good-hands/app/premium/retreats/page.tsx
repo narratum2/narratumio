@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Sparkles, Camera, Briefcase, ClipboardList, Building2, Palette, UtensilsCrossed, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Beauty Retreats | Good Hands Lisbon',
@@ -20,7 +21,7 @@ export default function RetreatsPage() {
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
               Multi-day immersive experiences focused on discovering your authentic beauty, learning professional techniques, and building lasting confidence
             </p>
-            <Link href="/#booking" className="btn-primary bg-white text-sand hover:bg-porcelain">
+            <Link href="/?service=retreat#booking" className="btn-primary bg-white text-sand hover:bg-porcelain">
               Join Our Next Retreat
             </Link>
           </div>
@@ -28,7 +29,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* What Makes Our Retreats Different */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-8 text-center">
@@ -39,25 +40,25 @@ export default function RetreatsPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">💄 Hands-On Learning</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Sparkles className="w-5 h-5 text-gold shrink-0" /> Hands-On Learning</h3>
                 <p className="text-harbor">
                   Master makeup techniques, hair styling, and skincare routines taught by professionals. Leave with skills, not just memories.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">✨ Personal Transformation</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Sparkles className="w-5 h-5 text-gold shrink-0" /> Personal Transformation</h3>
                 <p className="text-harbor">
                   Discover your signature look, understand your features, and learn what truly works for you—not generic trends.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">👥 Small Group Intimacy</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Users className="w-5 h-5 text-gold shrink-0" /> Small Group Intimacy</h3>
                 <p className="text-harbor">
                   Maximum 8 participants. Every session is personalized, with individual attention from master stylists.
                 </p>
               </div>
               <div className="p-6 bg-porcelain rounded-lg">
-                <h3 className="text-xl font-semibold text-ink mb-3">🏰 Stunning Locations</h3>
+                <h3 className="text-xl font-semibold text-ink mb-3 flex items-center gap-2"><Building2 className="w-5 h-5 text-gold shrink-0" /> Stunning Locations</h3>
                 <p className="text-harbor">
                   Historic palaces in Sintra, coastal villas in Cascais, boutique studios in Chiado—each retreat is unforgettable.
                 </p>
@@ -68,7 +69,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* What You'll Learn */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-ink mb-12 text-center">
@@ -161,7 +162,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* Retreat Options */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -199,7 +200,7 @@ export default function RetreatsPage() {
                   </li>
                 </ul>
                 <p className="text-sm text-harbor mb-4">*Accommodation not included</p>
-                <Link href="/#booking" className="btn-secondary w-full text-center">
+                <Link href="/?service=retreat#booking" className="btn-secondary w-full text-center">
                   Book 3-Day Retreat
                 </Link>
               </div>
@@ -240,7 +241,7 @@ export default function RetreatsPage() {
                   </li>
                 </ul>
                 <p className="text-sm text-harbor mb-4">*All-inclusive experience</p>
-                <Link href="/#booking" className="btn-primary w-full text-center">
+                <Link href="/?service=retreat#booking" className="btn-primary w-full text-center">
                   Book 5-Day Retreat
                 </Link>
               </div>
@@ -250,7 +251,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* What's Included */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -258,42 +259,42 @@ export default function RetreatsPage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-4">
-                <span className="text-3xl">🎨</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Palette className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-1">Professional Instruction</h3>
                   <p className="text-harbor">Learn from Lisbon's top makeup artists, hair stylists, and beauty experts</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <span className="text-3xl">📸</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Camera className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-1">Professional Photos</h3>
                   <p className="text-harbor">Leave with stunning before & after photos showcasing your transformation</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <span className="text-3xl">💼</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Briefcase className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-1">Beauty Toolkit</h3>
                   <p className="text-harbor">Curated products selected specifically for your needs and preferences</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <span className="text-3xl">📋</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><ClipboardList className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-1">Personalized Plan</h3>
                   <p className="text-harbor">Custom beauty routine tailored to your lifestyle, budget, and goals</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <span className="text-3xl">👥</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Users className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-1">Community Access</h3>
                   <p className="text-harbor">Join our alumni network for ongoing support and exclusive events</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <span className="text-3xl">🍽️</span>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><UtensilsCrossed className="w-5 h-5 text-gold" /></div>
             <div>
                   <h3 className="font-semibold text-ink mb-1">Gourmet Meals</h3>
                   <p className="text-harbor">Healthy, delicious meals that nourish both body and beauty</p>
@@ -305,7 +306,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* Upcoming Dates */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -316,12 +317,12 @@ export default function RetreatsPage() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <h3 className="text-2xl font-serif text-ink mb-2">Spring Transformation</h3>
-                    <p className="text-harbor mb-1">📍 Historic Palace, Sintra</p>
-                    <p className="text-harbor">📅 March 15-17, 2025 (3-Day)</p>
+                    <p className="text-harbor mb-1">Historic Palace, Sintra</p>
+                    <p className="text-harbor">March 15-17, 2025 (3-Day)</p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm text-harbor mb-2">5 spots remaining</p>
-                    <Link href="/#booking" className="btn-primary inline-block">
+                    <Link href="/?service=retreat#booking" className="btn-primary inline-block">
                       Reserve Your Spot
                     </Link>
                   </div>
@@ -332,12 +333,12 @@ export default function RetreatsPage() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <h3 className="text-2xl font-serif text-ink mb-2">Summer Glow Intensive</h3>
-                    <p className="text-harbor mb-1">📍 Coastal Villa, Cascais</p>
-                    <p className="text-harbor">📅 June 5-9, 2025 (5-Day All-Inclusive)</p>
+                    <p className="text-harbor mb-1">Coastal Villa, Cascais</p>
+                    <p className="text-harbor">June 5-9, 2025 (5-Day All-Inclusive)</p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm text-harbor mb-2">3 spots remaining</p>
-                    <Link href="/#booking" className="btn-primary inline-block">
+                    <Link href="/?service=retreat#booking" className="btn-primary inline-block">
                       Reserve Your Spot
                     </Link>
                   </div>
@@ -348,12 +349,12 @@ export default function RetreatsPage() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <h3 className="text-2xl font-serif text-ink mb-2">Autumn Beauty Reset</h3>
-                    <p className="text-harbor mb-1">📍 Boutique Studio, Chiado</p>
-                    <p className="text-harbor">📅 September 20-22, 2025 (3-Day)</p>
+                    <p className="text-harbor mb-1">Boutique Studio, Chiado</p>
+                    <p className="text-harbor">September 20-22, 2025 (3-Day)</p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm text-harbor mb-2">8 spots available</p>
-                    <Link href="/#booking" className="btn-secondary inline-block">
+                    <Link href="/?service=retreat#booking" className="btn-secondary inline-block">
                       Join Waitlist
                     </Link>
                   </div>
@@ -365,7 +366,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-porcelain">
+      <section className="section-padding bg-porcelain">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -398,7 +399,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-serif text-ink mb-12 text-center">
@@ -460,7 +461,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-ink text-white text-center">
+      <section className="section-padding bg-ink text-white text-center">
         <div className="container-custom">
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
             Ready to Transform?
@@ -468,7 +469,7 @@ export default function RetreatsPage() {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Reserve your spot in our next beauty transformation retreat
           </p>
-          <Link href="/#booking" className="btn-primary bg-gold hover:bg-gold/90">
+          <Link href="/?service=retreat#booking" className="btn-gold">
             Book Your Retreat Now
           </Link>
         </div>

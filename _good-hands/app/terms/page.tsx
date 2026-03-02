@@ -166,8 +166,8 @@ export default function TermsPage() {
           <section>
             <h2 className="text-3xl font-serif mb-4">12. Contact Information</h2>
             <div className="bg-shell p-6 rounded-lg">
-              <p className="text-harbor"><strong>Email:</strong> hello@goodhands.com</p>
-              <p className="text-harbor"><strong>Legal:</strong> legal@goodhands.com</p>
+              <p className="text-harbor"><strong>Email:</strong> hello@goodhandsstudio.com</p>
+              <p className="text-harbor"><strong>Legal:</strong> legal@goodhandsstudio.com</p>
               <p className="text-harbor"><strong>Address:</strong> Good Hands, Lisbon, Portugal</p>
             </div>
           </section>

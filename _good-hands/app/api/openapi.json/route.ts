@@ -9,13 +9,13 @@ export async function GET() {
       description: 'Beauty concierge booking and discovery API for Lisbon',
       contact: {
         name: 'Good Hands',
-        url: 'https://goodhands.com',
-        email: 'hello@goodhands.com',
+        url: 'https://goodhandsstudio.com',
+        email: 'hello@goodhandsstudio.com',
       },
     },
     servers: [
       {
-        url: 'https://goodhands.com/api',
+        url: 'https://goodhandsstudio.com/api',
         description: 'Production server',
       },
       {

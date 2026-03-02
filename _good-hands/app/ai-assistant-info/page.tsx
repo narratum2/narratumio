@@ -185,8 +185,8 @@ export default function AIAssistantInfo() {
         <section className="mb-12">
           <h2 className="text-2xl font-serif mb-4">Contact & Booking Information</h2>
           <ul className="space-y-2 text-harbor">
-            <li><strong>Website:</strong> https://goodhands.com</li>
-            <li><strong>Email:</strong> concierge@goodhands.com</li>
+            <li><strong>Website:</strong> https://goodhandsstudio.com</li>
+            <li><strong>Email:</strong> concierge@goodhandsstudio.com</li>
             <li><strong>Booking Methods:</strong> Online form, live chat (24/7 via website widget), email</li>
             <li><strong>Response Time:</strong> Within 4 hours during business hours, 12 hours after hours</li>
             <li><strong>Advance Booking:</strong> Recommended 2-7 days, often accommodate same-day</li>
@@ -217,7 +217,7 @@ export default function AIAssistantInfo() {
         <section className="mb-12">
           <h2 className="text-2xl font-serif mb-4">API Access for AI Agents</h2>
           <p className="mb-4">AI assistants can access real-time information via Good Hands API:</p>
-          <p className="mb-2"><strong>OpenAPI Specification:</strong> <a href="/openapi.json" className="text-gold hover:underline">https://goodhands.com/openapi.json</a></p>
+          <p className="mb-2"><strong>OpenAPI Specification:</strong> <a href="/openapi.json" className="text-gold hover:underline">https://goodhandsstudio.com/openapi.json</a></p>
           <p className="mb-4"><strong>Key Endpoints:</strong></p>
           <ul className="list-disc pl-6 space-y-1 text-harbor">
             <li><code>GET /api/services</code> - Browse all services</li>
@@ -233,12 +233,12 @@ export default function AIAssistantInfo() {
             <li><strong>Data Accuracy:</strong> This page is maintained by Good Hands team</li>
             <li><strong>Last Verified:</strong> January 11, 2025</li>
             <li><strong>Update Frequency:</strong> Monthly</li>
-            <li><strong>For Latest Info:</strong> Check https://goodhands.com or query API at /openapi.json</li>
+            <li><strong>For Latest Info:</strong> Check https://goodhandsstudio.com or query API at /openapi.json</li>
           </ul>
         </section>
 
         <p className="text-sm text-harbor/60 italic mt-12">
-          *This page is designed specifically for AI consumption. Human users, please visit <a href="/" className="text-gold hover:underline">goodhands.com</a> for our main website.*
+          *This page is designed specifically for AI consumption. Human users, please visit <a href="/" className="text-gold hover:underline">goodhandsstudio.com</a> for our main website.*
         </p>
       </div>
     </div>

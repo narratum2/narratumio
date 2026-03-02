@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import LocationMapSection from '@/components/LocationMapSection'
+import { TrainFront, Zap, Hotel, Clock, Globe, CreditCard, PersonStanding, Lightbulb, Building2, Droplets, ShoppingBag, CableCar, Coffee, UtensilsCrossed, MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Baixa Beauty Guide — Good Hands',
@@ -12,7 +14,7 @@ export default function BaixaPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center">
+      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image 
             src="/brand-images/blog-lisbon-guide.png" 
@@ -59,7 +61,7 @@ export default function BaixaPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6">
-              <div className="text-4xl mb-4">🚇</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><TrainFront className="w-5 h-5 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Maximum Accessibility</h3>
               <p className="text-harbor">
                 All four Metro lines meet in Baixa. No neighborhood in Lisbon is easier to reach from anywhere in the city.
@@ -67,7 +69,7 @@ export default function BaixaPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <div className="text-4xl mb-4">⚡</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Zap className="w-5 h-5 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Quick & Efficient</h3>
               <p className="text-harbor">
                 Perfect for busy schedules. Many salons cater to professionals with express services and lunchtime availability.
@@ -75,7 +77,7 @@ export default function BaixaPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <div className="text-4xl mb-4">🏨</div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Hotel className="w-5 h-5 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Tourist-Friendly</h3>
               <p className="text-harbor">
                 Close to major hotels, excellent English proficiency, and accustomed to travelers&apos; needs and schedules.
@@ -133,28 +135,28 @@ export default function BaixaPage() {
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-3">⏰ Efficiency-Focused</h3>
+              <h3 className="font-semibold text-lg mb-3 flex items-center gap-2"><Clock className="w-5 h-5 text-gold shrink-0" /> Efficiency-Focused</h3>
               <p className="text-harbor">
                 Baixa salons respect your time. Appointments start promptly, services move efficiently, and you&apos;re in and out as scheduled. Perfect for travelers with packed itineraries or professionals on lunch breaks.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-3">🌍 International Clientele</h3>
+              <h3 className="font-semibold text-lg mb-3 flex items-center gap-2"><Globe className="w-5 h-5 text-gold shrink-0" /> International Clientele</h3>
               <p className="text-harbor">
                 Downtown location means diverse clients. Staff are accustomed to serving tourists, expats, and business travelers—English is standard, and cultural awareness is high.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-3">💳 Modern Payment</h3>
+              <h3 className="font-semibold text-lg mb-3 flex items-center gap-2"><CreditCard className="w-5 h-5 text-gold shrink-0" /> Modern Payment</h3>
               <p className="text-harbor">
                 All major credit cards accepted, contactless payment available, and digital booking systems. Baixa&apos;s salons are tech-forward and visitor-friendly.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <h3 className="font-semibold text-lg mb-3">🏃 Walk-In Friendly</h3>
+              <h3 className="font-semibold text-lg mb-3 flex items-center gap-2"><PersonStanding className="w-5 h-5 text-gold shrink-0" /> Walk-In Friendly</h3>
               <p className="text-harbor">
                 While booking ahead is recommended, many Baixa salons accommodate walk-ins better than other neighborhoods. If you need a last-minute service, Baixa is your best bet.
               </p>
@@ -193,7 +195,7 @@ export default function BaixaPage() {
 
           <div className="mt-8 bg-gold/10 rounded-lg p-6">
             <p className="text-harbor">
-              <strong>💡 Pro Tip:</strong> Schedule appointments between 2pm-4pm when Baixa is quietest (after lunch rush, before evening). Streets are less crowded, and service feels more relaxed.
+              <strong>Pro Tip:</strong> Schedule appointments between 2pm-4pm when Baixa is quietest (after lunch rush, before evening). Streets are less crowded, and service feels more relaxed.
             </p>
           </div>
         </div>
@@ -206,49 +208,49 @@ export default function BaixaPage() {
           
           <div className="space-y-4">
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🏛️</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Building2 className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Praça do Comércio</h4>
+                <h3 className="font-semibold mb-1">Praça do Comércio</h3>
                 <p className="text-harbor text-sm">Grand riverside square with triumphal arch, café terraces, and Tagus views</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">⛲</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Droplets className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Rossio Square</h4>
+                <h3 className="font-semibold mb-1">Rossio Square</h3>
                 <p className="text-harbor text-sm">Baixa&apos;s northern anchor with wave-pattern pavement and historic cafés</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🛍️</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><ShoppingBag className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Rua Augusta</h4>
+                <h3 className="font-semibold mb-1">Rua Augusta</h3>
                 <p className="text-harbor text-sm">Pedestrian shopping street connecting Rossio to the riverfront</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🚡</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><CableCar className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Elevador de Santa Justa</h4>
+                <h3 className="font-semibold mb-1">Elevador de Santa Justa</h3>
                 <p className="text-harbor text-sm">Neo-Gothic elevator offering panoramic city views from the top</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">☕</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Coffee className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Confeitaria Nacional</h4>
+                <h3 className="font-semibold mb-1">Confeitaria Nacional</h3>
                 <p className="text-harbor text-sm">Historic pastry shop since 1829, perfect for post-salon Portuguese sweets</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <span className="text-2xl">🍽️</span>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><UtensilsCrossed className="w-5 h-5 text-gold" /></div>
               <div>
-                <h4 className="font-semibold mb-1">Time Out Market</h4>
+                <h3 className="font-semibold mb-1">Time Out Market</h3>
                 <p className="text-harbor text-sm">Food hall with 40+ vendors, 10-minute walk from central Baixa</p>
               </div>
             </div>
@@ -264,7 +266,7 @@ export default function BaixaPage() {
           <div className="bg-shell rounded-lg p-4">
             <div className="aspect-video w-full bg-harbor/10 rounded flex items-center justify-center">
               <div className="text-center text-harbor">
-                <p className="text-lg mb-2">📍 Interactive Map</p>
+                <p className="text-lg mb-2 flex items-center justify-center gap-2"><MapPin className="w-5 h-5 text-gold" /> Interactive Map</p>
                 <p className="text-sm">Google Maps integration showing Good Hands partner locations in Baixa</p>
                 <p className="text-xs mt-2 text-harbor/60">(Map embed coming in production)</p>
               </div>
@@ -309,6 +311,11 @@ export default function BaixaPage() {
           </div>
         </div>
       </section>
+
+      <LocationMapSection
+        neighborhoodName="Baixa"
+        mapsQuery="beauty+salons+baixa+lisbon"
+      />
 
       {/* CTA */}
       <section className="section-padding bg-ink text-white text-center">

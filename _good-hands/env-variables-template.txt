@@ -44,6 +44,19 @@ ADMIN_API_KEY=
 NEXT_PUBLIC_BASE_URL=
 
 # ============================================
+# NAP / Google Business Profile Consistency
+# Must match GBP exactly for local SEO visibility
+# ============================================
+
+# GBP address: Av. da Liberdade 196, 1250-096 Lisboa
+NEXT_PUBLIC_SITE_PHONE=
+NEXT_PUBLIC_SITE_ADDRESS_STREET=Av. da Liberdade 196
+NEXT_PUBLIC_SITE_ADDRESS_LOCALITY=Lisboa
+NEXT_PUBLIC_SITE_ADDRESS_REGION=Lisboa
+NEXT_PUBLIC_SITE_ADDRESS_POSTAL=1250-096
+NEXT_PUBLIC_SITE_GOOGLE_REVIEW_COUNT=
+
+# ============================================
 # CHECKLIST - Mark as you add each one
 # ============================================
 
@@ -73,6 +86,14 @@ NEXT_PUBLIC_BASE_URL=
 
 # Admin
 [ ] ADMIN_API_KEY
+
+# NAP / GBP (optional - omit phone/address if no physical location)
+[ ] NEXT_PUBLIC_SITE_PHONE
+[ ] NEXT_PUBLIC_SITE_ADDRESS_STREET
+[ ] NEXT_PUBLIC_SITE_ADDRESS_LOCALITY
+[ ] NEXT_PUBLIC_SITE_ADDRESS_REGION
+[ ] NEXT_PUBLIC_SITE_ADDRESS_POSTAL
+[ ] NEXT_PUBLIC_SITE_GOOGLE_REVIEW_COUNT (omit if no Google reviews)
 
 # ============================================
 # REMEMBER: Select Production, Preview, AND Development for each variable!

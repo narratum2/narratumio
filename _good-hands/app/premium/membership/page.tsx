@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Good Hands Membership — Your VIP Beauty Passport',
     description: 'Save up to 25% on all services with Gold or Platinum membership. Priority booking, exclusive experiences, and concierge excellence.',
   },
+  alternates: { canonical: 'https://goodhandsstudio.com/premium/membership' },
 }
 
 const goldBenefits = [

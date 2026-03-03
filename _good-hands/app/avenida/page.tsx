@@ -2,32 +2,35 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import LocationMapSection from '@/components/LocationMapSection'
+import { getBreadcrumbSchema, getLocalBusinessSchema } from '@/lib/breadcrumb-schema'
 import { Sparkles, Briefcase, Microscope, Building, Zap, Globe, CreditCard, Lightbulb, Hotel, ShoppingBag, TreePine, UtensilsCrossed, Drama, Coffee, MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Avenida da Liberdade Beauty Guide — Good Hands',
   description: 'Luxury beauty services on Avenida da Liberdade, Lisbon\'s grand boulevard. International brands, flagship salons, executive grooming.',
   keywords: ['avenida beauty', 'luxury salon lisbon', 'avenida da liberdade spa', 'executive grooming lisbon'],
+  alternates: { canonical: 'https://goodhandsstudio.com/avenida' },
 }
 
 export default function AvenidaPage() {
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image 
-            src="/brand-images/salon-detail.png" 
-            alt="Avenida da Liberdade Lisbon - luxury beauty services on prestigious boulevard" 
-            fill 
-            className="object-cover" 
-            priority 
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full hero-text">Avenida da Liberdade</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image 
+          src="/brand-images/hero-avenida.jpg" 
+          alt="Avenida da Liberdade Lisbon - luxury beauty services on prestigious boulevard" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-ink">Avenida da Liberdade</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Lisbon&apos;s grand boulevard of luxury beauty
           </p>
         </div>
@@ -36,7 +39,7 @@ export default function AvenidaPage() {
       {/* Neighborhood Overview */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-serif mb-8">Lisbon&apos;s Champs-Élysées</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Lisbon&apos;s Champs-Élysées</h2>
           
           <div className="prose prose-lg max-w-none text-harbor space-y-6">
             <p className="text-xl leading-relaxed">
@@ -57,7 +60,7 @@ export default function AvenidaPage() {
       {/* Why Choose Avenida */}
       <section className="section-padding bg-shell">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center">Why Choose Avenida for Beauty Services</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">Why Choose Avenida for Beauty Services</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6">
@@ -90,7 +93,7 @@ export default function AvenidaPage() {
       {/* Services Available */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Beauty Services on Avenida</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Beauty Services on Avenida</h2>
           
           <div className="space-y-6">
             <div className="border-b border-harbor/10 pb-6">
@@ -131,7 +134,7 @@ export default function AvenidaPage() {
       {/* The Avenida Experience */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">What to Expect on Avenida</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">What to Expect on Avenida</h2>
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
@@ -168,7 +171,7 @@ export default function AvenidaPage() {
       {/* Getting There */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Getting to Avenida da Liberdade</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Getting to Avenida da Liberdade</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -203,7 +206,7 @@ export default function AvenidaPage() {
       {/* Complete Your Visit */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Complete Your Avenida Experience</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Complete Your Avenida Experience</h2>
           
           <div className="space-y-4">
             <div className="flex gap-4 items-start">
@@ -260,7 +263,7 @@ export default function AvenidaPage() {
       {/* Map */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">Explore Avenida da Liberdade</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Explore Avenida da Liberdade</h2>
           
           <div className="bg-shell rounded-lg p-4">
             <div className="aspect-video w-full bg-harbor/10 rounded flex items-center justify-center">
@@ -277,7 +280,7 @@ export default function AvenidaPage() {
       {/* FAQ */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Avenida Beauty FAQs</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Avenida Beauty FAQs</h2>
           
           <div className="space-y-6">
             <div>
@@ -329,6 +332,25 @@ export default function AvenidaPage() {
           </p>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema([
+          { name: 'Home', url: 'https://goodhandsstudio.com' },
+          { name: 'Neighborhoods', url: 'https://goodhandsstudio.com/guides' },
+          { name: 'Avenida da Liberdade', url: 'https://goodhandsstudio.com/avenida' },
+        ])) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema({
+          name: 'Avenida da Liberdade',
+          slug: 'avenida',
+          description: "Luxury beauty services on Avenida da Liberdade, Lisbon's premier boulevard",
+          lat: '38.7200',
+          lng: '-9.1460',
+        })) }}
+      />
     </div>
   )
 }

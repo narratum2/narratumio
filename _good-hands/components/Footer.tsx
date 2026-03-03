@@ -27,6 +27,7 @@ const footerLinks = {
     { href: '/journal', label: 'Journal' },
     { href: '/guides', label: 'Guides' },
     { href: '/experiences', label: 'Experiences' },
+    { href: '/faq', label: 'FAQ' },
     { href: '/ai-info', label: 'For AI Assistants' },
   ],
   professionals: [
@@ -86,7 +87,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
+                    className="flex items-center py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px]"
                   >
                     {link.label}
                   </Link>
@@ -103,7 +104,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
+                    className="flex items-center py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px]"
                   >
                     {link.label}
                   </Link>
@@ -120,7 +121,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
+                    className="flex items-center py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px]"
                   >
                     {link.label}
                   </Link>
@@ -137,7 +138,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px] flex items-center"
+                    className="flex items-center py-2 px-1 text-sm text-porcelain/70 hover:text-gold transition-colors focus-visible-ring min-h-[44px]"
                   >
                     {link.label}
                   </Link>

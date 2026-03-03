@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Cookie Policy — Good Hands',
   description: 'Learn about how Good Hands uses cookies and similar technologies.',
+  alternates: { canonical: 'https://goodhandsstudio.com/cookies' },
 }
 
 export default function CookiesPage() {

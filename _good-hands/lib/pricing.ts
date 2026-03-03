@@ -4,11 +4,11 @@
  */
 
 export const BASE_PRICES = {
-  hair: 105,
-  nails: 65,
+  hair: 45,
+  nails: 35,
   skincare: 95,
-  makeup: 85,
-  wellness: 80,
+  makeup: 70,
+  wellness: 90,
 } as const
 
 export type ServiceCategory = keyof typeof BASE_PRICES
@@ -27,11 +27,11 @@ export const PRICING_DISPLAY = {
 } as const
 
 /** Full pricing sentence for FAQ "How much does it cost?" */
-export const FULL_PRICING_SENTENCE = `${PRICING_DISPLAY.hair}. ${PRICING_DISPLAY.nails}. ${PRICING_DISPLAY.skincare}. ${PRICING_DISPLAY.makeup}. ${PRICING_DISPLAY.wellness}. That includes the service and our concierge fee. No hidden costs.`
+export const FULL_PRICING_SENTENCE = `${PRICING_DISPLAY.hair}. ${PRICING_DISPLAY.nails}. ${PRICING_DISPLAY.skincare}. ${PRICING_DISPLAY.makeup}. ${PRICING_DISPLAY.wellness}. All prices include the service and our concierge fee. No hidden costs.`
 
 /** Neighborhood-specific pricing (some areas differ from base) */
 export const NEIGHBORHOOD_PRICES: Record<string, Partial<Record<ServiceCategory, number>>> = {
-  chiado: { hair: 95, nails: 50, skincare: 110, makeup: 85 },
+  chiado: { hair: 50, nails: 40, skincare: 110, makeup: 75 },
 }
 
 /** Membership tier pricing (monthly) */

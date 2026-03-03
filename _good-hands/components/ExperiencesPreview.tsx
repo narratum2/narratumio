@@ -15,7 +15,7 @@ const experiences = [
   {
     title: 'Wellness Retreat',
     description: 'Multi-day rejuvenation package in Sintra or Cascais',
-    image: '/brand-images/experience-wellness-retreat.png',
+    image: '/brand-images/experience-wellness-retreat.jpg',
     tag: 'Retreat',
     href: '/premium/retreats',
   },

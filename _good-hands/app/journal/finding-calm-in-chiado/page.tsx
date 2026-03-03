@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata = {
   title: 'Finding Calm in Chiado | Good Hands Journal',
   description: 'Discover Lisbon\'s hidden wellness sanctuaries in Chiado—where locals go for authentic, unhurried beauty experiences.',
+  alternates: { canonical: 'https://goodhandsstudio.com/journal/finding-calm-in-chiado' },
 }
 
 const articleJsonLd = {
@@ -21,7 +22,7 @@ const articleJsonLd = {
   datePublished: '2024-10-11',
   dateModified: '2024-10-11',
   mainEntityOfPage: 'https://goodhandsstudio.com/journal/finding-calm-in-chiado',
-  image: '/brand-images/blog-finding-calm-chiado.png',
+  image: '/brand-images/blog-finding-calm-chiado.jpg',
 }
 
 export default function FindingCalmInChiado() {
@@ -37,7 +38,7 @@ export default function FindingCalmInChiado() {
       author="Good Hands Team"
       date="2024-10-11"
       readTime="8 min read"
-      heroImage="/brand-images/blog-finding-calm-chiado.png"
+      heroImage="/brand-images/blog-finding-calm-chiado.jpg"
     >
       {/* Drop Cap First Paragraph */}
       <p className="drop-cap">

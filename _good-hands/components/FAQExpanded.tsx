@@ -275,26 +275,7 @@ export default function FAQExpanded() {
           </a>
         </motion.div>
 
-        {/* Schema markup for AI/SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: faqs.flatMap(category =>
-                category.questions.map(faq => ({
-                  '@type': 'Question',
-                  name: faq.q,
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: faq.a,
-                  },
-                }))
-              ),
-            }),
-          }}
-        />
+        {/* FAQPage schema lives on the dedicated /faq page to avoid duplicates */}
       </div>
     </section>
   )

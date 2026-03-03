@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Complete Guide to Beauty Services in Lisbon (2025) — Good Hands',
   description: 'Comprehensive guide to finding quality beauty services in Lisbon, Portugal. Everything you need to know about hair salons, spas, makeup artists, nail care, and wellness in every neighborhood. Expert recommendations, pricing, and insider tips.',
   keywords: 'lisbon beauty services, hair salon lisbon, spa lisbon, beauty guide portugal, chiado beauty, alfama spa, principe real salon',
+  alternates: { canonical: 'https://goodhandsstudio.com/guides/lisbon-beauty-complete-guide-2025' },
 }
 
 export default function CompleteBeautyGuideLisbon() {

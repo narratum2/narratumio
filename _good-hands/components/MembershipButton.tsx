@@ -11,8 +11,12 @@ export default function MembershipButton({ tier, priceId }: MembershipButtonProp
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  const resolvedPriceId = priceId
+    || (tier === 'gold' ? process.env.NEXT_PUBLIC_STRIPE_GOLD_PRICE_ID : undefined)
+    || (tier === 'platinum' ? process.env.NEXT_PUBLIC_STRIPE_PLATINUM_PRICE_ID : undefined)
+
   const handleClick = async () => {
-    if (!priceId) {
+    if (!resolvedPriceId) {
       window.location.href = '/#booking'
       return
     }
@@ -25,7 +29,7 @@ export default function MembershipButton({ tier, priceId }: MembershipButtonProp
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          priceId,
+          priceId: resolvedPriceId,
           membershipType: tier === 'gold' ? 'Gold' : 'Platinum',
         }),
       })

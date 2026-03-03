@@ -7,48 +7,45 @@ export const metadata: Metadata = {
   title: 'Hotel Partnerships | Good Hands Beauty Concierge',
   description: 'Partner with Good Hands to offer your guests exclusive access to Lisbon\'s top beauty professionals. Commission-based, seamless integration, white-glove service. Trusted by Four Seasons, Tivoli, and luxury boutique properties.',
   keywords: 'hotel beauty services, hotel partnerships, luxury hotel amenities, guest services, hotel concierge partnerships, Lisbon hotels',
+  alternates: { canonical: 'https://goodhandsstudio.com/partnerships' },
 }
 
 export default function PartnershipsPage() {
   return (
     <div className="bg-porcelain pt-20">
-      {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/brand-images/service-makeup-application.png"
-            alt="Luxury hotel beauty concierge services - Professional makeup in design hotel room - Good Hands partnerships in Lisbon"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-ink/70 via-harbor/60 to-ink/70" />
-        </div>
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image
+          src="/brand-images/category-makeup.jpg"
+          alt="Luxury hotel beauty concierge services - Professional makeup in design hotel room - Good Hands partnerships in Lisbon"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
 
-        {/* Content */}
-        <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-center w-full hero-text">
-              Elevate Your Guest Experience
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto hero-text">
-              Partner with Good Hands to offer your guests exclusive access to Lisbon's finest beauty professionals—without hiring additional staff.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact"
-                className="btn-primary bg-white text-sand hover:bg-porcelain"
-              >
-                Schedule a Call
-              </a>
-              <a
-                href="#benefits"
-                className="btn-secondary border-white text-white hover:bg-white/10"
-              >
-                Learn More
-              </a>
-            </div>
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-ink">
+            Elevate Your Guest Experience
+          </h1>
+          <p className="text-xl md:text-2xl text-harbor mb-8 max-w-2xl mx-auto">
+            Partner with Good Hands to offer your guests exclusive access to Lisbon's finest beauty professionals—without hiring additional staff.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#contact"
+              className="btn-gold"
+            >
+              Schedule a Call
+            </a>
+            <a
+              href="#benefits"
+              className="btn-secondary"
+            >
+              Learn More
+            </a>
           </div>
         </div>
       </section>
@@ -409,7 +406,7 @@ export default function PartnershipsPage() {
               </a>
               <a
                 href="tel:+351XXXXXXXXX"
-                className="btn-secondary border-white text-white hover:bg-white/10"
+                className="btn-secondary bg-transparent border-2 border-porcelain text-porcelain hover:bg-porcelain/10"
               >
                 Call: +351 XXX XXX XXX
               </a>

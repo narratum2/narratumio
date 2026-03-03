@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getNeighborhoodPrice } from '@/lib/pricing'
+import { getBreadcrumbSchema, getLocalBusinessSchema } from '@/lib/breadcrumb-schema'
 import LocationMapSection from '@/components/LocationMapSection'
 import { Building2, Sparkles, ShoppingBag, Wine, Palette, MessageCircle, Camera, Lightbulb, Coffee, BookOpen, Drama, Sun, UtensilsCrossed, MapPin } from 'lucide-react'
 
@@ -9,26 +10,28 @@ export const metadata: Metadata = {
   title: 'Chiado Beauty Guide — Good Hands',
   description: 'Luxury beauty services in Chiado, Lisbon\'s most elegant neighborhood. Historic charm meets modern expertise.',
   keywords: ['chiado beauty', 'chiado salon', 'chiado spa', 'luxury beauty lisbon'],
+  alternates: { canonical: 'https://goodhandsstudio.com/chiado' },
 }
 
 export default function ChiadoPage() {
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image 
-            src="/brand-images/hero-salon-interior.png" 
-            alt="Chiado Lisbon - bohemian chic beauty services in cultural heart" 
-            fill 
-            className="object-cover" 
-            priority 
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full hero-text">Chiado</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image 
+          src="/brand-images/hero-chiado.jpg" 
+          alt="Chiado Lisbon - bohemian chic beauty services in cultural heart" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-ink">Chiado</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Where historic elegance meets contemporary beauty expertise
           </p>
         </div>
@@ -37,7 +40,7 @@ export default function ChiadoPage() {
       {/* Neighborhood Overview */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-serif mb-8">Lisbon&apos;s Most Elegant Quarter</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Lisbon&apos;s Most Elegant Quarter</h2>
           
           <div className="prose prose-lg max-w-none text-harbor space-y-6">
             <p className="text-xl leading-relaxed">
@@ -58,7 +61,7 @@ export default function ChiadoPage() {
       {/* Why Choose Chiado */}
       <section className="section-padding bg-shell">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center">Why Choose Chiado for Beauty Services</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">Why Choose Chiado for Beauty Services</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6">
@@ -91,7 +94,7 @@ export default function ChiadoPage() {
       {/* Services Available */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Beauty Services in Chiado</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Beauty Services in Chiado</h2>
           
           <div className="space-y-6">
             <div className="border-b border-harbor/10 pb-6">
@@ -132,7 +135,7 @@ export default function ChiadoPage() {
       {/* The Chiado Experience */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">What to Expect in Chiado Salons</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">What to Expect in Chiado Salons</h2>
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
@@ -169,7 +172,7 @@ export default function ChiadoPage() {
       {/* Getting to Chiado */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Getting to Chiado</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Getting to Chiado</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -204,7 +207,7 @@ export default function ChiadoPage() {
       {/* Complete Your Visit */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Complete Your Chiado Experience</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Complete Your Chiado Experience</h2>
           
           <div className="space-y-4">
             <div className="flex gap-4 items-start">
@@ -261,7 +264,7 @@ export default function ChiadoPage() {
       {/* Map */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">Explore Chiado</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Explore Chiado</h2>
           
           <div className="bg-shell rounded-lg p-4">
             <div className="aspect-video w-full bg-harbor/10 rounded flex items-center justify-center">
@@ -278,7 +281,7 @@ export default function ChiadoPage() {
       {/* FAQ */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Chiado Beauty FAQs</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Chiado Beauty FAQs</h2>
           
           <div className="space-y-6">
             <div>
@@ -330,6 +333,25 @@ export default function ChiadoPage() {
           </p>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema([
+          { name: 'Home', url: 'https://goodhandsstudio.com' },
+          { name: 'Neighborhoods', url: 'https://goodhandsstudio.com/guides' },
+          { name: 'Chiado', url: 'https://goodhandsstudio.com/chiado' },
+        ])) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema({
+          name: 'Chiado',
+          slug: 'chiado',
+          description: "Luxury beauty services in Chiado, Lisbon's most elegant neighborhood",
+          lat: '38.7108',
+          lng: '-9.1425',
+        })) }}
+      />
     </div>
   )
 }

@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${article.title} — Good Hands Journal`,
     description: article.excerpt,
+    alternates: { canonical: `https://goodhandsstudio.com/journal/${params.slug}` },
     openGraph: {
       title: article.title,
       description: article.excerpt,

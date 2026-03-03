@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Join Our Team — Beauty Professionals | Good Hands',
   description: 'Join Lisbon\'s most exclusive network of vetted beauty professionals. Access premium clientele, flexible scheduling, and brand prestige. Apply now to become part of Good Hands.',
   keywords: 'beauty professional jobs Lisbon, hair stylist jobs Lisbon, makeup artist jobs, esthetician jobs, massage therapist jobs, beauty jobs Portugal',
+  alternates: { canonical: 'https://goodhandsstudio.com/join-our-team' },
 }
 
 export default function JoinOurTeamPage() {

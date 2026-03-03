@@ -24,9 +24,13 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Good Hands — Luxury Beauty Concierge Lisbon | Vetted Professionals',
+  metadataBase: new URL('https://goodhandsstudio.com'),
+  title: {
+    default: 'Good Hands — Luxury Beauty Concierge Lisbon | Vetted Professionals',
+    template: '%s | Good Hands Lisbon',
+  },
   description: 'Lisbon\'s premier luxury beauty concierge service. We match you with personally vetted hair stylists, spa therapists, and beauty professionals. Eliminate trial-and-error—trusted by Four Seasons, Tivoli, and luxury hotels. Serving Chiado, Alfama, Príncipe Real, Belém, Cascais.',
-  keywords: 'luxury beauty concierge Lisbon, beauty services Lisbon, hair stylist Lisbon, spa treatments Lisbon, hotel guest beauty services, personalized beauty Lisbon, beauty professional Lisbon, Chiado beauty, Alfama spa, Príncipe Real salon',
+  keywords: 'luxury beauty concierge Lisbon, beauty services Lisbon, hair stylist Lisbon, spa treatments Lisbon, hotel guest beauty services, personalized beauty Lisbon, beauty professional Lisbon, Chiado beauty, Alfama spa, Príncipe Real salon, wedding beauty Lisbon, corporate wellness Lisbon, beauty retreat Portugal',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -36,10 +40,10 @@ export const metadata: Metadata = {
     description: 'Premier beauty concierge matching you with Lisbon\'s top vetted professionals. Eliminate trial-and-error. Trusted by luxury hotels.',
     images: [
       {
-        url: '/api/og',
+        url: '/brand-images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Good Hands Luxury Beauty Concierge Lisbon',
+        alt: 'Good Hands — Luxury Beauty Concierge in Lisbon, Portugal',
       },
     ],
   },
@@ -47,7 +51,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Good Hands — Luxury Beauty Concierge Lisbon',
     description: 'Premier beauty concierge matching you with Lisbon\'s top vetted professionals.',
-    images: ['/api/og'],
+    images: ['/brand-images/og-image.jpg'],
   },
   robots: {
     index: true,

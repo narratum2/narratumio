@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: { canonical: 'https://goodhandsstudio.com/ai-assistant-info' },
 }
 
 export default function AIAssistantInfo() {

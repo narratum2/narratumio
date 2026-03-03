@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'API Documentation - Good Hands | For AI Agents & Developers',
   description: 'API documentation for AI agents, chatbots, and developers to integrate with Good Hands beauty concierge services in Lisbon.',
   robots: 'index, follow',
+  alternates: { canonical: 'https://goodhandsstudio.com/api-docs' },
 }
 
 export default function APIDocsPage() {

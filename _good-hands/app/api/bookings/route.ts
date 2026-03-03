@@ -91,6 +91,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const VALID_SERVICES = ['hair', 'nails', 'skincare', 'makeup', 'wellness', 'wedding', 'retreat', 'corporate']
+    if (!VALID_SERVICES.includes(service)) {
+      return NextResponse.json(
+        { error: 'Invalid service type' },
+        { status: 400 }
+      )
+    }
+
     if (!validateEmail(email)) {
       return NextResponse.json(
         { error: 'Invalid email address' },

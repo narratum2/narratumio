@@ -17,9 +17,9 @@ const services = [
       { name: 'Balayage', price: 'From €180', duration: '180 min' },
       { name: 'Blowout & Styling', price: 'From €45', duration: '45 min' },
       { name: 'Treatment & Repair', price: 'From €60', duration: '60 min' },
-      { name: 'Photoshoot Hair Styling', price: 'From €100', duration: '75 min' },
+      { name: 'Bridal Hair', price: 'From €150', duration: '90–120 min' },
     ],
-    image: '/brand-images/category-hair-styling.png',
+    image: '/brand-images/category-hair-styling.jpg',
   },
   {
     category: 'Nail Care',
@@ -29,44 +29,47 @@ const services = [
       { name: 'Gel Manicure', price: 'From €45', duration: '60 min' },
       { name: 'Luxury Pedicure', price: 'From €55', duration: '75 min' },
       { name: 'Nail Art', price: 'From €20', duration: '30 min' },
-      { name: 'Extensions', price: 'From €70', duration: '90 min' },
+      { name: 'Gel Extensions', price: 'From €70', duration: '90 min' },
+      { name: 'Spa Manicure & Pedicure', price: 'From €85', duration: '120 min' },
     ],
-    image: '/brand-images/service-nail-art.png',
+    image: '/brand-images/service-nail-art.jpg',
   },
   {
     category: 'Skincare',
     slug: 'skincare',
     services: [
       { name: 'Signature Facial', price: 'From €95', duration: '75 min' },
-      { name: 'Anti-Aging Treatment', price: 'From €140', duration: '90 min' },
-      { name: 'Deep Cleanse', price: 'From €85', duration: '60 min' },
-      { name: 'Microdermabrasion', price: 'From €120', duration: '60 min' },
-      { name: 'LED Light Therapy', price: 'From €100', duration: '45 min' },
+      { name: 'HydraFacial', price: 'From €140', duration: '60 min' },
+      { name: 'Chemical Peel', price: 'From €120', duration: '45–60 min' },
+      { name: 'Anti-Aging Treatment', price: 'From €150', duration: '90 min' },
+      { name: 'LED Light Therapy', price: 'From €80', duration: '30–45 min' },
     ],
-    image: '/brand-images/service-facial-treatment.png',
+    image: '/brand-images/service-facial-treatment.jpg',
   },
   {
     category: 'Makeup',
     slug: 'makeup',
     services: [
-      { name: 'Event Makeup', price: 'From €70', duration: '45 min' },
-      { name: 'Bridal Makeup', price: 'From €150', duration: '90 min' },
+      { name: 'Event Makeup', price: 'From €70', duration: '45–60 min' },
+      { name: 'Bridal Makeup', price: 'From €150', duration: '90 min + trial' },
       { name: 'Makeup Lesson', price: 'From €120', duration: '90 min' },
-      { name: 'Beauty Consultation', price: 'From €80', duration: '60 min' },
-      { name: 'Photoshoot & Editorial Makeup', price: 'From €150', duration: '60 min' },
+      { name: 'Editorial Makeup', price: 'From €100', duration: '60–90 min' },
+      { name: 'Group Makeup (Bridal Party)', price: 'From €60/person', duration: '45 min each' },
     ],
-    image: '/brand-images/service-makeup-application.png',
+    image: '/brand-images/category-makeup.jpg',
   },
   {
     category: 'Wellness',
     slug: 'wellness',
     services: [
       { name: 'Swedish Massage', price: 'From €90', duration: '60 min' },
-      { name: 'Deep Tissue', price: 'From €100', duration: '75 min' },
-      { name: 'Aromatherapy', price: 'From €95', duration: '60 min' },
-      { name: 'Hot Stone', price: 'From €110', duration: '90 min' },
+      { name: 'Deep Tissue Massage', price: 'From €100', duration: '75 min' },
+      { name: 'Aromatherapy Massage', price: 'From €95', duration: '60 min' },
+      { name: 'Hot Stone Massage', price: 'From €110', duration: '90 min' },
+      { name: 'Pregnancy Massage', price: 'From €90', duration: '60 min' },
+      { name: 'Couples Massage', price: 'From €180', duration: '60 min' },
     ],
-    image: '/brand-images/category-wellness.png',
+    image: '/brand-images/category-wellness.jpg',
   },
 ]
 
@@ -121,23 +124,24 @@ export default function ServicesPage() {
   }
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/brand-images/salon-detail.png"
-            alt="Beauty services"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-6xl font-serif mb-4 hero-text">Our Services</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image
+          src="/brand-images/salon-detail.jpg"
+          alt="Beauty services"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-6xl font-serif mb-4 text-ink">Our Services</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Premium beauty experiences with expert concierge matching
           </p>
-          <p className="text-lg text-gold mt-2 hero-text">
+          <p className="text-lg text-gold mt-2">
             All prices include concierge service & coordination
           </p>
         </div>

@@ -2,32 +2,35 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import LocationMapSection from '@/components/LocationMapSection'
+import { getBreadcrumbSchema, getLocalBusinessSchema } from '@/lib/breadcrumb-schema'
 import { TrainFront, Zap, Hotel, Clock, Globe, CreditCard, PersonStanding, Lightbulb, Building2, Droplets, ShoppingBag, CableCar, Coffee, UtensilsCrossed, MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Baixa Beauty Guide — Good Hands',
   description: 'Beauty services in Baixa, Lisbon\'s downtown district. Central location, accessible salons, and convenient beauty experiences.',
   keywords: ['baixa beauty', 'downtown lisbon salon', 'baixa spa', 'central lisbon beauty'],
+  alternates: { canonical: 'https://goodhandsstudio.com/baixa' },
 }
 
 export default function BaixaPage() {
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image 
-            src="/brand-images/blog-lisbon-guide.png" 
-            alt="Baixa district Lisbon - central beauty services in historic downtown" 
-            fill 
-            className="object-cover" 
-            priority 
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full hero-text">Baixa</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image 
+          src="/brand-images/hero-baixa.jpg" 
+          alt="Baixa district Lisbon - central beauty services in historic downtown" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-ink">Baixa</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Downtown convenience meets quality beauty services
           </p>
         </div>
@@ -36,7 +39,7 @@ export default function BaixaPage() {
       {/* Neighborhood Overview */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-serif mb-8">Lisbon&apos;s Downtown Hub</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Lisbon&apos;s Downtown Hub</h2>
           
           <div className="prose prose-lg max-w-none text-harbor space-y-6">
             <p className="text-xl leading-relaxed">
@@ -57,7 +60,7 @@ export default function BaixaPage() {
       {/* Why Choose Baixa */}
       <section className="section-padding bg-shell">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center">Why Choose Baixa for Beauty Services</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">Why Choose Baixa for Beauty Services</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6">
@@ -90,7 +93,7 @@ export default function BaixaPage() {
       {/* Services Available */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Beauty Services in Baixa</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Beauty Services in Baixa</h2>
           
           <div className="space-y-6">
             <div className="border-b border-harbor/10 pb-6">
@@ -131,7 +134,7 @@ export default function BaixaPage() {
       {/* The Baixa Experience */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">What to Expect in Baixa Salons</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">What to Expect in Baixa Salons</h2>
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
@@ -168,7 +171,7 @@ export default function BaixaPage() {
       {/* Getting There */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Getting to Baixa</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Getting to Baixa</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -204,7 +207,7 @@ export default function BaixaPage() {
       {/* Complete Your Visit */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Complete Your Baixa Experience</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Complete Your Baixa Experience</h2>
           
           <div className="space-y-4">
             <div className="flex gap-4 items-start">
@@ -261,7 +264,7 @@ export default function BaixaPage() {
       {/* Map */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">Explore Baixa</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Explore Baixa</h2>
           
           <div className="bg-shell rounded-lg p-4">
             <div className="aspect-video w-full bg-harbor/10 rounded flex items-center justify-center">
@@ -278,7 +281,7 @@ export default function BaixaPage() {
       {/* FAQ */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Baixa Beauty FAQs</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Baixa Beauty FAQs</h2>
           
           <div className="space-y-6">
             <div>
@@ -330,6 +333,25 @@ export default function BaixaPage() {
           </p>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema([
+          { name: 'Home', url: 'https://goodhandsstudio.com' },
+          { name: 'Neighborhoods', url: 'https://goodhandsstudio.com/guides' },
+          { name: 'Baixa', url: 'https://goodhandsstudio.com/baixa' },
+        ])) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema({
+          name: 'Baixa',
+          slug: 'baixa',
+          description: "Beauty services in Baixa, Lisbon's grand historic downtown",
+          lat: '38.7118',
+          lng: '-9.1367',
+        })) }}
+      />
     </div>
   )
 }

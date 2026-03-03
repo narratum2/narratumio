@@ -6,14 +6,26 @@ import { AlertCircle, CircleDollarSign, Globe, Home, Sparkles, Heart, Shield, Us
 export const metadata: Metadata = {
   title: 'About — Good Hands',
   description: 'We believe beauty should be a trusted experience, not a gamble. Discover the philosophy behind Lisbon\'s most discerning beauty concierge.',
+  alternates: { canonical: 'https://goodhandsstudio.com/about' },
 }
 
 export default function AboutPage() {
   return (
     <div className="pt-20">
-      {/* Hero - Brand Philosophy */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-shell via-porcelain to-white">
-        <div className="container-custom max-w-5xl text-center py-20">
+      {/* Hero Image */}
+      <div className="relative w-full h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden">
+        <Image
+          src="/brand-images/hero-about.jpg"
+          alt="Luxury beauty salon interior in Lisbon — Good Hands concierge philosophy"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Brand Philosophy */}
+      <section className="section-padding bg-white">
+        <div className="container-custom max-w-5xl text-center">
           <div className="inline-block mb-6">
             <span className="text-sm uppercase tracking-wider text-gold font-medium">Our Philosophy</span>
           </div>
@@ -25,22 +37,15 @@ export default function AboutPage() {
           </h1>
           
           <p className="text-xl md:text-2xl text-harbor leading-relaxed max-w-3xl mx-auto mb-12">
-            In a city of endless options, we don't add to the noise—we cut through it. 
-            Good Hands exists because excellence shouldn't require insider knowledge, 
-            and trust shouldn't be earned through disappointment.
+            In a city of endless options, we don&apos;t add to the noise—we cut through it. 
+            Good Hands exists because excellence shouldn&apos;t require insider knowledge, 
+            and trust shouldn&apos;t be earned through disappointment.
           </p>
 
           <div className="inline-flex items-center gap-2 text-harbor/60 text-sm">
             <div className="w-12 h-px bg-gold"></div>
             <span>Est. 2024, Lisbon</span>
             <div className="w-12 h-px bg-gold"></div>
-          </div>
-        </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-harbor/30 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-3 bg-gold rounded-full"></div>
           </div>
         </div>
       </section>
@@ -50,10 +55,10 @@ export default function AboutPage() {
         <div className="container-custom max-w-4xl">
           <div className="text-center mb-16">
             <span className="text-sm uppercase tracking-wider text-gold font-medium mb-4 block">The Challenge</span>
-              <h2 className="text-4xl md:text-5xl font-serif mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif mb-6">
               Finding Beauty Services<br />Shouldn't Feel Like This
-              </h2>
-              </div>
+            </h2>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="text-center">
@@ -64,12 +69,12 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="text-center">
-              <div className="text-6xl mb-4 opacity-40">⏰</div>
+              <div className="w-16 h-16 bg-harbor/10 rounded-full flex items-center justify-center mx-auto mb-4 opacity-40"><AlertCircle className="w-8 h-8 text-harbor" /></div>
               <h3 className="text-xl font-serif mb-2">Hours Wasted</h3>
               <p className="text-harbor text-sm">
                 Scrolling, comparing, reading reviews, still uncertain if it's the right choice
               </p>
-              </div>
+            </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-harbor/10 rounded-full flex items-center justify-center mx-auto mb-4 opacity-40"><CircleDollarSign className="w-8 h-8 text-harbor" /></div>
               <h3 className="text-xl font-serif mb-2">Expensive Mistakes</h3>
@@ -97,7 +102,7 @@ export default function AboutPage() {
             <span className="text-sm uppercase tracking-wider text-gold font-medium mb-4 block">Our Solution</span>
             <h2 className="text-4xl md:text-5xl font-serif mb-6">
               We're Your Trusted Insider
-          </h2>
+            </h2>
             <p className="text-xl text-harbor max-w-2xl mx-auto">
               Think of us as that friend who knows everyone, has tried everything, 
               and only recommends places they genuinely love
@@ -270,7 +275,7 @@ export default function AboutPage() {
               <span className="text-sm uppercase tracking-wider text-gold font-medium mb-4 block">Why Lisbon</span>
               <h2 className="text-4xl md:text-5xl font-serif mb-6">
                 A City That Deserves This Service
-          </h2>
+              </h2>
               <div className="space-y-4 text-lg text-harbor leading-relaxed">
             <p>
               Lisbon is experiencing a renaissance. World-class talent is pouring into the city—hair stylists 
@@ -289,7 +294,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl">
                 <Image
-                  src="/brand-images/about-team.png"
+                  src="/brand-images/blog-lisbon-guide.jpg"
                   alt="Lisbon cityscape"
                   fill
                   className="object-cover"
@@ -356,8 +361,8 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <div className="container-custom max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">
-              Who Good Hands Is For
-            </h2>
+            Who Good Hands Is For
+          </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
@@ -379,7 +384,7 @@ export default function AboutPage() {
             </div>
 
             <div className="text-center">
-              <div className="text-5xl mb-4">⭐</div>
+              <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><Sparkles className="w-7 h-7 text-gold" /></div>
               <h3 className="text-xl font-serif mb-3">Lisbon Locals</h3>
               <p className="text-harbor">
                 Even if you live here, you don't know every great salon in every neighborhood. 

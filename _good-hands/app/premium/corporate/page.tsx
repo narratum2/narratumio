@@ -7,38 +7,35 @@ export const metadata: Metadata = {
   title: 'Corporate Beauty Services | Good Hands Lisbon',
   description: 'Professional beauty services for corporate events, team building, and employee wellness. On-site beauty treatments, executive grooming, and corporate packages in Lisbon.',
   keywords: 'corporate beauty services, company wellness, employee benefits, corporate events, team building beauty, executive grooming Lisbon',
+  alternates: { canonical: 'https://goodhandsstudio.com/premium/corporate' },
 }
 
 export default function CorporatePage() {
   return (
     <div className="bg-porcelain">
-      {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/brand-images/experience-corporate-wellness.png"
-            alt="Professional corporate beauty services - Executive grooming and team wellness in office setting - Good Hands corporate services in Lisbon"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-ink/70 via-harbor/60 to-ink/70" />
-        </div>
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image
+          src="/brand-images/experience-corporate-wellness.png"
+          alt="Professional corporate beauty services - Executive grooming and team wellness in office setting - Good Hands corporate services in Lisbon"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
 
-        {/* Content */}
-        <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-center w-full hero-text">
-              Corporate Beauty & Wellness Services
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto hero-text">
-              Elevate your corporate culture with professional beauty services for team events, employee wellness programs, and executive grooming
-            </p>
-            <Link href="/?service=corporate#booking" className="btn-gold">
-              Request Corporate Quote
-            </Link>
-          </div>
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-ink">
+            Corporate Beauty & Wellness Services
+          </h1>
+          <p className="text-xl md:text-2xl text-harbor mb-8 max-w-2xl mx-auto">
+            Elevate your corporate culture with professional beauty services for team events, employee wellness programs, and executive grooming
+          </p>
+          <Link href="/?service=corporate#booking" className="btn-gold">
+            Request Corporate Quote
+          </Link>
         </div>
       </section>
 
@@ -446,7 +443,7 @@ export default function CorporatePage() {
             <Link href="/?service=corporate#booking" className="btn-gold">
             Request Proposal
           </Link>
-            <a href="mailto:corporate@goodhandsstudio.com" className="btn-secondary border-white text-white hover:bg-white/10">
+            <a href="mailto:corporate@goodhandsstudio.com" className="btn-secondary bg-transparent border-2 border-porcelain text-porcelain hover:bg-porcelain/10">
               Email: corporate@goodhandsstudio.com
             </a>
           </div>

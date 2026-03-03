@@ -5,6 +5,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Premium Experiences — Good Hands',
   description: 'Elevated multi-service beauty packages for weddings, retreats, corporate events, and exclusive memberships.',
+  alternates: { canonical: 'https://goodhandsstudio.com/experiences' },
 }
 
 const experiences = [
@@ -21,22 +22,22 @@ const experiences = [
       'On-location service available',
     ],
     image: '/brand-images/experience-bridal-beauty.png',
-    priceFrom: '€800',
+    priceFrom: 'From €850',
   },
   {
     title: 'Wellness Retreats',
     slug: 'retreats',
     description: 'Multi-day rejuvenation in Sintra or Cascais',
     features: [
-      '2-5 day retreat packages',
-      'Daily beauty treatments',
-      'Wellness consultations',
-      'Spa access included',
-      'Curated accommodations',
-      'Nutrition guidance',
+      '3-5 day retreat packages',
+      'Daily beauty treatments & workshops',
+      'Professional photoshoot included',
+      'Take-home beauty kit',
+      'Alumni community access',
+      'Post-retreat support',
     ],
-    image: '/brand-images/experience-wellness-retreat.png',
-    priceFrom: '€1,200',
+    image: '/brand-images/experience-wellness-retreat.jpg',
+    priceFrom: 'From €1,850',
   },
   {
     title: 'Corporate Wellness',
@@ -51,7 +52,7 @@ const experiences = [
       'Corporate gifting options',
     ],
     image: '/brand-images/experience-corporate-wellness.png',
-    priceFrom: '€500',
+    priceFrom: 'From €35/person',
   },
   {
     title: 'Good Hands Membership',
@@ -59,34 +60,36 @@ const experiences = [
     description: 'Exclusive access and priority booking year-round',
     features: [
       'Priority booking access',
-      '15% discount on all services',
-      'Complimentary quarterly treatments',
-      'Member-only events',
-      'Personal beauty concierge',
-      'Birthday gift package',
+      '15–25% discount on all services',
+      'Exclusive quarterly or monthly experiences',
+      'Dedicated concierge line (Platinum)',
+      'Free cancellations (24h notice)',
+      'No booking fees',
     ],
-    image: '/brand-images/service-makeup-application.png',
-    priceFrom: '€200/month',
+    image: '/brand-images/category-makeup.jpg',
+    priceFrom: 'From €49/month',
   },
 ]
 
 export default function ExperiencesPage() {
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <Image
-            src="/brand-images/category-weddings.png"
-            alt="Premium beauty experiences - weddings, retreats, corporate wellness - Good Hands Lisbon"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-6xl font-serif mb-4 hero-text">Premium Experiences</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image
+          src="/brand-images/category-weddings.png"
+          alt="Premium beauty experiences - weddings, retreats, corporate wellness - Good Hands Lisbon"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-6xl font-serif mb-4 text-ink">Premium Experiences</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Elevated packages for life\'s most important moments
           </p>
         </div>

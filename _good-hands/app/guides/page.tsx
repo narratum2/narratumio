@@ -5,6 +5,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Neighborhood Guides — Good Hands',
   description: 'Discover beauty experiences across Lisbon\'s most distinctive neighborhoods, from historic Chiado to coastal Cascais.',
+  alternates: { canonical: 'https://goodhandsstudio.com/guides' },
 }
 
 const neighborhoods = [
@@ -12,56 +13,56 @@ const neighborhoods = [
     name: 'Chiado',
     slug: 'chiado',
     description: 'Historic elegance meets modern luxury in Lisbon\'s most refined district',
-    image: '/brand-images/hero-salon-interior.png',
+    image: '/brand-images/hero-chiado.jpg',
     highlights: ['Luxury salons', 'Historic spas', 'Art galleries'],
   },
   {
     name: 'Príncipe Real',
     slug: 'principe-real',
     description: 'Bohemian charm and cutting-edge style in the heart of the city',
-    image: '/brand-images/category-hair-styling.png',
+    image: '/brand-images/hero-principe-real.jpg',
     highlights: ['Boutique studios', 'Garden cafés', 'Design shops'],
   },
   {
     name: 'Baixa',
     slug: 'baixa',
     description: 'Grand boulevards and timeless beauty in downtown Lisbon',
-    image: '/brand-images/blog-lisbon-guide.png',
+    image: '/brand-images/hero-baixa.jpg',
     highlights: ['Classic salons', 'Shopping districts', 'Historic venues'],
   },
   {
     name: 'Avenida da Liberdade',
     slug: 'avenida',
     description: 'Lisbon\'s Champs-Élysées with premium beauty destinations',
-    image: '/brand-images/salon-detail.png',
+    image: '/brand-images/hero-avenida.jpg',
     highlights: ['High-end spas', 'Luxury brands', 'Tree-lined avenues'],
   },
   {
     name: 'Alfama',
     slug: 'alfama',
     description: 'Ancient streets and authentic experiences in Lisbon\'s oldest quarter',
-    image: '/brand-images/beauty-moment.png',
+    image: '/brand-images/hero-alfama.jpg',
     highlights: ['Traditional treatments', 'Fado music', 'Hidden gems'],
   },
   {
     name: 'Belém',
     slug: 'belem',
     description: 'Riverside beauty and historic grandeur by the Tagus',
-    image: '/brand-images/category-wellness.png',
+    image: '/brand-images/hero-belem.jpg',
     highlights: ['Waterfront spas', 'Cultural sites', 'Pastéis de Belém'],
   },
   {
     name: 'Sintra',
     slug: 'sintra',
     description: 'Romantic escapes and wellness retreats in the enchanted hills',
-    image: '/brand-images/experience-wellness-retreat.png',
+    image: '/brand-images/hero-sintra.jpg',
     highlights: ['Mountain retreats', 'Palace views', 'Natural beauty'],
   },
   {
     name: 'Cascais',
     slug: 'cascais',
     description: 'Coastal elegance and resort-style pampering by the Atlantic',
-    image: '/brand-images/category-skincare.png',
+    image: '/brand-images/hero-cascais.jpg',
     highlights: ['Beach clubs', 'Marina life', 'Seafood dining'],
   },
 ]
@@ -69,20 +70,22 @@ const neighborhoods = [
 export default function GuidesPage() {
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <Image
-            src="/brand-images/blog-lisbon-guide.png"
-            alt="Lisbon neighborhood beauty guides - discover the best areas for luxury services"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-6xl font-serif mb-4 hero-text">Neighborhood Guides</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image
+          src="/brand-images/blog-lisbon-guide.jpg"
+          alt="Lisbon neighborhood beauty guides - discover the best areas for luxury services"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-6xl font-serif mb-4 text-ink">Neighborhood Guides</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Discover beauty across Lisbon\'s most distinctive districts
           </p>
         </div>

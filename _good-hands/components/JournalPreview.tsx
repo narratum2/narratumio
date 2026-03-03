@@ -22,26 +22,18 @@ export default function JournalPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex justify-between items-end mb-12"
+          className="text-center mb-12"
         >
-          <div>
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">
-              From the Journal
-            </h2>
-            <p className="text-harbor text-lg">
-              Beauty insights, city guides, and expert advice
-            </p>
-          </div>
-          <Link
-            href="/journal"
-            className="hidden md:block text-gold hover:text-gold-dark transition-colors focus-visible-ring"
-          >
-            View All Articles →
-          </Link>
+          <h2 className="text-4xl md:text-5xl font-serif mb-4">
+            From the Journal
+          </h2>
+          <p className="text-harbor text-lg max-w-2xl mx-auto text-center">
+            Beauty insights, city guides, and expert advice
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {articles.map((article, index) => (
+          {articles.map((article, index) => (
             <motion.article
               key={article.slug}
               initial={{ opacity: 0, y: 30 }}
@@ -81,7 +73,7 @@ export default function JournalPreview() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-12 md:hidden"
+          className="text-center mt-12"
         >
           <Link href="/journal" className="btn-secondary">
             View All Articles

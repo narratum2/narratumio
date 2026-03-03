@@ -16,7 +16,19 @@ export default function MembershipSuccessPage() {
       router.replace('/premium/membership')
       return
     }
-    setValid(true)
+
+    fetch(`/api/stripe/verify-session?session_id=${encodeURIComponent(sessionId)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.valid) {
+          setValid(true)
+        } else {
+          router.replace('/premium/membership')
+        }
+      })
+      .catch(() => {
+        router.replace('/premium/membership')
+      })
   }, [sessionId, router])
 
   if (!valid) {

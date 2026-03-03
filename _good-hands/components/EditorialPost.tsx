@@ -96,7 +96,7 @@ export function EditorialPostExample() {
       author="Good Hands Team"
       date="2024-10-11"
       readTime="8 min read"
-      heroImage="/brand-images/blog-finding-calm-chiado.png"
+      heroImage="/brand-images/blog-finding-calm-chiado.jpg"
     >
       {/* Drop Cap First Paragraph */}
       <p className="drop-cap">

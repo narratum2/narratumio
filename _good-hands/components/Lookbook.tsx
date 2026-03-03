@@ -31,13 +31,13 @@ export default function Lookbook() {
           },
           {
             id: '2',
-            src: '/brand-images/service-makeup-application.png',
+            src: '/brand-images/category-makeup.jpg',
             alt: 'Professional makeup artist Lisbon - expert application',
             caption: 'Professional makeup artistry',
           },
           {
             id: '3',
-            src: '/brand-images/category-hair-styling.png',
+            src: '/brand-images/category-hair-styling.jpg',
             alt: 'Expert hair color treatment Lisbon - professional colorists',
             caption: 'Expert color treatment',
           },
@@ -49,13 +49,13 @@ export default function Lookbook() {
           },
           {
             id: '5',
-            src: '/brand-images/salon-detail.png',
+            src: '/brand-images/salon-detail.jpg',
             alt: 'Luxury nail care manicure Lisbon - premium nail services',
             caption: 'Luxury nail care',
           },
           {
             id: '6',
-            src: '/brand-images/service-facial-treatment.png',
+            src: '/brand-images/service-facial-treatment.jpg',
             alt: 'Advanced skincare facial treatments Lisbon - luxury spa',
             caption: 'Advanced skincare treatments',
           },

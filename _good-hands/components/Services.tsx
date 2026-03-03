@@ -9,7 +9,7 @@ const services = [
   {
     title: 'Premium Hair Styling',
     description: 'We match you with Lisbon\'s best hair colorists and stylists—no more trial and error',
-    image: '/brand-images/category-hair-styling.png',
+    image: '/brand-images/category-hair-styling.jpg',
     price: getBasePriceDisplay('hair'),
     priceNote: 'Includes concierge service',
     duration: '90 min',
@@ -18,7 +18,7 @@ const services = [
   {
     title: 'Luxury Nail Care',
     description: 'Perfectly curated nail technicians who understand exactly what you want',
-    image: '/brand-images/service-nail-art.png',
+    image: '/brand-images/service-nail-art.jpg',
     price: getBasePriceDisplay('nails'),
     priceNote: 'Includes concierge service',
     duration: '60 min',
@@ -27,7 +27,7 @@ const services = [
   {
     title: 'Advanced Skincare',
     description: 'We connect you with skincare experts who truly understand your skin',
-    image: '/brand-images/service-facial-treatment.png',
+    image: '/brand-images/service-facial-treatment.jpg',
     price: getBasePriceDisplay('skincare'),
     priceNote: 'Includes concierge service',
     duration: '75 min',
@@ -36,7 +36,7 @@ const services = [
   {
     title: 'Professional Makeup',
     description: 'Your personal beauty concierge finds the perfect makeup artist for your event',
-    image: '/brand-images/service-makeup-application.png',
+    image: '/brand-images/category-makeup.jpg',
     price: getBasePriceDisplay('makeup'),
     priceNote: 'Includes concierge service',
     duration: '45 min',

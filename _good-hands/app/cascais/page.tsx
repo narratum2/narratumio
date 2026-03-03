@@ -2,32 +2,35 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import LocationMapSection from '@/components/LocationMapSection'
+import { getBreadcrumbSchema, getLocalBusinessSchema } from '@/lib/breadcrumb-schema'
 import { Waves, Sun, Globe, Umbrella, MessageCircle, Clock, Lightbulb, Sailboat, Building2, UtensilsCrossed, Flag, MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Cascais Beauty Guide — Good Hands',
   description: 'Beauty services in Cascais, Portugal\'s coastal resort town. Beach-ready treatments, resort spas, and seaside luxury.',
   keywords: ['cascais beauty', 'cascais salon', 'estoril spa', 'beach beauty portugal'],
+  alternates: { canonical: 'https://goodhandsstudio.com/cascais' },
 }
 
 export default function CascaisPage() {
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image 
-            src="/brand-images/category-skincare.png" 
-            alt="Cascais coastal beauty - luxury seaside spa and wellness services" 
-            fill 
-            className="object-cover" 
-            priority 
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
-          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-center w-full hero-text">Cascais</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image 
+          src="/brand-images/hero-cascais.jpg" 
+          alt="Cascais coastal beauty - luxury seaside spa and wellness services" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-7xl font-serif mb-4 text-ink">Cascais</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Coastal luxury beauty in Portugal&apos;s premier resort town
           </p>
         </div>
@@ -36,7 +39,7 @@ export default function CascaisPage() {
       {/* Neighborhood Overview */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-serif mb-8">The Portuguese Riviera</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">The Portuguese Riviera</h2>
           
           <div className="prose prose-lg max-w-none text-harbor space-y-6">
             <p className="text-xl leading-relaxed">
@@ -57,7 +60,7 @@ export default function CascaisPage() {
       {/* Why Choose Cascais */}
       <section className="section-padding bg-shell">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center">Why Choose Cascais for Beauty Services</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">Why Choose Cascais for Beauty Services</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6">
@@ -90,7 +93,7 @@ export default function CascaisPage() {
       {/* Services Available */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Beauty Services in Cascais</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Beauty Services in Cascais</h2>
           
           <div className="space-y-6">
             <div className="border-b border-harbor/10 pb-6">
@@ -131,7 +134,7 @@ export default function CascaisPage() {
       {/* The Cascais Experience */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">What to Expect in Cascais</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">What to Expect in Cascais</h2>
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
@@ -168,7 +171,7 @@ export default function CascaisPage() {
       {/* Getting There */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Getting to Cascais</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Getting to Cascais</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -203,7 +206,7 @@ export default function CascaisPage() {
       {/* Complete Your Visit */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Complete Your Cascais Experience</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Complete Your Cascais Experience</h2>
           
           <div className="space-y-4">
             <div className="flex gap-4 items-start">
@@ -268,7 +271,7 @@ export default function CascaisPage() {
       {/* Map */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">Explore Cascais</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Explore Cascais</h2>
           
           <div className="bg-shell rounded-lg p-4">
             <div className="aspect-video w-full bg-harbor/10 rounded flex items-center justify-center">
@@ -285,7 +288,7 @@ export default function CascaisPage() {
       {/* FAQ */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8">Cascais Beauty FAQs</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8">Cascais Beauty FAQs</h2>
           
           <div className="space-y-6">
             <div>
@@ -344,6 +347,25 @@ export default function CascaisPage() {
           </p>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema([
+          { name: 'Home', url: 'https://goodhandsstudio.com' },
+          { name: 'Neighborhoods', url: 'https://goodhandsstudio.com/guides' },
+          { name: 'Cascais', url: 'https://goodhandsstudio.com/cascais' },
+        ])) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema({
+          name: 'Cascais',
+          slug: 'cascais',
+          description: "Premium beauty services in Cascais, Portugal's elegant coastal resort",
+          lat: '38.6979',
+          lng: '-9.4215',
+        })) }}
+      />
     </div>
   )
 }

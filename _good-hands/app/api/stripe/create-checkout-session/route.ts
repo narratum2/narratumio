@@ -4,7 +4,24 @@ export async function POST(request: NextRequest) {
   try {
     const { priceId, membershipType } = await request.json()
 
-    // TODO: User needs to set up Stripe account and add STRIPE_SECRET_KEY to environment variables
+    if (!priceId || typeof priceId !== 'string') {
+      return NextResponse.json({ error: 'Missing or invalid price ID' }, { status: 400 })
+    }
+
+    const validMembershipTypes = ['Gold', 'Platinum']
+    if (!membershipType || !validMembershipTypes.includes(membershipType)) {
+      return NextResponse.json({ error: 'Invalid membership type' }, { status: 400 })
+    }
+
+    const allowedPriceIds = [
+      process.env.NEXT_PUBLIC_STRIPE_GOLD_PRICE_ID,
+      process.env.NEXT_PUBLIC_STRIPE_PLATINUM_PRICE_ID,
+    ].filter(Boolean)
+
+    if (allowedPriceIds.length > 0 && !allowedPriceIds.includes(priceId)) {
+      return NextResponse.json({ error: 'Price ID not recognized' }, { status: 400 })
+    }
+
     const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 
     if (!stripeSecretKey) {

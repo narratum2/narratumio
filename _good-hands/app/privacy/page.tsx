@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Privacy Policy — Good Hands',
   description: 'Learn how Good Hands collects, uses, and protects your personal information.',
+  alternates: { canonical: 'https://goodhandsstudio.com/privacy' },
 }
 
 export default function PrivacyPage() {

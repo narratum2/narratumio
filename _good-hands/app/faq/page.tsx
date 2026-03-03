@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Frequently Asked Questions — Good Hands',
   description: 'Complete answers to common questions about Good Hands luxury beauty concierge service in Lisbon. Learn about our services, pricing, booking process, and what makes us different.',
   keywords: 'good hands faq, lisbon beauty questions, beauty concierge how it works, beauty services pricing lisbon',
+  alternates: { canonical: 'https://goodhandsstudio.com/faq' },
 }
 
 const faqs = [
@@ -37,7 +38,7 @@ const faqs = [
     questions: [
       {
         q: 'How much do services cost?',
-        a: 'Our pricing is transparent and includes our concierge service fee: Hair Styling from €105, Hair Color from €145, Spa Treatments from €95, Makeup from €85, Nails from €55, Wellness from €120. VIP members receive 15% off all services. Prices vary based on specific treatment, professional expertise level, and session duration.'
+        a: 'Our pricing is transparent and includes our concierge service fee: Hair Styling from €45 (blowout) to €180 (balayage), Skincare & Facials from €95, Makeup from €70, Nail Care from €35, and Wellness from €90. Gold members save 15% and Platinum members save 25% on all services. Prices vary based on specific treatment, professional expertise, and session duration.'
       },
       {
         q: 'What\'s included in the price?',

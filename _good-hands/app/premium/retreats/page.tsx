@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Beauty Retreats | Good Hands Lisbon',
   description: 'Transformative beauty retreats in Lisbon and beyond. Multi-day immersive experiences focused on personal beauty transformation, self-care, and confidence building.',
   keywords: 'beauty retreat Lisbon, beauty transformation, self-care retreat, beauty workshop, confidence retreat',
+  alternates: { canonical: 'https://goodhandsstudio.com/premium/retreats' },
 }
 
 export default function RetreatsPage() {
@@ -15,13 +16,13 @@ export default function RetreatsPage() {
       <section className="relative bg-gradient-to-br from-sage via-sand to-gold py-32">
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white text-center w-full">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-ink text-center w-full">
               Beauty Transformation Retreats
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-harbor max-w-2xl mx-auto">
               Multi-day immersive experiences focused on discovering your authentic beauty, learning professional techniques, and building lasting confidence
             </p>
-            <Link href="/?service=retreat#booking" className="btn-primary bg-white text-sand hover:bg-porcelain">
+            <Link href="/?service=retreat#booking" className="btn-gold">
               Join Our Next Retreat
             </Link>
           </div>

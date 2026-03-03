@@ -6,6 +6,7 @@ import { getAllArticles } from '@/lib/articles'
 export const metadata: Metadata = {
   title: 'Journal — Good Hands',
   description: 'Beauty insights, Lisbon city guides, expert advice, and editorial stories from the Good Hands team.',
+  alternates: { canonical: 'https://goodhandsstudio.com/journal' },
 }
 
 function parseDate(dateStr: string): number {
@@ -18,21 +19,22 @@ export default function JournalPage() {
   const [featured, ...rest] = allArticles
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/brand-images/blog-portuguese-beauty.png"
-            alt="Good Hands Journal - beauty insights, Lisbon guides, and expert tips"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/50 to-ink/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom px-4">
-          <h1 className="text-5xl md:text-6xl font-serif mb-4">The Journal</h1>
-          <p className="text-xl md:text-2xl text-porcelain/90 max-w-2xl mx-auto leading-relaxed">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image
+          src="/brand-images/blog-portuguese-beauty.jpg"
+          alt="Good Hands Journal - beauty insights, Lisbon guides, and expert tips"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
+          <h1 className="text-5xl md:text-6xl font-serif mb-4 text-ink">The Journal</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto leading-relaxed">
             Beauty insights, city guides, and stories from around the world
           </p>
         </div>

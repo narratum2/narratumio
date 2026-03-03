@@ -56,7 +56,7 @@ Inspired by the flowing patterns of Portuguese azulejo tiles, this facial massag
 ## Modern Takes
 
 The best professionals in Lisbon take these old methods and refine them with modern techniques. No pseudoscience. No miracle claims. Just proven ingredients that have worked for generations.`,
-    image: '/brand-images/blog-portuguese-beauty.png',
+    image: '/brand-images/blog-portuguese-beauty.jpg',
     date: 'October 1, 2025',
     category: 'Traditions',
     author: 'Good Hands Team',
@@ -142,7 +142,7 @@ Get your color done 1-2 weeks before the wedding. This ensures it's fresh but ha
 ## Wedding Day
 
 Trust your team. You've prepared, you've practiced, and you're ready. Enjoy the process of being pampered and transformed.`,
-    image: '/brand-images/blog-wedding-timeline.png',
+    image: '/brand-images/blog-wedding-timeline.jpg',
     date: 'September 28, 2025',
     category: 'Weddings',
     author: 'Good Hands Team',
@@ -190,7 +190,7 @@ In a converted monastery garden, this spa specializes in treatments using Portug
 ## These aren't for everyone
 
 These places don't speak much English. They don't have credit card machines. They don't take online bookings. That's exactly why they're special—and why we help arrange them for our clients who want authentic Lisbon beauty experiences.`,
-    image: '/brand-images/blog-lisbon-guide.png',
+    image: '/brand-images/blog-lisbon-guide.jpg',
     date: 'September 25, 2025',
     category: 'City Guide',
     author: 'Good Hands Team',

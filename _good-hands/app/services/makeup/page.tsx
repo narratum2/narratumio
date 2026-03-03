@@ -2,11 +2,13 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Palette, Sparkles, Clock, MapPin, Camera, Droplets } from 'lucide-react'
+import { getBreadcrumbSchema } from '@/lib/breadcrumb-schema'
 
 export const metadata: Metadata = {
   title: 'Makeup Services in Lisbon — Good Hands',
   description: 'Professional makeup artists in Lisbon. Bridal makeup, event makeup, makeup lessons, and editorial looks. Expert concierge matching with vetted artists.',
   keywords: ['makeup artist lisbon', 'bridal makeup lisbon', 'event makeup lisbon', 'makeup lesson lisbon'],
+  alternates: { canonical: 'https://goodhandsstudio.com/services/makeup' },
 }
 
 const makeupServices = [
@@ -57,27 +59,28 @@ const makeupServices = [
 export default function MakeupServicesPage() {
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <Image
-            src="/brand-images/category-makeup.png"
-            alt="Professional makeup artists for events and weddings in Lisbon - Good Hands"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        </div>
-        <div className="relative z-10 text-center text-white container-custom">
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] min-h-[300px] overflow-hidden">
+        <Image
+          src="/brand-images/category-makeup.jpg"
+          alt="Professional makeup artists for events and weddings in Lisbon - Good Hands"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Hero Content */}
+      <section className="section-padding bg-white">
+        <div className="container-custom text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Palette className="w-12 h-12 text-gold drop-shadow-lg" />
+            <Palette className="w-12 h-12 text-gold" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-serif mb-4 hero-text">Makeup Services</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto hero-text">
+          <h1 className="text-5xl md:text-6xl font-serif mb-4 text-ink">Makeup Services</h1>
+          <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
             Professional makeup artists matched to your style and occasion
           </p>
-          <p className="text-lg text-gold mt-3 hero-text">
+          <p className="text-lg text-gold mt-3">
             All prices include expert concierge matching & coordination
           </p>
         </div>
@@ -131,7 +134,7 @@ export default function MakeupServicesPage() {
       {/* Services List */}
       <section className="section-padding bg-shell">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center">Our Makeup Services</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12 text-center">Our Makeup Services</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {makeupServices.map((service, idx) => (
@@ -170,7 +173,7 @@ export default function MakeupServicesPage() {
       {/* Makeup Styles */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">Find Your Style</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Find Your Style</h2>
           
           <div className="space-y-6">
             <div className="border-l-4 border-gold pl-6">
@@ -214,7 +217,7 @@ export default function MakeupServicesPage() {
       {/* Why Good Hands */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">Why Book Makeup Through Good Hands?</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Why Book Makeup Through Good Hands?</h2>
           
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
@@ -251,7 +254,7 @@ export default function MakeupServicesPage() {
       {/* Preparation Tips */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">How to Prepare</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">How to Prepare</h2>
           
           <div className="space-y-6">
             <div>
@@ -288,7 +291,7 @@ export default function MakeupServicesPage() {
       {/* FAQ */}
       <section className="section-padding bg-shell">
         <div className="container-custom max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-8 text-center">Makeup Services FAQ</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-center">Makeup Services FAQ</h2>
           
           <div className="space-y-6">
             <details className="bg-white rounded-lg p-6 group">
@@ -356,6 +359,15 @@ export default function MakeupServicesPage() {
           </p>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbSchema([
+          { name: 'Home', url: 'https://goodhandsstudio.com' },
+          { name: 'Services', url: 'https://goodhandsstudio.com/services' },
+          { name: 'Makeup', url: 'https://goodhandsstudio.com/services/makeup' },
+        ])) }}
+      />
     </div>
   )
 }

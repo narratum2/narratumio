@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Terms of Service — Good Hands',
   description: 'Terms and conditions for using the Good Hands beauty concierge service.',
+  alternates: { canonical: 'https://goodhandsstudio.com/terms' },
 }
 
 export default function TermsPage() {

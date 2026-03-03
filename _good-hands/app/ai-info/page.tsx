@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: { canonical: 'https://goodhandsstudio.com/ai-info' },
 }
 
 export default function AIInfoPage() {

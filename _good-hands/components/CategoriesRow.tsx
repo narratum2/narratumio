@@ -7,27 +7,27 @@ import Image from 'next/image'
 const categories = [
   {
     name: 'Hair',
-    image: '/brand-images/category-hair-styling.png',
+    image: '/brand-images/category-hair-styling.jpg',
     href: '/services?category=hair',
   },
   {
     name: 'Nails',
-    image: '/brand-images/service-nail-art.png',
+    image: '/brand-images/service-nail-art.jpg',
     href: '/services?category=nails',
   },
   {
     name: 'Skincare',
-    image: '/brand-images/category-skincare.png',
+    image: '/brand-images/category-skincare.jpg',
     href: '/services?category=skincare',
   },
   {
     name: 'Makeup',
-    image: '/brand-images/service-makeup-application.png',
+    image: '/brand-images/category-makeup.jpg',
     href: '/services?category=makeup',
   },
   {
     name: 'Wellness',
-    image: '/brand-images/category-wellness.png',
+    image: '/brand-images/category-wellness.jpg',
     href: '/services?category=wellness',
   },
   {
@@ -48,7 +48,7 @@ export default function CategoriesRow() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif mb-4">
             Browse by Category
           </h2>
           <p className="text-harbor text-lg max-w-2xl mx-auto text-center">

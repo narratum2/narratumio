@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Wedding Beauty Services | Good Hands Lisbon',
   description: 'Comprehensive wedding beauty services in Lisbon. From bridal makeup and hair to full bridal party coordination. Make your special day perfect with our curated beauty professionals.',
   keywords: 'wedding beauty Lisbon, bridal makeup, bridal hair, wedding beauty services, Lisbon weddings',
+  alternates: { canonical: 'https://goodhandsstudio.com/premium/weddings' },
 }
 
 export default function WeddingsPage() {
@@ -16,13 +17,13 @@ export default function WeddingsPage() {
       <section className="relative bg-gradient-to-br from-gold via-sand to-porcelain py-32">
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white text-center w-full">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-ink text-center w-full">
               Your Perfect Wedding Day Beauty
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-harbor max-w-2xl mx-auto">
               From intimate ceremonies to grand celebrations, we coordinate every beauty detail for you and your entire bridal party
             </p>
-            <Link href="/?service=wedding#booking" className="btn-primary bg-white text-sand hover:bg-porcelain">
+            <Link href="/?service=wedding#booking" className="btn-gold">
               Plan Your Wedding Beauty
             </Link>
           </div>

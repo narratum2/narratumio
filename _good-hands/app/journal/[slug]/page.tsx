@@ -216,7 +216,7 @@ export default function ArticlePage({ params }: PageProps) {
             image: article.image,
             datePublished: article.date,
             dateModified: article.date,
-            mainEntityOfPage: `https://goodhandsstudio.com/journal/${article.slug}`,
+            mainEntityOfPage: `https://goodhandsstudio.com/journal/${params.slug}`,
             author: {
               '@type': 'Organization',
               name: 'Good Hands',

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { BarChart3, Briefcase, Target, Trophy, Camera, Gift, Building2, Handshake, PartyPopper, MapPin, Heart } from 'lucide-react'
+import { BarChart3, Briefcase, Target, Trophy, Camera, Gift, Building2, HeartHandshake, PartyPopper, MapPin, Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Corporate Beauty Services | Good Hands Lisbon',
@@ -245,7 +245,7 @@ export default function CorporatePage() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><Handshake className="w-5 h-5 text-gold" /></div>
+                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center shrink-0"><HeartHandshake className="w-5 h-5 text-gold" /></div>
                 <div>
                   <h3 className="font-semibold text-ink mb-2">Recruitment Events</h3>
                   <p className="text-harbor">Stand out at job fairs with a unique candidate experience</p>

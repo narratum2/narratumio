@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Palette, Briefcase, Handshake, Gem, CircleDollarSign, AlertCircle, HelpCircle } from 'lucide-react'
+import { Palette, Briefcase, HeartHandshake, Gem, CircleDollarSign, AlertCircle, HelpCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Hotel Partnerships | Good Hands Beauty Concierge',
@@ -128,7 +128,7 @@ export default function PartnershipsPage() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="md:w-1/3">
                   <div className="w-16 h-16 bg-sand/20 rounded-full flex items-center justify-center mb-4">
-                    <Handshake className="w-7 h-7 text-gold" />
+                    <HeartHandshake className="w-7 h-7 text-gold" />
                   </div>
                   <h3 className="text-2xl font-serif text-ink mb-3">Seamless Integration</h3>
                 </div>

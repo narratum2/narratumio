@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Send, CheckCircle, Sparkles, CalendarDays, Award, ClipboardList, Handshake } from 'lucide-react'
+import { Send, CheckCircle, Sparkles, CalendarDays, Award, ClipboardList, HeartHandshake } from 'lucide-react'
 
 export default function ProfessionalSignupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -379,7 +379,7 @@ export default function ProfessionalSignupForm() {
               <p>We review your experience, portfolio, and social presence</p>
             </div>
             <div>
-              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2"><Handshake className="w-5 h-5 text-gold" /></div>
+              <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2"><HeartHandshake className="w-5 h-5 text-gold" /></div>
               <p className="font-medium mb-1">2. Interview</p>
               <p>Selected candidates meet with our team for an in-depth interview</p>
             </div>

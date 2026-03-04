@@ -225,7 +225,7 @@ export default function AboutPage() {
       <section className="section-padding bg-ink text-white">
         <div className="container-custom max-w-4xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif mb-6">What We Believe</h2>
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-white">What We Believe</h2>
         </div>
         
           <div className="space-y-8">

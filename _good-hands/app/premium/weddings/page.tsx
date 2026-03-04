@@ -392,7 +392,7 @@ export default function WeddingsPage() {
       {/* CTA */}
       <section className="section-padding bg-ink text-white text-center">
         <div className="container-custom">
-          <h2 className="text-4xl md:text-5xl font-serif mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-white">
             Ready to Plan Your Wedding Beauty?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

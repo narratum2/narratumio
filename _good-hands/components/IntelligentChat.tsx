@@ -177,7 +177,7 @@ export default function IntelligentChat({
                   <div
                     className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                       message.role === 'user'
-                        ? 'bg-sand text-white'
+                        ? 'bg-ink text-white'
                         : 'bg-white text-ink border border-gray-200'
                     }`}
                   >
@@ -248,7 +248,7 @@ export default function IntelligentChat({
                 <button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim()}
-                  className="bg-sand text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-gold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-ink text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-gold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

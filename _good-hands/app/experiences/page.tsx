@@ -140,7 +140,7 @@ export default function ExperiencesPage() {
       {/* CTA */}
       <section className="section-padding bg-ink text-white text-center">
         <div className="container-custom">
-          <h2 className="text-4xl md:text-5xl font-serif mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-white">
             Create Your Custom Experience
           </h2>
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">

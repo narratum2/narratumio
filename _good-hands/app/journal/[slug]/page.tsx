@@ -99,7 +99,7 @@ export default function ArticlePage({ params }: PageProps) {
 
           {/* Author */}
           <div className="flex items-center gap-4 pt-8 border-t border-harbor/20">
-            <div className="w-12 h-12 rounded-full bg-sand flex items-center justify-center text-white font-bold text-lg">
+            <div className="w-12 h-12 rounded-full bg-sand flex items-center justify-center text-ink font-bold text-lg">
               {article.author.charAt(0)}
             </div>
             <div>
@@ -189,7 +189,7 @@ export default function ArticlePage({ params }: PageProps) {
       {/* CTA Section */}
       <section className="bg-ink text-white py-16">
         <div className="container-custom max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif mb-4 text-white">
             Ready to Experience Lisbon's Beauty Scene?
           </h2>
           <p className="text-xl text-white/90 mb-8">

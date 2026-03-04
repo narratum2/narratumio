@@ -391,7 +391,7 @@ export default function PartnershipsPage() {
       <section id="contact" className="section-padding bg-ink text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-serif mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-white">
               Ready to Elevate Your Guest Experience?
             </h2>
             <p className="text-xl text-white/90 mb-8">

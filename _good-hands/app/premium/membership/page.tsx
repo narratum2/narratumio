@@ -385,7 +385,7 @@ export default function MembershipPage() {
       {/* CTA */}
       <section className="section-padding bg-ink text-white">
         <div className="container-custom text-center">
-          <h2 className="text-4xl md:text-5xl font-serif mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-white">
             Ready to Join?
           </h2>
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">

@@ -327,7 +327,7 @@ export default function ChiadoPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             Let us match you with Chiado&apos;s finest beauty professionals in this legendary neighborhood
           </p>
-          <Link href="/#booking" className="btn-primary">Book Now</Link>
+          <Link href="/#booking" className="btn-gold">Book Now</Link>
           <p className="text-sm text-porcelain/60 mt-6">
             All prices include expert concierge matching & coordination
           </p>

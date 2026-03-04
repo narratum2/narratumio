@@ -326,7 +326,7 @@ export default function PrincipeRealPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             Let us match you with Príncipe Real&apos;s most innovative beauty professionals
           </p>
-          <Link href="/#booking" className="btn-primary">Book Now</Link>
+          <Link href="/#booking" className="btn-gold">Book Now</Link>
           <p className="text-sm text-porcelain/60 mt-6">
             All prices include expert concierge matching & coordination
           </p>

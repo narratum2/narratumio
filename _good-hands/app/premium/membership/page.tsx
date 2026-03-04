@@ -392,7 +392,7 @@ export default function MembershipPage() {
             Start saving today and enjoy VIP access to Lisbon's finest beauty professionals
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#plans" className="btn-primary">
+            <a href="#plans" className="btn-gold">
               Choose Your Plan
             </a>
             <Link href="/#booking" className="btn-secondary bg-white/10 hover:bg-white/20 text-white border-white/30">

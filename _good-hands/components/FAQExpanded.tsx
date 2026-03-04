@@ -263,7 +263,7 @@ export default function FAQExpanded() {
           transition={{ duration: 0.6 }}
           className="mt-16 text-center bg-gradient-to-br from-ink to-harbor text-white rounded-lg p-12 md:p-16"
         >
-          <h3 className="text-3xl md:text-4xl font-serif mb-4">Still have questions?</h3>
+          <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Still have questions?</h3>
           <p className="text-porcelain/90 text-lg mb-8 max-w-2xl mx-auto">
             Our concierge team is here to help. Get in touch and we'll answer within 24 hours.
           </p>

@@ -79,7 +79,7 @@ export default function JournalPage() {
       {/* Articles Grid */}
       <section className="section-padding bg-shell">
         <div className="container-custom">
-          <h2 className="text-3xl font-serif mb-12">Latest Articles</h2>
+          <h2 className="text-3xl font-serif mb-12 text-center">Latest Articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {rest.map((article) => (
               <Link

@@ -86,7 +86,7 @@ export default function GuidesPage() {
         <div className="container-custom text-center">
           <h1 className="text-5xl md:text-6xl font-serif mb-4 text-ink">Neighborhood Guides</h1>
           <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
-            Discover beauty across Lisbon\'s most distinctive districts
+            Discover beauty across Lisbon&apos;s most distinctive districts
           </p>
         </div>
       </section>
@@ -141,7 +141,7 @@ export default function GuidesPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             Let our beauty concierge help you find the perfect neighborhood and service
           </p>
-          <Link href="/#booking" className="btn-primary">
+          <Link href="/#booking" className="btn-gold">
             Get Personalized Recommendations
           </Link>
         </div>

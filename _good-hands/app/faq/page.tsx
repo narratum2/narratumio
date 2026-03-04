@@ -189,7 +189,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="pt-20 bg-white">
-        <div className="container-custom max-w-4xl py-16">
+        <div className="container-custom max-w-4xl section-padding">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-serif mb-4">Frequently Asked Questions</h1>
             <p className="text-lg text-harbor max-w-2xl mx-auto">

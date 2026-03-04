@@ -351,7 +351,7 @@ export default function MakeupServicesPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             We&apos;ll match you with a makeup artist whose style aligns perfectly with your vision
           </p>
-          <Link href="/#booking" className="btn-primary">
+          <Link href="/#booking" className="btn-gold">
             Book Makeup Service
           </Link>
           <p className="text-sm text-porcelain/60 mt-6">

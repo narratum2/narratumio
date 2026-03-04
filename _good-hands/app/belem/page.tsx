@@ -334,7 +334,7 @@ export default function BelemPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             Let us match you with trusted beauty professionals in Lisbon&apos;s most peaceful waterfront neighborhood
           </p>
-          <Link href="/#booking" className="btn-primary">Book Now</Link>
+          <Link href="/#booking" className="btn-gold">Book Now</Link>
           <p className="text-sm text-porcelain/60 mt-6">
             All prices include expert concierge matching & coordination
           </p>

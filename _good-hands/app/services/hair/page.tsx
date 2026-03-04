@@ -319,7 +319,7 @@ export default function HairServicesPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             Tell us what you need, and we&apos;ll match you with the ideal stylist
           </p>
-          <Link href="/#booking" className="btn-primary">
+          <Link href="/#booking" className="btn-gold">
             Book Hair Service
           </Link>
           <p className="text-sm text-porcelain/60 mt-6">

@@ -90,7 +90,7 @@ export default function ExperiencesPage() {
         <div className="container-custom text-center">
           <h1 className="text-5xl md:text-6xl font-serif mb-4 text-ink">Premium Experiences</h1>
           <p className="text-xl md:text-2xl text-harbor max-w-2xl mx-auto">
-            Elevated packages for life\'s most important moments
+            Elevated packages for life&apos;s most important moments
           </p>
         </div>
       </section>
@@ -144,9 +144,9 @@ export default function ExperiencesPage() {
             Create Your Custom Experience
           </h2>
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
-            Not sure which package is right for you? Let\'s design something perfect together.
+            Not sure which package is right for you? Let&apos;s design something perfect together.
           </p>
-          <Link href="/#booking" className="btn-primary">
+          <Link href="/#booking" className="btn-gold">
             Schedule a Consultation
           </Link>
         </div>

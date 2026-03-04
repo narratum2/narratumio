@@ -160,7 +160,7 @@ export default function ServicesPage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search services..."
-                  className="w-full pl-10 pr-4 py-3 border border-harbor/20 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                  className="input-field pl-10"
                 />
               </div>
 
@@ -168,7 +168,7 @@ export default function ServicesPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 border border-harbor/20 rounded-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white md:w-48"
+                className="select-field md:w-48"
               >
                 <option value="all">All Categories</option>
                 <option value="hair">Hair Styling</option>

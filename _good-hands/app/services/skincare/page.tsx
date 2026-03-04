@@ -335,7 +335,7 @@ export default function SkincareServicesPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             We&apos;ll match you with a licensed esthetician who specializes in your skin concerns
           </p>
-          <Link href="/#booking" className="btn-primary">
+          <Link href="/#booking" className="btn-gold">
             Book Skincare Service
           </Link>
           <p className="text-sm text-porcelain/60 mt-6">

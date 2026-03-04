@@ -411,7 +411,7 @@ export default function AboutPage() {
           <p className="text-xl text-harbor mb-8 leading-relaxed">
             Join hundreds of clients who've stopped gambling with their beauty and started trusting Good Hands
           </p>
-          <Link href="/#booking" className="btn-gold text-lg px-10 py-4 inline-block">
+          <Link href="/#booking" className="btn-gold inline-block">
             Book Your First Experience
           </Link>
           <p className="text-sm text-harbor/60 mt-6">

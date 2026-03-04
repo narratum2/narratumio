@@ -44,7 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand + NAP */}
           <div>
-            <h3 className="text-2xl font-serif mb-4">Good Hands</h3>
+            <h3 className="text-2xl font-serif mb-4 text-porcelain">Good Hands</h3>
             <p className="text-porcelain/70 text-sm leading-relaxed mb-4">
               Your beauty concierge in Lisbon. We know everyone worth knowing.
             </p>
@@ -81,7 +81,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            <h4 className="font-semibold mb-4 text-porcelain">Services</h4>
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.href}>
@@ -98,7 +98,7 @@ export default function Footer() {
 
           {/* Neighborhoods */}
           <div>
-            <h4 className="font-semibold mb-4">Neighborhoods</h4>
+            <h4 className="font-semibold mb-4 text-porcelain">Neighborhoods</h4>
             <ul className="space-y-2">
               {footerLinks.neighborhoods.map((link) => (
                 <li key={link.href}>
@@ -115,7 +115,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4 text-porcelain">Company</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
@@ -132,7 +132,7 @@ export default function Footer() {
 
           {/* For Professionals */}
           <div>
-            <h4 className="font-semibold mb-4">For Professionals</h4>
+            <h4 className="font-semibold mb-4 text-porcelain">For Professionals</h4>
             <ul className="space-y-2">
               {footerLinks.professionals.map((link) => (
                 <li key={link.href}>

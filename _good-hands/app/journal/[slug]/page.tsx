@@ -187,7 +187,7 @@ export default function ArticlePage({ params }: PageProps) {
       )}
 
       {/* CTA Section */}
-      <section className="bg-ink text-white py-16">
+      <section className="section-padding bg-ink text-white">
         <div className="container-custom max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-4 text-white">
             Ready to Experience Lisbon's Beauty Scene?

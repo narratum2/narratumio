@@ -326,7 +326,7 @@ export default function AvenidaPage() {
           <p className="text-xl text-porcelain/80 mb-8 max-w-2xl mx-auto">
             Let us match you with luxury beauty services on Lisbon&apos;s most prestigious boulevard
           </p>
-          <Link href="/#booking" className="btn-primary">Book Now</Link>
+          <Link href="/#booking" className="btn-gold">Book Now</Link>
           <p className="text-sm text-porcelain/60 mt-6">
             All prices include expert concierge matching & coordination
           </p>

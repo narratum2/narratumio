@@ -184,7 +184,7 @@ export default function BookingForm() {
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className="input-field"
+                  className="select-field"
                 >
                   <option value="">Select a service</option>
                   <option value="hair">Hair Styling</option>
@@ -249,7 +249,7 @@ export default function BookingForm() {
                     value={formData.time}
                     onChange={handleChange}
                     required
-                    className="input-field"
+                    className="select-field"
                   >
                     <option value="">Select a time</option>
                     <option value="09:00">9:00 AM</option>

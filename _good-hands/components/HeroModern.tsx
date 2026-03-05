@@ -8,8 +8,8 @@ export default function HeroModern() {
     <div className="mt-20">
       <div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[350px] overflow-hidden">
         <Image
-          src="/brand-images/hero-salon-interior.png"
-          alt="Luxury beauty salon in Lisbon with sage green arches"
+          src="/brand-images/hero-salon-interior.jpg"
+          alt="Luxury beauty salon in Lisbon with professionals styling clients"
           fill
           className="object-cover object-center"
           priority

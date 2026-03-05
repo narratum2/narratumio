@@ -108,9 +108,9 @@ export default function GuidesPage() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="text-2xl font-serif mb-1">{neighborhood.name}</h3>
+                    <h3 className="text-2xl font-serif mb-1 drop-shadow-lg">{neighborhood.name}</h3>
                   </div>
                 </div>
                 <div className="p-4">

@@ -198,6 +198,161 @@ These places don't speak much English. They don't have credit card machines. The
     readTime: '4 min read',
     tags: ['Lisbon Guide', 'Hidden Gems', 'Local Favorites'],
   },
+  'digital-nomad-beauty-lisbon': {
+    title: 'Beauty & Wellness for Digital Nomads in Lisbon',
+    excerpt: 'Your self-care guide to looking good and feeling great while working remotely in Portugal\'s sunniest capital.',
+    content: `Living in Lisbon as a digital nomad is incredible -- affordable, beautiful, perfect weather. But finding a good hairstylist or skincare routine in a new city? That part is harder than finding fast WiFi.
+
+## The Problem Nobody Talks About
+
+You are new in Lisbon. You do not know who to trust. Your neck hurts from laptop work. Your skin looks terrible from screen time. You need a haircut but do not speak Portuguese. Every Google search returns 50 options with no way to tell who is actually good.
+
+Here is the thing: Lisbon's beauty scene is better quality than the prices suggest. English is widely spoken. But booking culture is different -- more WhatsApp than apps. Walk-ins are still common. This is Mediterranean wellness culture, not New York efficiency.
+
+## Build Your Routine: Month by Month
+
+### Month 1: Discovery
+
+Your first month is about finding your people. Budget 100-150 EUR for exploratory services.
+
+- **Week 1:** Research. Join digital nomad Facebook groups and ask for recommendations
+- **Week 2:** Book a haircut consultation and try one facial to assess your skin in Lisbon's climate
+- **Week 3:** Purchase local skincare products your esthetician recommends
+- **Week 4:** Evaluate. What felt essential? Which professionals do you want to return to?
+
+### Months 2-3: Lock It In
+
+Set up standing appointments:
+
+- Haircut every 4-6 weeks (40-80 EUR)
+- Facial every 4 weeks (60-120 EUR)
+- Massage every 2-4 weeks (50-90 EUR)
+- Gel manicure every 2-3 weeks (35-55 EUR)
+
+**Monthly budget:** 250-400 EUR covers everything. That is less than most nomads spend on coffee.
+
+## Solving Nomad-Specific Problems
+
+### Laptop Posture
+
+Working from cafes and Airbnb setups wreaks havoc on your body. Forward head posture, rounded shoulders, tension headaches -- sound familiar?
+
+**What works:** Deep tissue massage focused on neck and shoulders (50-70 EUR, bi-weekly). Ask specifically for "therapeutic" massage. Some therapists now specialize in tech worker issues.
+
+### Screen-Damaged Skin
+
+Eight to twelve hours of daily screen exposure causes blue light damage, dark circles, and dull complexion.
+
+**What works:** LED light therapy (red for collagen, blue for inflammation), oxygen facials for instant brightness, and vitamin C treatments for antioxidant protection. At home, SPF 50 is non-negotiable -- even indoors. Blue light is real.
+
+### Travel-Weary Recovery
+
+Frequent beach weekends and trips home leave your skin dehydrated and your hair damaged.
+
+**What works:** Book a hydrating facial within 48 hours of arriving back. The lymphatic drainage reduces puffiness and brings back your glow immediately.
+
+## Navigating Lisbon's Booking Culture
+
+**How it is different from home:**
+
+- Booking is often via WhatsApp or phone call, not apps
+- Portuguese culture is more relaxed -- 5-10 minutes late is generally acceptable
+- Lunch breaks are long (1-3pm) -- many places close
+- Cash is still common at smaller salons
+- Tipping 5-10% is appreciated but not mandatory
+
+**Key phrases that help:**
+
+"Fala ingles?" (Do you speak English?), "Tenho hora marcada" (I have an appointment), and "Quanto custa?" (How much?). But honestly, photos are the universal language.
+
+## The Real Value of Self-Care Abroad
+
+Beauty services are not frivolous expenses -- they are infrastructure for sustainable remote work. They create routine, enforce breaks from your laptop, and remind you that you are more than your screen.
+
+Lisbon offers world-class services at prices that make regular self-care genuinely accessible. Take advantage.`,
+    image: '/brand-images/blog-digital-nomad-beauty.jpg',
+    date: 'February 12, 2026',
+    category: 'Lifestyle',
+    author: 'Good Hands Team',
+    authorBio: 'Our editorial team knows Lisbon\'s beauty scene inside and out.',
+    readTime: '6 min read',
+    tags: ['Digital Nomads', 'Self-Care', 'Lisbon Lifestyle', 'Remote Work'],
+  },
+  'seasonal-beauty-lisbon': {
+    title: 'Seasonal Beauty Guide: What Lisbon\'s Climate Does to Your Skin',
+    excerpt: 'How 2,800 hours of annual sunshine, Atlantic salt air, and Mediterranean humidity affect your beauty routine -- season by season.',
+    content: `Lisbon is not just another European city. It is a Mediterranean paradise with 300 days of sunshine, Atlantic breezes, and microclimates that shift from neighborhood to neighborhood. This unique environment significantly affects your hair, skin, and makeup needs throughout the year.
+
+## Understanding the Climate
+
+Lisbon sits at the confluence of two climate influences: Mediterranean (hot, dry summers) and Atlantic (moderate temperatures, persistent breeze). The result is 2,800+ hours of annual sunshine, humidity that hovers between 60-80%, and persistent winds that most beauty guides ignore entirely.
+
+**What this means for you:**
+
+- Higher risk of sun damage and hyperpigmentation year-round
+- Salt air that dries skin and hair even if you never go to the beach
+- Hard water with high mineral content that irritates sensitive skin
+- White buildings that reflect additional UV -- you are getting exposure from all angles
+
+## Spring (March-May): The Transition
+
+**Hair:** Wind plus increasing sun equals frizz and early color fading. This is the perfect time for a keratin treatment -- it lasts 3-4 months, carrying you through summer. Start using UV protection spray on your part line.
+
+**Skin:** Switch from rich winter creams to gel-creams or serums. Introduce SPF 50 now -- the sun is deceptively strong even in mild temperatures. A vitamin C serum under sunscreen prepares your skin for summer.
+
+**Book now:** Chemical peel (early spring for glowing summer skin), keratin treatment, and a professional skin assessment.
+
+## Summer (June-September): Survival Mode
+
+**Hair:** Salt air, chlorine, intense sun, and 35C heat will damage, dry, and fade your hair if you are not careful. Pre-swim trick: wet your hair with fresh water before the ocean or pool -- it absorbs less salt and chlorine. Embrace air-dry textures and skip heat styling entirely.
+
+**Skin:** SPF 50+ is non-negotiable. Reapply every 2 hours if outdoors. Keep it light -- hyaluronic acid serums, not heavy creams. After-sun care with aloe vera after beach days. And do not forget your decolletage -- it is the most commonly neglected area for sun damage.
+
+**Makeup reality:** Everything melts. Switch to tinted SPF moisturizer instead of foundation. Waterproof everything. Lip stain over lipstick. Consider a lash lift so you can skip mascara entirely.
+
+**Book now:** Monthly hydrating facials, LED light therapy (repairs damage without sun sensitivity), and express blowouts for events instead of home heat styling.
+
+## Autumn (October-November): Repair Season
+
+This is when you fix summer's damage. The lower UV makes it safe to use more aggressive treatments.
+
+**Hair:** Deep repair with Olaplex or K18 treatments monthly. Cut damaged ends -- do not carry summer split ends into winter. This is THE season for major hair transformations: going darker, big cuts, color corrections.
+
+**Skin:** Start retinol now (avoided during summer due to sun sensitivity). Book a series of chemical peels to fade sun spots. Microneedling with PRP addresses texture and fine lines. Rebuild your skin barrier before winter.
+
+**Book now:** Full color transformation, series of chemical peels (2-3 treatments), microneedling, and a professional winter treatment plan.
+
+## Winter (December-February): Nourish and Prepare
+
+Lisbon's winter is nothing like Northern Europe -- humidity stays high, temperatures rarely drop below 8C, and you still get meaningful sun. The main challenges are rain-induced frizz and wind.
+
+**Hair:** Anti-frizz products become essential. Weekly deep conditioning masks. Consider a Brazilian Blowout to rain-proof your hair through the wettest months.
+
+**Skin:** Move to richer moisturizers and oils. Continue SPF -- UV is present even in winter. Add hydrating masks weekly. Pay attention to lip care -- Atlantic wind chaps lips faster than cold.
+
+**Book now:** Deeply nourishing facials, paraffin wax treatments for hands and feet, and any aggressive corrective treatments you have been putting off.
+
+## Year-Round Non-Negotiables
+
+Five things every person living in Lisbon should maintain regardless of season:
+
+1. **SPF 50, 365 days.** UV is present even in winter. Reflected light from white buildings adds exposure. Lisbon's hills increase altitude exposure.
+
+2. **Antioxidant serum every morning.** Vitamin C or E under sunscreen. Protects against pollution and UV damage.
+
+3. **Leave-in conditioner always.** Wind protection year-round. Lightweight formula for summer, richer for winter.
+
+4. **Hydrating mist in your bag.** The humidity paradox -- air feels humid but can still dehydrate skin. Refresh throughout the day.
+
+5. **Quality sunglasses.** Prevent squinting (reduces crow's feet) and protect the delicate eye area. Essential for sun-drenched Lisbon life.`,
+    image: '/brand-images/blog-seasonal-beauty.jpg',
+    date: 'January 20, 2026',
+    category: 'Skincare',
+    author: 'Good Hands Team',
+    authorBio: 'Our editorial team knows Lisbon\'s beauty scene inside and out.',
+    readTime: '7 min read',
+    tags: ['Seasonal Beauty', 'Skincare', 'Lisbon Climate', 'Hair Care'],
+  },
 }
 
 export function getArticle(slug: string): Article | null {

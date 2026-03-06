@@ -59,7 +59,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between" style={{ height: '80px' }}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <span className="text-xl font-serif font-normal text-black tracking-tight group-hover:text-gold transition-colors duration-300">
+            <span className="text-2xl md:text-3xl font-serif font-normal text-black tracking-tight group-hover:text-gold transition-colors duration-300">
               Good Hands
             </span>
           </Link>

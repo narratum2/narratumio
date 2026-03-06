@@ -59,6 +59,85 @@ async function sendToMake(scenario: string, data: any) {
   }
 }
 
+// Send notification email via Resend (no package needed)
+async function sendNotificationEmail(booking: {
+  name: string
+  email: string
+  phone: string
+  service: string
+  neighborhood?: string
+  date: string
+  time: string
+  message?: string
+}) {
+  const resendApiKey = process.env.RESEND_API_KEY
+  const notifyEmail = process.env.NOTIFICATION_EMAIL
+
+  if (!resendApiKey || !notifyEmail) {
+    console.warn('Email notification not configured (set RESEND_API_KEY and NOTIFICATION_EMAIL)')
+    return null
+  }
+
+  const serviceLabels: Record<string, string> = {
+    hair: 'Hair Styling',
+    nails: 'Nail Care',
+    skincare: 'Skincare',
+    makeup: 'Makeup',
+    wellness: 'Wellness',
+    wedding: 'Wedding Package',
+    retreat: 'Retreat Package',
+    corporate: 'Corporate Package',
+  }
+
+  const serviceName = serviceLabels[booking.service] || booking.service
+  const formattedDate = new Date(booking.date).toLocaleDateString('en-GB', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+  })
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${resendApiKey}`,
+      },
+      body: JSON.stringify({
+        from: 'Good Hands <bookings@goodhandsstudio.com>',
+        to: [notifyEmail],
+        subject: `New Booking Request: ${serviceName} — ${booking.name}`,
+        html: `
+          <div style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; padding: 32px 0;">
+            <h2 style="font-size: 22px; margin-bottom: 24px; color: #1a1a1a;">New Booking Request</h2>
+            <table style="width: 100%; border-collapse: collapse; font-size: 15px; color: #333;">
+              <tr><td style="padding: 8px 0; color: #888; width: 140px;">Name</td><td style="padding: 8px 0; font-weight: 600;">${booking.name}</td></tr>
+              <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;"><a href="mailto:${booking.email}" style="color: #1a1a1a;">${booking.email}</a></td></tr>
+              <tr><td style="padding: 8px 0; color: #888;">Phone</td><td style="padding: 8px 0;"><a href="tel:${booking.phone}" style="color: #1a1a1a;">${booking.phone}</a></td></tr>
+              <tr><td style="padding: 8px 0; color: #888;">Service</td><td style="padding: 8px 0;">${serviceName}</td></tr>
+              ${booking.neighborhood ? `<tr><td style="padding: 8px 0; color: #888;">Neighborhood</td><td style="padding: 8px 0;">${booking.neighborhood}</td></tr>` : ''}
+              <tr><td style="padding: 8px 0; color: #888;">Date</td><td style="padding: 8px 0;">${formattedDate}</td></tr>
+              <tr><td style="padding: 8px 0; color: #888;">Time</td><td style="padding: 8px 0;">${booking.time}</td></tr>
+              ${booking.message ? `<tr><td style="padding: 8px 0; color: #888; vertical-align: top;">Message</td><td style="padding: 8px 0;">${booking.message}</td></tr>` : ''}
+            </table>
+            <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
+            <p style="font-size: 13px; color: #888;">Reply to the client at <a href="mailto:${booking.email}" style="color: #1a1a1a;">${booking.email}</a> or call <a href="tel:${booking.phone}" style="color: #1a1a1a;">${booking.phone}</a>.</p>
+          </div>
+        `,
+      }),
+    })
+
+    if (!response.ok) {
+      const err = await response.text()
+      console.error('Resend API error:', err)
+      return null
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.error('Email notification error:', error)
+    return null
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
@@ -196,16 +275,29 @@ export async function POST(request: NextRequest) {
             }])
             .select()
         : Promise.resolve({ data: null, error: null }),
+
+      // 5. Email notification to owner
+      sendNotificationEmail({
+        name,
+        email,
+        phone,
+        service,
+        neighborhood: data.neighborhood,
+        date,
+        time,
+        message: data.message,
+      }),
     ])
 
     // Check results
-    const [notionBooking, notionCustomer, makeResult, supabaseResult] = results
+    const [notionBooking, notionCustomer, makeResult, supabaseResult, emailNotification] = results
 
     const successSummary = {
       notion: notionBooking.status === 'fulfilled' && notionBooking.value !== null,
       customer: notionCustomer.status === 'fulfilled',
       automation: makeResult.status === 'fulfilled',
       backup: supabaseResult.status === 'fulfilled',
+      emailNotification: emailNotification.status === 'fulfilled',
     }
 
     console.log('✅ Booking created:', successSummary)

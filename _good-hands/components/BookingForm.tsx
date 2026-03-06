@@ -295,22 +295,37 @@ export default function BookingForm() {
               />
             </div>
 
+            <p className="text-harbor/70 text-xs text-center mb-4">
+              This is a request, not a final booking. We will personally confirm availability and get back to you within a few hours.
+            </p>
+
             <button
               type="submit"
               disabled={isSubmitting}
               className="w-full btn-primary btn-primary-full-mobile disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
+              {isSubmitting ? 'Submitting...' : 'Send Booking Request'}
             </button>
 
             {submitStatus === 'success' && (
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 text-center text-sage font-medium"
+                className="mt-6 bg-sage/10 border border-sage/30 rounded-lg p-6 text-center"
               >
-                Thank you! We\'ll be in touch within 24 hours to confirm your booking.
-              </motion.p>
+                <div className="w-12 h-12 bg-sage/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-sage" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-serif font-semibold mb-2">Request Received</h3>
+                <p className="text-harbor text-sm mb-3">
+                  We have your booking request and will get back to you <strong>within a few hours</strong> to confirm availability and finalize your appointment.
+                </p>
+                <p className="text-harbor/70 text-xs">
+                  Check your inbox (and spam folder) for a confirmation from the Good Hands team.
+                </p>
+              </motion.div>
             )}
 
             {submitStatus === 'error' && (

@@ -43,28 +43,28 @@
         "offerings": [
           {
             "name": "Precision Cut",
-            "priceFrom": 80,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "60 minutes",
             "includes": "Consultation, precision cutting, styling, concierge coordination"
           },
           {
             "name": "Color & Highlights",
-            "priceFrom": 120,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "120 minutes",
             "includes": "Color consultation, professional color application, styling, aftercare products"
           },
           {
             "name": "Balayage",
-            "priceFrom": 180,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "180 minutes",
             "includes": "Custom balayage technique, toning, deep conditioning, styling"
           },
           {
             "name": "Blowout & Styling",
-            "priceFrom": 45,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "45 minutes",
             "includes": "Professional blowout, styling, finishing products"
@@ -79,25 +79,25 @@
         "offerings": [
           {
             "name": "Classic Manicure",
-            "priceFrom": 35,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "45 minutes"
           },
           {
             "name": "Gel Manicure",
-            "priceFrom": 45,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "60 minutes"
           },
           {
             "name": "Luxury Pedicure",
-            "priceFrom": 55,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "75 minutes"
           },
           {
             "name": "Nail Art",
-            "priceFrom": 20,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "30 minutes"
           }
@@ -111,20 +111,20 @@
         "offerings": [
           {
             "name": "Signature Facial",
-            "priceFrom": 95,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "75 minutes",
             "includes": "Deep cleansing, exfoliation, extraction, massage, mask, serum"
           },
           {
             "name": "Anti-Aging Treatment",
-            "priceFrom": 140,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "90 minutes"
           },
           {
             "name": "Microdermabrasion",
-            "priceFrom": 120,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "60 minutes"
           }
@@ -138,26 +138,26 @@
         "offerings": [
           {
             "name": "Event Makeup",
-            "priceFrom": 70,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "45 minutes"
           },
           {
             "name": "Bridal Makeup",
-            "priceFrom": 150,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "90 minutes",
             "includes": "Trial session, wedding day application, touch-up kit"
           },
           {
             "name": "Makeup Lesson",
-            "priceFrom": 120,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "90 minutes"
           },
           {
             "name": "Photography & Editorial Makeup",
-            "priceFrom": 150,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "60 minutes",
             "includes": "Professional makeup for photo shoots, editorial content, brand campaigns"
@@ -172,19 +172,19 @@
         "offerings": [
           {
             "name": "Swedish Massage",
-            "priceFrom": 90,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "60 minutes"
           },
           {
             "name": "Deep Tissue Massage",
-            "priceFrom": 100,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "75 minutes"
           },
           {
             "name": "Hot Stone Massage",
-            "priceFrom": 110,
+            "priceFrom": "Pricing on request",
             "currency": "EUR",
             "duration": "90 minutes"
           }

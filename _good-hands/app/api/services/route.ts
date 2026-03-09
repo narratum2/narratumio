@@ -7,8 +7,7 @@ const services = [
     name: 'Premium Hair Styling',
     category: 'hair',
     description: 'Expert hair colorists and stylists in Lisbon. We match you with professionals based on your hair type, desired style, and preferences.',
-    price: 'From €105',
-    basePrice: 105,
+    price: 'Pricing on request',
     duration: '90 min',
     includedServices: ['Consultation', 'Styling', 'Concierge coordination'],
     neighborhoods: ['Chiado', 'Principe Real', 'Avenida', 'Alfama', 'Belem'],
@@ -18,8 +17,7 @@ const services = [
     name: 'Luxury Nail Care',
     category: 'nails',
     description: 'Premium manicure and pedicure services in Lisbon. Vetted nail technicians using high-quality products and techniques.',
-    price: 'From €65',
-    basePrice: 65,
+    price: 'Pricing on request',
     duration: '60 min',
     includedServices: ['Manicure or Pedicure', 'Polish application', 'Concierge coordination'],
     neighborhoods: ['Chiado', 'Principe Real', 'Baixa', 'Cascais'],
@@ -29,8 +27,7 @@ const services = [
     name: 'Skincare Treatments',
     category: 'skincare',
     description: 'Professional facial treatments and skincare consultations in Lisbon. Customized to your skin type and concerns.',
-    price: 'From €95',
-    basePrice: 95,
+    price: 'Pricing on request',
     duration: '75 min',
     includedServices: ['Skin analysis', 'Facial treatment', 'Product recommendations', 'Concierge coordination'],
     neighborhoods: ['Chiado', 'Principe Real', 'Avenida', 'Cascais'],
@@ -40,8 +37,7 @@ const services = [
     name: 'Professional Makeup',
     category: 'makeup',
     description: 'Expert makeup artists in Lisbon for special events, weddings, photoshoots, or everyday looks.',
-    price: 'From €85',
-    basePrice: 85,
+    price: 'Pricing on request',
     duration: '45 min',
     includedServices: ['Makeup application', 'Style consultation', 'Concierge coordination'],
     neighborhoods: ['Chiado', 'Principe Real', 'Avenida', 'Alfama', 'Belem', 'Sintra'],
@@ -51,8 +47,7 @@ const services = [
     name: 'Wellness & Massage',
     category: 'wellness',
     description: 'Relaxation and therapeutic massage services in Lisbon. Certified massage therapists for stress relief and body wellness.',
-    price: 'From €80',
-    basePrice: 80,
+    price: 'Pricing on request',
     duration: '60 min',
     includedServices: ['Massage therapy', 'Aromatherapy', 'Concierge coordination'],
     neighborhoods: ['Principe Real', 'Avenida', 'Cascais', 'Sintra'],
@@ -130,10 +125,9 @@ export async function GET(request: Request) {
     )
   }
 
-  // Filter by max price
+  // Price filtering not available — pricing is on request
   if (maxPrice) {
-    const max = parseInt(maxPrice)
-    filteredServices = filteredServices.filter(s => s.basePrice <= max)
+    // no-op: individual service prices are provided on request
   }
 
   return NextResponse.json({

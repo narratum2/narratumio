@@ -38,7 +38,7 @@ const faqs = [
     questions: [
       {
         q: 'How much do services cost?',
-        a: 'Our pricing is transparent and includes our concierge service fee: Hair Styling from €45 (blowout) to €180 (balayage), Skincare & Facials from €95, Makeup from €70, Nail Care from €35, and Wellness from €90. Gold members save 15% and Platinum members save 25% on all services. Prices vary based on specific treatment, professional expertise, and session duration.'
+        a: 'Pricing depends on the service, professional, and your specific needs. We provide a personalized quote after understanding what you are looking for — no surprises, no hidden fees. Our concierge service is always included. Gold members save 15% and Platinum members save 25% on all services. Send us a booking request and we will get back to you with a tailored proposal.'
       },
       {
         q: 'What\'s included in the price?',

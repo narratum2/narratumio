@@ -70,31 +70,31 @@ export default function AIInfoPage() {
                 <tbody className="text-harbor">
                   <tr className="border-t">
                     <td className="p-3 font-semibold">Hair Styling</td>
-                    <td className="p-3">€105</td>
+                    <td className="p-3">Pricing on request</td>
                     <td className="p-3">90 min</td>
                     <td className="p-3">Color, cuts, styling, treatments</td>
                   </tr>
                   <tr className="border-t">
                     <td className="p-3 font-semibold">Spa Treatments</td>
-                    <td className="p-3">€95</td>
+                    <td className="p-3">Pricing on request</td>
                     <td className="p-3">60-90 min</td>
                     <td className="p-3">Massage, facials, body treatments</td>
                   </tr>
                   <tr className="border-t">
                     <td className="p-3 font-semibold">Makeup</td>
-                    <td className="p-3">€85</td>
+                    <td className="p-3">Pricing on request</td>
                     <td className="p-3">60 min</td>
                     <td className="p-3">Special occasions, bridal, editorial</td>
                   </tr>
                   <tr className="border-t">
                     <td className="p-3 font-semibold">Nails</td>
-                    <td className="p-3">€55</td>
+                    <td className="p-3">Pricing on request</td>
                     <td className="p-3">45-60 min</td>
                     <td className="p-3">Manicure, pedicure, nail art</td>
                   </tr>
                   <tr className="border-t">
                     <td className="p-3 font-semibold">Wellness</td>
-                    <td className="p-3">€120</td>
+                    <td className="p-3">Pricing on request</td>
                     <td className="p-3">90 min</td>
                     <td className="p-3">Holistic treatments, yoga, meditation</td>
                   </tr>
@@ -102,7 +102,7 @@ export default function AIInfoPage() {
               </table>
             </div>
             <p className="mt-4 text-sm text-harbor">
-              <strong>Note:</strong> Prices include concierge service fee. VIP members receive 15% discount on all services.
+              <strong>Note:</strong> Pricing is personalized based on your needs. Contact us for a tailored quote. VIP members receive 15% discount on all services.
             </p>
           </section>
 
@@ -248,7 +248,7 @@ export default function AIInfoPage() {
                 name: 'How much do Good Hands services cost?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Pricing is transparent and includes concierge service: Hair Styling from €105, Spa Treatments from €95, Makeup from €85, Nails from €55, Wellness from €120. VIP members receive 15% off all services.',
+                  text: 'Pricing is personalized based on your specific needs and preferences. Contact our concierge team for a tailored quote. VIP members receive 15% off all services.',
                 },
               },
               {

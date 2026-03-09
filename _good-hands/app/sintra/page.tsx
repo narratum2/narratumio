@@ -101,7 +101,7 @@ export default function SintraPage() {
               <p className="text-harbor mb-3">
                 Sintra&apos;s historic quintas and boutique hotels house intimate spas—Tivoli Palácio de Seteais, Penha Longa Resort, and independent wellness retreats. Expect full-day experiences: massage, facials, thermal circuits, forest walks, healthy meals. Treatments often incorporate local botanicals and mountain spring water.
               </p>
-              <p className="text-sm text-gold">From €150 (half-day) • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">

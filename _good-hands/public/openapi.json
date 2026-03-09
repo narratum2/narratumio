@@ -39,7 +39,7 @@
           {
             "name": "priceRange",
             "in": "query",
-            "description": "Filter by price range: 'budget' (€55-80), 'moderate' (€80-150), 'luxury' (€150-250), 'ultra' (€250+)",
+            "description": "Filter by price range: 'budget', 'moderate', 'luxury', 'ultra'",
             "required": false,
             "schema": {
               "type": "string",
@@ -74,7 +74,7 @@
                     "name": "Premium Balayage & Hair Color",
                     "category": "hair",
                     "description": "Expert hand-painted highlights and color treatments with top colorists specializing in natural-looking dimension and low-maintenance color.",
-                    "price": "145-250",
+                    "price": "Pricing on request",
                     "currency": "EUR",
                     "duration": "2.5-3 hours",
                     "includes": ["Color consultation", "Treatment mask", "Blowout styling"],

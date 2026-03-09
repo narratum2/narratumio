@@ -52,7 +52,7 @@ const experiences = [
       'Corporate gifting options',
     ],
     image: '/brand-images/experience-corporate-wellness.png',
-    priceFrom: 'From €35/person',
+    priceFrom: 'Pricing on request',
   },
   {
     title: 'Good Hands Membership',

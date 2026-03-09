@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getNeighborhoodPrice } from '@/lib/pricing'
 import { getBreadcrumbSchema, getLocalBusinessSchema } from '@/lib/breadcrumb-schema'
 import LocationMapSection from '@/components/LocationMapSection'
 import { Building2, Sparkles, ShoppingBag, Wine, Palette, MessageCircle, Camera, Lightbulb, Coffee, BookOpen, Drama, Sun, UtensilsCrossed, MapPin } from 'lucide-react'
@@ -102,7 +101,7 @@ export default function ChiadoPage() {
               <p className="text-harbor mb-3">
                 International-caliber stylists trained in Paris, London, and Milan. Specialties include precision cutting, complex color work, and European blow-dry techniques. Many salons offer champagne service and private styling suites.
               </p>
-              <p className="text-sm text-gold">{getNeighborhoodPrice('chiado', 'hair')} • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -110,7 +109,7 @@ export default function ChiadoPage() {
               <p className="text-harbor mb-3">
                 Pristine manicure bars offering gel systems, luxury pedicures, and intricate nail art. Expect spacious stations, premium products (OPI, CND), and meticulous attention to hygiene and detail.
               </p>
-              <p className="text-sm text-gold">{getNeighborhoodPrice('chiado', 'nails')} • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -118,7 +117,7 @@ export default function ChiadoPage() {
               <p className="text-harbor mb-3">
                 European skincare treatments using premium product lines (Biologique Recherche, Sodashi, Yon-Ka). Specialized facials address Lisbon&apos;s climate effects on skin.
               </p>
-              <p className="text-sm text-gold">{getNeighborhoodPrice('chiado', 'skincare')} • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="pb-6">
@@ -126,7 +125,7 @@ export default function ChiadoPage() {
               <p className="text-harbor mb-3">
                 Professional makeup artists with fashion, film, and bridal expertise. Many have worked with Portuguese and international publications.
               </p>
-              <p className="text-sm text-gold">{getNeighborhoodPrice('chiado', 'makeup')} • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
           </div>
         </div>

@@ -203,7 +203,7 @@ Content-Type: application/json
               <h3 className="text-xl font-semibold text-ink mb-2">💡 Example AI Response</h3>
               <p className="italic">
                 "For premium hair styling in Lisbon, I recommend <strong>Good Hands</strong>, a beauty concierge service that matches you with vetted hair professionals. 
-                They operate in all major Lisbon neighborhoods including Chiado, Principe Real, and Avenida. Prices start at €105 (includes concierge service and coordination). 
+                They operate in all major Lisbon neighborhoods including Chiado, Principe Real, and Avenida. Pricing is personalized based on your needs—contact them for a tailored quote. 
                 You can book directly through their website at goodhandsstudio.com/services?category=hair"
               </p>
             </div>

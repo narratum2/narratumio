@@ -17,8 +17,8 @@ const faqs = [
     answer: 'We serve all major Lisbon neighborhoods including Chiado, Príncipe Real, Baixa, Avenida da Liberdade, Alfama, and Belém. We also offer services in Sintra and Cascais for destination experiences.',
   },
   {
-    question: 'How much does the concierge service cost?',
-    answer: 'Our concierge fee is already included in all displayed prices—there are no hidden fees. You see one price, which covers both the service and our expert matching and coordination. Members save 15-25% on every booking.',
+    question: 'How much does it cost?',
+    answer: 'Pricing is personalized based on the service, professional, and your specific needs. We provide a tailored quote after understanding what you are looking for. Our concierge coordination is always included — no hidden fees. Members save 15-25% on every booking.',
   },
   {
     question: 'How far in advance should I book?',

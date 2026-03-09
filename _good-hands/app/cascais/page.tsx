@@ -101,7 +101,7 @@ export default function CascaisPage() {
               <p className="text-harbor mb-3">
                 Cascais hotels (Grande Real Villa Italia, Farol Design Hotel, Pestana Cidadela) house world-class spas offering thalassotherapy (seawater treatments), outdoor massage pavilions, and sunset spa rituals. Many offer day passes or membership programs for non-guests.
               </p>
-              <p className="text-sm text-gold">From €120 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -109,7 +109,7 @@ export default function CascaisPage() {
               <p className="text-harbor mb-3">
                 Salons specializing in beach-appropriate styles—beachy waves, salt spray textures, protective treatments for sun and sea exposure. Many clients are expats living here year-round, so quality is consistently high and international standards apply.
               </p>
-              <p className="text-sm text-gold">From €75 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -117,7 +117,7 @@ export default function CascaisPage() {
               <p className="text-harbor mb-3">
                 Pre-beach body prep services: spray tans, bikini waxing, body scrubs, cellulite treatments, and summer skin prep. Cascais excels at beach-body treatments with professionals who understand maintaining results in sun, sand, and saltwater.
               </p>
-              <p className="text-sm text-gold">From €50 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="pb-6">
@@ -125,7 +125,7 @@ export default function CascaisPage() {
               <p className="text-harbor mb-3">
                 Coastal lifestyle demands long-lasting nail services. Cascais nail technicians excel at gel systems that survive pool, beach, and active lifestyles. Expect 3+ weeks of perfect wear, even with daily swimming.
               </p>
-              <p className="text-sm text-gold">From €45 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
           </div>
         </div>

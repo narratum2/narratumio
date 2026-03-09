@@ -1,50 +1,26 @@
 /**
  * Single source of truth for Good Hands pricing.
- * All pages and components should reference these values.
+ * Individual service prices are not displayed publicly — pricing is on request.
+ * Only membership and premium package pricing is shown.
  */
 
-export const BASE_PRICES = {
-  hair: 45,
-  nails: 35,
-  skincare: 95,
-  makeup: 70,
-  wellness: 90,
-} as const
+export type ServiceCategory = 'hair' | 'nails' | 'skincare' | 'makeup' | 'wellness'
 
-export type ServiceCategory = keyof typeof BASE_PRICES
+/** Display string for individual services — always "Pricing on request" */
+export const getBasePriceDisplay = (_category: ServiceCategory): string =>
+  'Pricing on request'
 
-/** Base price strings for display (e.g. "From €105") */
-export const getBasePriceDisplay = (category: ServiceCategory): string =>
-  `From €${BASE_PRICES[category]}`
+/** Full pricing sentence for FAQ */
+export const FULL_PRICING_SENTENCE = 'Pricing depends on the service and professional. We provide a personalized quote after understanding your needs — no surprises, no hidden fees. Concierge service is always included.'
 
-/** All base prices for FAQ and other copy */
-export const PRICING_DISPLAY = {
-  hair: `Hair starts at €${BASE_PRICES.hair}`,
-  nails: `Nails at €${BASE_PRICES.nails}`,
-  skincare: `Skincare at €${BASE_PRICES.skincare}`,
-  makeup: `Makeup at €${BASE_PRICES.makeup}`,
-  wellness: `Wellness at €${BASE_PRICES.wellness}`,
-} as const
+/** Neighborhood price display */
+export const getNeighborhoodPrice = (
+  _neighborhood: string,
+  _category: ServiceCategory
+): string => 'Pricing on request'
 
-/** Full pricing sentence for FAQ "How much does it cost?" */
-export const FULL_PRICING_SENTENCE = `${PRICING_DISPLAY.hair}. ${PRICING_DISPLAY.nails}. ${PRICING_DISPLAY.skincare}. ${PRICING_DISPLAY.makeup}. ${PRICING_DISPLAY.wellness}. All prices include the service and our concierge fee. No hidden costs.`
-
-/** Neighborhood-specific pricing (some areas differ from base) */
-export const NEIGHBORHOOD_PRICES: Record<string, Partial<Record<ServiceCategory, number>>> = {
-  chiado: { hair: 50, nails: 40, skincare: 110, makeup: 75 },
-}
-
-/** Membership tier pricing (monthly) */
+/** Membership tier pricing (monthly) — these are fixed Stripe products */
 export const MEMBERSHIP_PRICES = {
   gold: 49,
   platinum: 99,
 } as const
-
-export const getNeighborhoodPrice = (
-  neighborhood: string,
-  category: ServiceCategory
-): string => {
-  const overrides = NEIGHBORHOOD_PRICES[neighborhood]
-  const price = overrides?.[category] ?? BASE_PRICES[category]
-  return `From €${price}`
-}

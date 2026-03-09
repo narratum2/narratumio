@@ -118,7 +118,7 @@ export default function CorporatePage() {
                     <span>Product sampling</span>
                   </li>
                 </ul>
-                <p className="text-sm font-semibold text-ink">From €35/person</p>
+                <p className="text-sm font-semibold text-ink">Pricing on request</p>
               </div>
 
               {/* Corporate Events */}
@@ -154,7 +154,7 @@ export default function CorporatePage() {
                     <span>Branded experience available</span>
                   </li>
                 </ul>
-                <p className="text-sm font-semibold text-ink">Custom pricing (typically €2,500+)</p>
+                <p className="text-sm font-semibold text-ink">Pricing on request</p>
               </div>
 
               {/* Executive Services */}
@@ -187,7 +187,7 @@ export default function CorporatePage() {
                     <span>Ongoing grooming maintenance</span>
                   </li>
                 </ul>
-                <p className="text-sm font-semibold text-ink">From €150/executive/session</p>
+                <p className="text-sm font-semibold text-ink">Pricing on request</p>
               </div>
             </div>
           </div>
@@ -357,8 +357,8 @@ export default function CorporatePage() {
                   <p className="text-harbor">Services delivered in 3 hours</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-ink mb-2">€50</p>
-                  <p className="text-harbor">Cost per employee</p>
+                  <p className="text-4xl font-bold text-ink mb-2">#1</p>
+                  <p className="text-harbor">Rated retreat highlight</p>
                 </div>
               </div>
 

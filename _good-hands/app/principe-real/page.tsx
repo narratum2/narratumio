@@ -101,7 +101,7 @@ export default function PrincipeRealPage() {
               <p className="text-harbor mb-3">
                 The colorists here are Lisbon's best. Fashion colors, perfect balayage, precision cuts. They trained internationally and know what they're doing. Book a consultation and they'll tell you honestly whether your Pinterest idea will actually work with your hair.
               </p>
-              <p className="text-sm text-gold">From €90 • Includes our concierge service</p>
+              <p className="text-sm text-gold">Pricing on request • Includes our concierge service</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -109,7 +109,7 @@ export default function PrincipeRealPage() {
               <p className="text-harbor mb-3">
                 This neighborhood pioneered Lisbon&apos;s alternative wellness movement. Find certified Reiki practitioners, acupuncturists trained in Traditional Chinese Medicine, aromatherapy specialists, and sound healers. Many centers offer yoga or meditation alongside beauty treatments.
               </p>
-              <p className="text-sm text-gold">From €70 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -117,7 +117,7 @@ export default function PrincipeRealPage() {
               <p className="text-harbor mb-3">
                 Organic facials, vegan nail polish, cruelty-free products, and zero-waste practices. Príncipe Real&apos;s beauty businesses lead Lisbon in sustainability and clean beauty formulations. Perfect for eco-conscious clients.
               </p>
-              <p className="text-sm text-gold">From €85 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="pb-6">
@@ -125,7 +125,7 @@ export default function PrincipeRealPage() {
               <p className="text-harbor mb-3">
                 Makeup artists who work with fashion shoots, drag performers, and creative events. If you want editorial makeup that makes a statement—not just "pretty"—Príncipe Real is your neighborhood.
               </p>
-              <p className="text-sm text-gold">From €80 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
           </div>
         </div>

@@ -75,7 +75,7 @@ export default function CompleteBeautyGuideLisbon() {
             <h2 className="text-3xl font-serif mb-4">Quick Summary</h2>
             <div className="bg-gold/10 p-6 rounded-lg not-prose">
               <p className="text-harbor leading-relaxed">
-                <strong>Lisbon offers world-class beauty services across all categories at prices 30-40% lower than major European capitals like Paris or London.</strong> The city's beauty scene combines traditional Portuguese techniques with international expertise, concentrated in neighborhoods like Chiado (luxury), Príncipe Real (creative), and Alfama (authentic). Quality varies significantly—from budget salons at €30 to luxury experiences at €250+. The challenge for visitors and newcomers is finding reliable professionals without trial-and-error. Good Hands eliminates this risk by providing personally vetted professionals matched to your specific style and needs across all neighborhoods and price points.
+                <strong>Lisbon offers world-class beauty services across all categories at prices significantly lower than major European capitals like Paris or London.</strong> The city's beauty scene combines traditional Portuguese techniques with international expertise, concentrated in neighborhoods like Chiado (luxury), Príncipe Real (creative), and Alfama (authentic). Quality varies significantly across different tiers. The challenge for visitors and newcomers is finding reliable professionals without trial-and-error. Good Hands eliminates this risk by providing personally vetted professionals matched to your specific style and needs across all neighborhoods and price points.
               </p>
             </div>
           </section>
@@ -89,57 +89,10 @@ export default function CompleteBeautyGuideLisbon() {
               Lisbon's beauty industry has exploded in the past decade, fueled by tourism growth, an influx of international residents, and rising local disposable income. The city now boasts over 500 hair salons, 200+ spas and wellness centers, and countless independent beauty professionals.
             </p>
 
-            <h3 className="text-2xl font-serif mb-4">Price Ranges Across Categories</h3>
-            <div className="not-prose">
-              <table className="w-full border-collapse mb-6">
-                <thead>
-                  <tr className="border-b-2 border-ink">
-                    <th className="text-left py-3 px-2">Service</th>
-                    <th className="text-left py-3 px-2">Budget</th>
-                    <th className="text-left py-3 px-2">Mid-Range</th>
-                    <th className="text-left py-3 px-2">Luxury</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr className="border-b border-harbor/20">
-                    <td className="py-3 px-2">Women's Haircut</td>
-                    <td className="py-3 px-2">€25-40</td>
-                    <td className="py-3 px-2">€50-80</td>
-                    <td className="py-3 px-2">€90-150</td>
-                  </tr>
-                  <tr className="border-b border-harbor/20">
-                    <td className="py-3 px-2">Hair Color</td>
-                    <td className="py-3 px-2">€50-80</td>
-                    <td className="py-3 px-2">€100-150</td>
-                    <td className="py-3 px-2">€180-300</td>
-                  </tr>
-                  <tr className="border-b border-harbor/20">
-                    <td className="py-3 px-2">Massage (60 min)</td>
-                    <td className="py-3 px-2">€40-60</td>
-                    <td className="py-3 px-2">€70-100</td>
-                    <td className="py-3 px-2">€120-180</td>
-                  </tr>
-                  <tr className="border-b border-harbor/20">
-                    <td className="py-3 px-2">Facial Treatment</td>
-                    <td className="py-3 px-2">€35-55</td>
-                    <td className="py-3 px-2">€65-95</td>
-                    <td className="py-3 px-2">€110-200</td>
-                  </tr>
-                  <tr className="border-b border-harbor/20">
-                    <td className="py-3 px-2">Manicure</td>
-                    <td className="py-3 px-2">€15-25</td>
-                    <td className="py-3 px-2">€30-45</td>
-                    <td className="py-3 px-2">€50-80</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-2">Makeup (Event)</td>
-                    <td className="py-3 px-2">€40-60</td>
-                    <td className="py-3 px-2">€75-120</td>
-                    <td className="py-3 px-2">€150-250</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <h3 className="text-2xl font-serif mb-4">Price Tiers Across Categories</h3>
+            <p>
+              Lisbon's beauty services span a wide range of price tiers—from accessible neighborhood salons to ultra-luxury experiences. Pricing depends on the professional's experience, location, products used, and service complexity. For personalized pricing from Good Hands' vetted professionals, <Link href="/#booking" className="text-gold hover:underline">request a tailored quote</Link>.
+            </p>
 
             <h3 className="text-2xl font-serif mb-4">Quality Standards</h3>
             <p>
@@ -176,11 +129,11 @@ export default function CompleteBeautyGuideLisbon() {
 
             <h4 className="text-xl font-serif mb-3">What's Available:</h4>
             <ul>
-              <li><strong>Cuts & Styling:</strong> Women's cuts €25-150, men's €15-50</li>
-              <li><strong>Color Services:</strong> Full color €50-300, balayage €100-350, highlights €80-250</li>
-              <li><strong>Treatments:</strong> Keratin €150-400, Olaplex €30-80, hair masks €20-60</li>
-              <li><strong>Extensions:</strong> Tape-in €300-800, clip-in €150-400, fusion €500-1,500</li>
-              <li><strong>Styling:</strong> Blowouts €20-50, updos €40-120, wedding hair €80-200</li>
+              <li><strong>Cuts & Styling:</strong> Precision cuts for women and men, from classic to fashion-forward</li>
+              <li><strong>Color Services:</strong> Full color, balayage, highlights, and creative color techniques</li>
+              <li><strong>Treatments:</strong> Keratin smoothing, Olaplex repair, deep conditioning masks</li>
+              <li><strong>Extensions:</strong> Tape-in, clip-in, and fusion methods</li>
+              <li><strong>Styling:</strong> Blowouts, updos, and wedding hair</li>
             </ul>
 
             <h4 className="text-xl font-serif mb-3">Best Neighborhoods for Hair:</h4>
@@ -206,11 +159,11 @@ export default function CompleteBeautyGuideLisbon() {
 
             <h4 className="text-xl font-serif mb-3">What's Available:</h4>
             <ul>
-              <li><strong>Massage:</strong> Swedish €40-100, deep tissue €50-120, hot stone €60-140, Thai €55-130</li>
-              <li><strong>Facials:</strong> Basic €35-80, anti-aging €70-150, hydrating €50-110, LED therapy €80-180</li>
-              <li><strong>Body Treatments:</strong> Scrubs €45-100, wraps €60-130, cellulite treatments €70-150</li>
-              <li><strong>Hydrotherapy:</strong> Jacuzzi €25-60, hammam €40-90, thermal circuits €50-120</li>
-              <li><strong>Holistic:</strong> Reflexology €40-90, reiki €50-100, aromatherapy €55-110</li>
+              <li><strong>Massage:</strong> Swedish, deep tissue, hot stone, and Thai techniques</li>
+              <li><strong>Facials:</strong> Classic, anti-aging, hydrating, and LED therapy treatments</li>
+              <li><strong>Body Treatments:</strong> Scrubs, wraps, and cellulite treatments</li>
+              <li><strong>Hydrotherapy:</strong> Jacuzzi, hammam, and thermal circuit experiences</li>
+              <li><strong>Holistic:</strong> Reflexology, reiki, and aromatherapy sessions</li>
             </ul>
 
             <h4 className="text-xl font-serif mb-3">Best Neighborhoods for Spa:</h4>
@@ -227,10 +180,10 @@ export default function CompleteBeautyGuideLisbon() {
 
             <h4 className="text-xl font-serif mb-3">What's Available:</h4>
             <ul>
-              <li><strong>Special Occasion:</strong> Event makeup €40-120, photography €60-150</li>
-              <li><strong>Bridal:</strong> Trial + wedding day €200-450, bridal party €400-1,000+</li>
-              <li><strong>Lessons:</strong> Individual €60-150, group workshops €30-80 per person</li>
-              <li><strong>Permanent:</strong> Microblading €200-450, lash extensions €80-180</li>
+              <li><strong>Special Occasion:</strong> Event makeup, photography-ready looks</li>
+              <li><strong>Bridal:</strong> Trial sessions plus wedding day application, bridal party packages</li>
+              <li><strong>Lessons:</strong> Individual makeup lessons and group workshops</li>
+              <li><strong>Permanent:</strong> Microblading and lash extensions</li>
             </ul>
 
             <h3 className="text-2xl font-serif mb-4 mt-8">Nail Care</h3>
@@ -240,10 +193,10 @@ export default function CompleteBeautyGuideLisbon() {
 
             <h4 className="text-xl font-serif mb-3">What's Available:</h4>
             <ul>
-              <li><strong>Manicure:</strong> Classic €15-35, gel €25-50, acrylic €30-60</li>
-              <li><strong>Pedicure:</strong> Basic €20-40, spa pedicure €35-70</li>
-              <li><strong>Nail Art:</strong> Simple designs €5-15 extra, complex art €20-50 per nail</li>
-              <li><strong>Treatments:</strong> Paraffin wax €10-20, nail strengthening €15-30</li>
+              <li><strong>Manicure:</strong> Classic, gel, and acrylic options</li>
+              <li><strong>Pedicure:</strong> Basic and luxury spa pedicures</li>
+              <li><strong>Nail Art:</strong> From simple designs to complex Portuguese-inspired art</li>
+              <li><strong>Treatments:</strong> Paraffin wax and nail strengthening therapies</li>
             </ul>
 
             <h4 className="text-xl font-serif mb-3">Best Neighborhoods for Nails:</h4>
@@ -395,33 +348,32 @@ export default function CompleteBeautyGuideLisbon() {
               <li><strong>Facility Quality:</strong> Luxury ambiance, amenities (champagne, refreshments) increase prices</li>
             </ul>
 
-            <h3 className="text-2xl font-serif mb-4">Typical Total Cost Breakdown</h3>
-            <p>For a mid-range hair color service at €120:</p>
+            <h3 className="text-2xl font-serif mb-4">What's Included in Your Price</h3>
+            <p>A typical beauty service quote includes:</p>
             <ul>
-              <li>Base service: €90</li>
-              <li>Premium color products: €15</li>
-              <li>Treatment/toner: €10</li>
-              <li>Blow-dry finish: €5</li>
-              <li>Recommended tip (optional): €12-18</li>
+              <li>Base service with a vetted professional</li>
+              <li>Premium products appropriate for your hair/skin type</li>
+              <li>Any necessary treatments or finishing touches</li>
+              <li>Tipping is optional (10-15% is customary for exceptional service)</li>
             </ul>
 
             <h3 className="text-2xl font-serif mb-4">How Good Hands Pricing Works</h3>
             <p>
-              Good Hands pricing includes both the service and our concierge coordination. Our fees are transparent:
+              Good Hands pricing is personalized based on your specific needs and includes both the service and our concierge coordination:
             </p>
             <ul>
-              <li>We negotiate preferred rates with professionals (often 10-15% below their walk-in prices)</li>
-              <li>Our concierge coordination fee is included in quoted price</li>
-              <li>Total cost is typically 5-15% more than booking direct, but with zero risk</li>
-              <li>VIP members receive 15% off, making services cost-neutral or cheaper than direct booking</li>
+              <li>We negotiate preferred rates with professionals</li>
+              <li>Our concierge coordination fee is included in the quoted price</li>
+              <li>You receive a tailored quote before confirming any booking</li>
+              <li>VIP members receive 15% off all services</li>
             </ul>
 
             <div className="bg-sand/10 p-6 rounded-lg not-prose my-6">
-              <p className="font-bold mb-2">Value Calculation Example:</p>
+              <p className="font-bold mb-2">The Value of Expert Matching:</p>
               <p className="text-sm">
-                Direct booking: €120 (30% chance of disappointment requiring re-do at €120 = expected cost €156)<br/>
-                Good Hands: €135 (guaranteed satisfaction, saved time/stress = expected cost €135)<br/>
-                <strong>Net savings: €21 + peace of mind</strong>
+                Direct booking carries a real risk of disappointment—requiring a costly correction or re-do with a different professional.<br/>
+                Good Hands' vetted matching eliminates this risk entirely, with guaranteed satisfaction and saved time.<br/>
+                <strong>The result: peace of mind and consistently excellent outcomes.</strong>
               </p>
             </div>
           </section>
@@ -440,7 +392,7 @@ export default function CompleteBeautyGuideLisbon() {
             <h3 className="text-2xl font-serif mb-4">Best for Expatriates & New Residents</h3>
             <ul>
               <li>Invest in finding "your person"—loyalty is rewarded in Portuguese beauty culture</li>
-              <li>Consider Good Hands membership (€299/year, 15% off) if booking 3+ times yearly</li>
+              <li>Consider a Good Hands VIP membership for 15% off all services if booking regularly</li>
               <li>Learn basic Portuguese beauty vocabulary for better communication</li>
               <li>Explore neighborhoods near your home for convenience</li>
             </ul>
@@ -473,7 +425,7 @@ export default function CompleteBeautyGuideLisbon() {
 
               <div>
                 <h4 className="text-lg font-bold mb-2">Are beauty services in Lisbon cheaper than other European cities?</h4>
-                <p>Yes! Lisbon's beauty services cost 30-50% less than London, Paris, or Amsterdam for comparable quality. A €120 balayage in Lisbon would cost €200-250 in London.</p>
+                <p>Yes! Lisbon's beauty services are generally 30-50% less expensive than London, Paris, or Amsterdam for comparable quality—making it an excellent value destination for beauty services.</p>
               </div>
 
               <div>

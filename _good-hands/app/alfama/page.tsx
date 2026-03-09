@@ -100,7 +100,7 @@ export default function AlfamaPage() {
               <p className="text-harbor mb-3">
                 Traditional Portuguese salons alongside modern stylists working in renovated spaces. Specialties include natural wave treatments perfect for Lisbon&apos;s humid climate.
               </p>
-              <p className="text-sm text-gold">From €80 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -108,7 +108,7 @@ export default function AlfamaPage() {
               <p className="text-harbor mb-3">
                 Intimate nail studios offering detailed, unhurried services. Perfect for travelers who want a relaxing experience while exploring the neighborhood.
               </p>
-              <p className="text-sm text-gold">From €45 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -116,7 +116,7 @@ export default function AlfamaPage() {
               <p className="text-harbor mb-3">
                 Small esthetician studios specializing in Portuguese skincare products and traditional olive oil-based treatments.
               </p>
-              <p className="text-sm text-gold">From €95 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="pb-6">
@@ -124,7 +124,7 @@ export default function AlfamaPage() {
               <p className="text-harbor mb-3">
                 Local makeup artists available for events, photoshoots against Alfama&apos;s stunning backdrop, or lessons in your vacation rental.
               </p>
-              <p className="text-sm text-gold">From €70 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
           </div>
         </div>

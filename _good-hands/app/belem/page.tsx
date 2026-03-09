@@ -101,7 +101,7 @@ export default function BelemPage() {
               <p className="text-harbor mb-3">
                 Family-run establishments, many operating for decades. Stylists know traditional Portuguese techniques alongside modern trends. Expect warm personal service, unhurried appointments, and professionals who treat you like a neighbor, not a transaction.
               </p>
-              <p className="text-sm text-gold">From €65 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -109,7 +109,7 @@ export default function BelemPage() {
               <p className="text-harbor mb-3">
                 Small, intimate nail studios with regular clientele. Perfect for relaxed manicures and pedicures while enjoying genuine conversation. Less polished than trendy downtown spots, but often more skilled and attentive.
               </p>
-              <p className="text-sm text-gold">From €35 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="border-b border-harbor/10 pb-6">
@@ -117,7 +117,7 @@ export default function BelemPage() {
               <p className="text-harbor mb-3">
                 Independent estheticians working in peaceful treatment rooms. Belém professionals often have long waiting lists of loyal clients who appreciate their skill and the neighborhood&apos;s tranquil setting for facials and treatments.
               </p>
-              <p className="text-sm text-gold">From €80 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
 
             <div className="pb-6">
@@ -125,7 +125,7 @@ export default function BelemPage() {
               <p className="text-harbor mb-3">
                 Several wellness centers near the waterfront offer massage, body treatments, and holistic services. The riverside location enhances relaxation—many treatment rooms have river or garden views.
               </p>
-              <p className="text-sm text-gold">From €75 • Includes expert concierge matching</p>
+              <p className="text-sm text-gold">Pricing on request • Includes expert concierge matching</p>
             </div>
           </div>
         </div>
